@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Examples, EA Atlas</title><meta name="description" content="Example enterprise architecture atlases built with EA Atlas.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 <script>try{var t=localStorage.getItem('ea-atlas-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head><body>
-<header class="top"><div class="wrap"><a class="mark" href="../index.html"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="11" height="7" rx="1.5" fill="var(--invest)"/><rect x="14" y="1" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="1" y="10" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="14" y="10" width="11" height="7" rx="1.5" fill="var(--migrate)"/><rect x="1" y="19" width="11" height="6" rx="1.5" fill="var(--invest)"/><rect x="14.5" y="19.5" width="10" height="5" rx="1.5" fill="none" stroke="var(--ink-2)" stroke-dasharray="2 1.5"/></svg>EA Atlas</a><nav aria-label="Main"><a href="../index.html">Home</a><a href="../examples/index.html" aria-current="page">Examples</a><a href="../index.html#kits">Get the kit</a><a href="../guides/claude.html">Guides</a><a href="https://github.com/apisteme/ea-atlas">GitHub</a></nav></div></header>
-<main><div class="wrap page"><p class="crumb"><a href="../index.html">Home</a></p><h1>Examples</h1>
-<p>Each example is a complete atlas built by the same scripts you will use. Open the dashboard in your browser, or download the Excel and the atlas file to see exactly what your assistant produces.</p>
-<div class="gallery"><article class="ex">
+<header class="top"><div class="wrap"><a class="mark" href="../index.html"><img src="../assets/episteme-logo.png" alt="Episteme Partners" width="69" height="42"><span>EA Atlas</span></a><nav aria-label="Main"><a href="../index.html">Home</a><a href="../examples/index.html" aria-current="page">Examples</a><a href="../index.html#kits">Get the kit</a><a href="../guides/claude.html">Guides</a><a href="https://github.com/apisteme/ea-atlas">GitHub</a></nav></div></header>
+<main><div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html">Home</a></p><h1>Examples</h1>
+<p>Each example is a complete atlas built by the same scripts you will use. Open the dashboard in your browser, or download the Excel and the atlas file to see exactly what your assistant produces.</p></div></div>
+<div class="wrap page"><div class="gallery" style="margin-top:0"><article class="ex">
 <a class="thumb" href="archisurance/index.html"><img src="../assets/shots/archisurance-overview.jpg" alt="" loading="lazy" width="1208" height="755"></a>
 <div class="body"><h2><a href="archisurance/index.html">ArchiSurance</a></h2><div class="meta">Insurance pack, built from the Archi sample model, version 1.0</div>
 <p>A fictional EU insurer with home and travel, car and legal aid products. Applications, platforms, roles, interfaces and processes come from the ArchiSurance sample that ships with Archi; costs, contracts and ratings are illustrative. Includes a back-office consolidation programme.</p><ul class="stats"><li><b>32</b>applications</li><li><b>61</b>capabilities</li><li><b>24</b>suppliers</li><li><b>5</b>journeys</li></ul>
@@ -17,8 +15,9 @@
 <p>Pick the kit for your assistant, choose an industry pack, and start with whatever you have: an application list, a supplier register or an Archi model.</p>
 <div class="actions"><a class="btn small" href="../index.html#kits">Get the kit</a></div></div></article></div></div></main>
 <footer><div class="wrap"><div>
-<p>EA Atlas is open source under the MIT licence. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
-<p><a href="https://github.com/apisteme/ea-atlas">Source on GitHub</a>, <a href="https://github.com/apisteme/ea-atlas/blob/main/NOTICE.md">notices</a>, <a href="https://github.com/apisteme/ea-atlas/issues">report a problem</a>.</p>
-</div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div></div></footer>
+<div class="by"><img src="../assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="https://www.epistemepartners.com">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
+<p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="https://github.com/apisteme/ea-atlas/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
+<p><a href="https://github.com/apisteme/ea-atlas">Source on GitHub</a>, <a href="https://github.com/apisteme/ea-atlas/blob/main/NOTICE.md">notices</a>, <a href="https://github.com/apisteme/ea-atlas/issues">report a problem</a>.</p></div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div>
+<p class="copy">&copy; 2026 Episteme Partners Ltd. Content CC BY 4.0, code MIT.</p></div></footer>
 <script>document.getElementById('theme').onclick=function(){var r=document.documentElement,d=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=d==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('ea-atlas-theme',n)}catch(e){}};</script>
 </body></html>

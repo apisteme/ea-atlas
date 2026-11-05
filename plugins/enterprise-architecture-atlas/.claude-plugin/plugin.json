@@ -3,8 +3,18 @@
   "description": "Build and refresh an enterprise architecture atlas (Excel repository plus clickable dashboard) for any industry, with industry packs and an ArchiMate importer.",
   "version": "2.0.0",
   "author": {
-    "name": "Prashant Nema"
+    "name": "Episteme Partners Ltd",
+    "url": "https://www.epistemepartners.com"
   },
-  "license": "MIT",
-  "keywords": ["enterprise architecture", "capability map", "application portfolio", "ArchiMate", "DORA", "BIAN"]
+  "license": "MIT AND CC-BY-4.0",
+  "keywords": [
+    "enterprise architecture",
+    "capability map",
+    "application portfolio",
+    "ArchiMate",
+    "DORA",
+    "BIAN"
+  ],
+  "homepage": "https://apisteme.github.io/ea-atlas/",
+  "repository": "https://github.com/apisteme/ea-atlas"
 }

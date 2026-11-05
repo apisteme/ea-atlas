@@ -1,7 +1,7 @@
 ---
 name: enterprise-architecture-atlas
 description: "Builds and refreshes an enterprise architecture atlas for any organisation: an Excel repository plus a clickable offline HTML dashboard linking strategy, capabilities, value streams, processes, roles, applications, suppliers, contracts, resilience and regulation, with change impact and what-if analysis. Use when someone asks for an EA atlas, capability map, application portfolio, impact of a change or outage, regulatory readiness, or to import an Archi (ArchiMate) model. Industry packs: banking, insurance, cross-industry."
-license: MIT
+license: MIT AND CC-BY-4.0
 compatibility: "Needs Python 3 (standard library only). Uses Node, openpyxl and LibreOffice when present. No network access needed."
 ---
 

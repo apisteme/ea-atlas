@@ -66,7 +66,8 @@ for f in ("model-schema.md", "pack-authoring.md", "outputs.md"):
     open(os.path.join(stage, "references", f), "w", encoding="utf-8").write(t)
 notice = open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read().replace("`samples/archisurance/Archisurance.archimate`", "`assets/Archisurance.archimate.xml`")
 lic = open(os.path.join(ROOT, "LICENSE"), encoding="utf-8").read()
-open(os.path.join(stage, "references", "licence-and-notices.md"), "w", encoding="utf-8").write("# Licence\n\n```\n" + lic + "```\n\n" + notice)
+content = open(os.path.join(ROOT, "LICENSE-CONTENT.md"), encoding="utf-8").read()
+open(os.path.join(stage, "references", "licence-and-notices.md"), "w", encoding="utf-8").write(content + "\n## MIT licence (source code)\n\n```\n" + lic + "```\n\n" + notice)
 # assets: example atlas file (built so it carries a release snapshot) and the Archi model
 os.makedirs(os.path.join(stage, "assets"))
 shutil.copy(os.path.join(SKILL, "samples", "archisurance", "Archisurance.archimate"), os.path.join(stage, "assets", "Archisurance.archimate.xml"))

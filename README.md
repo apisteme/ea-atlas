@@ -90,4 +90,8 @@ Every application and supplier carries a confidence tag: Customer-provided, Publ
 
 ## Licence
 
-MIT. See `NOTICE.md` for the ArchiSurance sample model, industry standards and regulation summaries.
+EA Atlas is an open project by [Episteme Partners](https://www.epistemepartners.com).
+
+- Content (skill instructions, packs, guides, website, examples): [CC BY 4.0](LICENSE-CONTENT.md), copyright Episteme Partners Ltd.
+- Source code: [MIT](LICENSE), copyright Episteme Partners Ltd.
+- Third-party material, including the ArchiSurance sample model from Archi (MIT): see [`NOTICE.md`](NOTICE.md).

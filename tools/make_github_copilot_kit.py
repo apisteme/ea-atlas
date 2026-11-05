@@ -53,7 +53,8 @@ for f in ("model-schema.md", "pack-authoring.md", "outputs.md"):
     open(os.path.join(sk, "reference", f), "w", encoding="utf-8").write(t)
 notice = open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read()
 lic = open(os.path.join(ROOT, "LICENSE"), encoding="utf-8").read()
-open(os.path.join(sk, "LICENSE.md"), "w", encoding="utf-8").write("# Licence\n\n```\n" + lic + "```\n\n" + notice)
+content = open(os.path.join(ROOT, "LICENSE-CONTENT.md"), encoding="utf-8").read()
+open(os.path.join(sk, "LICENSE.md"), "w", encoding="utf-8").write(content + "\n## MIT licence (source code)\n\n```\n" + lic + "```\n\n" + notice)
 for sub in ("prompts", "instructions"):
     shutil.copytree(os.path.join(KIT, sub), os.path.join(stage, ".github", sub))
 shutil.copy(os.path.join(KIT, "README.md"), os.path.join(stage, "EA-ATLAS.md"))

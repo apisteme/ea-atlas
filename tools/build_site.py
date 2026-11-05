@@ -36,6 +36,9 @@ if os.path.isdir(old_shots):
     shutil.copytree(old_shots, SHOTS, dirs_exist_ok=True)
 open(os.path.join(DOCS, ".nojekyll"), "w").close()
 shutil.copy(os.path.join(SITE, "style.css"), os.path.join(DOCS, "assets", "style.css"))
+shutil.copy(os.path.join(SITE, "episteme-logo.png"), os.path.join(DOCS, "assets", "episteme-logo.png"))
+EP = "https://www.epistemepartners.com"
+YEAR = "2026"
 
 
 def run(cmd, **kw):
@@ -66,7 +69,7 @@ with zipfile.ZipFile(cz, "w", zipfile.ZIP_DEFLATED) as z:
                 continue
             p = os.path.join(d, f)
             z.write(p, "enterprise-architecture-atlas/" + os.path.relpath(p, SKILL).replace(os.sep, "/"))
-for f in ("LICENSE", "NOTICE.md"):
+for f in ("LICENSE", "LICENSE-CONTENT.md", "NOTICE.md"):
     with zipfile.ZipFile(cz, "a") as z:
         z.write(os.path.join(ROOT, f), "enterprise-architecture-atlas/" + f)
 KITS = {
@@ -145,11 +148,6 @@ def shot(exid, v):
 
 
 # ---------------------------------------------------------------- page frame
-MARK = ('<svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="11" height="7" rx="1.5" fill="var(--invest)"/>'
-        '<rect x="14" y="1" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="1" y="10" width="11" height="7" rx="1.5" fill="var(--tolerate)"/>'
-        '<rect x="14" y="10" width="11" height="7" rx="1.5" fill="var(--migrate)"/><rect x="1" y="19" width="11" height="6" rx="1.5" fill="var(--invest)"/>'
-        '<rect x="14.5" y="19.5" width="10" height="5" rx="1.5" fill="none" stroke="var(--ink-2)" stroke-dasharray="2 1.5"/></svg>')
-
 
 def frame(title, desc, body, cur, up):
     nav = [("Home", "index.html", "home"), ("Examples", "examples/index.html", "examples"),
@@ -158,17 +156,16 @@ def frame(title, desc, body, cur, up):
     return f"""<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{up}assets/style.css">
 <script>try{{var t=localStorage.getItem('ea-atlas-theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 </head><body>
-<header class="top"><div class="wrap"><a class="mark" href="{up}index.html">{MARK}EA Atlas</a><nav aria-label="Main">{links}</nav></div></header>
+<header class="top"><div class="wrap"><a class="mark" href="{up}index.html"><img src="{up}assets/episteme-logo.png" alt="Episteme Partners" width="69" height="42"><span>EA Atlas</span></a><nav aria-label="Main">{links}</nav></div></header>
 <main>{body}</main>
 <footer><div class="wrap"><div>
-<p>EA Atlas is open source under the MIT licence. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
-<p><a href="{GH}">Source on GitHub</a>, <a href="{GH}/blob/main/NOTICE.md">notices</a>, <a href="{GH}/issues">report a problem</a>.</p>
-</div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div></div></footer>
+<div class="by"><img src="{up}assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="{EP}">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
+<p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="{GH}/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
+<p><a href="{GH}">Source on GitHub</a>, <a href="{GH}/blob/main/NOTICE.md">notices</a>, <a href="{GH}/issues">report a problem</a>.</p></div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div>
+<p class="copy">&copy; {YEAR} Episteme Partners Ltd. Content CC BY 4.0, code MIT.</p></div></footer>
 <script>document.getElementById('theme').onclick=function(){{var r=document.documentElement,d=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=d==='dark'?'light':'dark';r.dataset.theme=n;try{{localStorage.setItem('ea-atlas-theme',n)}}catch(e){{}}}};</script>
 </body></html>
 """
@@ -223,20 +220,20 @@ FLOW_SVG = """<div class="scroll"><svg viewBox="0 0 1000 330" role="img" aria-la
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ink-2)"/></marker></defs>
 <g font-size="14" fill="var(--ink)">
 <text x="0" y="18" font-weight="600" fill="var(--ink-2)">What you bring</text>
-""" + "".join(f'<rect x="0" y="{32 + k * 44}" width="230" height="34" rx="5" fill="var(--paper-2)" stroke="var(--rule)"/><text x="14" y="{54 + k * 44}">{t}</text>'
+""" + "".join(f'<rect x="0" y="{32 + k * 44}" width="230" height="34" rx="5" fill="var(--band)" stroke="var(--rule)"/><text x="14" y="{54 + k * 44}">{t}</text>'
               for k, t in enumerate(["Application inventory", "Supplier register, contracts", "Org chart, RACI", "Processes, journeys", "Strategy, regulation, backlog", "Archi model, or just tell it"])) + """
 <text x="330" y="18" font-weight="600" fill="var(--ink-2)">Your assistant and the scripts</text>
-<rect x="330" y="60" width="270" height="78" rx="6" fill="none" stroke="var(--contour)" stroke-width="2"/>
+<rect x="330" y="60" width="270" height="78" rx="6" fill="none" stroke="var(--accent)" stroke-width="2"/>
 <text x="348" y="92" font-weight="600">Model</text><text x="348" y="116" fill="var(--ink-2)" font-size="13">JSON files, every item tagged</text>
-<rect x="330" y="176" width="270" height="78" rx="6" fill="var(--contour)"/>
+<rect x="330" y="176" width="270" height="78" rx="6" fill="var(--accent)"/>
 <text x="348" y="208" font-weight="600" fill="#fff">Build</text><text x="348" y="232" fill="#fff" font-size="13">validate, impact engines, diff</text>
 <path d="M465 140V172" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#ar)"/>
 <path d="M232 165H326" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#ar)"/>
 <text x="700" y="18" font-weight="600" fill="var(--ink-2)">What you get</text>
-""" + "".join(f'<rect x="700" y="{40 + k * 54}" width="300" height="42" rx="5" fill="var(--paper-2)" stroke="var(--rule)"/><text x="716" y="{66 + k * 54}">{t}</text>'
+""" + "".join(f'<rect x="700" y="{40 + k * 54}" width="300" height="42" rx="5" fill="var(--band)" stroke="var(--rule)"/><text x="716" y="{66 + k * 54}">{t}</text>'
               for k, t in enumerate(["Clickable dashboard (HTML)", "Excel repository", "Atlas file (the whole model)", "Change log for this release"])) + """
 <path d="M602 215H696" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#ar)"/>
-<path d="M850 262V300H465V258" fill="none" stroke="var(--contour)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<path d="M850 262V300H465V258" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar)"/>
 <text x="560" y="320" font-size="13" fill="var(--ink-2)">next refresh starts from the updated model</text>
 </g></svg></div>"""
 
@@ -271,11 +268,11 @@ def kit_block(k, who, how, lives, share, extra=""):
 
 m = D0["meta"]
 home = f"""
-<div class="wrap hero">
-<h1>Map your organisation without buying an EA tool</h1>
+<section class="hero"><div class="wrap">
+<h1>Map your organisation <span>without buying an EA tool</span></h1>
 <p class="lede">EA Atlas turns what you know about your organisation into a clickable dashboard and an Excel repository: capabilities, journeys, processes, roles, applications, suppliers, risk and regulation, all linked. Your AI assistant does the modelling. Open-source scripts do the building, the same way every time.</p>
 <div class="actions"><a class="btn primary" href="examples/index.html">Browse the examples</a><a class="btn" href="#kits">Get the kit for your assistant</a></div>
-</div>
+</div></section>
 <div class="wide">{heatmap(EX0, "")}</div>
 
 <section class="band" id="what"><div class="wrap intro">
@@ -309,7 +306,7 @@ home = f"""
 {''.join(f'<tr><td>{esc(i)}</td><td class="views">{esc(v)}</td></tr>' for i, v in RESPONDS)}
 </tbody></table></div>
 <ul class="tags">{''.join(f'<li style="--c:var({c})"><b>{esc(t)}</b>{esc(d)}</li>' for t, d, c in TAGS)}</ul>
-<p style="margin-top:22px;font-size:.98rem;color:var(--ink-2)">A higher tag is never overwritten by a lower one. Costs, contract terms, SLAs and recovery targets you have not supplied are generated and tagged Illustrative, so the dashboard is complete from the start without pretending to know.</p>
+<p class="note">A higher tag is never overwritten by a lower one. Costs, contract terms, SLAs and recovery targets you have not supplied are generated and tagged Illustrative, so the dashboard is complete from the start without pretending to know.</p>
 </div></section>
 
 <section class="band" id="outputs"><div class="wrap">
@@ -333,7 +330,7 @@ home = f"""
 {kit_block("copilot-studio", "For organisations on Microsoft 365. Build an agent in Copilot Studio, upload the skill, and publish it to Teams or Microsoft 365 Copilot.", "In the agent's Python sandbox", "In the atlas file you keep in OneDrive or SharePoint", "As a file, or on SharePoint")}
 {kit_block("github-copilot", "For architects who work in a Git repository with VS Code. Copilot runs the build in your terminal, and every release is a commit you can review.", "In your VS Code terminal", "In <code>ea-atlas/</code> in your repository", "From the repository, or an internal site")}
 </div>
-<p style="margin-top:26px;font-size:.98rem;color:var(--ink-2)">No assistant at all? The build runs by hand with Python 3: copy a sample, edit the JSON files and run <code>build.py</code>. See the <a href="{GH}#readme">README</a>.</p>
+<p class="note">No assistant at all? The build runs by hand with Python 3: copy a sample, edit the JSON files and run <code>build.py</code>. See the <a href="{GH}#readme">README</a>.</p>
 </div></section>
 
 <section class="band" id="packs"><div class="wrap">
@@ -342,7 +339,13 @@ home = f"""
 <div class="scroll"><table class="tbl"><thead><tr><th>Pack</th><th>For</th><th>Capability reference</th><th>Regulation library</th></tr></thead><tbody>
 {''.join(f'<tr><td><code>{p}</code></td><td>{w}</td><td>{c}</td><td>{r}</td></tr>' for p, w, c, r in PACKS)}
 </tbody></table></div>
-<p style="margin-top:20px">Need another industry? Ask your assistant to write a pack, or contribute one: see <a href="{GH}/blob/main/plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas/reference/pack-authoring.md">pack authoring</a>.</p>
+<p class="note">Need another industry? Ask your assistant to write a pack, or contribute one: see <a href="{GH}/blob/main/plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas/reference/pack-authoring.md">pack authoring</a>.</p>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+<h2>Get in touch</h2>
+<p>EA Atlas is free to use. If you would like help setting up an atlas, an industry pack for your sector, or a review of your architecture, Episteme Partners can help.</p>
+<div class="actions"><a class="btn primary" href="mailto:info@epistemepartners.com">Contact Episteme Partners</a><a class="btn" href="{EP}">Visit epistemepartners.com</a></div>
 </div></section>
 """
 write("index.html", frame("EA Atlas", "A do-it-yourself enterprise architecture atlas: build a clickable dashboard and Excel repository of your organisation with Claude, Microsoft Copilot or GitHub Copilot.", home, "home", ""))
@@ -368,9 +371,9 @@ for ex in EXAMPLES:
 tiles.append("""<article class="ex own"><div class="body"><h2>Your organisation</h2>
 <p>Pick the kit for your assistant, choose an industry pack, and start with whatever you have: an application list, a supplier register or an Archi model.</p>
 <div class="actions"><a class="btn small" href="../index.html#kits">Get the kit</a></div></div></article>""")
-gal = f"""<div class="wrap page"><p class="crumb"><a href="../index.html">Home</a></p><h1>Examples</h1>
-<p>Each example is a complete atlas built by the same scripts you will use. Open the dashboard in your browser, or download the Excel and the atlas file to see exactly what your assistant produces.</p>
-<div class="gallery">{''.join(tiles)}</div></div>"""
+gal = f"""<div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html">Home</a></p><h1>Examples</h1>
+<p>Each example is a complete atlas built by the same scripts you will use. Open the dashboard in your browser, or download the Excel and the atlas file to see exactly what your assistant produces.</p></div></div>
+<div class="wrap page"><div class="gallery" style="margin-top:0">{''.join(tiles)}</div></div>"""
 write("examples/index.html", frame("Examples, EA Atlas", "Example enterprise architecture atlases built with EA Atlas.", gal, "examples", "../"))
 
 for ex in EXAMPLES:
@@ -387,12 +390,12 @@ for ex in EXAMPLES:
         downloads.append((ex["archimate"], "Archi model", "The source model; open it in Archi or import it again"))
     dl = "".join(f'<li><a href="{f}"{"" if f.endswith(".html") else " download"}>{n}</a><span>{d}, {kb(os.path.join(ex["dir"], f))}</span></li>' for f, n, d in downloads)
     ctx = "".join(f"<li>{esc(c)}</li>" for c in D["meta"].get("context", []))
-    body = f"""<div class="wrap page"><p class="crumb"><a href="../index.html">Examples</a></p>
-<h1>{esc(ex['title'])}</h1><p class="lede" style="font-size:1.15rem;color:var(--ink-2)">{esc(ex['meta'])}. Version {esc(D['meta']['version'])}, released {esc(D['meta']['release_date'])}.</p>
-<div class="intro" style="margin-top:28px"><div><p>{esc(ex['blurb'])}</p><ul>{ctx}</ul>
+    body = f"""<div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html">Examples</a></p>
+<h1>{esc(ex['title'])}</h1><p>{esc(ex['meta'])}. Version {esc(D['meta']['version'])}, released {esc(D['meta']['release_date'])}.</p></div></div>
+<div class="wrap page"><div class="intro"><div><p>{esc(ex['blurb'])}</p><ul>{ctx}</ul>
 <div class="actions"><a class="btn primary" href="{dash}">Open the dashboard</a></div></div>
 <div><h2 style="font-size:1.3rem">Downloads</h2><ul class="dl">{dl}</ul></div></div>
-<h2 style="margin-top:56px">Go straight to a view</h2>
+<h2 style="margin-top:64px">Go straight to a view</h2>
 <div class="viewgrid">{vg}</div>
 <div class="callout" style="margin-top:48px"><p><b>Try a refresh yourself.</b> Download the atlas file, attach it in a chat with your assistant and ask, for example: "Add a new claims application from a SaaS vendor and retire the old one", or "What happens if the payment network is down for a day?"</p></div>
 </div>"""
@@ -410,9 +413,9 @@ for k, (name, z) in KITS.items():
     h = markdown.markdown(md, extensions=["tables", "fenced_code"])
     h = re.sub(r"<h1>.*?</h1>", "", h, count=1)
     side = "".join(f'<a class="btn small" href="{kk}.html"{" aria-current=page" if kk == k else ""}>{nn}</a>' for kk, (nn, _) in KITS.items())
-    body = f"""<div class="wrap page"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for {esc(name)}</h1>
-<div class="actions" style="margin:0 0 8px">{side}</div>
-<div class="callout"><p><a href="../downloads/{z}" download><b>Download {z}</b></a> ({kb(os.path.join(DL, z))})</p>{GUIDE_NOTE[k]}</div>
+    body = f"""<div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for {esc(name)}</h1>
+<div class="kitnav">{side}</div></div></div>
+<div class="wrap page"><div class="callout"><p><a href="../downloads/{z}" download><b>Download {z}</b></a> ({kb(os.path.join(DL, z))})</p>{GUIDE_NOTE[k]}</div>
 <div class="prose">{h}</div></div>"""
     write(f"guides/{k}.html", frame(f"{name} setup, EA Atlas", f"How to install and use EA Atlas with {name}.", body, "guides", "../"))
 
