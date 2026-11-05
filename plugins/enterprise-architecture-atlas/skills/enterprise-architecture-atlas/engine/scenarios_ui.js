@@ -255,20 +255,21 @@ function scEditor(){
 // Save explains what is missing next to the button and takes the user to the first field that needs attention.
 function edReady(px,items,noun){
   const el=document.getElementById(px+'-ready'); if(!el) return;
-  const todo=items.filter(x=>!x.ok);
-  el.classList.toggle('done',!todo.length); if(!todo.length) el.classList.remove('blocked');
+  const todo=items.filter(x=>!x.ok), a=document.getElementById(px+'-formmsg');
+  // After an early Save the red message alone lists what is missing, and updates as fields are filled in.
+  if(a&&!a.hidden&&a.dataset.kind==='check'){
+    if(todo.length){a.textContent=`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`; el.hidden=true; return}
+    a.hidden=true;
+  }
+  el.hidden=false;
+  el.classList.toggle('done',!todo.length);
   el.innerHTML=!todo.length?`<span class="ed-ok">Ready to save.</span>`
     :`<b>To save this ${noun}:</b><ul>${items.map(x=>`<li class="${x.ok?'ed-ok':'ed-todo'}">${esc(x.label)}</li>`).join('')}</ul>`;
-  items.forEach(x=>{if(x.ok){const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.remove('invalid')}});
-  const a=document.getElementById(px+'-formmsg'); if(a&&!todo.length&&a.dataset.kind==='check') a.hidden=true;
 }
 function edAlert(px,text,kind){const a=document.getElementById(px+'-formmsg'); if(!a) return; a.textContent=text||''; a.dataset.kind=kind||'error'; a.hidden=!text}
 function edBlockSave(px,items,noun,focusIds){
   const todo=items.filter(x=>!x.ok); if(!todo.length) return true;
-  edReady(px,items,noun);
-  const rb=document.getElementById(px+'-ready'); if(rb) rb.classList.add('blocked');
-  edAlert(px,`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`,'check');
-  todo.forEach(x=>{const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.add('invalid')});
+  edAlert(px,'x','check'); edReady(px,items,noun);
   const w=document.getElementById(px+'-f-'+todo[0].f), f=document.getElementById(focusIds[todo[0].f]);
   try{(w||f).scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){}
   if(f) try{f.focus({preventScroll:true})}catch(e){f.focus()}

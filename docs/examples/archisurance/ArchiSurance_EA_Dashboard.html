@@ -378,13 +378,8 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .ed-ready.done{background:color-mix(in oklab,var(--ok) 10%,var(--surface));border-color:color-mix(in oklab,var(--ok) 40%,var(--line))}
 .ed-ready.done .ed-ok{color:var(--ok);font-weight:600}
 .ed-ready.done .ed-ok::before{content:'\2713  '}
-.ed-alert{margin:0 0 10px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--crit);background:color-mix(in oklab,var(--crit) 9%,var(--surface));color:var(--ink);font-size:12.5px;font-weight:500}
-.sc-f.invalid{outline:2px solid var(--crit);outline-offset:5px;border-radius:6px;background:color-mix(in oklab,var(--crit) 5%,transparent)}
-.sc-f.invalid input,.sc-f.invalid select{border-color:var(--crit)!important;box-shadow:0 0 0 2px color-mix(in oklab,var(--crit) 25%,transparent)}
-.ed-ready.blocked{border:2px solid var(--crit);background:color-mix(in oklab,var(--crit) 7%,var(--surface))}
-.ed-ready.blocked .ed-todo{color:var(--crit);font-weight:600}
-.ed-ready.blocked .ed-todo::before{content:'!';color:var(--crit)}
-.sc-f.invalid > span,.sc-f.invalid{color:var(--crit)}
+.ed-alert{margin:0 0 10px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--crit);background:color-mix(in oklab,var(--crit) 9%,var(--surface));color:var(--crit);font-size:12.5px;font-weight:600}
+
 .sc-desc{margin:10px 0 0;font-size:13.5px;max-width:80ch}
 .sc-form .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .sc-f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
@@ -1618,20 +1613,21 @@ function scEditor(){
 // Save explains what is missing next to the button and takes the user to the first field that needs attention.
 function edReady(px,items,noun){
   const el=document.getElementById(px+'-ready'); if(!el) return;
-  const todo=items.filter(x=>!x.ok);
-  el.classList.toggle('done',!todo.length); if(!todo.length) el.classList.remove('blocked');
+  const todo=items.filter(x=>!x.ok), a=document.getElementById(px+'-formmsg');
+  // After an early Save the red message alone lists what is missing, and updates as fields are filled in.
+  if(a&&!a.hidden&&a.dataset.kind==='check'){
+    if(todo.length){a.textContent=`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`; el.hidden=true; return}
+    a.hidden=true;
+  }
+  el.hidden=false;
+  el.classList.toggle('done',!todo.length);
   el.innerHTML=!todo.length?`<span class="ed-ok">Ready to save.</span>`
     :`<b>To save this ${noun}:</b><ul>${items.map(x=>`<li class="${x.ok?'ed-ok':'ed-todo'}">${esc(x.label)}</li>`).join('')}</ul>`;
-  items.forEach(x=>{if(x.ok){const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.remove('invalid')}});
-  const a=document.getElementById(px+'-formmsg'); if(a&&!todo.length&&a.dataset.kind==='check') a.hidden=true;
 }
 function edAlert(px,text,kind){const a=document.getElementById(px+'-formmsg'); if(!a) return; a.textContent=text||''; a.dataset.kind=kind||'error'; a.hidden=!text}
 function edBlockSave(px,items,noun,focusIds){
   const todo=items.filter(x=>!x.ok); if(!todo.length) return true;
-  edReady(px,items,noun);
-  const rb=document.getElementById(px+'-ready'); if(rb) rb.classList.add('blocked');
-  edAlert(px,`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`,'check');
-  todo.forEach(x=>{const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.add('invalid')});
+  edAlert(px,'x','check'); edReady(px,items,noun);
   const w=document.getElementById(px+'-f-'+todo[0].f), f=document.getElementById(focusIds[todo[0].f]);
   try{(w||f).scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){}
   if(f) try{f.focus({preventScroll:true})}catch(e){f.focus()}
