@@ -254,3 +254,11 @@ footer .feedback h2{color:#fff;font-size:1.05rem;margin:0 0 6px}
 footer .feedback p{margin:0 0 12px}
 .footbtn{display:inline-block;border:1px solid #4B5563;border-radius:6px;padding:6px 12px;margin:0 6px 6px 0;color:#fff}
 .footbtn:hover{border-color:#9CA3AF;text-decoration:none;color:#fff}
+
+/* recommended kit */
+.kit{position:relative}
+.kit.recommended{border:2px solid var(--accent);box-shadow:var(--shadow-lg)}
+.badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);font-size:.8rem;font-weight:600;padding:3px 12px;border-radius:999px;white-space:nowrap}
+.prose blockquote{margin:12px 0;padding:10px 16px;background:var(--band);border-left:4px solid var(--accent);border-radius:4px}
+.prose blockquote p{margin:0}
+.prose > p:first-child strong{color:var(--accent)}

@@ -12,28 +12,53 @@
 </button></div></div></header>
 <main><div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for Claude</h1>
 <div class="kitnav"><a class="btn small" href="claude.html" aria-current=page>Claude</a><a class="btn small" href="copilot-studio.html">Microsoft Copilot Studio</a><a class="btn small" href="github-copilot.html">GitHub Copilot</a></div></div></div>
-<div class="wrap page"><div class="callout"><p><a href="../downloads/enterprise-architecture-atlas-claude.zip" download><b>Download enterprise-architecture-atlas-claude.zip</b></a> (277 KB)</p></div>
+<div class="wrap page"><div class="callout"><p><a class="btn primary small" href="../downloads/enterprise-architecture-atlas-claude.zip" download>Download enterprise-architecture-atlas-claude.zip</a> <span class="muted">277 KB</span></p></div>
 <div class="prose">
-<p>The original version of the skill. Claude writes the model, runs the build in its own workspace and can publish the dashboard as a page with its own link.</p>
-<h2>Claude apps (web, desktop, mobile)</h2>
+<p><strong>The easiest way to use EA Atlas.</strong> If you do not have a licence for Microsoft Copilot Studio or GitHub Copilot, use Claude. There is nothing to install, no IT set-up and no coding: it works in your web browser, the Claude desktop app or on your phone.</p>
+<h2>What you need</h2>
+<ul>
+<li>A Claude account. Any plan works, including the free one. Free plans have tighter usage limits, so building a large atlas in one go may need a paid plan.</li>
+<li>The file <code>enterprise-architecture-atlas-claude.zip</code> from this page. <strong>Do not unzip it.</strong></li>
+</ul>
+<h2>Set it up (about 5 minutes, once)</h2>
 <ol>
-<li>Turn on code execution: in <strong>Settings</strong> &gt; <strong>Capabilities</strong>, turn on <strong>Code execution and file creation</strong>. On Team and Enterprise plans an owner enables it, and Skills, under <strong>Organization settings</strong>.</li>
-<li>Download <code>enterprise-architecture-atlas-claude.zip</code>.</li>
-<li>Go to <strong>Customize</strong> &gt; <strong>Skills</strong>, select <strong>+</strong>, then <strong>Create skill</strong> &gt; <strong>Upload a skill</strong>, and upload the zip.</li>
-<li>Make sure the skill is switched on, then ask: "Show me the ArchiSurance example atlas" or "Build an EA atlas for <organisation>, insurance pack".</li>
+<li><strong>Download the zip file</strong> and keep it somewhere you can find it, for example your Downloads folder.</li>
+<li><strong>Let Claude create files.</strong> In Claude, open <strong>Settings</strong>, then <strong>Capabilities</strong>, and switch on <strong>Code execution and file creation</strong> (on newer screens it is called <strong>Create and edit files</strong>).<ul>
+<li>On a Team or Enterprise plan, an owner of your Claude organisation may need to switch this on, and Skills, for everyone. Ask whoever manages Claude at your company.</li>
+</ul>
+</li>
+<li><strong>Add the skill.</strong> Go to <strong>Customize</strong>, then <strong>Skills</strong>. Select the <strong>+</strong> button, choose <strong>Create skill</strong>, then <strong>Upload a skill</strong>, and pick the zip file.</li>
+<li><strong>Check it is on.</strong> EA Atlas now appears in your list of skills. Make sure its switch is on.</li>
 </ol>
-<p>Custom skills stay private to you until you share them.</p>
-<h2>Claude Code</h2>
-<p>Add this repository as a plugin marketplace and install the plugin:</p>
+<h2>Try it</h2>
+<p>Start a new chat and type:</p>
+<blockquote>
+<p>Show me the ArchiSurance example atlas.</p>
+</blockquote>
+<p>After a minute or two you get the dashboard and the Excel file for a fictional insurer. Open the dashboard and click around.</p>
+<h2>Build your own</h2>
+<p>In a new chat, say who you are mapping, for example:</p>
+<blockquote>
+<p>Build an EA atlas for Contoso Insurance, insurance pack.</p>
+</blockquote>
+<p>Claude suggests a plan and waits for you to agree. If you have files (an application list, a supplier register, an org chart, invoices, an Archi model), attach them. If you have nothing, Claude can start from public sources such as the annual report and press releases.</p>
+<h2>Keep it up to date</h2>
+<p>Whenever something changes, tell Claude in plain words and attach any new files:</p>
+<blockquote>
+<p>We have retired the old CRM and signed a new contract with Acme for payments. The contract is attached.</p>
+</blockquote>
+<p>Claude shows you what it will change, then builds a new version and tells you what changed.</p>
+<h2>Claude Code (for developers)</h2>
+<p>If you use Claude Code, add this repository as a plugin marketplace and install the plugin:</p>
 <pre><code class="language-bash">claude plugin marketplace add apisteme/ea-atlas
 claude plugin install enterprise-architecture-atlas@ea-atlas
 </code></pre>
-<p>Then ask in your project: "Build an EA atlas for <organisation>" or "Import our Archi model from inbox/archimate and build the atlas". The atlas is written to <code>ea-atlas/</code> in the project.</p>
-<h2>What Claude does that the other kits do not</h2>
+<p>The atlas is written to an <code>ea-atlas/</code> folder in your project, so you can keep it in Git.</p>
+<h2>If something goes wrong</h2>
 <ul>
-<li>Publishes the dashboard as a hosted page and republishes it to the same link on every release, with saved scenarios shared between viewers.</li>
-<li>Reads attachments in any format, for example PDFs, Word files and spreadsheets, and researches public sources itself.</li>
-<li>Recalculates the Excel and runs the dashboard test before delivery when the tools are available.</li>
+<li><strong>The upload is refused.</strong> Check that you uploaded the zip file itself, not an unzipped folder, and that Skills are allowed on your plan.</li>
+<li><strong>Claude answers but no files appear.</strong> Code execution is probably off. Switch it on (step 2) and start a new chat.</li>
+<li><strong>Anything else.</strong> Use the <strong>Feedback</strong> button at the top of this page to tell us.</li>
 </ul></div></div></main>
 <footer><div class="wrap"><div>
 <div class="by"><img src="../assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="https://www.epistemepartners.com">Episteme Partners</a>, platform and architecture consulting, London.</span></div>

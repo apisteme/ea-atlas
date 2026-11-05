@@ -12,73 +12,62 @@
 </button></div></div></header>
 <main><div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for Microsoft Copilot Studio</h1>
 <div class="kitnav"><a class="btn small" href="claude.html">Claude</a><a class="btn small" href="copilot-studio.html" aria-current=page>Microsoft Copilot Studio</a><a class="btn small" href="github-copilot.html">GitHub Copilot</a></div></div></div>
-<div class="wrap page"><div class="callout"><p><a href="../downloads/enterprise-architecture-atlas-copilot-studio.zip" download><b>Download enterprise-architecture-atlas-copilot-studio.zip</b></a> (288 KB)</p><p>You do not need to run the build script below: the package is ready. Download <a href='../downloads/enterprise-architecture-atlas-copilot-studio.zip'>the skill zip</a>, and if Copilot Studio rejects it, <a href='../downloads/enterprise-architecture-atlas-copilot-studio-folder.zip'>the folder version</a>.</p></div>
+<div class="wrap page"><div class="callout"><p><a class="btn primary small" href="../downloads/enterprise-architecture-atlas-copilot-studio.zip" download>Download enterprise-architecture-atlas-copilot-studio.zip</a> <span class="muted">288 KB</span></p><p>If Copilot Studio refuses it, try <a href='../downloads/enterprise-architecture-atlas-copilot-studio-folder.zip' download>the folder version</a>.</p></div>
 <div class="prose">
-<p>The same atlas engine as the Claude skill, packaged as a Copilot Studio skill. Build it with:</p>
+<p>For organisations that use Microsoft 365. You create an "agent" in Copilot Studio, give it the EA Atlas skill, and then anyone you share it with can use it in Teams or Microsoft 365 Copilot.</p>
+<h2>What you need</h2>
+<ul>
+<li>A Microsoft 365 work account with access to <strong>Copilot Studio</strong> (a licence or a trial) and permission to create agents. If you are not sure, ask your IT team.</li>
+<li>The file <code>enterprise-architecture-atlas-copilot-studio.zip</code> from this page. <strong>Do not unzip it.</strong></li>
+</ul>
+<p>Skills in Copilot Studio are new (in preview), so screens may look slightly different from these steps.</p>
+<h2>Set it up (about 15 minutes, once)</h2>
+<ol>
+<li><strong>Download the zip file.</strong></li>
+<li><strong>Create an agent.</strong> Open <a href="https://copilotstudio.microsoft.com">Copilot Studio</a>, create a new agent and call it, for example, "EA Atlas".</li>
+<li>
+<p><strong>Give it short instructions.</strong> Paste this into the agent's instructions:</p>
+<blockquote>
+<p>You help enterprise architects build and maintain an EA atlas. For any request about an EA atlas, capability map, application portfolio, change impact, what-if or regulatory readiness, use the enterprise-architecture-atlas skill. Ask the user to attach their atlas file when they have one.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Add the skill.</strong> Go to <strong>Build</strong>, then <strong>Skills</strong>, then <strong>Add skill</strong>, then <strong>Upload a skill</strong>, and choose the zip file.</p>
+<ul>
+<li>If it is refused, or the skill does not appear in the list, try the other download, <code>enterprise-architecture-atlas-copilot-studio-folder.zip</code>.</li>
+</ul>
+</li>
+<li><strong>Optional: let it research.</strong> If you want the agent to look up public information (annual reports, press releases, regulators), switch on web search for the agent.</li>
+<li>
+<p><strong>Test it</strong> in the preview chat by typing:</p>
+<blockquote>
+<p>Show me the ArchiSurance example atlas.</p>
+</blockquote>
+</li>
+</ol>
+<p>You should get three files, each with a <strong>Download</strong> button: the dashboard, the Excel file and the atlas file.
+7. <strong>Publish</strong> the agent to Teams or Microsoft 365 Copilot when the test works.</p>
+<p>There is no "code" setting to switch on: the agent runs the skill's scripts by itself.</p>
+<h2>Everyday use: keep your atlas file</h2>
+<p>Copilot does not remember files between conversations. That is why every session ends with an <strong>atlas file</strong> (<code>&lt;Organisation&gt;_atlas_model.json</code>) that holds the whole atlas and its history.</p>
+<ol>
+<li>Save the atlas file somewhere safe, such as OneDrive or SharePoint.</li>
+<li>Next time, <strong>attach the atlas file first</strong>, then say what has changed and attach any new documents.</li>
+<li>Save the new atlas file it gives back, replacing the old one.</li>
+</ol>
+<p>If you skip this, the next conversation starts from nothing.</p>
+<h2>If something goes wrong</h2>
+<ul>
+<li><strong>"Your environment blocks these files".</strong> This package contains no blocked file types, so you probably uploaded an older download. Download it again from this page.</li>
+<li><strong>The agent describes what it would do but returns no files.</strong> Look at the agent's activity view to see whether it ran <code>check_env.py</code> and <code>build.py</code>, then tell us what you saw using the <strong>Feedback</strong> button.</li>
+<li><strong>A file is missing from the answer.</strong> Files over 10 MB are not returned. A normal atlas is well under 1 MB, so tell us if you see this.</li>
+</ul>
+<h2>For maintainers: how the package is built and checked</h2>
+<p>The zip is built from this repository with:</p>
 <pre><code class="language-bash">python3 tools/make_copilot_skill.py
 </code></pre>
-<p>This writes <code>dist/copilot-studio/enterprise-architecture-atlas.zip</code> (SKILL.md at the top of the zip) and <code>dist/copilot-studio/enterprise-architecture-atlas-folder.zip</code> (the same files inside a folder), and checks them against the published package limits.</p>
-<h2>Set up in Copilot Studio</h2>
-<p>Skills in the new Copilot Studio agent experience are in preview, so screens and limits can change.</p>
-<ol>
-<li>Open Copilot Studio and create an agent in the new agent experience, for example "EA Atlas".</li>
-<li>There is no code execution setting to turn on. In the new agent experience the agent runs Python itself whenever it needs to create a file, and the packages it has include openpyxl, so the Excel keeps its full formatting. (Older classic agents had a separate "code interpreter" switch; it does not apply here.)</li>
-<li>Give the agent short instructions, for example: "You help enterprise architects build and maintain an EA atlas. For any request about an EA atlas, capability map, application portfolio, change impact, what-if or regulatory readiness, use the enterprise-architecture-atlas skill. Ask the user to attach their atlas file when they have one."</li>
-<li>Go to <strong>Build</strong> &gt; <strong>Skills</strong> &gt; <strong>Add skill</strong> &gt; <strong>Upload a skill</strong>, and upload <code>enterprise-architecture-atlas.zip</code>.</li>
-<li>If the upload is rejected or the skill does not appear in the list, replace it with <code>enterprise-architecture-atlas-folder.zip</code>.</li>
-<li>If you want the agent to research public sources (annual reports, regulators), enable web search or knowledge sources for the agent. The skill's scripts never use the network.</li>
-<li>Test in the preview chat, in this order:</li>
-<li>"Show me the ArchiSurance example atlas." The agent should run the scripts and return three file cards with a <strong>Download</strong> action: the dashboard (.html), the Excel file and the atlas file.</li>
-<li>"Build an EA atlas for <a fictional company>, insurance pack, with these applications: ..."</li>
-<li>Attach the atlas file from the previous step and ask: "What happens if the mainframe fails?"</li>
-<li>Publish the agent to Teams or Microsoft 365 Copilot when the tests pass.</li>
-</ol>
-<h2>How users work with it</h2>
-<ul>
-<li>The sandbox does not keep files between sessions. Each session ends with three files: the dashboard (open in any browser), the Excel repository and <code>&lt;Org&gt;_atlas_model.json</code>, the <strong>atlas file</strong>.</li>
-<li>Users keep the atlas file (OneDrive or SharePoint) and attach it at the start of the next session. It holds the whole model and its change history.</li>
-<li>Saved scenarios and features inside the dashboard stay in the viewer's browser. To keep one permanently, ask the agent to add it to the atlas.</li>
-</ul>
-<h2>What to check in your tenant</h2>
-<p>Microsoft documents that agents in the new experience create files with Python and return them as file cards (in the Preview tab, Teams, Microsoft Copilot and web chat), up to 10 MB per file, kept for 28 days. It does not say whether the agent runs scripts bundled in an uploaded skill, so test these before rolling out:</p>
-<table>
-<thead>
-<tr>
-<th>Question</th>
-<th>Why it matters</th>
-<th>If it fails</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Does the agent run the skill's Python scripts?</td>
-<td>Everything is built by scripts</td>
-<td>Check the agent's activity or reasoning view for the <code>check_env.py</code> and <code>build.py</code> runs. If it only describes them, tell me what it shows</td>
-</tr>
-<tr>
-<td>Does it return all three files as file cards?</td>
-<td>Users need the dashboard, Excel and atlas file</td>
-<td>Files over 10 MB are not returned; the dashboard and atlas file are well under 1 MB for a typical atlas. If an .html card is blocked, tell me the message</td>
-</tr>
-<tr>
-<td>Is the zip accepted with SKILL.md at the top level?</td>
-<td>Microsoft's examples differ</td>
-<td>Use the folder zip</td>
-</tr>
-<tr>
-<td>Is Node available?</td>
-<td>Not needed: the Python engine gives identical results</td>
-<td>Nothing to do</td>
-</tr>
-<tr>
-<td>Is openpyxl available?</td>
-<td>Microsoft lists it as available; it only affects Excel formatting</td>
-<td>Nothing to do: if it is missing, the built-in writer produces the same tabs and formulas</td>
-</tr>
-</tbody>
-</table>
-<h2>Limits the package meets</h2>
-<p>Checked by <code>make_copilot_skill.py</code> against the Agent Builder skill limits (the closest published limits): allowed file types only, and no .js, .html or shell files (tenants often block them), folder depth of 3 or less, 47 files (limit 350), under 1 MB (limit 50 MB per zip, 25 MB per file), instructions about 11,000 characters (limit 20,000), name and description within the Agent Skills specification, UTF-8 without a byte-order mark.</p></div></div></main>
+<p>This writes <code>dist/copilot-studio/enterprise-architecture-atlas.zip</code> (SKILL.md at the top of the zip) and <code>dist/copilot-studio/enterprise-architecture-atlas-folder.zip</code> (the same files inside a folder). It checks them against the published Agent Builder skill limits: allowed file types only and no .js, .html or shell files (tenants often block them), folder depth of 3 or less, at most 350 files, under 25 MB a file and 50 MB a zip, instructions under 20,000 characters, name and description within the Agent Skills specification, UTF-8 without a byte-order mark.</p>
+<p>The dashboard page, with its JavaScript, is stored as a Python string in <code>scripts/dashboard_page.py</code>, because some tenants refuse .js and .html files. Node and openpyxl are optional: the Python engine gives identical results, and without openpyxl the Excel has the same tabs and formulas with plain formatting. Microsoft documents that agents in the new experience create files with Python and return them as file cards for 28 days, up to 10 MB each.</p></div></div></main>
 <footer><div class="wrap"><div>
 <div class="by"><img src="../assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="https://www.epistemepartners.com">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
 <p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="https://github.com/apisteme/ea-atlas/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>

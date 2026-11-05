@@ -268,11 +268,11 @@ TAGS = [("Customer-provided", "Confirmed by you or a file you supplied.", "--inv
         ("Illustrative", "A placeholder until real data replaces it.", "--ink-2")]
 
 
-def kit_block(k, who, how, lives, share, extra=""):
+def kit_block(k, who, need, how, lives, share, badge=""):
     name, z = KITS[k]
-    return f"""<div class="kit"><h3>{name}</h3><p class="for">{who}</p>
-<dl><dt>Runs the scripts</dt><dd>{how}</dd><dt>The atlas lives</dt><dd>{lives}</dd><dt>Sharing the dashboard</dt><dd>{share}</dd></dl>
-<div class="actions"><a class="btn primary small" href="downloads/{z}" download>Download ({kb(os.path.join(DL, z))})</a><a class="btn small" href="guides/{k}.html">Setup guide</a></div>{extra}</div>"""
+    return f"""<div class="kit{' recommended' if badge else ''}">{f'<span class="badge">{badge}</span>' if badge else ''}<h3>{name}</h3><p class="for">{who}</p>
+<dl><dt>What you need</dt><dd>{need}</dd><dt>Runs the scripts</dt><dd>{how}</dd><dt>The atlas lives</dt><dd>{lives}</dd><dt>Sharing the dashboard</dt><dd>{share}</dd></dl>
+<div class="actions"><a class="btn primary small" href="downloads/{z}" download>Download ({kb(os.path.join(DL, z))})</a><a class="btn small" href="guides/{k}.html">Setup guide</a></div></div>"""
 
 
 m = D0["meta"]
@@ -365,9 +365,9 @@ home = f"""
 <h2>Use it with your assistant</h2>
 <p>The same engine and the same dashboard in three kits. Pick the assistant your organisation already uses.</p>
 <div class="kits">
-{kit_block("claude", "For Claude on the web, desktop and mobile, and Claude Code. The most complete version: Claude reads attachments in any format and researches public sources.", "In its own workspace", "In Claude, or in your project folder with Claude Code", "Published as a page with its own link, updated on every release")}
-{kit_block("copilot-studio", "For organisations on Microsoft 365. Build an agent in Copilot Studio, upload the skill, and publish it to Teams or Microsoft 365 Copilot.", "In the agent's Python sandbox", "In the atlas file you keep in OneDrive or SharePoint", "As a file, or on SharePoint")}
-{kit_block("github-copilot", "For architects who work in a Git repository with VS Code. Copilot runs the build in your terminal, and every release is a commit you can review.", "In your VS Code terminal", "In <code>ea-atlas/</code> in your repository", "From the repository, or an internal site")}
+{kit_block("claude", "No licence for Copilot Studio or GitHub Copilot? Start here. Nothing to install and no IT set-up: upload one file and start chatting, in the browser, desktop app or on your phone.", "A Claude account. Any plan, including free.", "In its own workspace", "In Claude, or in your project folder with Claude Code", "Published as a page with its own link, updated on every release", "Easiest way to start")}
+{kit_block("copilot-studio", "For organisations on Microsoft 365. Build an agent in Copilot Studio, upload the skill, and publish it to Teams or Microsoft 365 Copilot.", "A Copilot Studio licence and permission to create agents.", "In the agent's Python sandbox", "In the atlas file you keep in OneDrive or SharePoint", "As a file, or on SharePoint")}
+{kit_block("github-copilot", "For architects who work in a Git repository with VS Code. Copilot runs the build in your terminal, and every release is a commit you can review.", "GitHub Copilot, VS Code and Python 3.", "In your VS Code terminal", "In <code>ea-atlas/</code> in your repository", "From the repository, or an internal site")}
 </div>
 <p class="note">No assistant at all? The build runs by hand with Python 3: copy a sample, edit the JSON files and run <code>build.py</code>. See the <a href="{GH}#readme">README</a>.</p>
 </div></section>
@@ -444,7 +444,7 @@ for ex in EXAMPLES:
 import markdown
 GUIDE_NOTE = {
     "claude": "",
-    "copilot-studio": "<p>You do not need to run the build script below: the package is ready. Download <a href='../downloads/enterprise-architecture-atlas-copilot-studio.zip'>the skill zip</a>, and if Copilot Studio rejects it, <a href='../downloads/enterprise-architecture-atlas-copilot-studio-folder.zip'>the folder version</a>.</p>",
+    "copilot-studio": "<p>If Copilot Studio refuses it, try <a href='../downloads/enterprise-architecture-atlas-copilot-studio-folder.zip' download>the folder version</a>.</p>",
     "github-copilot": "",
 }
 for k, (name, z) in KITS.items():
@@ -454,7 +454,7 @@ for k, (name, z) in KITS.items():
     side = "".join(f'<a class="btn small" href="{kk}.html"{" aria-current=page" if kk == k else ""}>{nn}</a>' for kk, (nn, _) in KITS.items())
     body = f"""<div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for {esc(name)}</h1>
 <div class="kitnav">{side}</div></div></div>
-<div class="wrap page"><div class="callout"><p><a href="../downloads/{z}" download><b>Download {z}</b></a> ({kb(os.path.join(DL, z))})</p>{GUIDE_NOTE[k]}</div>
+<div class="wrap page"><div class="callout"><p><a class="btn primary small" href="../downloads/{z}" download>Download {z}</a> <span class="muted">{kb(os.path.join(DL, z))}</span></p>{GUIDE_NOTE[k]}</div>
 <div class="prose">{h}</div></div>"""
     write(f"guides/{k}.html", frame(f"{name} setup, EA Atlas", f"How to install and use EA Atlas with {name}.", body, "guides", "../"))
 

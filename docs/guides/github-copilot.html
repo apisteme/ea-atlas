@@ -12,61 +12,71 @@
 </button></div></div></header>
 <main><div class="pagehead"><div class="wrap"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for GitHub Copilot</h1>
 <div class="kitnav"><a class="btn small" href="claude.html">Claude</a><a class="btn small" href="copilot-studio.html">Microsoft Copilot Studio</a><a class="btn small" href="github-copilot.html" aria-current=page>GitHub Copilot</a></div></div></div>
-<div class="wrap page"><div class="callout"><p><a href="../downloads/enterprise-architecture-atlas-github-copilot.zip" download><b>Download enterprise-architecture-atlas-github-copilot.zip</b></a> (280 KB)</p></div>
+<div class="wrap page"><div class="callout"><p><a class="btn primary small" href="../downloads/enterprise-architecture-atlas-github-copilot.zip" download>Download enterprise-architecture-atlas-github-copilot.zip</a> <span class="muted">280 KB</span></p></div>
 <div class="prose">
-<p>The atlas skill for GitHub Copilot in VS Code (agent mode) and the Copilot CLI. Copilot reads the skill, writes the model files and runs the build scripts in your terminal. The atlas lives in your own Git repository, so every release is a commit.</p>
-<h2>Install</h2>
+<p>For architects who already use Visual Studio Code and GitHub Copilot. Copilot builds the atlas on your own computer, and the atlas lives in a Git repository, so every change is recorded and can be reviewed like code.</p>
+<h2>What you need</h2>
+<ul>
+<li><strong>Visual Studio Code</strong> with <strong>GitHub Copilot</strong> (a paid Copilot plan, or one provided by your organisation). Keep VS Code and the Copilot Chat extension up to date: skills need a recent version.</li>
+<li><strong>Python 3</strong> on your computer. To check, open a terminal and type <code>python3 --version</code> (on Windows: <code>py --version</code>). If it is missing, install it from <a href="https://www.python.org/downloads/">python.org</a>; on Windows, tick <strong>Add Python to PATH</strong> during installation.</li>
+<li><strong>A Git repository</strong> to hold the atlas. Use a <strong>private</strong> repository if the atlas will contain anything confidential.</li>
+<li>The file <code>enterprise-architecture-atlas-github-copilot.zip</code> from this page.</li>
+</ul>
+<h2>Set it up (about 10 minutes, once)</h2>
 <ol>
-<li>Create or open the repository that will hold your atlas. Use a <strong>private</strong> repository if the atlas will hold anything confidential.</li>
-<li>Download <code>enterprise-architecture-atlas-github-copilot.zip</code> and unzip it at the root of the repository. You get:</li>
+<li><strong>Download the zip file.</strong></li>
+<li><strong>Unzip it into the top folder of your repository</strong>, the folder that contains the hidden <code>.git</code> folder. You should now see a <code>.github</code> folder there containing <code>skills</code>, <code>prompts</code> and <code>instructions</code>, plus a file called <code>EA-ATLAS.md</code>. If you already had a <code>.github</code> folder, the new files are added to it and nothing of yours is replaced.</li>
+<li><strong>Open the repository in VS Code.</strong></li>
+<li><strong>Open Copilot Chat</strong> and switch the mode to <strong>Agent</strong>.</li>
+<li><strong>Try the example.</strong> Type <code>/atlas-example</code> and press Enter. When Copilot asks to run commands in the terminal, allow them: the scripts only read and write inside your repository and never use the internet.</li>
+<li><strong>Open the result.</strong> Open <code>ea-atlas-example/output/ArchiSurance_EA_Dashboard.html</code> in your web browser.</li>
 </ol>
-<p><code>.github/skills/enterprise-architecture-atlas/   the skill (instructions, engine, packs, ArchiSurance sample)
-   .github/prompts/atlas-*.prompt.md               ready-made prompts
-   .github/instructions/ea-atlas.instructions.md   rules Copilot applies to files under ea-atlas/
-   EA-ATLAS.md                                     this guide</code></p>
-<p>If you already have a <code>.github</code> folder, the files merge into it; nothing of yours is replaced.
-3. Make sure Python 3 is installed (<code>python3 --version</code>). Nothing else is required. If Node.js or the Python package openpyxl are installed, they are used: Node gives the same results faster, openpyxl gives the Excel its full formatting.
-4. Open the repository in VS Code, open Copilot Chat and choose <strong>Agent</strong> mode. Skills need a recent VS Code and Copilot Chat extension.</p>
-<h2>Use</h2>
-<p>Type <code>/</code> in the chat to see the prompts:</p>
+<h2>Everyday use</h2>
+<p>Type <code>/</code> in Copilot Chat to see the ready-made prompts:</p>
 <table>
 <thead>
 <tr>
-<th>Prompt</th>
+<th>Type</th>
 <th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>/atlas-example</code></td>
-<td>Builds the ArchiSurance example so you can see every dashboard view</td>
+<td>Builds the ArchiSurance example so you can see every view</td>
 </tr>
 <tr>
 <td><code>/atlas-build</code></td>
-<td>Starts a new atlas for your organisation: chooses the industry pack, plans, then builds <code>ea-atlas/</code></td>
+<td>Starts an atlas for your organisation. Copilot suggests a plan and waits for you to agree</td>
 </tr>
 <tr>
 <td><code>/atlas-refresh</code></td>
-<td>Reads new files in <code>ea-atlas/inbox/</code> and links in <code>ea-atlas/sources/links.md</code>, shows the change set, releases a new version</td>
+<td>Reads new files you put in <code>ea-atlas/inbox/</code>, shows the changes, and builds a new version</td>
 </tr>
 <tr>
 <td><code>/atlas-what-if</code></td>
-<td>Runs the impact engine on a scenario or change, without changing the model</td>
+<td>Answers "what happens if..." questions without changing anything</td>
 </tr>
 </tbody>
 </table>
-<p>You can also ask in your own words, for example "Import our Archi model from inbox/archimate and build the atlas", or type <code>/enterprise-architecture-atlas</code>.</p>
-<p>Copilot asks before running terminal commands unless you have allowed them. The scripts only read and write inside the repository and never use the network.</p>
+<p>You can also just ask in your own words, for example "Import our Archi model from the inbox and build the atlas".</p>
+<p>After each new version, <strong>commit</strong> the changes with the version number in the message. Git then holds the full history of your atlas.</p>
 <h2>What you get</h2>
 <ul>
-<li><code>ea-atlas/output/&lt;Org&gt;_EA_Dashboard.html</code>: the dashboard. Open it in any browser; it works offline.</li>
-<li><code>ea-atlas/output/&lt;Org&gt;_EA_Repository.xlsx</code>: the Excel repository.</li>
-<li><code>ea-atlas/model/</code>: the model, one JSON file per element type. This is what you commit and review in pull requests.</li>
-<li><code>ea-atlas/changelog.md</code> and <code>output/archive/v&lt;version&gt;/</code>: release notes and the files of every release.</li>
+<li><code>ea-atlas/output/&lt;Organisation&gt;_EA_Dashboard.html</code>: the dashboard. Open it in any browser; it works offline.</li>
+<li><code>ea-atlas/output/&lt;Organisation&gt;_EA_Repository.xlsx</code>: the Excel repository.</li>
+<li><code>ea-atlas/model/</code>: the atlas itself, one file per kind of element. This is what you review and commit.</li>
+<li><code>ea-atlas/changelog.md</code>: what changed in each version.</li>
 </ul>
-<p>To share the dashboard, publish <code>ea-atlas/output/</code> on an internal site, or with GitHub Pages from a private repository if your plan allows it.</p>
+<p>To share the dashboard, send the file, or publish the <code>ea-atlas/output/</code> folder on an internal website.</p>
+<h2>If something goes wrong</h2>
+<ul>
+<li><strong>The <code>/atlas-...</code> prompts do not appear.</strong> Check that the <code>.github</code> folder is at the top of the repository you opened, then update VS Code and the Copilot Chat extension.</li>
+<li><strong>"python3 is not recognised" (Windows).</strong> Install Python from python.org with <strong>Add Python to PATH</strong> ticked, then restart VS Code.</li>
+<li><strong>Anything else.</strong> Use the <strong>Feedback</strong> button at the top of this page to tell us.</li>
+</ul>
 <h2>Without Copilot</h2>
-<p>Everything also runs by hand:</p>
+<p>Everything also runs by hand from a terminal:</p>
 <pre><code class="language-bash">cp -r .github/skills/enterprise-architecture-atlas/samples/archisurance ea-atlas-example
 python3 .github/skills/enterprise-architecture-atlas/engine/build.py --workspace ea-atlas-example
 </code></pre></div></div></main>

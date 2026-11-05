@@ -1,29 +1,57 @@
-# Enterprise Architecture Atlas for Claude
+# EA Atlas for Claude
 
-The original version of the skill. Claude writes the model, runs the build in its own workspace and can publish the dashboard as a page with its own link.
+**The easiest way to use EA Atlas.** If you do not have a licence for Microsoft Copilot Studio or GitHub Copilot, use Claude. There is nothing to install, no IT set-up and no coding: it works in your web browser, the Claude desktop app or on your phone.
 
-## Claude apps (web, desktop, mobile)
+## What you need
 
-1. Turn on code execution: in **Settings** > **Capabilities**, turn on **Code execution and file creation**. On Team and Enterprise plans an owner enables it, and Skills, under **Organization settings**.
-2. Download `enterprise-architecture-atlas-claude.zip`.
-3. Go to **Customize** > **Skills**, select **+**, then **Create skill** > **Upload a skill**, and upload the zip.
-4. Make sure the skill is switched on, then ask: "Show me the ArchiSurance example atlas" or "Build an EA atlas for <organisation>, insurance pack".
+- A Claude account. Any plan works, including the free one. Free plans have tighter usage limits, so building a large atlas in one go may need a paid plan.
+- The file `enterprise-architecture-atlas-claude.zip` from this page. **Do not unzip it.**
 
-Custom skills stay private to you until you share them.
+## Set it up (about 5 minutes, once)
 
-## Claude Code
+1. **Download the zip file** and keep it somewhere you can find it, for example your Downloads folder.
+2. **Let Claude create files.** In Claude, open **Settings**, then **Capabilities**, and switch on **Code execution and file creation** (on newer screens it is called **Create and edit files**).
+    - On a Team or Enterprise plan, an owner of your Claude organisation may need to switch this on, and Skills, for everyone. Ask whoever manages Claude at your company.
+3. **Add the skill.** Go to **Customize**, then **Skills**. Select the **+** button, choose **Create skill**, then **Upload a skill**, and pick the zip file.
+4. **Check it is on.** EA Atlas now appears in your list of skills. Make sure its switch is on.
 
-Add this repository as a plugin marketplace and install the plugin:
+## Try it
+
+Start a new chat and type:
+
+> Show me the ArchiSurance example atlas.
+
+After a minute or two you get the dashboard and the Excel file for a fictional insurer. Open the dashboard and click around.
+
+## Build your own
+
+In a new chat, say who you are mapping, for example:
+
+> Build an EA atlas for Contoso Insurance, insurance pack.
+
+Claude suggests a plan and waits for you to agree. If you have files (an application list, a supplier register, an org chart, invoices, an Archi model), attach them. If you have nothing, Claude can start from public sources such as the annual report and press releases.
+
+## Keep it up to date
+
+Whenever something changes, tell Claude in plain words and attach any new files:
+
+> We have retired the old CRM and signed a new contract with Acme for payments. The contract is attached.
+
+Claude shows you what it will change, then builds a new version and tells you what changed.
+
+## Claude Code (for developers)
+
+If you use Claude Code, add this repository as a plugin marketplace and install the plugin:
 
 ```bash
 claude plugin marketplace add apisteme/ea-atlas
 claude plugin install enterprise-architecture-atlas@ea-atlas
 ```
 
-Then ask in your project: "Build an EA atlas for <organisation>" or "Import our Archi model from inbox/archimate and build the atlas". The atlas is written to `ea-atlas/` in the project.
+The atlas is written to an `ea-atlas/` folder in your project, so you can keep it in Git.
 
-## What Claude does that the other kits do not
+## If something goes wrong
 
-- Publishes the dashboard as a hosted page and republishes it to the same link on every release, with saved scenarios shared between viewers.
-- Reads attachments in any format, for example PDFs, Word files and spreadsheets, and researches public sources itself.
-- Recalculates the Excel and runs the dashboard test before delivery when the tools are available.
+- **The upload is refused.** Check that you uploaded the zip file itself, not an unzipped folder, and that Skills are allowed on your plan.
+- **Claude answers but no files appear.** Code execution is probably off. Switch it on (step 2) and start a new chat.
+- **Anything else.** Use the **Feedback** button at the top of this page to tell us.
