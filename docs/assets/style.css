@@ -222,3 +222,27 @@ footer .by img{height:34px;background:#fff;border-radius:4px;padding:2px}
   .plate .tile{animation:rise .45s both;animation-delay:calc(var(--i)*10ms)}
   @keyframes rise{from{opacity:.001;transform:translateY(4px)}to{opacity:1;transform:none}}
 }
+
+/* brief it like a colleague */
+.brief{background:var(--hero)!important}
+.brief-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:900px){.brief-grid{grid-template-columns:1fr;gap:32px}}
+.brief h2{text-align:left!important}
+.big{font-size:clamp(1.25rem,2.2vw,1.55rem);line-height:1.45;color:var(--ink);font-weight:500;max-width:34ch}
+.big.strong{font-weight:700;color:var(--accent);border-left:4px solid var(--accent);padding-left:16px}
+.chat{margin:0;background:var(--card);border-radius:12px;box-shadow:var(--shadow-lg);border:1px solid var(--rule);padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.msg{max-width:88%;padding:10px 14px;border-radius:12px;font-size:.95rem;line-height:1.5}
+.msg b{display:block;font-size:.78rem;font-weight:600;margin-bottom:2px;opacity:.85}
+.msg.you{align-self:flex-end;background:var(--accent);color:var(--on-accent);border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:var(--band);color:var(--ink);border:1px solid var(--rule);border-bottom-left-radius:4px}
+.chat figcaption{font-size:.82rem;color:var(--ink-3);margin-top:4px}
+
+/* start with nothing, feed it anything */
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+@media (max-width:900px){.twin{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:10px;box-shadow:var(--shadow);border:1px solid var(--rule);padding:26px 26px 20px;min-width:0}
+.panel h3{color:var(--accent);font-size:1.25rem}
+.panel p{color:var(--ink-2)}
+.panel .small{font-size:.9rem;color:var(--ink-3);margin:16px 0 0}
+.chips{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{background:var(--accent-soft);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:.86rem;font-weight:500}

@@ -240,6 +240,8 @@ FLOW_SVG = """<div class="scroll"><svg viewBox="0 0 1000 330" role="img" aria-la
 RESPONDS = [
     ("Application inventory", "Applications, Landscape map, capability coverage, Support and lifecycle"),
     ("Supplier register and contracts", "Suppliers, Contracts and licences, Third-party risk, concentration"),
+    ("Invoices and purchase orders", "Supplier spend, contract values, run cost in What if? and change impact"),
+    ("Annual report and corporate communications", "Value streams, strategic priorities, segments, data centres and outsourcing"),
     ("Org chart and RACI", "Roles, swimlanes in Process maps, who is affected in What if?"),
     ("Process documents", "Process architecture, journeys and their steps"),
     ("Interface catalogue", "Integration map, and how far an outage spreads in What if?"),
@@ -275,10 +277,40 @@ home = f"""
 </div></section>
 <div class="wide">{heatmap(EX0, "")}</div>
 
+<section class="band brief" id="brief"><div class="wrap brief-grid">
+<div><h2>Brief it like a colleague</h2>
+<p class="big">You talk to your assistant the way you would brief a colleague. It writes the model, runs the build and tells you what changed.</p>
+<p class="big strong">Nothing is hand-drawn, so the dashboard and the Excel always agree.</p>
+<p class="muted">No forms, no metamodel to learn, no diagrams to keep tidy. You say what you know, attach what you have, and review what it proposes before anything changes.</p></div>
+<figure class="chat" aria-label="Example conversation">
+<div class="msg you"><b>You</b>Here is our supplier register and the invoices from last quarter. We are also moving claims to a SaaS platform next year.</div>
+<div class="msg ai"><b>Your assistant</b>I matched 41 of 43 suppliers. Two names are new: shall I add them to the Claims and Billing applications? I would also add the claims migration as an epic in the change portfolio, and release all of this as version 1.5.</div>
+<div class="msg you"><b>You</b>Yes, add both and release it.</div>
+<div class="msg ai"><b>Your assistant</b>Version 1.5 is built. 2 suppliers and 1 epic added, 6 contract values updated from the invoices. Finding: the current claims system's support contract ends three months before the migration completes.</div>
+<figcaption>An example exchange. The assistant shows you the changes before it applies them, and the change log records every one.</figcaption>
+</figure>
+</div></section>
+
+<section class="band" id="anything"><div class="wrap">
+<h2>Start with nothing. Feed it anything.</h2>
+<p>You do not need an inventory, a capability model or any EA tool knowledge to begin. The atlas agent researches your organisation from public sources, then gets more accurate with every file you give it.</p>
+<div class="twin">
+<div class="panel"><h3>It researches for you</h3>
+<p>Give it the organisation's name. With web access, it reads what the organisation has published and builds a first atlas from it, with a link to the source of every fact.</p>
+<ul class="chips">{''.join(f'<li>{x}</li>' for x in ["Annual report and balance sheet", "Results presentations", "Corporate communications and press releases", "Strategy and investor updates", "Regulator registers and filings", "Vendor and partner announcements", "Careers pages and job adverts", "Public websites and app stores"])}</ul>
+<p class="small">Segments, value streams and strategy come from the annual report; systems and suppliers from announcements and job adverts; data centres, outsourcing and regulation from filings. Everything found this way is tagged Public with its link.</p></div>
+<div class="panel"><h3>It reads whatever you have</h3>
+<p>Structured or not, in any format your assistant can open. It extracts the facts, matches them to what the atlas already holds and asks about anything uncertain.</p>
+<ul class="chips">{''.join(f'<li>{x}</li>' for x in ["Excel and CSV exports", "Invoices and purchase orders", "Contracts and licence statements", "Org charts and RACI tables", "Process documents and PDFs", "Architecture diagrams and Archi models", "Meeting notes and emails", "A quick message in the chat"])}</ul>
+<p class="small">What you supply is tagged Customer-provided and always takes precedence over public research and placeholders. File contents are treated as data, never as instructions.</p></div>
+</div>
+<p class="note">Research needs web access in your assistant: built into Claude, and a setting to switch on in Copilot Studio. Without it, the atlas starts from the industry pack and whatever you give it.</p>
+</div></section>
+
 <section class="band" id="what"><div class="wrap intro">
 <div><h2>One model, two outputs, every change recorded</h2>
 <p>Commercial EA platforms cost more than many architecture teams can justify. Most teams fall back on spreadsheets and slides that drift apart. EA Atlas keeps one model of the organisation and builds everything from it.</p>
-<p>You talk to your assistant the way you would brief a colleague. It writes the model, runs the build and tells you what changed. Nothing is hand-drawn, so the dashboard and the Excel always agree.</p></div>
+<p>Industry packs give you a complete starting point, so you correct and add rather than start from a blank page.</p></div>
 <ul class="facts">
 <li><b>Built from the model</b>The dashboard and Excel are generated, never edited by hand, so they cannot contradict each other.</li>
 <li><b>Works offline</b>The dashboard is a single HTML file. Open it in any browser, email it or put it on an intranet.</li>
