@@ -171,7 +171,7 @@ def frame(title, desc, body, cur, up):
 <footer><div class="wrap"><div>
 <div class="by"><img src="{up}assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="{EP}">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
 <p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="{GH}/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
-<p><a href="{GH}">Source on GitHub</a>, <a href="{up}legal.html">legal and notices</a>. EA Atlas is independent and not affiliated with or endorsed by Anthropic, Microsoft, GitHub, The Open Group, BIAN, ACORD or APQC.</p></div><div class="feedback"><h2>Feedback</h2><p>Found a problem, or want something EA Atlas does not do yet? Open an issue on GitHub.</p>
+<p><a href="{GH}">Source on GitHub</a>, <a href="{up}legal.html">legal and notices</a>. EA Atlas is independent and not affiliated with or endorsed by Anthropic, Microsoft, GitHub, The Open Group, BIAN, ACORD or APQC. Use of EA Atlas and its outputs is at your own discretion and risk; Episteme Partners accepts no liability for it, as set out in the <a href="{up}legal.html#disclaimer">disclaimer</a>.</p></div><div class="feedback"><h2>Feedback</h2><p>Found a problem, or want something EA Atlas does not do yet? Open an issue on GitHub.</p>
 <p><a class="footbtn" href="{GH}/issues/new?template=bug_report.yml">Report a problem</a> <a class="footbtn" href="{GH}/issues/new?template=feature_request.yml">Request a feature</a></p>
 <p><a href="{GH}/issues">See open issues</a></p></div>
 <p class="copy">&copy; {YEAR} Episteme Partners Ltd. Content CC BY 4.0, code MIT.</p></div></footer>
@@ -462,7 +462,7 @@ for k, (name, z) in KITS.items():
     write(f"guides/{k}.html", frame(f"{name} setup, EA Atlas", f"How to install and use EA Atlas with {name}.", body, "guides", "../"))
 
 # ---------------------------------------------------------------- legal and notices
-lh = markdown.markdown(open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read(), extensions=["tables", "fenced_code"])
+lh = markdown.markdown(open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read(), extensions=["tables", "fenced_code", "toc"])
 lh = re.sub(r"<h1>.*?</h1>", "", lh, count=1)
 lh = re.sub(r"(?<![\"=/])(https://[^\s<),]*[^\s<),.])", r'<a href="\1">\1</a>', lh)
 lh = lh.replace("<code>LICENSE</code>", f'<a href="{GH}/blob/main/LICENSE"><code>LICENSE</code></a>').replace("<code>LICENSE-CONTENT.md</code>", f'<a href="{GH}/blob/main/LICENSE-CONTENT.md"><code>LICENSE-CONTENT.md</code></a>')
