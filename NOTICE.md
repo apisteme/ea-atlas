@@ -46,4 +46,4 @@ EA Atlas and everything it produces are provided "as is", without warranty of an
 
 ## Contact
 
-If you believe something in this repository uses your material incorrectly, or you would like a correction, contact info@epistemepartners.com or open an issue at https://github.com/apisteme/ea-atlas/issues. We will review it promptly and correct or remove material where appropriate.
+If you believe something in this repository uses your material incorrectly, or you would like a correction, open an issue at https://github.com/apisteme/ea-atlas/issues. We will review it and correct or remove material where appropriate. Formal copyright notices can also be sent through GitHub's own process: https://docs.github.com/en/site-policy/content-removal-policies/dmca-takedown-policy
