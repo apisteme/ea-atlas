@@ -256,7 +256,7 @@ function scEditor(){
 function edReady(px,items,noun){
   const el=document.getElementById(px+'-ready'); if(!el) return;
   const todo=items.filter(x=>!x.ok);
-  el.classList.toggle('done',!todo.length);
+  el.classList.toggle('done',!todo.length); if(!todo.length) el.classList.remove('blocked');
   el.innerHTML=!todo.length?`<span class="ed-ok">Ready to save.</span>`
     :`<b>To save this ${noun}:</b><ul>${items.map(x=>`<li class="${x.ok?'ed-ok':'ed-todo'}">${esc(x.label)}</li>`).join('')}</ul>`;
   items.forEach(x=>{if(x.ok){const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.remove('invalid')}});
@@ -266,6 +266,7 @@ function edAlert(px,text,kind){const a=document.getElementById(px+'-formmsg'); i
 function edBlockSave(px,items,noun,focusIds){
   const todo=items.filter(x=>!x.ok); if(!todo.length) return true;
   edReady(px,items,noun);
+  const rb=document.getElementById(px+'-ready'); if(rb) rb.classList.add('blocked');
   edAlert(px,`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`,'check');
   todo.forEach(x=>{const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.add('invalid')});
   const w=document.getElementById(px+'-f-'+todo[0].f), f=document.getElementById(focusIds[todo[0].f]);

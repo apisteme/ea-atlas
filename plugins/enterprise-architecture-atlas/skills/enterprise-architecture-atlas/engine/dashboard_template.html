@@ -11,7 +11,7 @@
   --ok:#2D7A4E; --warn:#A86F12; --crit:#B53A3A;
   --c-cust:#2D7A4E; --c-pub:#3C5AA8; --c-part:#A86F12; --c-ill:#7A8595;
   --r:#0D6E6A; --a:#152030; --c:#3C5AA8; --i:#7A8595;
-  --shadow:0 8px 30px rgba(21,32,48,.12);
+  --shadow:0 8px 30px rgba(21,32,48,.12); --moon:inline; --sun:none;
   --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -23,7 +23,7 @@
   --ok:#5DBB84; --warn:#E2A94B; --crit:#E46F6F;
   --c-cust:#5DBB84; --c-pub:#8299E3; --c-part:#E2A94B; --c-ill:#8C97A8;
   --r:#4DBDB5; --a:#E5EAF1; --c:#8299E3; --i:#8C97A8;
-  --shadow:0 8px 30px rgba(0,0,0,.45); color-scheme:dark }}
+  --shadow:0 8px 30px rgba(0,0,0,.45); --moon:none; --sun:inline; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#0E131A; --surface:#151C26; --surface-2:#1A2230; --ink:#E5EAF1; --muted:#98A4B4; --line:#2A3443;
   --accent:#4DBDB5; --accent-ink:#0E131A; --accent-soft:#163331;
@@ -31,7 +31,7 @@
   --ok:#5DBB84; --warn:#E2A94B; --crit:#E46F6F;
   --c-cust:#5DBB84; --c-pub:#8299E3; --c-part:#E2A94B; --c-ill:#8C97A8;
   --r:#4DBDB5; --a:#E5EAF1; --c:#8299E3; --i:#8C97A8;
-  --shadow:0 8px 30px rgba(0,0,0,.45); color-scheme:dark }
+  --shadow:0 8px 30px rgba(0,0,0,.45); --moon:none; --sun:inline; color-scheme:dark }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
@@ -74,6 +74,12 @@ main{padding-block:22px 60px;padding-inline:28px;min-width:0}
 .top h1{font:700 clamp(22px,3vw,30px)/1.1 var(--f-display);margin:0;letter-spacing:-.015em;text-wrap:balance}
 .top p{margin:4px 0 0;color:var(--muted);max-width:70ch}
 .search{position:relative;width:min(360px,100%)}
+.top-tools{display:flex;gap:8px;align-items:center;width:min(410px,100%)}
+.top-tools .search{flex:1;width:auto;min-width:0}
+.theme-btn{all:unset;cursor:pointer;flex:none;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.theme-btn:hover{color:var(--accent);border-color:var(--accent)}
+.theme-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.theme-btn .i-moon{display:var(--moon)} .theme-btn .i-sun{display:var(--sun)}
 .search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
 .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
 .results{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);max-height:360px;overflow:auto}
@@ -370,7 +376,11 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .ed-ready.done .ed-ok{color:var(--ok);font-weight:600}
 .ed-ready.done .ed-ok::before{content:'\2713  '}
 .ed-alert{margin:0 0 10px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--crit);background:color-mix(in oklab,var(--crit) 9%,var(--surface));color:var(--ink);font-size:12.5px;font-weight:500}
+.sc-f.invalid{outline:2px solid var(--crit);outline-offset:5px;border-radius:6px;background:color-mix(in oklab,var(--crit) 5%,transparent)}
 .sc-f.invalid input,.sc-f.invalid select{border-color:var(--crit)!important;box-shadow:0 0 0 2px color-mix(in oklab,var(--crit) 25%,transparent)}
+.ed-ready.blocked{border:2px solid var(--crit);background:color-mix(in oklab,var(--crit) 7%,var(--surface))}
+.ed-ready.blocked .ed-todo{color:var(--crit);font-weight:600}
+.ed-ready.blocked .ed-todo::before{content:'!';color:var(--crit)}
 .sc-f.invalid > span,.sc-f.invalid{color:var(--crit)}
 .sc-desc{margin:10px 0 0;font-size:13.5px;max-width:80ch}
 .sc-form .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
@@ -530,10 +540,16 @@ a{color:var(--accent)}
   <main>
     <div class="top">
       <div><h1 id="vtitle">Overview</h1><p id="vsub"></p></div>
+      <div class="top-tools">
       <div class="search">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="q" type="search" placeholder="Search apps, suppliers, capabilities, roles…" autocomplete="off" aria-label="Search the repository">
         <div class="results" id="results" hidden></div>
+      </div>
+      <button class="theme-btn" id="themetoggle" type="button" aria-label="Switch between light and dark theme" title="Switch theme">
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a.6.6 0 0 0-.8-.7A10 10 0 1 0 21.7 15.3a.6.6 0 0 0-.7-.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      </button>
       </div>
     </div>
     <div class="banner" id="banner"></div>
@@ -631,6 +647,11 @@ const FIRST={cvs:CVS_ORDER[0]||'',vs:(D.value_streams[0]||{}).id||'',feat:(D.fea
   app:([...D.apps].sort((a,b)=>a.tier_n-b.tier_n||appSteps[b.id].length-appSteps[a.id].length)[0]||{}).id||''};
 let state={ftTab:'backlog',ftSel:FIRST.feat,scTab:'library',scSel:FIRST.sc,gq:'',gcat:'',resF:'',pmapVs:FIRST.vs,landMode:'time',intFocus:'',intFam:{},intAll:false,progLens:'',syn:null,view:'overview',capLens:'coverage',capCvs:'',cvs:FIRST.cvs,vs:FIRST.vs,appF:{time:'',tier:'',conf:'',cat:'',crit:''},appSort:['id',1],supSort:['spend',-1],trace:'app:'+FIRST.app,regSel:''};
 try{const s=localStorage.getItem(SKEY+'-atlas'); if(s) Object.assign(state,JSON.parse(s))}catch(e){}
+// Light or dark theme: follows the system until the viewer picks one with the theme button; the choice is kept in this browser.
+try{const th=localStorage.getItem(SKEY+'-theme'); if(th==='light'||th==='dark') document.documentElement.dataset.theme=th}catch(e){}
+(function(){const b=document.getElementById('themetoggle'); if(!b) return;
+  b.addEventListener('click',()=>{const r=document.documentElement, cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'), n=cur==='dark'?'light':'dark';
+    r.dataset.theme=n; b.setAttribute('aria-label',n==='dark'?'Switch to light theme':'Switch to dark theme'); try{localStorage.setItem(SKEY+'-theme',n)}catch(e){}});})();
 if(!CVS[state.cvs]) state.cvs=FIRST.cvs; if(!VS[state.pmapVs]) state.pmapVs=FIRST.vs; if(!state.intFam) state.intFam={}; if(state.appF.crit===undefined) state.appF.crit=''; if(!state.syn&&PG) state.syn={...(PG.synergy_defaults||{})}; if(!VS[state.vs]) state.vs=FIRST.vs;
 if(!PG&&state.landMode==='lens') state.landMode='time';
 let h='';try{h=location.hash.slice(1)}catch(e){} if(VIEWS.some(v=>v.id===h)) state.view=h; if(!VIEWS.some(v=>v.id===state.view)) state.view='overview';
