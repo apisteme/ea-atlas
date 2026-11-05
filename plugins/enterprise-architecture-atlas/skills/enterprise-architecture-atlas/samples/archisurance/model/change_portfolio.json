@@ -1,0 +1,732 @@
+{
+ "epics": [
+  {
+   "id": "EP01",
+   "name": "Single policy administration platform",
+   "drivers": [
+    "SI03",
+    "BD01"
+   ],
+   "owner": "R28",
+   "summary": "Move car and legal aid policies onto the Home & Away platform and retire the legacy systems."
+  },
+  {
+   "id": "EP02",
+   "name": "One-stop customer service",
+   "drivers": [
+    "SI01",
+    "BD02"
+   ],
+   "owner": "R27",
+   "summary": "One customer view and one contact centre platform for every product line."
+  },
+  {
+   "id": "EP03",
+   "name": "Digital claims",
+   "drivers": [
+    "SI02",
+    "BD04"
+   ],
+   "owner": "R32",
+   "summary": "Online notification, automated triage and straight-through payment."
+  },
+  {
+   "id": "EP04",
+   "name": "Standard infrastructure",
+   "drivers": [
+    "SI04",
+    "BD03"
+   ],
+   "owner": "R53",
+   "summary": "Fewer platforms and a clear future for the mainframe."
+  },
+  {
+   "id": "EP05",
+   "name": "Solvency II review",
+   "drivers": [
+    "SII-01",
+    "SII-02",
+    "SII-03",
+    "SII-04",
+    "SII-05"
+   ],
+   "owner": "R31",
+   "summary": "Meet the amended Solvency II requirements by 30 January 2027."
+  },
+  {
+   "id": "EP06",
+   "name": "DORA remediation",
+   "drivers": [
+    "DORA-02",
+    "DORA-03",
+    "DORA-04",
+    "DORA-05"
+   ],
+   "owner": "R45",
+   "summary": "Close the remaining DORA gaps."
+  },
+  {
+   "id": "EP07",
+   "name": "Responsible AI",
+   "drivers": [
+    "AI-01",
+    "AI-02",
+    "AI-03"
+   ],
+   "owner": "R34",
+   "summary": "AI inventory, risk management and transparency ahead of the AI Act deadline."
+  },
+  {
+   "id": "EP08",
+   "name": "Licence and paper reduction",
+   "drivers": [
+    "SI05",
+    "SI06"
+   ],
+   "owner": "R48",
+   "summary": "Retire spreadsheets and paper processes and rationalise licences."
+  }
+ ],
+ "features": [
+  {
+   "id": "F001",
+   "epic": "EP01",
+   "name": "Configure car products on the Home & Away platform",
+   "description": "Product rules, rating factors and documents for car insurance on the target platform.",
+   "status": "Ready",
+   "target": "2027-Q1",
+   "size": "M",
+   "owner": "R51",
+   "apps": {
+    "A04": "Configure",
+    "A14": "Enhance",
+    "A17": "Configure"
+   },
+   "caps": [
+    "C05.01.01",
+    "C03.01.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SI03",
+    "BD01"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F002",
+   "epic": "EP01",
+   "name": "Migrate car policies to the Home & Away platform",
+   "description": "Move car policies in renewal waves and switch billing and documents to the shared platform.",
+   "status": "Discovery",
+   "target": "2027-Q3",
+   "size": "L",
+   "owner": "R50",
+   "apps": {
+    "A11": "Retire",
+    "A04": "Enhance",
+    "A06": "Enhance",
+    "A09": "Integrate",
+    "A15": "Integrate"
+   },
+   "caps": [
+    "C05.02.01",
+    "C05.03.01"
+   ],
+   "steps": [
+    "VS03.2",
+    "VS04.1"
+   ],
+   "new_ifs": [
+    {
+     "source": "A15",
+     "target": "A04",
+     "data": "Car broker submissions"
+    }
+   ],
+   "drivers": [
+    "SI03",
+    "BD01"
+   ],
+   "depends": [
+    "F001"
+   ]
+  },
+  {
+   "id": "F003",
+   "epic": "EP01",
+   "name": "Migrate legal aid policies and cases",
+   "description": "Legal aid policies to the shared policy platform and cases to the claims workflow.",
+   "status": "Idea",
+   "target": "2028-Q1",
+   "size": "L",
+   "owner": "R50",
+   "apps": {
+    "A12": "Retire",
+    "A04": "Enhance",
+    "A13": "Enhance"
+   },
+   "caps": [
+    "C06.05.01"
+   ],
+   "steps": [
+    "VS03.2"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI03",
+    "BD01"
+   ],
+   "depends": [
+    "F002"
+   ]
+  },
+  {
+   "id": "F004",
+   "epic": "EP02",
+   "name": "Single customer view in the CRM",
+   "description": "One customer record across home, travel, car and legal aid, fed from the shared customer component.",
+   "status": "In delivery",
+   "target": "2026-Q4",
+   "size": "L",
+   "owner": "R51",
+   "apps": {
+    "A03": "Enhance",
+    "A05": "Integrate",
+    "A11": "Integrate",
+    "A12": "Integrate"
+   },
+   "caps": [
+    "C01.01.03"
+   ],
+   "steps": [
+    "VS02.5"
+   ],
+   "new_ifs": [
+    {
+     "source": "A11",
+     "target": "A03",
+     "data": "Car customer records"
+    }
+   ],
+   "drivers": [
+    "SI01",
+    "BD02"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F005",
+   "epic": "EP02",
+   "name": "Replace the call centre application",
+   "description": "Omnichannel contact centre integrated with the CRM, replacing the agent desktop.",
+   "status": "Discovery",
+   "target": "2027-Q2",
+   "size": "L",
+   "owner": "R50",
+   "apps": {
+    "A02": "Replace",
+    "A03": "Integrate",
+    "A23": "Integrate"
+   },
+   "caps": [
+    "C02.02.01",
+    "C02.02.02"
+   ],
+   "steps": [
+    "VS02.1",
+    "VS03.1",
+    "VS05.1"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI01",
+    "BD02"
+   ],
+   "depends": [
+    "F004"
+   ]
+  },
+  {
+   "id": "F006",
+   "epic": "EP02",
+   "name": "Self-service policy changes on the web portal",
+   "description": "Customers change details and cover online, with premium recalculated on screen.",
+   "status": "In delivery",
+   "target": "2026-Q4",
+   "size": "M",
+   "owner": "R51",
+   "apps": {
+    "A01": "Enhance",
+    "A06": "Integrate",
+    "A14": "Integrate"
+   },
+   "caps": [
+    "C02.01.02",
+    "C05.02.01"
+   ],
+   "steps": [
+    "VS03.1"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI01",
+    "SI07"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F007",
+   "epic": "EP03",
+   "name": "Online claim notification",
+   "description": "Report a claim and upload photos on the web portal, straight into the claims workflow.",
+   "status": "Done",
+   "target": "2026-Q3",
+   "size": "M",
+   "owner": "R51",
+   "apps": {
+    "A01": "Enhance",
+    "A13": "Integrate"
+   },
+   "caps": [
+    "C02.01.03",
+    "C06.01.01"
+   ],
+   "steps": [
+    "VS02.1"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI02"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F008",
+   "epic": "EP03",
+   "name": "Automated claim triage",
+   "description": "Rules and fraud scores route simple claims to fast track and complex ones to specialists.",
+   "status": "In delivery",
+   "target": "2027-Q1",
+   "size": "L",
+   "owner": "R51",
+   "apps": {
+    "A13": "Enhance",
+    "A07": "Integrate",
+    "A18": "Integrate"
+   },
+   "caps": [
+    "C06.01.03",
+    "C08.01.02"
+   ],
+   "steps": [
+    "VS02.2"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI02",
+    "BD04"
+   ],
+   "depends": [
+    "F007"
+   ]
+  },
+  {
+   "id": "F009",
+   "epic": "EP03",
+   "name": "Straight-through claim payments",
+   "description": "Approved claims pay automatically through the financial application and the BIBIT network.",
+   "status": "Ready",
+   "target": "2027-Q2",
+   "size": "M",
+   "owner": "R50",
+   "apps": {
+    "A09": "Enhance",
+    "A10": "Configure",
+    "A13": "Integrate"
+   },
+   "caps": [
+    "C06.04.01"
+   ],
+   "steps": [
+    "VS02.4"
+   ],
+   "new_ifs": [
+    {
+     "source": "A13",
+     "target": "A09",
+     "data": "Approved settlements"
+    }
+   ],
+   "drivers": [
+    "SI02"
+   ],
+   "depends": [
+    "F008"
+   ]
+  },
+  {
+   "id": "F010",
+   "epic": "EP03",
+   "name": "Repairer and loss adjuster portal",
+   "description": "Suppliers receive instructions and send estimates and invoices online.",
+   "status": "Idea",
+   "target": "2027-Q3",
+   "size": "M",
+   "owner": "R51",
+   "apps": {
+    "A13": "Enhance"
+   },
+   "caps": [
+    "C06.03.01",
+    "C06.03.02"
+   ],
+   "steps": [
+    "VS02.3"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI02"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F011",
+   "epic": "EP04",
+   "name": "Mainframe data feed to the data platform",
+   "description": "Daily and intraday extracts of policy and claims data from the mainframe to the cloud data platform.",
+   "status": "Ready",
+   "target": "2027-Q1",
+   "size": "M",
+   "owner": "R46",
+   "apps": {
+    "A29": "Configure",
+    "A19": "Integrate",
+    "A06": "Integrate"
+   },
+   "caps": [
+    "C11.05.01"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SI04"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F012",
+   "epic": "EP04",
+   "name": "Rehost web portal and risk assessment on cloud",
+   "description": "Move the web portal and risk assessment from the Unix server farm to the cloud platform.",
+   "status": "Idea",
+   "target": "2027-Q4",
+   "size": "L",
+   "owner": "R36",
+   "apps": {
+    "A01": "Enhance",
+    "A08": "Enhance",
+    "A30": "Configure"
+   },
+   "caps": [
+    "C11.09.01"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SI04",
+    "BD03"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F013",
+   "epic": "EP05",
+   "name": "Risk margin and capital model update",
+   "description": "Update capital calculations for the recalibrated risk margin and risk-free rate.",
+   "status": "In delivery",
+   "target": "2026-Q4",
+   "size": "M",
+   "owner": "R18",
+   "apps": {
+    "A20": "Enhance",
+    "A21": "Configure"
+   },
+   "caps": [
+    "C09.02.01"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SII-01"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F014",
+   "epic": "EP05",
+   "name": "Climate scenarios in the ORSA",
+   "description": "Long-term climate scenarios and their capital effect in the ORSA.",
+   "status": "Discovery",
+   "target": "2027-Q1",
+   "size": "M",
+   "owner": "R18",
+   "apps": {
+    "A20": "Enhance",
+    "A19": "Enhance"
+   },
+   "caps": [
+    "C09.02.02",
+    "C10.06.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SII-02"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F015",
+   "epic": "EP05",
+   "name": "Revised reporting templates and SFCR",
+   "description": "Adapt the quantitative templates and split the SFCR into its two parts.",
+   "status": "Ready",
+   "target": "2027-Q2",
+   "size": "M",
+   "owner": "R47",
+   "apps": {
+    "A21": "Enhance",
+    "A19": "Integrate"
+   },
+   "caps": [
+    "C10.02.01"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SII-04"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F016",
+   "epic": "EP05",
+   "name": "Liquidity risk management plan",
+   "description": "Liquidity projections and the management plan the review requires.",
+   "status": "Discovery",
+   "target": "2026-Q4",
+   "size": "S",
+   "owner": "R18",
+   "apps": {
+    "A20": "Enhance",
+    "A09": "Configure"
+   },
+   "caps": [
+    "C10.03.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SII-03"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F017",
+   "epic": "EP06",
+   "name": "Register of information and contract remediation",
+   "description": "Complete the register of information and add Article 30 terms to critical ICT contracts.",
+   "status": "In delivery",
+   "target": "2026-Q4",
+   "size": "M",
+   "owner": "R49",
+   "apps": {
+    "A27": "Configure"
+   },
+   "caps": [
+    "C10.05.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "DORA-04"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F018",
+   "epic": "EP06",
+   "name": "Major ICT incident classification and reporting",
+   "description": "Classification rules and reporting templates in the service management tool.",
+   "status": "Done",
+   "target": "2026-Q2",
+   "size": "S",
+   "owner": "R45",
+   "apps": {
+    "A27": "Enhance",
+    "A28": "Integrate"
+   },
+   "caps": [
+    "C08.04.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "DORA-02"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F019",
+   "epic": "EP06",
+   "name": "Recovery testing for Tier 0 services",
+   "description": "Annual tested failover of the mainframe and Unix platforms to the recovery site.",
+   "status": "Ready",
+   "target": "2027-Q1",
+   "size": "M",
+   "owner": "R45",
+   "apps": {
+    "A29": "Configure",
+    "A30": "Configure",
+    "A32": "Configure"
+   },
+   "caps": [
+    "C08.04.03",
+    "C11.09.03"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "DORA-03",
+    "DORA-05"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F020",
+   "epic": "EP07",
+   "name": "AI inventory and risk classification",
+   "description": "Record every AI use, its owner and risk category.",
+   "status": "Idea",
+   "target": "2027-Q1",
+   "size": "S",
+   "owner": "R35",
+   "apps": {
+    "A19": "Configure"
+   },
+   "caps": [
+    "C11.10.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "AI-01"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F021",
+   "epic": "EP07",
+   "name": "Human oversight for AI-assisted pricing and fraud",
+   "description": "Risk management, logging and human review for AI used in pricing and fraud scoring.",
+   "status": "Idea",
+   "target": "2027-Q4",
+   "size": "M",
+   "owner": "R17",
+   "apps": {
+    "A14": "Enhance",
+    "A08": "Enhance",
+    "A18": "Configure"
+   },
+   "caps": [
+    "C03.02.02",
+    "C11.10.02"
+   ],
+   "steps": [
+    "VS01.2"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "AI-02"
+   ],
+   "depends": [
+    "F020"
+   ]
+  },
+  {
+   "id": "F022",
+   "epic": "EP07",
+   "name": "Chatbot disclosure on the web portal",
+   "description": "Tell customers when they talk to an AI assistant.",
+   "status": "Idea",
+   "target": "2027-Q3",
+   "size": "S",
+   "owner": "R51",
+   "apps": {
+    "A01": "Configure"
+   },
+   "caps": [
+    "C02.01.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "AI-03"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F023",
+   "epic": "EP08",
+   "name": "Replace reinsurance spreadsheets",
+   "description": "Move treaty records and recoveries into the actuarial platform.",
+   "status": "Idea",
+   "target": "2027-Q3",
+   "size": "M",
+   "owner": "R19",
+   "apps": {
+    "A22": "Retire",
+    "A20": "Enhance"
+   },
+   "caps": [
+    "C09.03.01",
+    "C09.03.02"
+   ],
+   "steps": [],
+   "new_ifs": [],
+   "drivers": [
+    "SI05"
+   ],
+   "depends": []
+  },
+  {
+   "id": "F024",
+   "epic": "EP08",
+   "name": "Digital mailroom",
+   "description": "Scan and classify all inbound post on arrival and route it to the right work queue.",
+   "status": "Discovery",
+   "target": "2027-Q2",
+   "size": "M",
+   "owner": "R50",
+   "apps": {
+    "A16": "Enhance",
+    "A17": "Configure",
+    "A13": "Integrate"
+   },
+   "caps": [
+    "C11.06.01"
+   ],
+   "steps": [
+    "VS01.4",
+    "VS02.1"
+   ],
+   "new_ifs": [],
+   "drivers": [
+    "SI06"
+   ],
+   "depends": []
+  }
+ ]
+}

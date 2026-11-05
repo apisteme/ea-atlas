@@ -1,0 +1,650 @@
+[
+ {
+  "id": "C01",
+  "name": "Customer & Party Management",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C01.01",
+  "name": "Party Data Management",
+  "parent": "C01",
+  "description": "Golden record of customers, insured parties, beneficiaries and related parties",
+  "std_ref": "Party",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C01.02",
+  "name": "Customer Onboarding & Due Diligence",
+  "parent": "C01",
+  "description": "Identity checks, sanctions and AML due diligence at the start of a relationship",
+  "std_ref": "Party / Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C01.03",
+  "name": "Customer Relationship Management",
+  "parent": "C01",
+  "description": "Interactions, needs, service history and next best action",
+  "std_ref": "Customer",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C01.04",
+  "name": "Consent & Preferences",
+  "parent": "C01",
+  "description": "Marketing consent, contact preferences and data protection rights",
+  "std_ref": "Customer",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C01.05",
+  "name": "Customer Insight & Segmentation",
+  "parent": "C01",
+  "description": "Analytics on behaviour, value, lapse and claims propensity",
+  "std_ref": "Customer / Analytics",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02",
+  "name": "Distribution & Channels",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.01",
+  "name": "Digital Self-Service",
+  "parent": "C02",
+  "description": "Web portal and app: quote, buy, view policy, change details, make a claim",
+  "std_ref": "Distribution",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.02",
+  "name": "Contact Centre",
+  "parent": "C02",
+  "description": "Phone, chat and email service for customers",
+  "std_ref": "Distribution",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.03",
+  "name": "Intermediary & Broker Management",
+  "parent": "C02",
+  "description": "Broker agencies, terms of business, delegated authority and broker trading",
+  "std_ref": "Distribution / Agreement",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.04",
+  "name": "Agent & Tied Network",
+  "parent": "C02",
+  "description": "Tied agents and own sales force",
+  "std_ref": "Distribution",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.05",
+  "name": "Partner & Affinity Distribution",
+  "parent": "C02",
+  "description": "Bancassurance, affinity and embedded insurance partners",
+  "std_ref": "Distribution / Agreement",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.06",
+  "name": "Aggregator & Comparison Sites",
+  "parent": "C02",
+  "description": "Price comparison and aggregator channels",
+  "std_ref": "Distribution",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C02.07",
+  "name": "Digital Content & Web",
+  "parent": "C02",
+  "description": "Public website content, product pages and documents",
+  "std_ref": "Distribution / Marketing",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C03",
+  "name": "Product & Pricing",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C03.01",
+  "name": "Product Design & Lifecycle",
+  "parent": "C03",
+  "description": "Design, approve, launch, review and close products",
+  "std_ref": "Product",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C03.02",
+  "name": "Rating & Pricing",
+  "parent": "C03",
+  "description": "Rating factors, tariffs, technical price and commercial price",
+  "std_ref": "Product / Pricing",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C03.03",
+  "name": "Fair Value & Customer Outcomes",
+  "parent": "C03",
+  "description": "Evidence that products and prices give fair value to customers",
+  "std_ref": "Product / Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C03.04",
+  "name": "Marketing & Campaigns",
+  "parent": "C03",
+  "description": "Campaigns, brand and lead generation",
+  "std_ref": "Marketing",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C04",
+  "name": "Underwriting",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C04.01",
+  "name": "Risk Assessment",
+  "parent": "C04",
+  "description": "Assess the risk to be insured using rules, data and judgement",
+  "std_ref": "Underwriting",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C04.02",
+  "name": "Quote & New Business",
+  "parent": "C04",
+  "description": "Produce quotes and convert them to policies",
+  "std_ref": "Underwriting / Policy",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C04.03",
+  "name": "Referrals & Underwriting Authority",
+  "parent": "C04",
+  "description": "Referrals beyond automated rules and underwriter authority limits",
+  "std_ref": "Underwriting",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C04.04",
+  "name": "Exposure & Accumulation Management",
+  "parent": "C04",
+  "description": "Monitor concentrations of risk such as catastrophe exposure",
+  "std_ref": "Underwriting / Risk",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05",
+  "name": "Policy Administration",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05.01",
+  "name": "Policy Issuance & Documents",
+  "parent": "C05",
+  "description": "Issue policy schedules, certificates and statutory documents",
+  "std_ref": "Policy",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05.02",
+  "name": "Mid-Term Adjustments",
+  "parent": "C05",
+  "description": "Changes to cover, insured items and customer details during the policy term",
+  "std_ref": "Policy",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05.03",
+  "name": "Renewals",
+  "parent": "C05",
+  "description": "Invite, re-rate and renew policies",
+  "std_ref": "Policy",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05.04",
+  "name": "Cancellations",
+  "parent": "C05",
+  "description": "Cancellations, cooling-off and refunds",
+  "std_ref": "Policy",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C05.05",
+  "name": "Policy Servicing & Enquiries",
+  "parent": "C05",
+  "description": "Answer policy questions and handle service requests",
+  "std_ref": "Policy / Customer",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06",
+  "name": "Claims",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.01",
+  "name": "First Notification of Loss",
+  "parent": "C06",
+  "description": "Register a claim and capture the first facts",
+  "std_ref": "Claims",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.02",
+  "name": "Claims Assessment & Valuation",
+  "parent": "C06",
+  "description": "Investigate, assess and value the claim",
+  "std_ref": "Claims",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.03",
+  "name": "Claims Fulfilment & Supplier Network",
+  "parent": "C06",
+  "description": "Repair, replacement and services through suppliers",
+  "std_ref": "Claims / Partner",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.04",
+  "name": "Claims Payment & Recovery",
+  "parent": "C06",
+  "description": "Pay settlements and recover from third parties",
+  "std_ref": "Claims / Finance",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.05",
+  "name": "Legal Expenses & Litigation",
+  "parent": "C06",
+  "description": "Legal aid cover, panel solicitors and litigated claims",
+  "std_ref": "Claims / Legal",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C06.06",
+  "name": "Large & Complex Loss",
+  "parent": "C06",
+  "description": "Major claims and catastrophe events",
+  "std_ref": "Claims",
+  "importance": "Critical",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C07",
+  "name": "Billing & Collections",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C07.01",
+  "name": "Premium Billing",
+  "parent": "C07",
+  "description": "Bill premiums by instalment or annually",
+  "std_ref": "Billing",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C07.02",
+  "name": "Payment Collection",
+  "parent": "C07",
+  "description": "Direct debit, card and bank transfer collection",
+  "std_ref": "Billing / Payments",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C07.03",
+  "name": "Commission & Fees",
+  "parent": "C07",
+  "description": "Calculate and pay intermediary commission and fees",
+  "std_ref": "Billing / Agreement",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C07.04",
+  "name": "Credit Control & Arrears",
+  "parent": "C07",
+  "description": "Missed payments, arrears and cancellation for non-payment",
+  "std_ref": "Billing",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08",
+  "name": "Risk, Compliance & Counter-Fraud",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.01",
+  "name": "Counter-Fraud",
+  "parent": "C08",
+  "description": "Detect, investigate and prevent fraud at application and claim",
+  "std_ref": "Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.02",
+  "name": "AML & Sanctions Screening",
+  "parent": "C08",
+  "description": "Screening of customers, payees and payments",
+  "std_ref": "Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.03",
+  "name": "Complaints Management",
+  "parent": "C08",
+  "description": "Capture, resolve and learn from complaints",
+  "std_ref": "Compliance / Customer",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.04",
+  "name": "Operational Risk & Resilience",
+  "parent": "C08",
+  "description": "Risk register, controls, incidents and operational resilience",
+  "std_ref": "Risk",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.05",
+  "name": "Regulatory Compliance & Conduct",
+  "parent": "C08",
+  "description": "Conduct rules, product governance and distribution rules",
+  "std_ref": "Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C08.06",
+  "name": "Data Protection",
+  "parent": "C08",
+  "description": "Records of processing, privacy assessments and breach handling",
+  "std_ref": "Compliance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C09",
+  "name": "Actuarial, Capital & Reinsurance",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C09.01",
+  "name": "Reserving",
+  "parent": "C09",
+  "description": "Estimate claims reserves including IBNR",
+  "std_ref": "Actuarial",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C09.02",
+  "name": "Capital Modelling & Solvency",
+  "parent": "C09",
+  "description": "Solvency capital requirement and own risk and solvency assessment",
+  "std_ref": "Actuarial / Risk",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C09.03",
+  "name": "Reinsurance Management",
+  "parent": "C09",
+  "description": "Ceded reinsurance programme, recoveries and counterparties",
+  "std_ref": "Reinsurance",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C09.04",
+  "name": "Experience Analysis",
+  "parent": "C09",
+  "description": "Claims and lapse experience feeding pricing and reserving",
+  "std_ref": "Actuarial",
+  "importance": "High",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10",
+  "name": "Finance & Investments",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.01",
+  "name": "General Ledger & Accounting",
+  "parent": "C10",
+  "description": "Ledger, sub-ledgers and insurance contract accounting",
+  "std_ref": "Finance",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.02",
+  "name": "Regulatory & Financial Reporting",
+  "parent": "C10",
+  "description": "Statutory, prudential and management reporting",
+  "std_ref": "Finance / Reporting",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.03",
+  "name": "Investment Management",
+  "parent": "C10",
+  "description": "Investment portfolio, asset-liability matching and treasury",
+  "std_ref": "Finance / Investment",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.04",
+  "name": "Financial Planning & Performance",
+  "parent": "C10",
+  "description": "Budget, forecast and cost allocation",
+  "std_ref": "Finance",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.05",
+  "name": "Procurement & Supplier Management",
+  "parent": "C10",
+  "description": "Sourcing, contracts and third-party risk",
+  "std_ref": "Finance / Procurement",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C10.06",
+  "name": "Sustainability & ESG Reporting",
+  "parent": "C10",
+  "description": "Climate and sustainability disclosures",
+  "std_ref": "Finance / Reporting",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11",
+  "name": "Enterprise Support",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.01",
+  "name": "HR & Workforce",
+  "parent": "C11",
+  "description": "Hire to retire, payroll, learning",
+  "std_ref": "Support",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.02",
+  "name": "IT Service Management",
+  "parent": "C11",
+  "description": "Incident, change, problem and configuration management",
+  "std_ref": "Support / IT",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.03",
+  "name": "Identity & Access Management",
+  "parent": "C11",
+  "description": "Workforce identity and privileged access",
+  "std_ref": "Support / IT",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.04",
+  "name": "Cyber Security Operations",
+  "parent": "C11",
+  "description": "Monitoring, detection and response",
+  "std_ref": "Support / IT",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.05",
+  "name": "Data Management & Analytics",
+  "parent": "C11",
+  "description": "Data platform, quality, lineage and reporting",
+  "std_ref": "Support / Data",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.06",
+  "name": "Document & Records Management",
+  "parent": "C11",
+  "description": "Capture, scanning, archive and retention",
+  "std_ref": "Support",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.07",
+  "name": "Enterprise Integration",
+  "parent": "C11",
+  "description": "Messaging, APIs, files and events between systems",
+  "std_ref": "Support / IT",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.08",
+  "name": "Workplace Collaboration",
+  "parent": "C11",
+  "description": "Email, collaboration and productivity",
+  "std_ref": "Support",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.09",
+  "name": "Infrastructure & Hosting",
+  "parent": "C11",
+  "description": "Data centres, servers, mainframe, cloud and network",
+  "std_ref": "Support / IT",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ },
+ {
+  "id": "C11.10",
+  "name": "AI & Advanced Analytics",
+  "parent": "C11",
+  "description": "AI for claims, fraud, pricing and service, with governance",
+  "std_ref": "Support / Data",
+  "importance": "Medium",
+  "source": "Insurance pack (ACORD-aligned by domain name)"
+ }
+]

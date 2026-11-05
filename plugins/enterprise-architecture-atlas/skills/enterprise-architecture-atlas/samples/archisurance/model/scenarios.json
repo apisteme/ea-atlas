@@ -1,0 +1,97 @@
+[
+ {
+  "id": "EX-MF",
+  "name": "Mainframe outage",
+  "type": "platform_failure",
+  "targets": [
+   "A29"
+  ],
+  "likelihood": 2,
+  "description": "The mainframe with CICS, DBMS and message queuing fails. Home & Away policies, claims records and the CRM run on it.",
+  "mitigation": "Fail over to the recovery site; test the runbook twice a year; reduce the mainframe footprint through the consolidation programme."
+ },
+ {
+  "id": "EX-DC1",
+  "name": "Loss of the head office data centre",
+  "type": "dc_loss",
+  "targets": [
+   "DC1"
+  ],
+  "likelihood": 2,
+  "description": "The head office data centre is unavailable. All in-house applications need a site failover to the recovery site.",
+  "mitigation": "Annual full-site failover test; recovery order by tier; contract terms with the recovery site provider."
+ },
+ {
+  "id": "EX-BIBIT",
+  "name": "Loss of the BIBIT payment network",
+  "type": "supplier_failure",
+  "targets": [
+   "S12"
+  ],
+  "likelihood": 2,
+  "description": "The payment network is unavailable, so premiums cannot be collected and claims cannot be paid electronically.",
+  "mitigation": "Second payment route through the customer's bank; manual payment fallback for urgent claims."
+ },
+ {
+  "id": "EX-UNIX",
+  "name": "Unix server farm failure",
+  "type": "platform_failure",
+  "targets": [
+   "A30"
+  ],
+  "likelihood": 2,
+  "description": "The Unix server farm fails. The web portal, call centre, rating, the car and legal aid systems and the financial application run on it.",
+  "mitigation": "Clustered servers; tested failover to the recovery site; move suitable workloads to cloud."
+ },
+ {
+  "id": "EX-RETCAR",
+  "name": "Retire Car Policy Administration",
+  "type": "decommission",
+  "targets": [
+   "A11"
+  ],
+  "description": "Car policies move to the Home & Away platform and the legacy car system is retired.",
+  "mitigation": "Migrate in product waves; run in parallel for one renewal cycle; keep a read-only archive."
+ },
+ {
+  "id": "EX-MFPRICE",
+  "name": "Mainframe vendor price rise",
+  "type": "price_change",
+  "targets": [
+   "S02"
+  ],
+  "pct": 15,
+  "description": "The mainframe vendor raises licence and support prices by 15 per cent at renewal.",
+  "mitigation": "Benchmark; reduce MIPS through the consolidation programme; negotiate a multi-year cap."
+ },
+ {
+  "id": "EX-SII",
+  "name": "Solvency II review",
+  "type": "regulatory_change",
+  "regulation": "SII-REV",
+  "targets": [],
+  "likelihood": 5,
+  "description": "Mandatory. Amended Solvency II rules apply from 30 January 2027.",
+  "mitigation": "Programme under the Chief Risk Officer; vendor roadmaps for actuarial and reporting tools."
+ },
+ {
+  "id": "EX-AI",
+  "name": "EU AI Act high-risk obligations",
+  "type": "regulatory_change",
+  "regulation": "AIACT",
+  "targets": [],
+  "likelihood": 5,
+  "description": "AI used in pricing and fraud must meet AI Act obligations by the application date.",
+  "mitigation": "AI inventory first, then risk management and human oversight for high-risk uses."
+ },
+ {
+  "id": "EX-DORA",
+  "name": "DORA remediation",
+  "type": "regulatory_change",
+  "regulation": "DORA",
+  "targets": [],
+  "likelihood": 5,
+  "description": "DORA already applies. Close the remaining gaps in testing, third-party contracts and recovery.",
+  "mitigation": "Remediation plan under the IT resilience and DR manager, reported to the Board."
+ }
+]

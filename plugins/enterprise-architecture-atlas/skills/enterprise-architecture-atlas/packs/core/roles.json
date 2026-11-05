@@ -1,0 +1,300 @@
+[
+ {
+  "id": "R01",
+  "name": "Customer",
+  "unit": "External",
+  "family": "External",
+  "source": "Core pack template",
+  "customer": true
+ },
+ {
+  "id": "R02",
+  "name": "Partner or reseller",
+  "unit": "External",
+  "family": "External",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R03",
+  "name": "Supplier",
+  "unit": "External",
+  "family": "External",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R04",
+  "name": "Customer service agent",
+  "unit": "Customer Service",
+  "family": "Front office",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R05",
+  "name": "Sales representative",
+  "unit": "Sales",
+  "family": "Front office",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R06",
+  "name": "Case handler",
+  "unit": "Operations",
+  "family": "Operations",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R07",
+  "name": "Operations team leader",
+  "unit": "Operations",
+  "family": "Operations",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R08",
+  "name": "Field or delivery technician",
+  "unit": "Operations",
+  "family": "Operations",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R09",
+  "name": "Billing analyst",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R10",
+  "name": "Credit controller",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R11",
+  "name": "Finance analyst",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R12",
+  "name": "Product manager",
+  "unit": "Products",
+  "family": "Business",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R13",
+  "name": "Marketing manager",
+  "unit": "Marketing",
+  "family": "Business",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R14",
+  "name": "Complaints handler",
+  "unit": "Customer Service",
+  "family": "Operations",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R15",
+  "name": "Compliance officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R16",
+  "name": "Risk manager",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R17",
+  "name": "Data protection officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R18",
+  "name": "HR business partner",
+  "unit": "People",
+  "family": "Support",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R19",
+  "name": "Procurement manager",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R20",
+  "name": "Chief Executive",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R21",
+  "name": "Chief Operating Officer",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R22",
+  "name": "Chief Financial Officer",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R23",
+  "name": "Commercial Director",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R24",
+  "name": "Head of Customer Service",
+  "unit": "Customer Service",
+  "family": "Leadership",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R25",
+  "name": "Chief Information Officer",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Core pack template",
+  "tech": true
+ },
+ {
+  "id": "R26",
+  "name": "Chief Information Security Officer",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Core pack template",
+  "tech": true
+ },
+ {
+  "id": "R27",
+  "name": "Head of Enterprise Architecture",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Core pack template",
+  "tech": true
+ },
+ {
+  "id": "R28",
+  "name": "Enterprise architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R29",
+  "name": "Solution architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R30",
+  "name": "Application support engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R31",
+  "name": "Infrastructure engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R32",
+  "name": "Integration lead",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R33",
+  "name": "Security operations analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R34",
+  "name": "Service desk analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R35",
+  "name": "Change and release manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R36",
+  "name": "IT resilience and DR manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R37",
+  "name": "Data engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R38",
+  "name": "Data steward",
+  "unit": "Operations",
+  "family": "Business",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R39",
+  "name": "Software asset and licence manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R40",
+  "name": "Delivery manager",
+  "unit": "Change Delivery",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R41",
+  "name": "Product owner (digital)",
+  "unit": "Change Delivery",
+  "family": "Technology",
+  "source": "Core pack template"
+ },
+ {
+  "id": "R42",
+  "name": "Software engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Core pack template"
+ }
+]

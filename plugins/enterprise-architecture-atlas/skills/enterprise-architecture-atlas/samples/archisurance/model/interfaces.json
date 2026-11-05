@@ -1,0 +1,330 @@
+[
+ {
+  "source_app": "A03",
+  "target_app": "A06",
+  "data": "Customer information (Archi service: CIS)",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A06",
+  "target_app": "A09",
+  "data": "Claim information (Archi service: Claim InfoServ)",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A02",
+  "target_app": "A01",
+  "data": "Contact history and call-back requests",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A03",
+  "target_app": "A01",
+  "data": "Customer profile for the portal",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A08",
+  "target_app": "A01",
+  "data": "Risk assessment and indicative quotes",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A05",
+  "target_app": "A08",
+  "data": "Customer file for risk assessment",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A09",
+  "target_app": "A04",
+  "data": "Premium and payment status",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A05",
+  "target_app": "A02",
+  "data": "Customer file for agents",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A10",
+  "target_app": "A09",
+  "data": "Payment confirmations from customers' banks",
+  "protocol": "Payment network (BIBIT)",
+  "frequency": "Daily batch",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "source_app": "A01",
+  "target_app": "A14",
+  "data": "Quote requests",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A14",
+  "target_app": "A04",
+  "data": "Rated premium for new business",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A14",
+  "target_app": "A11",
+  "data": "Rated premium for car policies",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A01",
+  "target_app": "A13",
+  "data": "Online claim notification",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A13",
+  "target_app": "A07",
+  "data": "Claim registration and status",
+  "protocol": "Message queuing (MQ)",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A07",
+  "target_app": "A09",
+  "data": "Claim payment instructions",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A09",
+  "target_app": "A10",
+  "data": "Payment orders and direct debits",
+  "protocol": "Payment network (BIBIT)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A11",
+  "target_app": "A09",
+  "data": "Car policy premiums",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A12",
+  "target_app": "A09",
+  "data": "Legal aid premiums and case payments",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A15",
+  "target_app": "A04",
+  "data": "Broker submissions (home and travel)",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A15",
+  "target_app": "A11",
+  "data": "Broker submissions (car)",
+  "protocol": "File (batch)",
+  "frequency": "Hourly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A04",
+  "target_app": "A17",
+  "data": "Policy documents",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A11",
+  "target_app": "A17",
+  "data": "Car policy documents",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A16",
+  "target_app": "A07",
+  "data": "Scanned claim forms (Archi: claim form paper to electronic)",
+  "protocol": "File (batch)",
+  "frequency": "Hourly",
+  "source": "Public (Archi sample model); integration illustrative"
+ },
+ {
+  "source_app": "A16",
+  "target_app": "A04",
+  "data": "Scanned contracts (Archi: paper to electronic contracts)",
+  "protocol": "File (batch)",
+  "frequency": "Hourly",
+  "source": "Public (Archi sample model); integration illustrative"
+ },
+ {
+  "source_app": "A13",
+  "target_app": "A18",
+  "data": "Claim fraud scoring",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A14",
+  "target_app": "A18",
+  "data": "Application fraud check",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A04",
+  "target_app": "A19",
+  "data": "Policy data",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A07",
+  "target_app": "A19",
+  "data": "Claims data",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A09",
+  "target_app": "A19",
+  "data": "Finance data",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A11",
+  "target_app": "A19",
+  "data": "Car policy data",
+  "protocol": "File (batch)",
+  "frequency": "Daily batch",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A12",
+  "target_app": "A19",
+  "data": "Legal case data",
+  "protocol": "File (batch)",
+  "frequency": "Weekly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A19",
+  "target_app": "A20",
+  "data": "Actuarial data extracts",
+  "protocol": "File (batch)",
+  "frequency": "Monthly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A20",
+  "target_app": "A21",
+  "data": "Technical provisions",
+  "protocol": "File (batch)",
+  "frequency": "Quarterly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A09",
+  "target_app": "A21",
+  "data": "Balance sheet data",
+  "protocol": "File (batch)",
+  "frequency": "Quarterly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A22",
+  "target_app": "A21",
+  "data": "Reinsurance recoverables",
+  "protocol": "Manual upload",
+  "frequency": "Quarterly",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A02",
+  "target_app": "A23",
+  "data": "Complaint creation",
+  "protocol": "API",
+  "frequency": "Real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A23",
+  "target_app": "A03",
+  "data": "Complaint records",
+  "protocol": "API",
+  "frequency": "Near real-time",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A26",
+  "target_app": "A02",
+  "data": "Workforce identity",
+  "protocol": "SCIM",
+  "frequency": "Event",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A26",
+  "target_app": "A03",
+  "data": "Workforce identity",
+  "protocol": "SCIM",
+  "frequency": "Event",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A29",
+  "target_app": "A28",
+  "data": "Security events",
+  "protocol": "Syslog",
+  "frequency": "Streaming",
+  "source": "Illustrative"
+ },
+ {
+  "source_app": "A30",
+  "target_app": "A28",
+  "data": "Security events",
+  "protocol": "Syslog",
+  "frequency": "Streaming",
+  "source": "Illustrative"
+ }
+]

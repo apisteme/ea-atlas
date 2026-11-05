@@ -1,0 +1,696 @@
+{
+ "C01.01": [
+  {
+   "name": "Party creation & maintenance",
+   "description": "Create and update person and organisation records, addresses and contact details"
+  },
+  {
+   "name": "Party relationships",
+   "description": "Policyholders, insured persons, payers, beneficiaries and household links"
+  },
+  {
+   "name": "Single customer view",
+   "description": "One view of a customer across product lines and legacy systems"
+  }
+ ],
+ "C01.02": [
+  {
+   "name": "Identity verification",
+   "description": "Document and data checks for remote and assisted onboarding"
+  },
+  {
+   "name": "Customer due diligence",
+   "description": "Risk rating and enhanced checks where required, mainly for life and savings products"
+  },
+  {
+   "name": "Vulnerability identification",
+   "description": "Recognise and record customers in vulnerable circumstances"
+  }
+ ],
+ "C01.03": [
+  {
+   "name": "Interaction history",
+   "description": "Record contacts across phone, email, web, post and intermediaries"
+  },
+  {
+   "name": "Needs and suitability",
+   "description": "Capture demands and needs for advised and non-advised sales"
+  },
+  {
+   "name": "Retention and cross-sell",
+   "description": "Identify customers at risk of lapse and relevant offers"
+  }
+ ],
+ "C01.04": [
+  {
+   "name": "Consent capture",
+   "description": "Record marketing and processing consents with their source"
+  },
+  {
+   "name": "Data subject requests",
+   "description": "Handle access, correction and erasure requests within deadlines"
+  }
+ ],
+ "C01.05": [
+  {
+   "name": "Customer segmentation",
+   "description": "Group customers by value, needs and behaviour"
+  },
+  {
+   "name": "Propensity models",
+   "description": "Predict lapse, cross-sell and claim likelihood"
+  }
+ ],
+ "C02.01": [
+  {
+   "name": "Online quote and buy",
+   "description": "Self-service quotation and purchase"
+  },
+  {
+   "name": "Policy self-service",
+   "description": "View documents, change details and pay online"
+  },
+  {
+   "name": "Online claim notification",
+   "description": "Report a claim and upload evidence online"
+  }
+ ],
+ "C02.02": [
+  {
+   "name": "Inbound call handling",
+   "description": "Route and answer customer calls with customer context"
+  },
+  {
+   "name": "Outbound contact",
+   "description": "Renewal, retention and claims update calls"
+  },
+  {
+   "name": "Quality and call recording",
+   "description": "Record, monitor and coach"
+  }
+ ],
+ "C02.03": [
+  {
+   "name": "Broker onboarding",
+   "description": "Due diligence and terms of business for new intermediaries"
+  },
+  {
+   "name": "Broker trading",
+   "description": "Quotes, submissions and placements through brokers and trading platforms"
+  },
+  {
+   "name": "Delegated authority oversight",
+   "description": "Bordereaux, binders and oversight of coverholders and MGAs"
+  }
+ ],
+ "C02.04": [
+  {
+   "name": "Agent appointment and licensing",
+   "description": "Appointment, training and competence records"
+  },
+  {
+   "name": "Sales activity management",
+   "description": "Leads, appointments and pipeline for agents"
+  }
+ ],
+ "C02.05": [
+  {
+   "name": "Partner onboarding",
+   "description": "Contracts, product set-up and integration for partners"
+  },
+  {
+   "name": "Embedded insurance APIs",
+   "description": "Offer cover inside a partner's journey through APIs"
+  }
+ ],
+ "C02.06": [
+  {
+   "name": "Aggregator quote handling",
+   "description": "Respond to aggregator quote requests within time limits"
+  },
+  {
+   "name": "Click-through and conversion",
+   "description": "Track and convert aggregator traffic"
+  }
+ ],
+ "C02.07": [
+  {
+   "name": "Content management",
+   "description": "Publish and maintain web content and product information"
+  },
+  {
+   "name": "Search and analytics",
+   "description": "Measure traffic and improve findability"
+  }
+ ],
+ "C03.01": [
+  {
+   "name": "Product approval",
+   "description": "Product oversight and governance approval before launch"
+  },
+  {
+   "name": "Product configuration",
+   "description": "Set up product rules, covers and options in systems"
+  },
+  {
+   "name": "Product review",
+   "description": "Periodic fair value and performance review"
+  }
+ ],
+ "C03.02": [
+  {
+   "name": "Rating engine",
+   "description": "Calculate technical price from rating factors"
+  },
+  {
+   "name": "Price optimisation",
+   "description": "Set commercial price within fair pricing rules"
+  },
+  {
+   "name": "Rate deployment",
+   "description": "Release new rates safely to all channels"
+  }
+ ],
+ "C03.03": [
+  {
+   "name": "Fair value assessment",
+   "description": "Assess price against benefits, claims ratios and costs"
+  },
+  {
+   "name": "Outcome monitoring",
+   "description": "Monitor complaints, claims and cancellations for poor outcomes"
+  }
+ ],
+ "C03.04": [
+  {
+   "name": "Campaign management",
+   "description": "Plan, run and measure campaigns"
+  },
+  {
+   "name": "Lead management",
+   "description": "Capture and route leads to the right channel"
+  }
+ ],
+ "C04.01": [
+  {
+   "name": "Underwriting rules",
+   "description": "Automated acceptance, decline and loading rules"
+  },
+  {
+   "name": "Risk data enrichment",
+   "description": "Use third-party data such as property, vehicle and credit data"
+  },
+  {
+   "name": "Medical and financial underwriting",
+   "description": "Assess health and financial evidence for life and protection"
+  }
+ ],
+ "C04.02": [
+  {
+   "name": "Quotation",
+   "description": "Produce and store quotes for all channels"
+  },
+  {
+   "name": "Proposal and acceptance",
+   "description": "Capture the proposal and accept the risk"
+  },
+  {
+   "name": "New business set-up",
+   "description": "Create the policy, schedule and first premium"
+  }
+ ],
+ "C04.03": [
+  {
+   "name": "Referral workflow",
+   "description": "Route referred cases to underwriters by authority"
+  },
+  {
+   "name": "Authority management",
+   "description": "Record and enforce underwriting authority limits"
+  }
+ ],
+ "C04.04": [
+  {
+   "name": "Accumulation monitoring",
+   "description": "Track exposure by location, peril and line"
+  },
+  {
+   "name": "Catastrophe modelling inputs",
+   "description": "Prepare exposure data for catastrophe models"
+  }
+ ],
+ "C05.01": [
+  {
+   "name": "Document generation",
+   "description": "Produce schedules, certificates and wording packs"
+  },
+  {
+   "name": "Document delivery",
+   "description": "Send documents by post, email and portal"
+  }
+ ],
+ "C05.02": [
+  {
+   "name": "Change of details",
+   "description": "Update address, contact and insured details"
+  },
+  {
+   "name": "Cover changes",
+   "description": "Add or remove cover and recalculate premium"
+  }
+ ],
+ "C05.03": [
+  {
+   "name": "Renewal invitation",
+   "description": "Produce renewal terms and notices on time"
+  },
+  {
+   "name": "Auto-renewal",
+   "description": "Renew policies automatically where agreed"
+  },
+  {
+   "name": "Lapse handling",
+   "description": "Record lapses and reasons"
+  }
+ ],
+ "C05.04": [
+  {
+   "name": "Cooling-off cancellation",
+   "description": "Cancel within the cooling-off period with refunds"
+  },
+  {
+   "name": "Mid-term cancellation",
+   "description": "Cancel during the term and calculate refunds"
+  }
+ ],
+ "C05.05": [
+  {
+   "name": "Policy enquiries",
+   "description": "Answer questions about cover and status"
+  },
+  {
+   "name": "Service request management",
+   "description": "Track service requests to completion"
+  }
+ ],
+ "C06.01": [
+  {
+   "name": "Claim registration",
+   "description": "Record the claim from any channel"
+  },
+  {
+   "name": "Coverage verification",
+   "description": "Check the policy was in force and the loss is covered"
+  },
+  {
+   "name": "Claim triage",
+   "description": "Route the claim by complexity and value"
+  }
+ ],
+ "C06.02": [
+  {
+   "name": "Loss assessment",
+   "description": "Assess the loss using evidence, experts and data"
+  },
+  {
+   "name": "Reserve setting",
+   "description": "Set and update case reserves"
+  },
+  {
+   "name": "Liability decision",
+   "description": "Accept, part-accept or decline the claim"
+  }
+ ],
+ "C06.03": [
+  {
+   "name": "Supplier assignment",
+   "description": "Appoint repairers, loss adjusters and service providers"
+  },
+  {
+   "name": "Supplier performance",
+   "description": "Monitor cost, quality and time of suppliers"
+  }
+ ],
+ "C06.04": [
+  {
+   "name": "Settlement payment",
+   "description": "Pay customers and suppliers"
+  },
+  {
+   "name": "Subrogation and recovery",
+   "description": "Recover costs from third parties and their insurers"
+  },
+  {
+   "name": "Salvage",
+   "description": "Dispose of salvage and record proceeds"
+  }
+ ],
+ "C06.05": [
+  {
+   "name": "Legal case management",
+   "description": "Manage legal expense claims and cases"
+  },
+  {
+   "name": "Panel management",
+   "description": "Appoint and oversee panel law firms"
+  }
+ ],
+ "C06.06": [
+  {
+   "name": "Major loss handling",
+   "description": "Specialist handling for large losses"
+  },
+  {
+   "name": "Catastrophe event response",
+   "description": "Surge capacity and event coding"
+  }
+ ],
+ "C07.01": [
+  {
+   "name": "Billing schedules",
+   "description": "Create and change instalment plans"
+  },
+  {
+   "name": "Invoice and statement production",
+   "description": "Issue premium notices and statements"
+  }
+ ],
+ "C07.02": [
+  {
+   "name": "Direct debit collection",
+   "description": "Manage mandates and collections"
+  },
+  {
+   "name": "Card payments",
+   "description": "Take and refund card payments securely"
+  },
+  {
+   "name": "Payment allocation",
+   "description": "Match receipts to policies"
+  }
+ ],
+ "C07.03": [
+  {
+   "name": "Commission calculation",
+   "description": "Calculate commission by agreement"
+  },
+  {
+   "name": "Commission payment and clawback",
+   "description": "Pay commission and recover it on cancellation"
+  }
+ ],
+ "C07.04": [
+  {
+   "name": "Arrears management",
+   "description": "Contact customers who miss payments"
+  },
+  {
+   "name": "Non-payment cancellation",
+   "description": "Cancel policies after due notice"
+  }
+ ],
+ "C08.01": [
+  {
+   "name": "Application fraud detection",
+   "description": "Screen applications for fraud signals"
+  },
+  {
+   "name": "Claims fraud detection",
+   "description": "Score claims and refer suspicious ones"
+  },
+  {
+   "name": "Fraud investigation",
+   "description": "Investigate and record outcomes"
+  }
+ ],
+ "C08.02": [
+  {
+   "name": "Sanctions screening",
+   "description": "Screen parties and payments against sanctions lists"
+  },
+  {
+   "name": "Suspicious activity reporting",
+   "description": "Report suspicious activity to the authorities"
+  }
+ ],
+ "C08.03": [
+  {
+   "name": "Complaint handling",
+   "description": "Register, investigate and respond within deadlines"
+  },
+  {
+   "name": "Root cause analysis",
+   "description": "Find and fix the causes of complaints"
+  }
+ ],
+ "C08.04": [
+  {
+   "name": "Risk and control register",
+   "description": "Record risks, controls and testing"
+  },
+  {
+   "name": "ICT incident management and reporting",
+   "description": "Classify and report major ICT incidents"
+  },
+  {
+   "name": "Resilience testing",
+   "description": "Test important business services within impact tolerances"
+  }
+ ],
+ "C08.05": [
+  {
+   "name": "Compliance monitoring",
+   "description": "Monitor adherence to conduct and distribution rules"
+  },
+  {
+   "name": "Regulatory change management",
+   "description": "Track and implement new rules"
+  }
+ ],
+ "C08.06": [
+  {
+   "name": "Records of processing",
+   "description": "Maintain the record of processing activities"
+  },
+  {
+   "name": "Privacy impact assessment",
+   "description": "Assess high-risk processing"
+  },
+  {
+   "name": "Breach management",
+   "description": "Assess and notify personal data breaches"
+  }
+ ],
+ "C09.01": [
+  {
+   "name": "Reserve calculation",
+   "description": "Calculate case and IBNR reserves"
+  },
+  {
+   "name": "Reserve review",
+   "description": "Review and sign off reserves"
+  }
+ ],
+ "C09.02": [
+  {
+   "name": "SCR calculation",
+   "description": "Calculate the solvency capital requirement"
+  },
+  {
+   "name": "ORSA",
+   "description": "Own risk and solvency assessment"
+  },
+  {
+   "name": "Stress and scenario testing",
+   "description": "Test capital under stress"
+  }
+ ],
+ "C09.03": [
+  {
+   "name": "Treaty management",
+   "description": "Record treaties and their terms"
+  },
+  {
+   "name": "Reinsurance recoveries",
+   "description": "Calculate and collect recoveries"
+  }
+ ],
+ "C09.04": [
+  {
+   "name": "Experience studies",
+   "description": "Analyse claims frequency, severity and lapse"
+  },
+  {
+   "name": "Model governance",
+   "description": "Validate and document actuarial models"
+  }
+ ],
+ "C10.01": [
+  {
+   "name": "General ledger",
+   "description": "Record journals and close the books"
+  },
+  {
+   "name": "Insurance contract accounting",
+   "description": "Measure insurance contracts under IFRS 17"
+  }
+ ],
+ "C10.02": [
+  {
+   "name": "Prudential reporting",
+   "description": "Quantitative reporting templates and narrative reports"
+  },
+  {
+   "name": "Statutory accounts",
+   "description": "Annual report and accounts"
+  }
+ ],
+ "C10.03": [
+  {
+   "name": "Portfolio management",
+   "description": "Manage and report the investment portfolio"
+  },
+  {
+   "name": "Asset-liability management",
+   "description": "Match assets to liabilities"
+  }
+ ],
+ "C10.04": [
+  {
+   "name": "Budgeting and forecasting",
+   "description": "Plan and forecast results"
+  },
+  {
+   "name": "Cost allocation",
+   "description": "Allocate costs to products and lines"
+  }
+ ],
+ "C10.05": [
+  {
+   "name": "Sourcing",
+   "description": "Run tenders and select suppliers"
+  },
+  {
+   "name": "Third-party risk management",
+   "description": "Assess and monitor critical suppliers and ICT providers"
+  }
+ ],
+ "C10.06": [
+  {
+   "name": "Sustainability reporting",
+   "description": "Prepare sustainability disclosures"
+  },
+  {
+   "name": "Climate risk analysis",
+   "description": "Assess climate risk in underwriting and investments"
+  }
+ ],
+ "C11.01": [
+  {
+   "name": "Recruitment and onboarding",
+   "description": "Hire and onboard staff"
+  },
+  {
+   "name": "Payroll",
+   "description": "Pay staff accurately and on time"
+  }
+ ],
+ "C11.02": [
+  {
+   "name": "Incident and problem management",
+   "description": "Restore service and remove causes"
+  },
+  {
+   "name": "Change management",
+   "description": "Assess and approve changes"
+  }
+ ],
+ "C11.03": [
+  {
+   "name": "Joiner, mover and leaver",
+   "description": "Grant and remove access on time"
+  },
+  {
+   "name": "Privileged access",
+   "description": "Control administrator access"
+  }
+ ],
+ "C11.04": [
+  {
+   "name": "Security monitoring",
+   "description": "Detect threats across the estate"
+  },
+  {
+   "name": "Vulnerability management",
+   "description": "Find and fix vulnerabilities"
+  }
+ ],
+ "C11.05": [
+  {
+   "name": "Data platform",
+   "description": "Store and integrate data for analytics"
+  },
+  {
+   "name": "Data quality",
+   "description": "Measure and improve data quality"
+  },
+  {
+   "name": "Management information",
+   "description": "Dashboards and reports"
+  }
+ ],
+ "C11.06": [
+  {
+   "name": "Document capture",
+   "description": "Scan, classify and index inbound documents"
+  },
+  {
+   "name": "Records retention",
+   "description": "Keep and dispose of records by policy"
+  }
+ ],
+ "C11.07": [
+  {
+   "name": "Messaging and queuing",
+   "description": "Reliable messages between systems"
+  },
+  {
+   "name": "API management",
+   "description": "Publish and secure APIs"
+  },
+  {
+   "name": "File transfer",
+   "description": "Managed file transfer and batch"
+  }
+ ],
+ "C11.08": [
+  {
+   "name": "Email and collaboration",
+   "description": "Mail, chat and shared documents"
+  }
+ ],
+ "C11.09": [
+  {
+   "name": "Compute and hosting",
+   "description": "Servers, mainframe and cloud"
+  },
+  {
+   "name": "Network and perimeter",
+   "description": "Networks, firewalls and connectivity"
+  },
+  {
+   "name": "Backup and recovery",
+   "description": "Back up data and recover systems"
+  }
+ ],
+ "C11.10": [
+  {
+   "name": "AI model development",
+   "description": "Build and deploy AI and machine learning models"
+  },
+  {
+   "name": "AI governance",
+   "description": "Inventory, risk classification and oversight of AI systems"
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+[
+ {
+  "term": "Policyholder",
+  "category": "Insurance",
+  "definition": "The person or organisation that owns the insurance contract and pays the premium."
+ },
+ {
+  "term": "Insured / insurant",
+  "category": "Insurance",
+  "definition": "The person or property covered by the policy. Often the policyholder, but not always."
+ },
+ {
+  "term": "Premium",
+  "category": "Insurance",
+  "definition": "The price paid for cover, usually annually or in instalments."
+ },
+ {
+  "term": "Underwriting",
+  "category": "Insurance",
+  "definition": "Deciding whether to accept a risk and on what terms and price."
+ },
+ {
+  "term": "Rating factor",
+  "category": "Insurance",
+  "definition": "A characteristic used to price a risk, such as age, location or claims history."
+ },
+ {
+  "term": "Mid-term adjustment (MTA)",
+  "category": "Insurance",
+  "definition": "A change to a policy during its term, such as a new address or added cover."
+ },
+ {
+  "term": "Renewal",
+  "category": "Insurance",
+  "definition": "Offering and agreeing cover for a further term."
+ },
+ {
+  "term": "Lapse",
+  "category": "Insurance",
+  "definition": "A policy that ends because the premium was not paid or the customer did not renew."
+ },
+ {
+  "term": "First notification of loss (FNOL)",
+  "category": "Insurance",
+  "definition": "The first report of a claim, when the basic facts are captured."
+ },
+ {
+  "term": "Loss adjuster",
+  "category": "Insurance",
+  "definition": "An independent expert who investigates and values a claim for the insurer."
+ },
+ {
+  "term": "Reserve",
+  "category": "Insurance",
+  "definition": "Money set aside for claims that have been reported but not yet paid (case reserve) or not yet reported (IBNR)."
+ },
+ {
+  "term": "IBNR",
+  "category": "Insurance",
+  "definition": "Incurred but not reported: claims for events that have happened but have not yet been notified."
+ },
+ {
+  "term": "Subrogation",
+  "category": "Insurance",
+  "definition": "The insurer's right to recover a claim payment from the party responsible for the loss."
+ },
+ {
+  "term": "Legal expenses insurance",
+  "category": "Insurance",
+  "definition": "Cover for the cost of legal advice and action, also called legal aid insurance in some markets."
+ },
+ {
+  "term": "Intermediary / broker",
+  "category": "Insurance",
+  "definition": "A firm that arranges insurance on behalf of customers and is paid commission or fees."
+ },
+ {
+  "term": "Delegated authority",
+  "category": "Insurance",
+  "definition": "An arrangement where a coverholder or managing general agent underwrites or settles claims on the insurer's behalf."
+ },
+ {
+  "term": "Bordereau",
+  "category": "Insurance",
+  "definition": "A periodic report of policies or claims written under delegated authority."
+ },
+ {
+  "term": "Aggregator",
+  "category": "Insurance",
+  "definition": "A price comparison website that collects quotes from several insurers."
+ },
+ {
+  "term": "Reinsurance",
+  "category": "Insurance",
+  "definition": "Insurance bought by an insurer to transfer part of its risk. Treaty covers a portfolio; facultative covers one risk."
+ },
+ {
+  "term": "Loss ratio",
+  "category": "Insurance",
+  "definition": "Claims incurred divided by premiums earned."
+ },
+ {
+  "term": "Combined ratio",
+  "category": "Insurance",
+  "definition": "Loss ratio plus expense ratio. Below 100% means an underwriting profit."
+ },
+ {
+  "term": "Solvency II",
+  "category": "Regulation",
+  "definition": "EU prudential framework for insurers: capital requirements (Pillar 1), governance and risk management including ORSA (Pillar 2), and reporting and disclosure (Pillar 3)."
+ },
+ {
+  "term": "Solvency II review",
+  "category": "Regulation",
+  "definition": "Amendments to the Solvency II Directive published in January 2025, applying at the latest from 30 January 2027. Changes cover proportionality, Pillar 1 calibration, macroprudential tools, sustainability risks and reporting."
+ },
+ {
+  "term": "SCR / MCR",
+  "category": "Regulation",
+  "definition": "Solvency capital requirement and minimum capital requirement under Solvency II."
+ },
+ {
+  "term": "ORSA",
+  "category": "Regulation",
+  "definition": "Own risk and solvency assessment: the insurer's own view of its risks and capital needs."
+ },
+ {
+  "term": "QRT / SFCR / RSR",
+  "category": "Regulation",
+  "definition": "Solvency II reporting: quantitative reporting templates, the public solvency and financial condition report, and the regular supervisory report."
+ },
+ {
+  "term": "IFRS 17",
+  "category": "Regulation",
+  "definition": "The accounting standard for insurance contracts, effective from January 2023."
+ },
+ {
+  "term": "IDD",
+  "category": "Regulation",
+  "definition": "EU Insurance Distribution Directive: rules on how insurance is sold, including demands and needs, product oversight and governance, and conflicts of interest."
+ },
+ {
+  "term": "Product oversight and governance (POG)",
+  "category": "Regulation",
+  "definition": "IDD rules requiring insurers to design, approve and review products for a defined target market."
+ },
+ {
+  "term": "DORA",
+  "category": "Regulation",
+  "definition": "EU Digital Operational Resilience Act, applying since 17 January 2025. Covers ICT risk management, incident reporting, resilience testing and ICT third-party risk for insurers and other financial entities."
+ },
+ {
+  "term": "Register of information",
+  "category": "Regulation",
+  "definition": "The DORA register of all ICT third-party arrangements that each financial entity must keep and report."
+ },
+ {
+  "term": "DORA Article 30",
+  "category": "Regulation",
+  "definition": "The DORA article listing the key contract terms required for ICT services, such as service descriptions, locations, audit rights and exit."
+ },
+ {
+  "term": "Critical or important function (CIF)",
+  "category": "Regulation",
+  "definition": "A function whose disruption would materially impair the insurer's performance, compliance or continuity. Used by DORA and by Solvency II outsourcing rules."
+ },
+ {
+  "term": "Outsourcing of critical functions",
+  "category": "Regulation",
+  "definition": "Under Solvency II, outsourcing a critical or important function needs prior notification to the supervisor and stronger contract terms and oversight."
+ },
+ {
+  "term": "EU AI Act",
+  "category": "Regulation",
+  "definition": "EU regulation on artificial intelligence. AI used for risk assessment and pricing in life and health insurance is high-risk. A provisional agreement in 2026 moved stand-alone high-risk obligations to 2 December 2027 (to confirm)."
+ }
+]

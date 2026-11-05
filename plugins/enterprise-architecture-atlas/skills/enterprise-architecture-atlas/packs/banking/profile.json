@@ -1,0 +1,146 @@
+{
+ "id": "banking",
+ "name": "Banking",
+ "org_noun": "bank",
+ "value_stream_label": "Value stream",
+ "capability_standard": {
+  "name": "BIAN service domains",
+  "short": "BIAN",
+  "ref_label": "BIAN service domain",
+  "note": "Capability names are the pack's own wording; the BIAN service domain name is recorded as a reference. Check the BIAN licence terms before republishing BIAN content."
+ },
+ "process_framework": "APQC PCF (banking)",
+ "process_tiers": {
+  "Operate": "Customer value streams and the processes that serve customers directly",
+  "Manage": "Processes that direct and control the bank",
+  "Support": "Processes that keep the bank running"
+ },
+ "criticality": {
+  "label": "Critical or important function",
+  "short": "Critical function",
+  "plural": "critical or important functions",
+  "abbr": "CIF",
+  "help": "A function whose disruption would materially impair the bank's performance, its regulatory compliance or the continuity of its services (DORA; EBA outsourcing guidelines)",
+  "regime": "DORA",
+  "flag_kind": "DORA",
+  "change_flag": "Changes {n} application{s} supporting critical or important functions: follow ICT change management, assess the risk before release and update the register of information if suppliers change."
+ },
+ "third_party": {
+  "material_label": "Material outsourcing",
+  "material_abbr": "MO",
+  "terms_label": "DORA Art. 30 terms",
+  "terms_values": [
+   "Yes",
+   "Remediation in progress",
+   "Gap",
+   "N/A"
+  ],
+  "register": "outsourcing register and DORA register of information",
+  "guidance": "EBA outsourcing guidelines and DORA",
+  "view_sub": "Material outsourcing and ICT third parties supporting critical or important functions (EBA outsourcing guidelines, DORA): exit plans, contract terms and concentration."
+ },
+ "resilience": {
+  "regime": "DORA",
+  "note": "Recovery targets and DR test history are illustrative until replaced with real data."
+ },
+ "layers": [
+  [
+   "Channels",
+   [
+    "Digital channel",
+    "Branch",
+    "Contact centre",
+    "Self-service",
+    "Web content",
+    "Intermediary"
+   ]
+  ],
+  [
+   "Customer & sales",
+   [
+    "CRM",
+    "Marketing",
+    "Onboarding",
+    "Product"
+   ]
+  ],
+  [
+   "Lending & core",
+   [
+    "Core banking",
+    "SME banking",
+    "Lending origination",
+    "Lending servicing",
+    "Lending",
+    "Collateral",
+    "Collections",
+    "Credit decisioning",
+    "Insurance (partner-hosted)",
+    "Insurance (partner)"
+   ]
+  ],
+  [
+   "Payments & cards",
+   [
+    "Payments",
+    "Cards"
+   ]
+  ],
+  [
+   "Risk & compliance",
+   [
+    "Financial crime",
+    "Risk analytics",
+    "Risk",
+    "Case management",
+    "Regulatory"
+   ]
+  ],
+  [
+   "Finance & data",
+   [
+    "Finance",
+    "Treasury",
+    "Data",
+    "Content"
+   ]
+  ],
+  [
+   "Platform",
+   [
+    "Integration",
+    "Infrastructure",
+    "Security",
+    "IT management",
+    "HR",
+    "Workplace",
+    "Procurement"
+   ]
+  ]
+ ],
+ "taxonomy_examples": {
+  "value_stream": "Home ownership",
+  "journey": "Originate a mortgage",
+  "step": "Affordability and credit decision",
+  "process_group": "Manage risk and compliance",
+  "process": "Regulatory reporting",
+  "cap_l1": "Mortgages",
+  "cap_l2": "Mortgage Arrears Resolution",
+  "cap_l3": "Arrears case management",
+  "epic": "Payments modernisation",
+  "feature": "Verification of Payee for business channels",
+  "role": "Mortgage underwriter",
+  "app": "Core banking (retail)",
+  "platform": "Container platform",
+  "interface": "Payments hub to SEPA clearing (ISO 20022)",
+  "data_domain": "Mortgage loan",
+  "dc": "Primary data centre",
+  "supplier": "Card processor",
+  "pillar": "Home ownership",
+  "initiative": "Digital mortgage journey",
+  "scenario": "Loss of the primary data centre",
+  "requirement": "Verification of Payee for all credit transfers",
+  "decision": "Retail core banking platform",
+  "commitment": "Headquarters stay local"
+ }
+}

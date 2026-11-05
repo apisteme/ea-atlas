@@ -1,0 +1,7 @@
+__pycache__/
+node_modules/
+*.pyc
+/ea-atlas/
+/ea-atlas-example/
+dist/
+.DS_Store

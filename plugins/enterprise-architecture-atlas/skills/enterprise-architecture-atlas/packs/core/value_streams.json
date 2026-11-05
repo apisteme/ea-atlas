@@ -1,0 +1,256 @@
+{
+ "customer_value_streams": [
+  {
+   "id": "CVS1",
+   "name": "Become a customer",
+   "scope": "Choosing, buying and starting to use the product or service",
+   "owner": "R23",
+   "source": "Core pack template"
+  },
+  {
+   "id": "CVS2",
+   "name": "Get the service I need",
+   "scope": "Using the service, changing it and getting problems fixed",
+   "owner": "R21",
+   "source": "Core pack template"
+  },
+  {
+   "id": "CVS0",
+   "name": "Cross-cutting journeys",
+   "scope": "Journeys that serve every value stream, such as complaints",
+   "owner": "R24",
+   "source": "Core pack template",
+   "cross_cutting": true
+  }
+ ],
+ "journeys": [
+  {
+   "id": "VS01",
+   "name": "Order and onboard",
+   "parent": "CVS1",
+   "owner": "R23",
+   "trigger": "Customer decides to buy",
+   "outcome": "Customer set up, product delivered and first invoice issued",
+   "source": "Core pack template",
+   "steps": [
+    {
+     "name": "Enquire and quote",
+     "capabilities": [
+      "C04.04",
+      "C04.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R05"
+     ],
+     "A": "R23",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Place order",
+     "capabilities": [
+      "C05.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R23",
+     "C": [
+      "R05"
+     ],
+     "I": []
+    },
+    {
+     "name": "Set up customer and account",
+     "capabilities": [
+      "C02.01",
+      "C06.01"
+     ],
+     "apps": [],
+     "R": [
+      "R06"
+     ],
+     "A": "R21",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Deliver",
+     "capabilities": [
+      "C05.03"
+     ],
+     "apps": [],
+     "R": [
+      "R08"
+     ],
+     "A": "R21",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Bill and collect",
+     "capabilities": [
+      "C06.01",
+      "C06.02"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R22",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS02",
+   "name": "Handle a service request",
+   "parent": "CVS2",
+   "owner": "R21",
+   "trigger": "Customer asks for help or a change",
+   "outcome": "Request resolved and customer informed",
+   "source": "Core pack template",
+   "steps": [
+    {
+     "name": "Raise request",
+     "capabilities": [
+      "C04.01",
+      "C04.02"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R04"
+     ],
+     "A": "R24",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Assess and assign",
+     "capabilities": [
+      "C05.02",
+      "C05.04"
+     ],
+     "apps": [],
+     "R": [
+      "R06"
+     ],
+     "A": "R21",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Resolve",
+     "capabilities": [
+      "C05.02",
+      "C05.03"
+     ],
+     "apps": [],
+     "R": [
+      "R06",
+      "R08"
+     ],
+     "A": "R21",
+     "C": [
+      "R07"
+     ],
+     "I": []
+    },
+    {
+     "name": "Confirm and close",
+     "capabilities": [
+      "C02.01",
+      "C05.02"
+     ],
+     "apps": [],
+     "R": [
+      "R04"
+     ],
+     "A": "R24",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS03",
+   "name": "Resolve a complaint",
+   "parent": "CVS0",
+   "owner": "R24",
+   "trigger": "Customer complains",
+   "outcome": "Complaint resolved and root cause recorded",
+   "source": "Core pack template",
+   "steps": [
+    {
+     "name": "Log complaint",
+     "capabilities": [
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R04",
+      "R01"
+     ],
+     "A": "R14",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Investigate",
+     "capabilities": [
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R14"
+     ],
+     "A": "R24",
+     "C": [
+      "R15"
+     ],
+     "I": []
+    },
+    {
+     "name": "Respond and put right",
+     "capabilities": [
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R14"
+     ],
+     "A": "R24",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Learn and report",
+     "capabilities": [
+      "C07.03",
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R15"
+     ],
+     "A": "R16",
+     "C": [],
+     "I": []
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,640 @@
+[
+ {
+  "id": "P1",
+  "name": "Be insured",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R27",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P1.1",
+  "name": "New business and contracting",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R27",
+  "roles": [
+   "R06",
+   "R07",
+   "R08",
+   "R36"
+  ],
+  "capabilities": [
+   "C04.02",
+   "C05.01",
+   "C02.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS01"
+  ],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P1.2",
+  "name": "Policy servicing and changes",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R28",
+  "roles": [
+   "R12",
+   "R37"
+  ],
+  "capabilities": [
+   "C05.02",
+   "C05.05"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS03"
+  ],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P1.3",
+  "name": "Renewals and retention",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R28",
+  "roles": [
+   "R12",
+   "R17"
+  ],
+  "capabilities": [
+   "C05.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS04"
+  ],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P1.4",
+  "name": "Premium billing and collection",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R29",
+  "roles": [
+   "R14",
+   "R15"
+  ],
+  "capabilities": [
+   "C07.01",
+   "C07.02",
+   "C07.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P2",
+  "name": "Settle claims",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R32",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P2.1",
+  "name": "Claims handling",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "roles": [
+   "R10",
+   "R11",
+   "R37"
+  ],
+  "capabilities": [
+   "C06.01",
+   "C06.02",
+   "C06.03",
+   "C06.04"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS02"
+  ],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P2.2",
+  "name": "Legal aid claims",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "roles": [
+   "R09"
+  ],
+  "capabilities": [
+   "C06.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P2.3",
+  "name": "Counter-fraud",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "roles": [
+   "R20",
+   "R46"
+  ],
+  "capabilities": [
+   "C08.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P3",
+  "name": "Serve customers and intermediaries",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R27",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P3.1",
+  "name": "Customer contact and service",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "roles": [
+   "R05",
+   "R54"
+  ],
+  "capabilities": [
+   "C02.02",
+   "C01.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P3.2",
+  "name": "Intermediary management and commission",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "roles": [
+   "R06"
+  ],
+  "capabilities": [
+   "C02.03",
+   "C07.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P3.3",
+  "name": "Complaints",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "roles": [
+   "R21"
+  ],
+  "capabilities": [
+   "C08.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS05"
+  ],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P4",
+  "name": "Manage products and pricing",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R16",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P4.1",
+  "name": "Product development and governance",
+  "category": "Manage",
+  "parent": "P4",
+  "owner": "R16",
+  "roles": [
+   "R22"
+  ],
+  "capabilities": [
+   "C03.01",
+   "C03.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P4.2",
+  "name": "Pricing and rating",
+  "category": "Manage",
+  "parent": "P4",
+  "owner": "R16",
+  "roles": [
+   "R17",
+   "R18"
+  ],
+  "capabilities": [
+   "C03.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5",
+  "name": "Manage risk, capital and compliance",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R31",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5.1",
+  "name": "Reserving and capital",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "roles": [
+   "R18"
+  ],
+  "capabilities": [
+   "C09.01",
+   "C09.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5.2",
+  "name": "Reinsurance",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "roles": [
+   "R19"
+  ],
+  "capabilities": [
+   "C09.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5.3",
+  "name": "Prudential reporting",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "roles": [
+   "R18",
+   "R47"
+  ],
+  "capabilities": [
+   "C10.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5.4",
+  "name": "Operational risk and resilience",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R31",
+  "roles": [
+   "R23",
+   "R45"
+  ],
+  "capabilities": [
+   "C08.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P5.5",
+  "name": "Compliance and data protection",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R31",
+  "roles": [
+   "R22",
+   "R24"
+  ],
+  "capabilities": [
+   "C08.05",
+   "C08.06"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P6",
+  "name": "Manage finance",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R29",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P6.1",
+  "name": "Record to report",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "roles": [
+   "R14"
+  ],
+  "capabilities": [
+   "C10.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P6.2",
+  "name": "Investment management",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "roles": [],
+  "capabilities": [
+   "C10.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P6.3",
+  "name": "Plan, budget and forecast",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "roles": [],
+  "capabilities": [
+   "C10.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P6.4",
+  "name": "Procurement and third-party risk",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "roles": [
+   "R49",
+   "R48"
+  ],
+  "capabilities": [
+   "C10.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P7",
+  "name": "Support people and workplace",
+  "category": "Support",
+  "parent": "",
+  "owner": "R25",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P7.1",
+  "name": "Hire to retire",
+  "category": "Support",
+  "parent": "P7",
+  "owner": "R25",
+  "roles": [],
+  "capabilities": [
+   "C11.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P7.2",
+  "name": "Workplace and collaboration",
+  "category": "Support",
+  "parent": "P7",
+  "owner": "R30",
+  "roles": [
+   "R43"
+  ],
+  "capabilities": [
+   "C11.08"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8",
+  "name": "Support technology and data",
+  "category": "Support",
+  "parent": "",
+  "owner": "R30",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.1",
+  "name": "IT service management",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "roles": [
+   "R43",
+   "R44",
+   "R37"
+  ],
+  "capabilities": [
+   "C11.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.2",
+  "name": "Identity and security operations",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "roles": [
+   "R41",
+   "R42"
+  ],
+  "capabilities": [
+   "C11.03",
+   "C11.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.3",
+  "name": "Data management and analytics",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "roles": [
+   "R46",
+   "R47"
+  ],
+  "capabilities": [
+   "C11.05",
+   "C11.10"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.4",
+  "name": "Integration and infrastructure",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R53",
+  "roles": [
+   "R38",
+   "R39",
+   "R40"
+  ],
+  "capabilities": [
+   "C11.07",
+   "C11.09"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.5",
+  "name": "Document processing",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R28",
+  "roles": [
+   "R13"
+  ],
+  "capabilities": [
+   "C11.06"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.6",
+  "name": "Architecture governance",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R34",
+  "roles": [
+   "R35",
+   "R36"
+  ],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.7",
+  "name": "Software delivery",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "roles": [
+   "R50",
+   "R51",
+   "R52",
+   "R44"
+  ],
+  "capabilities": [
+   "C11.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "P8.8",
+  "name": "IT resilience and disaster recovery",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R53",
+  "roles": [
+   "R45",
+   "R38",
+   "R39"
+  ],
+  "capabilities": [
+   "C08.04",
+   "C11.09"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Insurance pack template"
+ }
+]

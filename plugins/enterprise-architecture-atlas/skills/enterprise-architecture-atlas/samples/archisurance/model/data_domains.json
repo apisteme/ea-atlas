@@ -1,0 +1,125 @@
+[
+ {
+  "id": "D01",
+  "name": "Customer File",
+  "sor": "A05",
+  "consumers": [
+   "A03",
+   "A08",
+   "A02",
+   "A09",
+   "A01",
+   "A19"
+  ],
+  "steward": "R47",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "D02",
+  "name": "Insurance Policy",
+  "sor": "A06",
+  "consumers": [
+   "A04",
+   "A09",
+   "A01",
+   "A17",
+   "A19",
+   "A13"
+  ],
+  "steward": "R47",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "D03",
+  "name": "Damage Claim",
+  "sor": "A07",
+  "consumers": [
+   "A13",
+   "A09",
+   "A19",
+   "A18"
+  ],
+  "steward": "R47",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "D04",
+  "name": "Insurance Request",
+  "sor": "A08",
+  "consumers": [
+   "A14",
+   "A04",
+   "A15"
+  ],
+  "steward": "R47",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "D05",
+  "name": "Car Policy (legacy)",
+  "sor": "A11",
+  "consumers": [
+   "A09",
+   "A19"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ },
+ {
+  "id": "D06",
+  "name": "Legal Case",
+  "sor": "A12",
+  "consumers": [
+   "A09",
+   "A19"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ },
+ {
+  "id": "D07",
+  "name": "Premium and Payment",
+  "sor": "A09",
+  "consumers": [
+   "A10",
+   "A19",
+   "A21"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ },
+ {
+  "id": "D08",
+  "name": "Documents and Records",
+  "sor": "A16",
+  "consumers": [
+   "A07",
+   "A04",
+   "A13"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ },
+ {
+  "id": "D09",
+  "name": "Reinsurance Treaty",
+  "sor": "A22",
+  "consumers": [
+   "A20",
+   "A21"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ },
+ {
+  "id": "D10",
+  "name": "Employee and Workforce",
+  "sor": "A24",
+  "consumers": [
+   "A26",
+   "A25"
+  ],
+  "steward": "R47",
+  "source": "Illustrative"
+ }
+]

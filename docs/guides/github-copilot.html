@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GitHub Copilot setup, EA Atlas</title><meta name="description" content="How to install and use EA Atlas with GitHub Copilot.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script>try{var t=localStorage.getItem('ea-atlas-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head><body>
+<header class="top"><div class="wrap"><a class="mark" href="../index.html"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="11" height="7" rx="1.5" fill="var(--invest)"/><rect x="14" y="1" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="1" y="10" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="14" y="10" width="11" height="7" rx="1.5" fill="var(--migrate)"/><rect x="1" y="19" width="11" height="6" rx="1.5" fill="var(--invest)"/><rect x="14.5" y="19.5" width="10" height="5" rx="1.5" fill="none" stroke="var(--ink-2)" stroke-dasharray="2 1.5"/></svg>EA Atlas</a><nav aria-label="Main"><a href="../index.html">Home</a><a href="../examples/index.html">Examples</a><a href="../index.html#kits">Get the kit</a><a href="../guides/claude.html" aria-current="page">Guides</a><a href="https://github.com/apisteme/ea-atlas">GitHub</a></nav></div></header>
+<main><div class="wrap page"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for GitHub Copilot</h1>
+<div class="actions" style="margin:0 0 8px"><a class="btn small" href="claude.html">Claude</a><a class="btn small" href="copilot-studio.html">Microsoft Copilot Studio</a><a class="btn small" href="github-copilot.html" aria-current=page>GitHub Copilot</a></div>
+<div class="callout"><p><a href="../downloads/enterprise-architecture-atlas-github-copilot.zip" download><b>Download enterprise-architecture-atlas-github-copilot.zip</b></a> (279 KB)</p></div>
+<div class="prose">
+<p>The atlas skill for GitHub Copilot in VS Code (agent mode) and the Copilot CLI. Copilot reads the skill, writes the model files and runs the build scripts in your terminal. The atlas lives in your own Git repository, so every release is a commit.</p>
+<h2>Install</h2>
+<ol>
+<li>Create or open the repository that will hold your atlas. Use a <strong>private</strong> repository if the atlas will hold anything confidential.</li>
+<li>Download <code>enterprise-architecture-atlas-github-copilot.zip</code> and unzip it at the root of the repository. You get:</li>
+</ol>
+<p><code>.github/skills/enterprise-architecture-atlas/   the skill (instructions, engine, packs, ArchiSurance sample)
+   .github/prompts/atlas-*.prompt.md               ready-made prompts
+   .github/instructions/ea-atlas.instructions.md   rules Copilot applies to files under ea-atlas/
+   EA-ATLAS.md                                     this guide</code></p>
+<p>If you already have a <code>.github</code> folder, the files merge into it; nothing of yours is replaced.
+3. Make sure Python 3 is installed (<code>python3 --version</code>). Nothing else is required. If Node.js or the Python package openpyxl are installed, they are used: Node gives the same results faster, openpyxl gives the Excel its full formatting.
+4. Open the repository in VS Code, open Copilot Chat and choose <strong>Agent</strong> mode. Skills need a recent VS Code and Copilot Chat extension.</p>
+<h2>Use</h2>
+<p>Type <code>/</code> in the chat to see the prompts:</p>
+<table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/atlas-example</code></td>
+<td>Builds the ArchiSurance example so you can see every dashboard view</td>
+</tr>
+<tr>
+<td><code>/atlas-build</code></td>
+<td>Starts a new atlas for your organisation: chooses the industry pack, plans, then builds <code>ea-atlas/</code></td>
+</tr>
+<tr>
+<td><code>/atlas-refresh</code></td>
+<td>Reads new files in <code>ea-atlas/inbox/</code> and links in <code>ea-atlas/sources/links.md</code>, shows the change set, releases a new version</td>
+</tr>
+<tr>
+<td><code>/atlas-what-if</code></td>
+<td>Runs the impact engine on a scenario or change, without changing the model</td>
+</tr>
+</tbody>
+</table>
+<p>You can also ask in your own words, for example "Import our Archi model from inbox/archimate and build the atlas", or type <code>/enterprise-architecture-atlas</code>.</p>
+<p>Copilot asks before running terminal commands unless you have allowed them. The scripts only read and write inside the repository and never use the network.</p>
+<h2>What you get</h2>
+<ul>
+<li><code>ea-atlas/output/&lt;Org&gt;_EA_Dashboard.html</code>: the dashboard. Open it in any browser; it works offline.</li>
+<li><code>ea-atlas/output/&lt;Org&gt;_EA_Repository.xlsx</code>: the Excel repository.</li>
+<li><code>ea-atlas/model/</code>: the model, one JSON file per element type. This is what you commit and review in pull requests.</li>
+<li><code>ea-atlas/changelog.md</code> and <code>output/archive/v&lt;version&gt;/</code>: release notes and the files of every release.</li>
+</ul>
+<p>To share the dashboard, publish <code>ea-atlas/output/</code> on an internal site, or with GitHub Pages from a private repository if your plan allows it.</p>
+<h2>Without Copilot</h2>
+<p>Everything also runs by hand:</p>
+<pre><code class="language-bash">cp -r .github/skills/enterprise-architecture-atlas/samples/archisurance ea-atlas-example
+python3 .github/skills/enterprise-architecture-atlas/engine/build.py --workspace ea-atlas-example
+</code></pre></div></div></main>
+<footer><div class="wrap"><div>
+<p>EA Atlas is open source under the MIT licence. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
+<p><a href="https://github.com/apisteme/ea-atlas">Source on GitHub</a>, <a href="https://github.com/apisteme/ea-atlas/blob/main/NOTICE.md">notices</a>, <a href="https://github.com/apisteme/ea-atlas/issues">report a problem</a>.</p>
+</div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div></div></footer>
+<script>document.getElementById('theme').onclick=function(){var r=document.documentElement,d=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=d==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('ea-atlas-theme',n)}catch(e){}};</script>
+</body></html>

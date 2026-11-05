@@ -1,0 +1,251 @@
+[
+ {
+  "id": "DORA",
+  "name": "Digital Operational Resilience Act (DORA)",
+  "short": "DORA",
+  "status": "Applies since 17 January 2025.",
+  "dates": {
+   "application": "2025-01-17",
+   "remediation": "2027-03-31"
+  },
+  "date_labels": {
+   "application": "DORA applies",
+   "remediation": "Remediation target (internal, set per organisation)"
+  },
+  "main_date": "remediation",
+  "date_note": "DORA already applies. Readiness is measured against an internal remediation target; set it to the date agreed with the board or supervisor.",
+  "articles_note": "Article references are indicative; confirm against the supervisor's guidance.",
+  "sources": [
+   {
+    "title": "Regulation (EU) 2022/2554 (EUR-Lex)",
+    "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "DORA-01",
+    "area": "ICT risk management",
+    "short": "ICT risk management framework",
+    "summary": "Maintain an ICT risk management framework covering identification, protection, detection, response and recovery, approved by the management body.",
+    "articles": "Art. 5 to 16",
+    "caps": [
+     "C08.04",
+     "C11.04"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-02",
+    "area": "Incident reporting",
+    "short": "Classify and report major ICT incidents",
+    "summary": "Classify ICT incidents and report major ones to the supervisor within the set deadlines.",
+    "articles": "Art. 17 to 23",
+    "caps": [
+     "C08.04",
+     "C11.02"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-03",
+    "area": "Resilience testing",
+    "short": "Digital operational resilience testing",
+    "summary": "Run a risk-based testing programme, including threat-led penetration testing where required.",
+    "articles": "Art. 24 to 27",
+    "caps": [
+     "C08.04",
+     "C11.04"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-04",
+    "area": "Third-party risk",
+    "short": "Register of information and contract terms",
+    "summary": "Keep a register of all ICT third-party arrangements and make sure contracts supporting critical functions carry the Article 30 terms, including exit plans.",
+    "articles": "Art. 28 to 30",
+    "caps": [
+     "C10.05"
+    ],
+    "size": "L",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-05",
+    "area": "Business continuity",
+    "short": "ICT business continuity and recovery",
+    "summary": "ICT business continuity policy and response and recovery plans, tested regularly, with recovery time objectives for critical functions.",
+    "articles": "Art. 11 and 12",
+    "caps": [
+     "C08.04",
+     "C11.09"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   }
+  ]
+ },
+ {
+  "id": "SII-REV",
+  "name": "Solvency II review (Directive (EU) 2025/2)",
+  "short": "Solvency II review",
+  "status": "Published in the Official Journal on 8 January 2025; applies at the latest from 30 January 2027.",
+  "dates": {
+   "application": "2027-01-30"
+  },
+  "date_labels": {
+   "application": "Solvency II review applies"
+  },
+  "main_date": "application",
+  "date_note": "Delegated regulation and technical standards set the detail; check the final texts.",
+  "articles_note": "Summaries are EA paraphrase; confirm the applicable articles with compliance.",
+  "sources": [
+   {
+    "title": "Deloitte: Solvency II amendments guide",
+    "url": "https://www.deloitte.com/lu/en/Industries/insurance/research/solvencyii-amendments-guide.html"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "SII-01",
+    "area": "Pillar 1",
+    "short": "Recalibrated capital and risk margin",
+    "summary": "Apply changes to the risk margin, risk-free rate extrapolation and long-term guarantee measures in capital calculations.",
+    "articles": "",
+    "caps": [
+     "C09.02"
+    ],
+    "size": "L",
+    "deadline": "application",
+    "kind": "Change"
+   },
+   {
+    "id": "SII-02",
+    "area": "Pillar 2",
+    "short": "Climate and sustainability risk in the ORSA",
+    "summary": "Assess material climate change risks in the ORSA, with long-term climate scenarios where material.",
+    "articles": "",
+    "caps": [
+     "C09.02",
+     "C10.06"
+    ],
+    "size": "M",
+    "deadline": "application",
+    "kind": "New capability"
+   },
+   {
+    "id": "SII-03",
+    "area": "Pillar 2",
+    "short": "Macroprudential and liquidity risk management",
+    "summary": "Liquidity risk management plans and macroprudential considerations in investment and risk management.",
+    "articles": "",
+    "caps": [
+     "C10.03",
+     "C09.02"
+    ],
+    "size": "M",
+    "deadline": "application",
+    "kind": "Change"
+   },
+   {
+    "id": "SII-04",
+    "area": "Pillar 3",
+    "short": "Revised reporting and SFCR",
+    "summary": "Adapt quantitative reporting templates and split the SFCR into a policyholder part and a market part.",
+    "articles": "",
+    "caps": [
+     "C10.02",
+     "C11.05"
+    ],
+    "size": "M",
+    "deadline": "application",
+    "kind": "Change"
+   },
+   {
+    "id": "SII-05",
+    "area": "Proportionality",
+    "short": "Small and non-complex undertaking criteria",
+    "summary": "Assess whether the insurer qualifies for proportionality measures and adapt processes if so.",
+    "articles": "",
+    "caps": [
+     "C08.05"
+    ],
+    "size": "S",
+    "deadline": "application",
+    "kind": "Change"
+   }
+  ]
+ },
+ {
+  "id": "AIACT",
+  "name": "EU Artificial Intelligence Act",
+  "short": "EU AI Act",
+  "status": "In force since August 2024. Stand-alone high-risk obligations moved to 2 December 2027 under the 2026 provisional agreement (to confirm).",
+  "dates": {
+   "high_risk": "2027-12-02"
+  },
+  "date_labels": {
+   "high_risk": "High-risk obligations apply (to confirm)"
+  },
+  "main_date": "high_risk",
+  "date_note": "Dates follow the 2026 digital omnibus agreement; confirm the final adopted text.",
+  "articles_note": "AI used for risk assessment and pricing in life and health insurance is listed as high-risk.",
+  "sources": [
+   {
+    "title": "Sidley: provisional agreement to delay key EU AI Act obligations",
+    "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "AI-01",
+    "area": "Governance",
+    "short": "AI system inventory and risk classification",
+    "summary": "Keep an inventory of AI systems and classify each by risk category.",
+    "articles": "",
+    "caps": [
+     "C11.10"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "New capability"
+   },
+   {
+    "id": "AI-02",
+    "area": "High-risk systems",
+    "short": "Risk management and human oversight for high-risk AI",
+    "summary": "For high-risk uses such as life and health pricing, run risk management, data governance, logging and human oversight.",
+    "articles": "",
+    "caps": [
+     "C11.10",
+     "C03.02"
+    ],
+    "size": "M",
+    "deadline": "high_risk",
+    "kind": "Change"
+   },
+   {
+    "id": "AI-03",
+    "area": "Transparency",
+    "short": "Transparency for customer-facing AI",
+    "summary": "Tell customers when they interact with an AI system such as a chatbot.",
+    "articles": "",
+    "caps": [
+     "C02.02",
+     "C02.01"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "Change"
+   }
+  ]
+ }
+]

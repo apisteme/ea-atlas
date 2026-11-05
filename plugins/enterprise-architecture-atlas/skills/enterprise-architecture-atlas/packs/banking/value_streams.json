@@ -1,0 +1,1256 @@
+{
+ "customer_value_streams": [
+  {
+   "id": "CVS1",
+   "name": "Home ownership",
+   "scope": "Mortgages, home insurance and protection, arrears support",
+   "owner": "R32",
+   "source": "Banking pack template"
+  },
+  {
+   "id": "CVS2",
+   "name": "Everyday banking and payments",
+   "scope": "Current accounts, savings, cards, personal lending and payments",
+   "owner": "R31",
+   "source": "Banking pack template"
+  },
+  {
+   "id": "CVS3",
+   "name": "Business banking",
+   "scope": "Small and medium enterprises: accounts, lending and asset finance",
+   "owner": "R33",
+   "source": "Banking pack template"
+  },
+  {
+   "id": "CVS0",
+   "name": "Cross-cutting journeys",
+   "scope": "Journeys that serve every value stream, such as complaints and fraud",
+   "owner": "R36",
+   "source": "Banking pack template",
+   "cross_cutting": true
+  }
+ ],
+ "journeys": [
+  {
+   "id": "VS01",
+   "name": "Open Current Account (Personal)",
+   "parent": "CVS2",
+   "owner": "R31",
+   "trigger": "Customer applies via App or branch",
+   "outcome": "Active account with debit card and digital access",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Apply via App or branch",
+     "capabilities": [
+      "C02.01",
+      "C02.03"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R02"
+     ],
+     "A": "R31",
+     "C": [
+      "R22"
+     ],
+     "I": [
+      "R23"
+     ]
+    },
+    {
+     "name": "Verify identity, KYC & screening",
+     "capabilities": [
+      "C01.02",
+      "C10.05"
+     ],
+     "apps": [],
+     "R": [
+      "R02"
+     ],
+     "A": "R24",
+     "C": [
+      "R15"
+     ],
+     "I": [
+      "R31"
+     ]
+    },
+    {
+     "name": "Overdraft eligibility check",
+     "capabilities": [
+      "C10.01",
+      "C06.02"
+     ],
+     "apps": [],
+     "R": [
+      "R02"
+     ],
+     "A": "R12",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Create party & open account",
+     "capabilities": [
+      "C01.01",
+      "C04.01"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R31",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Issue Visa debit card & credentials",
+     "capabilities": [
+      "C06.03",
+      "C06.04"
+     ],
+     "apps": [],
+     "R": [
+      "R17"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Welcome pack & consent capture",
+     "capabilities": [
+      "C01.04",
+      "C04.04"
+     ],
+     "apps": [],
+     "R": [
+      "R23"
+     ],
+     "A": "R31",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS02",
+   "name": "Originate Mortgage (Direct & Broker)",
+   "parent": "CVS1",
+   "owner": "R32",
+   "trigger": "Customer or broker submits mortgage enquiry",
+   "outcome": "Mortgage drawn down and on servicing platform",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Enquiry & Approval in Principle",
+     "capabilities": [
+      "C05.01",
+      "C02.05",
+      "C02.07"
+     ],
+     "apps": [],
+     "R": [
+      "R05",
+      "R06"
+     ],
+     "A": "R32",
+     "C": [
+      "R07"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Full application & document capture",
+     "capabilities": [
+      "C05.01",
+      "C12.06"
+     ],
+     "apps": [],
+     "R": [
+      "R05",
+      "R09"
+     ],
+     "A": "R32",
+     "C": [
+      "R06"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Affordability & credit decision (LTI and LTV rules)",
+     "capabilities": [
+      "C10.01"
+     ],
+     "apps": [],
+     "R": [
+      "R08"
+     ],
+     "A": "R12",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R05"
+     ]
+    },
+    {
+     "name": "Property valuation & security",
+     "capabilities": [
+      "C05.02"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R32",
+     "C": [
+      "R08"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Loan offer, protection & home insurance",
+     "capabilities": [
+      "C05.01",
+      "C09.03",
+      "C09.01"
+     ],
+     "apps": [],
+     "R": [
+      "R05",
+      "R19"
+     ],
+     "A": "R32",
+     "C": [
+      "R21",
+      "R20"
+     ],
+     "I": [
+      "R01",
+      "R06"
+     ]
+    },
+    {
+     "name": "Drawdown & funds release",
+     "capabilities": [
+      "C05.01",
+      "C08.01"
+     ],
+     "apps": [],
+     "R": [
+      "R09",
+      "R16"
+     ],
+     "A": "R32",
+     "C": [],
+     "I": [
+      "R01",
+      "R06"
+     ]
+    },
+    {
+     "name": "Board to servicing & commission",
+     "capabilities": [
+      "C05.03",
+      "C02.05",
+      "C09.04"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R32",
+     "C": [
+      "R25"
+     ],
+     "I": [
+      "R06"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS03",
+   "name": "Originate Personal Loan (Digital)",
+   "parent": "CVS2",
+   "owner": "R31",
+   "trigger": "Existing customer applies in the app or online banking",
+   "outcome": "Funds in customer account",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Apply in the app or online banking",
+     "capabilities": [
+      "C06.01",
+      "C02.01",
+      "C06.06"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R31",
+     "C": [
+      "R22"
+     ],
+     "I": []
+    },
+    {
+     "name": "Real-time decision & check",
+     "capabilities": [
+      "C10.01"
+     ],
+     "apps": [],
+     "R": [],
+     "A": "R12",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Accept agreement",
+     "capabilities": [
+      "C06.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R31",
+     "C": [
+      "R24"
+     ],
+     "I": []
+    },
+    {
+     "name": "Instant fund transfer",
+     "capabilities": [
+      "C06.01",
+      "C04.01"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R31",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS04",
+   "name": "Issue & Manage Card",
+   "parent": "CVS2",
+   "owner": "R35",
+   "trigger": "Card application or replacement request",
+   "outcome": "Active card; transactions authorised and settled",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Credit card application & decision",
+     "capabilities": [
+      "C06.03",
+      "C10.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R02"
+     ],
+     "A": "R35",
+     "C": [
+      "R12"
+     ],
+     "I": []
+    },
+    {
+     "name": "Card production & personalisation",
+     "capabilities": [
+      "C06.03"
+     ],
+     "apps": [],
+     "R": [
+      "R17"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Activation & wallet tokenisation",
+     "capabilities": [
+      "C06.03",
+      "C02.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": [
+      "R17"
+     ]
+    },
+    {
+     "name": "Authorisation & fraud scoring",
+     "capabilities": [
+      "C06.04",
+      "C10.03"
+     ],
+     "apps": [],
+     "R": [
+      "R17"
+     ],
+     "A": "R35",
+     "C": [
+      "R14"
+     ],
+     "I": []
+    },
+    {
+     "name": "Disputes & chargebacks",
+     "capabilities": [
+      "C06.05"
+     ],
+     "apps": [],
+     "R": [
+      "R17",
+      "R04"
+     ],
+     "A": "R35",
+     "C": [
+      "R14"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Statement & repayment",
+     "capabilities": [
+      "C04.04",
+      "C08.03"
+     ],
+     "apps": [],
+     "R": [
+      "R17"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS05",
+   "name": "Make a Payment (SEPA, Instant & Bulk)",
+   "parent": "CVS2",
+   "owner": "R35",
+   "trigger": "Customer initiates payment",
+   "outcome": "Funds credited to beneficiary; ledgers reconciled",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Initiate payment (single and bulk, incl. mobile P2P)",
+     "capabilities": [
+      "C02.01",
+      "C02.02",
+      "C02.08",
+      "C07.04",
+      "C08.02"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Bulk payments & direct debit collections",
+     "capabilities": [
+      "C08.02",
+      "C08.01"
+     ],
+     "apps": [],
+     "R": [
+      "R16"
+     ],
+     "A": "R35",
+     "C": [
+      "R10"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Strong Customer Authentication & payee check",
+     "capabilities": [
+      "C08.01",
+      "C12.03"
+     ],
+     "apps": [],
+     "R": [
+      "R01"
+     ],
+     "A": "R35",
+     "C": [
+      "R14"
+     ],
+     "I": []
+    },
+    {
+     "name": "Fraud & sanctions screening",
+     "capabilities": [
+      "C08.04",
+      "C10.03",
+      "C10.05"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R16"
+     ],
+     "A": "R34",
+     "C": [
+      "R15"
+     ],
+     "I": []
+    },
+    {
+     "name": "Route & clear (SCT / SCT Inst / SDD / SWIFT)",
+     "capabilities": [
+      "C08.01",
+      "C08.02",
+      "C08.06"
+     ],
+     "apps": [],
+     "R": [
+      "R16"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Post & reconcile",
+     "capabilities": [
+      "C04.01",
+      "C11.01"
+     ],
+     "apps": [],
+     "R": [
+      "R16",
+      "R25"
+     ],
+     "A": "R35",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Exception repair & investigations",
+     "capabilities": [
+      "C08.04"
+     ],
+     "apps": [],
+     "R": [
+      "R16"
+     ],
+     "A": "R35",
+     "C": [
+      "R04"
+     ],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS06",
+   "name": "Onboard & Lend to Business (SME)",
+   "parent": "CVS3",
+   "owner": "R33",
+   "trigger": "Business applies for account or credit",
+   "outcome": "Business funded and serviced",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Onboard business (KYB)",
+     "capabilities": [
+      "C07.01",
+      "C01.02",
+      "C10.05"
+     ],
+     "apps": [],
+     "R": [
+      "R10"
+     ],
+     "A": "R33",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Credit application",
+     "capabilities": [
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R10"
+     ],
+     "A": "R33",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Credit analysis & sanction",
+     "capabilities": [
+      "C07.02",
+      "C10.01",
+      "C10.02"
+     ],
+     "apps": [],
+     "R": [
+      "R12"
+     ],
+     "A": "R12",
+     "C": [
+      "R10"
+     ],
+     "I": [
+      "R33"
+     ]
+    },
+    {
+     "name": "Drawdown & servicing",
+     "capabilities": [
+      "C07.04",
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R09",
+      "R10"
+     ],
+     "A": "R33",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS07",
+   "name": "Arrange insurance and protection with a partner",
+   "parent": "CVS1",
+   "owner": "R38",
+   "trigger": "Insurance need identified (e.g. mortgage drawdown)",
+   "outcome": "Policy in force; commission reconciled",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Identify protection & insurance need",
+     "capabilities": [
+      "C09.01",
+      "C09.02",
+      "C01.03"
+     ],
+     "apps": [],
+     "R": [
+      "R19",
+      "R02",
+      "R05"
+     ],
+     "A": "R38",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Quote & buy home insurance (platform)",
+     "capabilities": [
+      "C09.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R19"
+     ],
+     "A": "R38",
+     "C": [
+      "R20"
+     ],
+     "I": []
+    },
+    {
+     "name": "Policy issue and documents (partner insurer)",
+     "capabilities": [
+      "C09.01"
+     ],
+     "apps": [],
+     "R": [
+      "R20"
+     ],
+     "A": "R38",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Refer life / pensions to adviser",
+     "capabilities": [
+      "C09.02",
+      "C09.03"
+     ],
+     "apps": [],
+     "R": [
+      "R19",
+      "R21"
+     ],
+     "A": "R38",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Commission reconciliation",
+     "capabilities": [
+      "C09.04",
+      "C11.01"
+     ],
+     "apps": [],
+     "R": [
+      "R25"
+     ],
+     "A": "R38",
+     "C": [],
+     "I": [
+      "R20",
+      "R21"
+     ]
+    },
+    {
+     "name": "Claims referral to insurer",
+     "capabilities": [
+      "C09.01"
+     ],
+     "apps": [],
+     "R": [
+      "R04"
+     ],
+     "A": "R38",
+     "C": [
+      "R20"
+     ],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS08",
+   "name": "Handle Complaint",
+   "parent": "CVS0",
+   "owner": "R36",
+   "trigger": "Customer expresses dissatisfaction",
+   "outcome": "Complaint resolved; root cause actioned",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Log complaint (any channel)",
+     "capabilities": [
+      "C10.08",
+      "C02.04",
+      "C02.03"
+     ],
+     "apps": [],
+     "R": [
+      "R04",
+      "R02"
+     ],
+     "A": "R36",
+     "C": [],
+     "I": [
+      "R18"
+     ]
+    },
+    {
+     "name": "Acknowledge within 5 business days (CPC)",
+     "capabilities": [
+      "C10.08",
+      "C04.04"
+     ],
+     "apps": [],
+     "R": [
+      "R18"
+     ],
+     "A": "R36",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Investigate",
+     "capabilities": [
+      "C10.08"
+     ],
+     "apps": [],
+     "R": [
+      "R18"
+     ],
+     "A": "R36",
+     "C": [
+      "R24"
+     ],
+     "I": []
+    },
+    {
+     "name": "Resolve, redress & final response",
+     "capabilities": [
+      "C10.08",
+      "C04.01"
+     ],
+     "apps": [],
+     "R": [
+      "R18"
+     ],
+     "A": "R36",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "FSPO referral & root-cause analytics",
+     "capabilities": [
+      "C10.08",
+      "C10.07"
+     ],
+     "apps": [],
+     "R": [
+      "R18",
+      "R24"
+     ],
+     "A": "R36",
+     "C": [],
+     "I": [
+      "R31"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS09",
+   "name": "Resolve Mortgage Arrears",
+   "parent": "CVS1",
+   "owner": "R37",
+   "trigger": "Missed payment / pre-arrears signal",
+   "outcome": "Sustainable arrangement or resolution",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Early arrears detection",
+     "capabilities": [
+      "C05.04",
+      "C01.05"
+     ],
+     "apps": [],
+     "R": [
+      "R13"
+     ],
+     "A": "R37",
+     "C": [
+      "R30"
+     ],
+     "I": []
+    },
+    {
+     "name": "Customer engagement",
+     "capabilities": [
+      "C05.04",
+      "C02.04"
+     ],
+     "apps": [],
+     "R": [
+      "R13",
+      "R04"
+     ],
+     "A": "R37",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Standard Financial Statement assessment",
+     "capabilities": [
+      "C05.04"
+     ],
+     "apps": [],
+     "R": [
+      "R13"
+     ],
+     "A": "R37",
+     "C": [
+      "R12"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Alternative repayment arrangement",
+     "capabilities": [
+      "C05.04",
+      "C05.03"
+     ],
+     "apps": [],
+     "R": [
+      "R13",
+      "R09"
+     ],
+     "A": "R37",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Appeals & legal",
+     "capabilities": [
+      "C05.04"
+     ],
+     "apps": [],
+     "R": [
+      "R13"
+     ],
+     "A": "R37",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "& regulatory reporting",
+     "capabilities": [
+      "C11.02"
+     ],
+     "apps": [],
+     "R": [
+      "R26"
+     ],
+     "A": "R37",
+     "C": [],
+     "I": []
+    }
+   ]
+  },
+  {
+   "id": "VS11",
+   "name": "Provide Asset Finance (Business & Personal HP)",
+   "parent": "CVS3",
+   "owner": "R33",
+   "trigger": "Customer or dealer applies for hire purchase or leasing",
+   "outcome": "Asset funded, agreement serviced to term",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Customer / dealer application",
+     "capabilities": [
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R10"
+     ],
+     "A": "R33",
+     "C": [
+      "R11"
+     ],
+     "I": []
+    },
+    {
+     "name": "Credit assessment & check",
+     "capabilities": [
+      "C10.01",
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R11"
+     ],
+     "A": "R12",
+     "C": [],
+     "I": [
+      "R10"
+     ]
+    },
+    {
+     "name": "Agreement & e-signature",
+     "capabilities": [
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R11"
+     ],
+     "A": "R33",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Payout to dealer",
+     "capabilities": [
+      "C07.03",
+      "C08.01"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R33",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Collections & asset recovery",
+     "capabilities": [
+      "C10.09",
+      "C07.03"
+     ],
+     "apps": [],
+     "R": [
+      "R13"
+     ],
+     "A": "R37",
+     "C": [
+      "R11"
+     ],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS12",
+   "name": "Run my Business Account",
+   "parent": "CVS3",
+   "owner": "R33",
+   "trigger": "Business needs access, statements or a relationship review",
+   "outcome": "Account serviced and relationship reviewed",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Business online banking access and mandates",
+     "capabilities": [
+      "C07.04",
+      "C12.03"
+     ],
+     "apps": [],
+     "R": [
+      "R10"
+     ],
+     "A": "R33",
+     "C": [
+      "R24"
+     ],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Statements, reconciliation & reporting",
+     "capabilities": [
+      "C04.04",
+      "C07.04"
+     ],
+     "apps": [],
+     "R": [
+      "R09"
+     ],
+     "A": "R33",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Relationship review",
+     "capabilities": [
+      "C07.05",
+      "C10.01"
+     ],
+     "apps": [],
+     "R": [
+      "R10"
+     ],
+     "A": "R33",
+     "C": [
+      "R12"
+     ],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS10",
+   "name": "Detect & Respond to Fraud",
+   "parent": "CVS0",
+   "owner": "R34",
+   "trigger": "Suspicious event or customer report",
+   "outcome": "Loss prevented or recovered; case closed",
+   "source": "Banking pack template",
+   "steps": [
+    {
+     "name": "Real-time risk scoring",
+     "capabilities": [
+      "C10.03"
+     ],
+     "apps": [],
+     "R": [],
+     "A": "R34",
+     "C": [
+      "R14"
+     ],
+     "I": []
+    },
+    {
+     "name": "Alert triage",
+     "capabilities": [
+      "C10.03"
+     ],
+     "apps": [],
+     "R": [
+      "R14"
+     ],
+     "A": "R34",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Customer contact & card block",
+     "capabilities": [
+      "C10.03",
+      "C06.03"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R04"
+     ],
+     "A": "R34",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Investigation & case",
+     "capabilities": [
+      "C10.03",
+      "C10.04"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R15"
+     ],
+     "A": "R34",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Suspicious transaction reporting",
+     "capabilities": [
+      "C10.04"
+     ],
+     "apps": [],
+     "R": [
+      "R15"
+     ],
+     "A": "R34",
+     "C": [
+      "R24"
+     ],
+     "I": []
+    },
+    {
+     "name": "Recovery & reimbursement",
+     "capabilities": [
+      "C10.03",
+      "C06.05"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R17"
+     ],
+     "A": "R34",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  }
+ ]
+}

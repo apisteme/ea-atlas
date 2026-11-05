@@ -1,0 +1,1519 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed left rail of views + working canvas; a right-hand detail drawer opens for any entity so every view stays one click from traceability. */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#F8FAFC; --ink:#152030; --muted:#5B6879; --line:#DCE2EA;
+  --accent:#0D6E6A; --accent-ink:#FFFFFF; --accent-soft:#DDF1EF;
+  --invest:#2D7A4E; --tolerate:#A86F12; --migrate:#3C5AA8; --eliminate:#B53A3A;
+  --ok:#2D7A4E; --warn:#A86F12; --crit:#B53A3A;
+  --c-cust:#2D7A4E; --c-pub:#3C5AA8; --c-part:#A86F12; --c-ill:#7A8595;
+  --r:#0D6E6A; --a:#152030; --c:#3C5AA8; --i:#7A8595;
+  --shadow:0 8px 30px rgba(21,32,48,.12);
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E131A; --surface:#151C26; --surface-2:#1A2230; --ink:#E5EAF1; --muted:#98A4B4; --line:#2A3443;
+  --accent:#4DBDB5; --accent-ink:#0E131A; --accent-soft:#163331;
+  --invest:#5DBB84; --tolerate:#E2A94B; --migrate:#8299E3; --eliminate:#E46F6F;
+  --ok:#5DBB84; --warn:#E2A94B; --crit:#E46F6F;
+  --c-cust:#5DBB84; --c-pub:#8299E3; --c-part:#E2A94B; --c-ill:#8C97A8;
+  --r:#4DBDB5; --a:#E5EAF1; --c:#8299E3; --i:#8C97A8;
+  --shadow:0 8px 30px rgba(0,0,0,.45); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E131A; --surface:#151C26; --surface-2:#1A2230; --ink:#E5EAF1; --muted:#98A4B4; --line:#2A3443;
+  --accent:#4DBDB5; --accent-ink:#0E131A; --accent-soft:#163331;
+  --invest:#5DBB84; --tolerate:#E2A94B; --migrate:#8299E3; --eliminate:#E46F6F;
+  --ok:#5DBB84; --warn:#E2A94B; --crit:#E46F6F;
+  --c-cust:#5DBB84; --c-pub:#8299E3; --c-part:#E2A94B; --c-ill:#8C97A8;
+  --r:#4DBDB5; --a:#E5EAF1; --c:#8299E3; --i:#8C97A8;
+  --shadow:0 8px 30px rgba(0,0,0,.45); color-scheme:dark }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100%}
+.app{transition:grid-template-columns .18s ease}
+.rail{position:relative}
+.rail-toggle{all:unset;cursor:pointer;position:absolute;top:14px;right:10px;display:flex;align-items:center;gap:4px;padding:5px 7px;border-radius:7px;color:var(--muted);font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;z-index:2}
+.rail-toggle .rt-l{display:none}
+.rail-toggle:hover .rt-l,.rail-toggle:focus-visible .rt-l{display:inline}
+.rail-toggle:hover,.rail-toggle:focus-visible{background:var(--surface-2);color:var(--ink)}
+.rail-toggle:focus-visible,.rail-mini:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rail-mini{display:none}
+.app.rail-collapsed{grid-template-columns:52px minmax(0,1fr)}
+.app.rail-collapsed .rail{padding:14px 6px;overflow:hidden}
+.app.rail-collapsed .brand,.app.rail-collapsed .nav,.app.rail-collapsed .rail-foot{display:none}
+.app.rail-collapsed .rail-toggle{position:static;justify-content:center;padding:8px 0;width:100%}
+.app.rail-collapsed .rail-toggle svg{transform:rotate(180deg)}
+.app.rail-collapsed .rail-toggle .rt-l{display:none}
+.app.rail-collapsed .rail-mini{all:unset;cursor:pointer;display:flex;flex:1;justify-content:center;align-items:flex-start;padding-top:10px;border-radius:8px;color:var(--muted);font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.12em}
+.app.rail-collapsed .rail-mini span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.app.rail-collapsed .rail-mini:hover{background:var(--surface-2);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.app{transition:none}}
+/* rail */
+.rail{background:var(--surface);border-right:1px solid var(--line);padding:20px 14px;position:sticky;top:env(safe-area-inset-top,0px);height:100vh;overflow:auto;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;flex-direction:column;gap:2px;padding:0 6px}
+.brand b{font:700 19px/1.1 var(--f-display);letter-spacing:-.01em}
+.brand span{font:500 11px/1.3 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav-group{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:12px 8px 4px}
+.nav button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:7px;color:var(--ink);font-weight:500}
+.nav button:hover{background:var(--surface-2)}
+.nav button[aria-current="true"]{background:var(--accent-soft);color:var(--accent)}
+.nav button small{font:500 11px var(--f-mono);color:var(--muted)}
+.rail-foot{margin-top:auto;font-size:11.5px;color:var(--muted);padding:0 6px;line-height:1.45}
+/* main */
+main{padding-block:22px 60px;padding-inline:28px;min-width:0}
+.top{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}
+.top h1{font:700 clamp(22px,3vw,30px)/1.1 var(--f-display);margin:0;letter-spacing:-.015em;text-wrap:balance}
+.top p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+.search{position:relative;width:min(360px,100%)}
+.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.results{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);max-height:360px;overflow:auto}
+.results button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:baseline;padding:8px 12px;width:100%;box-sizing:border-box}
+.results button:hover,.results button:focus{background:var(--surface-2)}
+.results em{font:500 10.5px var(--f-mono);color:var(--muted);font-style:normal;min-width:62px;text-transform:uppercase}
+.banner{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;color:var(--muted);font-size:12.5px;margin-bottom:18px}
+.banner b{color:var(--ink)}
+/* generic */
+.grid{display:grid;gap:16px}
+.g-kpi{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.tile-bar{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin:-6px 0 6px;font-size:12px}
+.tile-bar[hidden]{display:none}
+#kpi-grid .kpi{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#kpi-grid .kpi.dragging{opacity:.5;border:1px dashed var(--accent);pointer-events:none;transform:scale(.98)}
+body.tile-dragging,body.tile-dragging *{cursor:grabbing!important}
+.g-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.panel h2{font:600 15px/1.3 var(--f-display);margin:0 0 4px;letter-spacing:-.005em}
+.panel .sub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi label{display:block;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.kpi b{display:block;font:700 28px/1.15 var(--f-display);margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:var(--muted)}
+.kpi.warn b{color:var(--warn)} .kpi.crit b{color:var(--crit)}
+.mono{font-family:var(--f-mono);font-size:12px}
+.muted{color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:99px;font:500 11.5px/1.7 var(--f-body);white-space:nowrap;border:1px solid transparent}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.t-Invest{color:var(--invest);background:color-mix(in oklab,var(--invest) 12%,var(--surface))}
+.t-Tolerate{color:var(--tolerate);background:color-mix(in oklab,var(--tolerate) 13%,var(--surface))}
+.t-Migrate{color:var(--migrate);background:color-mix(in oklab,var(--migrate) 12%,var(--surface))}
+.t-Eliminate{color:var(--eliminate);background:color-mix(in oklab,var(--eliminate) 12%,var(--surface))}
+.s-ok{color:var(--ok);background:color-mix(in oklab,var(--ok) 12%,var(--surface))}
+.s-warn{color:var(--warn);background:color-mix(in oklab,var(--warn) 13%,var(--surface))}
+.s-crit{color:var(--crit);background:color-mix(in oklab,var(--crit) 12%,var(--surface))}
+.s-neutral{color:var(--muted);background:var(--surface-2)}
+.conf{display:inline-flex;align-items:center;gap:5px;font:500 11px var(--f-mono);white-space:nowrap}
+.conf i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.chip{all:unset;cursor:pointer;display:inline-flex;gap:6px;align-items:baseline;padding:3px 9px;border:1px solid var(--line);border-radius:7px;background:var(--surface);font-size:12.5px;line-height:1.4;max-width:100%}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip code{font:500 10.5px var(--f-mono);color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface-2);white-space:nowrap;position:sticky;top:0}
+th[data-sort]{cursor:pointer} th[data-sort]:hover{color:var(--ink)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr[data-ent]{cursor:pointer}
+tbody tr[data-ent]:hover td{background:var(--surface-2)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;align-items:center}
+.filters label{display:flex;flex-direction:column;gap:3px;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.filters select{padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:13px var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--surface);flex-wrap:wrap}
+.seg button{all:unset;cursor:pointer;padding:6px 12px;font-size:12.5px;font-weight:500;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+/* stacked bar */
+.stack{display:flex;height:14px;border-radius:5px;overflow:hidden;background:var(--surface-2)}
+.stack span{height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:-1px}
+/* attention list */
+.att{display:flex;flex-direction:column}
+.att > div{display:grid;grid-template-columns:4px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.att > div:last-child{border-bottom:0}
+.att .stripe{align-self:stretch;border-radius:2px}
+.att .what{min-width:0}
+.att .what b{font-weight:600}
+.att .what div{font-size:12px;color:var(--muted)}
+/* capability map */
+.capmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.l1{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.l1 header{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:2px 4px 6px}
+.l1 header b{font:600 13.5px/1.25 var(--f-display)}
+.l1 header code{font:500 10.5px var(--f-mono);color:var(--muted)}
+.l2{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:7px 9px;border-radius:7px;font-size:12.5px;line-height:1.3;border:1px solid transparent}
+.l2:hover{border-color:var(--ink)}
+.l3s{display:flex;flex-direction:column;gap:2px;margin:-2px 0 4px 10px;padding-left:8px;border-left:2px solid var(--line)}
+.l3{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;align-items:center;padding:3px 6px;border-radius:5px;font-size:11.5px;line-height:1.3;color:var(--ink)}
+.l3:hover,.l3:focus-visible{background:color-mix(in oklab,var(--accent) 10%,var(--surface))}
+.l3 small{font:500 10.5px var(--f-mono);color:var(--muted)}
+.l3.gap small{color:var(--crit);font-weight:600}
+.gd-hero{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.gd-h{font:600 15px/1.3 var(--f-display);margin:22px 0 10px}
+.gd-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.gd-card h4{margin:8px 0 6px;font:600 14px var(--f-display)}
+.gd-card p{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.5}
+.gd-card code,.panel dd code{font:500 11.5px var(--f-mono);background:var(--surface-2);padding:2px 6px;border-radius:5px;word-break:break-all}
+.gd-n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--surface);font:600 12px var(--f-mono);flex:none}
+.gd-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.gd-flow li{display:flex;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:relative}
+.gd-flow b{font:600 13.5px var(--f-display)}
+.gd-flow p{margin:4px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+.gd-asks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px}
+.gd-ask{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);font-size:13px;line-height:1.45}
+.gd-ask:hover,.gd-ask:focus-visible{border-color:var(--accent)}
+.gd-ask small{font:500 10.5px var(--f-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.gd-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:12px}
+.gd-dl{margin:0;display:grid;grid-template-columns:minmax(110px,max-content) 1fr;gap:8px 14px;font-size:13px;line-height:1.5}
+.gd-dl dt{font-weight:600}
+.gd-dl dd{margin:0;color:var(--muted)}
+@media (max-width:560px){.gd-dl{grid-template-columns:1fr}.gd-dl dd{margin-bottom:6px}}
+.ft-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.ft-kpis .kpi b{font-size:22px}
+.ft-kpis .kpi span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.ft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px}
+.ft-h{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:12px 0 6px}
+.ft-ul{margin:0;padding-left:18px;font-size:13px;line-height:1.6}
+.ft-flags{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ft-flag{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:13px;line-height:1.5;padding:7px 10px;border-radius:8px;background:var(--surface-2)}
+.ft-flag.crit{background:color-mix(in oklab,var(--crit) 10%,var(--surface))}
+.ft-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:4px 0;text-transform:none;letter-spacing:0;font:13px var(--f-body);color:var(--ink)}
+.ft-row > span{flex:1;min-width:140px}
+.ft-row select{font:13px var(--f-body);padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);max-width:100%}
+.ft-row select#ft-addapps,.ft-row select#ft-addcaps,.ft-row select#ft-addsteps,.ft-row select#ft-adddrivers,.ft-row select#ft-adddepends{flex:1;min-width:200px}
+.ft-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 12px}
+.ft-four{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0 12px}
+.ft-road td{vertical-align:top;min-width:86px}
+.ft-road td:first-child{min-width:200px}
+.ft-pill{all:unset;cursor:pointer;display:inline-block;margin:2px;padding:2px 7px;border-radius:6px;font:600 11px var(--f-mono);border:1px solid var(--line);background:var(--surface)}
+.ft-pill:focus-visible{outline:2px solid var(--accent)}
+.lv-low{border-left:4px solid var(--ok)} .lv-medium{border-left:4px solid var(--muted)} .lv-high{border-left:4px solid var(--warn)} .lv-critical{border-left:4px solid var(--crit)}
+.ft-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.d-low{background:var(--ok)} .d-medium{background:var(--muted)} .d-high{background:var(--warn)} .d-critical{background:var(--crit)}
+.sc-f .chips,.sc-f .ft-row,.sc-f .empty{text-transform:none;letter-spacing:0;font:13px var(--f-body);color:var(--ink)}
+.ft-row select{width:auto!important}
+.ft-row select[id^="ft-add"]:not(#ft-addch){flex:1;min-width:200px}
+@media (max-width:820px){#ft-body .sc-main{order:-1} #ft-body .sc-list{max-height:360px}}
+.linklike{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.linklike:focus-visible{outline:2px solid var(--accent)}
+.drawer-actions{display:flex;gap:8px;flex-wrap:wrap}
+.wi-menu{display:flex;flex-direction:column;gap:6px;margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.wi-menu .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.wi-opt{all:unset;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.wi-opt:hover,.wi-opt:focus-visible{border-color:var(--accent)}
+.wi-opt b{font:600 13px var(--f-body)} .wi-opt span{grid-column:2;font-size:12px;color:var(--muted)}
+.wi-opt i{grid-row:1/3;font-style:normal;font:600 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);align-self:center;min-width:64px}
+.l2 small{font:500 11px var(--f-mono);font-variant-numeric:tabular-nums;opacity:.85}
+.scale{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.scale .bar{display:flex;border-radius:4px;overflow:hidden}
+.scale .bar span{width:26px;height:10px}
+/* value stream */
+.vs-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.vs-tabs button{all:unset;cursor:pointer;padding:6px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:12.5px;font-weight:500}
+.vs-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;counter-reset:st}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;position:relative}
+.step h3{margin:0;font:600 14px/1.3 var(--f-display);display:flex;gap:9px;align-items:baseline}
+.step h3 .n{font:500 11px var(--f-mono);color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px}
+.step h3 button{all:unset;cursor:pointer} .step h3 button:hover{color:var(--accent)}
+.step .lbl{font:500 10px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.raci{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:4px;font:600 10px var(--f-mono);color:var(--surface)}
+.raci.R{background:var(--r)} .raci.A{background:var(--a)} .raci.C{background:var(--c)} .raci.I{background:var(--i)}
+.vs-head{display:flex;flex-wrap:wrap;gap:8px 24px;margin-bottom:14px;font-size:13px}
+.vs-head div span{display:block;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+/* process architecture */
+.bpa{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.bpa-col{display:flex;flex-direction:column;gap:12px}
+.bpa-col > header{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:10px;background:var(--ink);color:var(--surface)}
+.bpa-col > header b{font:700 17px var(--f-display)} .bpa-col > header span{font-size:12px;opacity:.8}
+.bpa-grp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:4px}
+.bpa-l1{all:unset;cursor:pointer;display:flex;flex-direction:column;padding:6px 8px 8px;font:600 14px/1.3 var(--f-display);border-bottom:1px solid var(--line);margin-bottom:2px}
+.bpa-l1 code,.bpa-l2 code{font:500 10.5px var(--f-mono);color:var(--muted);margin-right:8px}
+.bpa-l1 small{font:400 11.5px var(--f-body);color:var(--muted)}
+.bpa-l1:hover{color:var(--accent)}
+.bpa-l2{all:unset;cursor:pointer;display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 8px;border-radius:7px;font-size:13px}
+.bpa-l2:hover{background:var(--surface-2);color:var(--accent)}
+.bpa-meta{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bpa-meta em{font:500 11px var(--f-mono);font-style:normal;color:var(--muted)}
+.map-dot{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+/* swimlane */
+.swim{display:block;font-family:var(--f-body)}
+.swim .lane-t{font:600 12.5px var(--f-body);fill:var(--ink)} .swim .lane-s{font:500 10px var(--f-mono);fill:var(--muted);text-transform:uppercase}
+.swim .flow{fill:none;stroke:var(--muted);stroke-width:1.6}
+.swim .assoc{stroke:var(--muted);stroke-dasharray:3 3}
+.swim .task{cursor:pointer} .swim .task rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.3} .swim .task:hover rect{stroke:var(--accent);stroke-width:2}
+.swim .task-t{font:500 12px var(--f-body);fill:var(--ink)} .swim .task-n{font:600 10px var(--f-mono);fill:var(--accent)}
+.swim .part{fill:var(--surface);stroke:var(--muted);stroke-dasharray:3 2;cursor:pointer} .swim .part-t{font:500 10px var(--f-mono);fill:var(--muted);pointer-events:none}
+.swim .sys{cursor:pointer} .swim .sys rect{fill:var(--surface);stroke:color-mix(in oklab,var(--accent) 35%,var(--line))} .swim .sys:hover rect{stroke:var(--accent)}
+.swim .sys-t{font:500 11px var(--f-body);fill:var(--ink)}
+/* landscape */
+.land{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:12px}
+.land-dom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.land-dom header{display:flex;justify-content:space-between;align-items:baseline;padding:2px 4px 8px}
+.land-dom header b{font:600 13.5px var(--f-display)} .land-dom header code{font:500 11px var(--f-mono);color:var(--muted)}
+.land-apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
+.land-app{all:unset;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:2px;padding:7px 9px 7px 9px;border:1px solid;border-radius:8px;min-height:44px}
+.land-app b{font:600 12px/1.25 var(--f-body);padding-right:10px} .land-app span{font-size:10.5px;color:var(--muted);line-height:1.25}
+.land-app i{position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%}
+.land-app:hover{outline:2px solid var(--accent);outline-offset:-1px}
+/* integration map */
+.imap{display:block} .imap .ih{font:500 10.5px var(--f-mono);fill:var(--muted);letter-spacing:.08em}
+.imap .ie{fill:none;stroke-width:1.4} .imap .ie.hot{stroke-width:2.4}
+.imap .in{cursor:pointer} .imap .in rect{fill:var(--surface);stroke:var(--line)} .imap .in:hover rect{stroke:var(--accent)}
+.imap .in.focus rect{stroke:var(--accent);stroke-width:2;fill:var(--accent-soft)}
+.imap .in text{font:500 11px var(--f-body);fill:var(--ink)}
+/* resilience */
+.sites{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:stretch}
+.site{border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--surface-2)}
+.site.live{border-color:var(--ok);background:color-mix(in oklab,var(--ok) 7%,var(--surface))}
+.site.standby{border-style:dashed}
+.site-h{display:flex;flex-direction:column} .site-h b{font:700 16px var(--f-display)} .site-h span{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.site-n{font-size:12.5px;color:var(--muted)} .site-n b{color:var(--ink);font-variant-numeric:tabular-nums}
+.site-arrow{display:flex;flex-direction:column;justify-content:center;align-items:center;font:600 20px var(--f-display);color:var(--muted)}
+.site-arrow span{font:500 10px var(--f-mono);text-transform:uppercase;letter-spacing:.07em;max-width:80px;text-align:center}
+@media (max-width:860px){.sites{grid-template-columns:minmax(0,1fr)}.site-arrow{flex-direction:row;gap:8px}}
+/* taxonomy */
+.tax{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.tax-dom{display:flex;flex-direction:column;gap:6px}
+.tax-dom h3{margin:0 0 4px;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.tax-el{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2)}
+.tax-el:hover{border-color:var(--accent)}
+.tax-top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.tax-top b{font:600 13.5px var(--f-display)}
+.tax-meta{display:flex;gap:5px;align-items:baseline;white-space:nowrap}
+.tax-meta code{font:500 10px var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+.tax-meta em{font:600 12px var(--f-mono);font-style:normal;color:var(--accent);min-width:18px;text-align:right}
+.tax-def{font-size:12px;color:var(--ink);line-height:1.4} .tax-ex{font-size:11.5px;color:var(--muted)}
+.rels{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:6px 18px;font-size:12.5px}
+.rels div{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;padding:5px 0;border-bottom:1px dashed var(--line)}
+.rels b{font-weight:600} .rels span{color:var(--muted);font-style:italic}
+/* version and change log */
+.ver{all:unset;cursor:pointer;margin-top:6px;align-self:flex-start;font:500 10.5px var(--f-mono);color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 7px}
+.ver:hover{outline:1px solid var(--accent)}
+.whatsnew{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:12px;font-size:13px}
+.whatsnew > span:nth-child(2){flex:1;min-width:200px}
+.cl{display:flex;flex-direction:column}
+.cl-v{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px}
+.cl-rail{position:relative;display:flex;justify-content:center}
+.cl-rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.cl-v:first-child .cl-rail::before{top:14px}
+.cl-v:last-child .cl-rail::before{bottom:calc(100% - 14px)}
+.cl-dot{position:relative;margin-top:8px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--muted)}
+.cl-v.cur .cl-dot{border-color:var(--accent);background:var(--accent)}
+.cl-body{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:12px;min-width:0}
+.cl-v.cur .cl-body{border-color:color-mix(in oklab,var(--accent) 50%,var(--line))}
+.cl-body header{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.cl-num{font:700 13px var(--f-mono);color:var(--accent)} .cl-body header b{font:600 15px var(--f-display)}
+.cl-body p{margin:6px 0 8px;font-size:13px}
+.cl-body ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.cl-diff{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.cl-diff summary{cursor:pointer;font-size:12.5px;color:var(--muted)} .cl-diff summary:hover{color:var(--ink)}
+.cl-diff .tbl-wrap{margin-top:8px}
+/* strategy */
+.sg-theme{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:12px;background:var(--ink);color:var(--surface);margin-bottom:16px}
+.sg-theme .k,.sg-strip .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.09em;opacity:.75}
+.sg-theme b{font:700 clamp(17px,2vw,21px)/1.25 var(--f-display);text-wrap:balance}
+.sg-theme a{color:inherit;opacity:.8;font-size:12px}
+.sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.sg-pillar{display:flex;flex-direction:column;gap:8px}
+.sg-pillar header{display:flex;flex-direction:column;gap:4px;align-items:flex-start;padding:12px 14px;border-radius:10px;background:var(--accent);color:var(--accent-ink)}
+.sg-pillar.en header{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.sg-pillar header .k{font:500 10px var(--f-mono);text-transform:uppercase;letter-spacing:.09em;opacity:.8}
+.sg-pillar header b{font:700 16px/1.2 var(--f-display)}
+.sg-pillar header .chip{font-size:11.5px;color:var(--ink);background:var(--surface)}
+.si-card{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:6px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.si-card:hover{border-color:var(--accent)}
+.si-t{font:600 14px/1.3 var(--f-display)} .si-e{font-size:12.5px;line-height:1.45;color:var(--ink)}
+.si-f{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;font-size:11.5px}
+.sg-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:16px}
+.sg-strip > div:first-child{display:flex;flex-direction:column;gap:2px;min-width:0} .sg-strip b{font:600 15px/1.3 var(--f-display)} .sg-strip .k{color:var(--muted);opacity:1}
+/* scenarios */
+.sc-wrap{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;align-items:start}
+.ed-head{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;padding:14px 16px;margin-bottom:12px;border:1px solid color-mix(in oklab,var(--accent) 45%,var(--line));border-left:4px solid var(--accent);border-radius:12px;background:var(--accent-soft,var(--surface));scroll-margin-top:12px}
+.ed-head:focus{outline:none}
+.ed-head .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.ed-head.flash{animation:edflash 1.2s ease-out}
+@keyframes edflash{0%{box-shadow:0 0 0 4px color-mix(in oklab,var(--accent) 35%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.ed-head.flash{animation:none}}
+.sc-item.draft{border-style:dashed}
+.sc-list{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:4px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - 40px);overflow:auto}
+.sc-list h4{margin:4px 6px 4px;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);display:flex;justify-content:space-between}
+.sc-item{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;border:1px solid transparent}
+.sc-item:hover{background:var(--surface-2)} .sc-item.on{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 40%,transparent)}
+.sc-item-t{font:600 13px/1.3 var(--f-body)} .sc-item-m{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:currentColor!important;flex:none}
+.sc-main{min-width:0}
+.sc-head{margin-bottom:16px} .sc-head .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.sc-head-top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.sc-title{font:700 21px/1.2 var(--f-display);margin:4px 0 8px;text-wrap:balance}
+.sc-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sc-desc{margin:10px 0 0;font-size:13.5px;max-width:80ch}
+.sc-form .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.sc-f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.sc-f > span{display:block}
+.sc-f input,.sc-f select,.sc-f textarea,#sc-add{font:13.5px var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink);padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);width:100%;box-sizing:border-box}
+.sc-f textarea{resize:vertical}
+.x-mini{all:unset;cursor:pointer;font-size:10px;color:var(--muted);padding:0 2px} .x-mini:hover{color:var(--crit)}
+.sc-reqs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:2px 16px;text-transform:none;letter-spacing:0}
+.sc-req{display:flex;gap:8px;align-items:flex-start;padding:3px 0;font:13px/1.35 var(--f-body);color:var(--ink);cursor:pointer}
+.sc-req b{font:600 11px var(--f-mono);color:var(--muted)}
+.sc-tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.sc-tl div{border-left:3px solid var(--accent);padding:4px 10px;display:flex;flex-direction:column;font-size:12.5px} .sc-tl b{font-size:14px}
+.sc-vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.sc-vs h3{margin:0 0 6px;font:600 13.5px var(--f-display)}
+.sc-j{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto 34px;gap:8px;align-items:center;padding:5px 6px;border-radius:6px;font-size:12.5px;width:100%;box-sizing:border-box}
+.sc-j:hover{background:var(--surface-2)} .sc-j em{font:600 11.5px var(--f-mono);font-style:normal;text-align:right}
+.sc-steps{display:flex;gap:2px} .sc-steps i{width:9px;height:14px;border-radius:2px;background:var(--line)} .sc-steps i.h{background:var(--crit)} .sc-steps i.d{background:var(--warn)}
+.rm{table-layout:fixed} .rm th,.rm td{border:1px solid var(--line)} .rm-c{min-width:120px;height:58px;vertical-align:top} .rm-c .chip{margin:2px;font-size:11.5px}
+@media (max-width:860px){.sc-wrap{grid-template-columns:minmax(0,1fr)}.sc-list{position:static;max-height:360px}.sc-wrap .sc-main{order:-1}}
+/* clickable tiles */
+.kpi.click{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
+.kpi.click:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(21,32,48,.06)}
+.kpi.click .go{position:absolute;top:12px;right:14px;font-style:normal;color:var(--muted);transition:transform .15s}
+.kpi.click:hover .go{color:var(--accent);transform:translateX(2px)}
+.kpi.click:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.seg-click{all:unset;cursor:pointer;height:100%;display:block}
+.seg-click:hover{filter:brightness(1.15)}
+.leg-click{all:unset;cursor:pointer;border-radius:5px;padding:1px 4px}
+.leg-click:hover{background:var(--surface-2);color:var(--ink)}
+/* programme */
+.ms{position:relative;height:70px;margin:8px 8px 0}
+.ms .line{position:absolute;left:0;right:0;top:22px;height:2px;background:var(--line)}
+.ms .done-line{position:absolute;left:0;top:22px;height:2px;background:var(--accent)}
+.ms .m{position:absolute;top:14px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px}
+.ms .m i{width:18px;height:18px;border-radius:50%;border:2px solid var(--accent);background:var(--surface);display:grid;place-items:center;font:600 10px var(--f-mono);font-style:normal;color:var(--accent)}
+.ms .m.done i{background:var(--accent);color:var(--accent-ink)}
+.ms .m.next i{border-color:var(--warn);color:var(--warn);box-shadow:0 0 0 4px color-mix(in oklab,var(--warn) 20%,transparent)}
+.ms .m span{font:500 10.5px var(--f-mono);color:var(--muted);white-space:nowrap}
+.ms .today{position:absolute;top:4px;bottom:24px;width:2px;background:var(--warn)}
+.ms-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;margin-top:6px;font-size:12.5px}
+.ms-list div{display:flex;gap:8px}
+.ms-list b{font:600 11px var(--f-mono);color:var(--accent);min-width:16px}
+.syn input{width:58px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--surface);text-align:right;font:13px var(--f-mono)}
+.dec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px}
+.dec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.dec header{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.dec h3{margin:0;font:600 15px/1.3 var(--f-display)}
+.dec h3 button{all:unset;cursor:pointer} .dec h3 button:hover{color:var(--accent)}
+.dec .blast{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0}
+.dec .blast div{display:flex;flex-direction:column;font-size:11px;color:var(--muted)}
+.dec .blast b{font:700 17px/1.1 var(--f-display);color:var(--ink);font-variant-numeric:tabular-nums}
+.dec p{margin:0;font-size:12.5px}
+.road{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:10px;min-width:680px}
+.road > div{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.road h4{margin:0 0 4px;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+/* value stream cards */
+.cvs-card{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;background:var(--surface-2)}
+.cvs-card.enabling{border-top-color:var(--muted)}
+.cvs-card:hover{border-color:var(--accent)}
+.cvs-card .k,.cvs-bar .k{display:block;font:500 10px var(--f-mono);text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.cvs-card b{font:700 18px/1.2 var(--f-display)}
+.cvs-card .facts{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12.5px;color:var(--muted)}
+.cvs-card .facts em{font-style:normal;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.cvs-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px;margin-bottom:10px}
+.cvs-bar button{all:unset;cursor:pointer;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font:600 15px/1.25 var(--f-display)}
+.cvs-bar button:hover{border-color:var(--accent)}
+.cvs-bar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cvs-bar button[aria-pressed="true"] .k{color:var(--accent-ink);opacity:.8}
+/* role matrix */
+.matrix td,.matrix th{padding:6px 8px;text-align:center}
+.matrix td:first-child,.matrix th:first-child{text-align:left;white-space:nowrap}
+/* scatter */
+.chart{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font:11px var(--f-mono)}
+.chart .q{font:600 12px var(--f-display);fill:var(--muted);opacity:.7}
+.chart circle{cursor:pointer;stroke:var(--surface);stroke-width:1.5}
+.chart circle:hover{stroke:var(--ink)}
+/* bars */
+.hbars{display:flex;flex-direction:column;gap:7px}
+.hbar{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr) 64px;gap:10px;align-items:center;font-size:12.5px}
+.hbar:hover .nm{color:var(--accent)}
+.hbar .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbar .trk{height:12px;background:var(--surface-2);border-radius:3px;position:relative;overflow:visible}
+.hbar .fil{height:100%;border-radius:3px;background:var(--accent)}
+.hbar .v{text-align:right;font:500 12px var(--f-mono);font-variant-numeric:tabular-nums}
+.hbar .cap100{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.55}
+/* timeline */
+.tl{position:relative}
+.tl-axis{display:grid;font:500 10.5px var(--f-mono);color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px;margin-left:190px}
+.tl-row{all:unset;cursor:pointer;display:grid;grid-template-columns:180px minmax(0,1fr);gap:10px;align-items:center;padding:5px 0;font-size:12.5px;border-bottom:1px dashed var(--line);width:100%}
+.tl-row:hover .nm{color:var(--accent)}
+.tl-row .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-track{position:relative;height:18px}
+.tl-today{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);opacity:.7}
+.tl-dot{position:absolute;top:3px;width:12px;height:12px;border-radius:50%;transform:translateX(-50%);border:2px solid var(--surface)}
+.tl-span{position:absolute;top:7px;height:4px;border-radius:2px;background:color-mix(in oklab,var(--warn) 40%,transparent)}
+.tl-diamond{position:absolute;top:4px;width:10px;height:10px;transform:translateX(-50%) rotate(45deg);background:var(--ink)}
+/* trace */
+.trace-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px}
+.trace{position:relative;display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:34px;min-width:980px}
+.trace svg.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.trace svg path{fill:none;stroke:var(--line);stroke-width:1.3}
+.trace svg path.hot{stroke:var(--accent);stroke-width:1.8}
+.tcol{display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+.tcol > h4{margin:0 0 4px;font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.tnode{all:unset;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;line-height:1.3;display:flex;flex-direction:column;gap:1px}
+.tnode code{font:500 10px var(--f-mono);color:var(--muted)}
+.tnode:hover{border-color:var(--accent)}
+.tnode.focus{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
+.tmore{font-size:11.5px;color:var(--muted);padding:2px 4px}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,15,22,.32);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--surface);z-index:41;box-shadow:var(--shadow);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.drawer header{padding:18px 20px 14px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+.drawer header .t{flex:1;min-width:0}
+.drawer header .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.drawer header h2{margin:3px 0 6px;font:700 20px/1.2 var(--f-display);text-wrap:balance}
+.drawer .x{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:7px;border:1px solid var(--line)}
+.drawer .x:hover{border-color:var(--ink)}
+.drawer .body{overflow:auto;padding:16px 20px 40px;display:flex;flex-direction:column;gap:18px}
+.dl{display:grid;grid-template-columns:150px minmax(0,1fr);gap:6px 12px;font-size:13px}
+.dl dt{color:var(--muted)} .dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.sec h3{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:12.5px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.callout{border-left:3px solid var(--warn);background:color-mix(in oklab,var(--warn) 8%,var(--surface));padding:10px 12px;border-radius:0 8px 8px 0;font-size:12.5px}
+a{color:var(--accent)}
+.empty{color:var(--muted);font-size:12.5px}
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:20;flex-direction:row;align-items:center;padding:10px 16px;gap:12px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .brand span,.rail-foot,.nav-group{display:none}
+  .rail-toggle,.rail-mini{display:none!important}
+  .app.rail-collapsed{grid-template-columns:minmax(0,1fr)}
+  .app.rail-collapsed .brand,.app.rail-collapsed .nav{display:flex}
+  .app.rail-collapsed .rail{padding:10px 16px}
+  .nav{flex-direction:row}
+  .nav button{white-space:nowrap}
+  .nav button small{display:none}
+  main{padding-inline:16px}
+  .dl{grid-template-columns:120px minmax(0,1fr)}
+  .tl-row{grid-template-columns:110px minmax(0,1fr)} .tl-axis{margin-left:120px}
+  .hbar{grid-template-columns:minmax(0,110px) minmax(0,1fr) 56px}
+}
+@media (prefers-reduced-motion:no-preference){.drawer{animation:slide .18s ease-out}@keyframes slide{from{transform:translateX(24px);opacity:.6}}}
+</style>
+
+<div class="app">
+  <aside class="rail" id="rail">
+    <button class="rail-toggle" id="railtoggle" aria-controls="nav" aria-expanded="true" title="Collapse navigation (press [ )"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="rt-l">Collapse</span></button>
+    <button class="rail-mini" id="railmini" title="Expand navigation (press [ )" tabindex="-1" aria-hidden="true"><span id="railcur"></span></button>
+    <div class="brand"><b id="brandname"></b><span>Enterprise architecture</span><button class="ver" data-view="changes" id="verbadge"></button></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="rail-foot" id="railfoot"></div>
+  </aside>
+  <main>
+    <div class="top">
+      <div><h1 id="vtitle">Overview</h1><p id="vsub"></p></div>
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search apps, suppliers, capabilities, roles…" autocomplete="off" aria-label="Search the repository">
+        <div class="results" id="results" hidden></div>
+      </div>
+    </div>
+    <div class="banner" id="banner"></div>
+    <div id="view"></div>
+  </main>
+</div>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-live="polite"></aside>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const TODAY = new Date(D.meta.as_of+"T00:00:00");
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const by = (arr,k='id')=>Object.fromEntries(arr.map(x=>[x[k],x]));
+const GL=by(D.glossary), BP=by(D.business_processes), CVS=by(D.customer_value_streams), CAP=by([...D.capabilities,...(D.capabilities_l3||[])]), VS=by(D.value_streams), ST=by(D.steps), RO=by(D.roles), AP=by(D.apps), SU=by(D.suppliers), K=by(D.contracts);
+const LIC=by(D.licences,'app'), SUP=by(D.support,'app'), RES=by(D.resilience,'app');
+const L1=D.capabilities.filter(c=>c.level===1), L2=D.capabilities.filter(c=>c.level===2), L3=D.capabilities_l3||[], L3of={}; L3.forEach(c=>(L3of[c.parent]=L3of[c.parent]||[]).push(c));
+const P=D.meta.profile||{}, CR=Object.assign({label:'Critical service',short:'Critical service',plural:'critical services',abbr:'CRIT'},P.criticality||{}), TPR=Object.assign({material_label:'Critical supplier',material_abbr:'CS',terms_label:'Required contract terms'},P.third_party||{});
+const PG=D.programme||null, ORGS=D.meta.short_name||D.meta.organisation, NOUN=P.org_noun||'organisation', VSL=P.value_stream_label||'Value stream';
+const CUR=(D.meta.currency||{}).symbol||'€', CURC=(D.meta.currency||{}).code||'EUR', SKEY=D.meta.storage_key||'atlas';
+const CUST=D.meta.customer_role||'';
+const CRN=n=>n===1?(CR.short||'critical service').toLowerCase():CR.plural;
+const CRB=()=>` <span class="mono muted" title="${esc(CR.label)}">${esc(CR.abbr)}</span>`;
+const fmtM = v=>CUR+(v>=1?v.toFixed(1)+'m':(v*1000).toFixed(0)+'k');
+const months = d=>Math.round((new Date(d+"T00:00:00")-TODAY)/(864e5*30.44));
+const isDate = s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'');
+
+// ---- derived indexes
+const appCost = id => (LIC[id]?.annual_cost_m||0)+(SUP[id]?.annual_support_cost_m||0);
+const capApps={}, capSteps={}, appSteps={}, roleSteps={}, appSups={}, supApps={};
+L2.forEach(c=>{capApps[c.id]=[];capSteps[c.id]=[]});
+D.apps.forEach(a=>{a.capabilities.forEach(c=>capApps[c].push(a.id)); appSteps[a.id]=[]; appSups[a.id]=[]});
+D.steps.forEach(s=>{
+  s.capabilities.forEach(c=>capSteps[c].push(s.id));
+  s.apps.forEach(a=>appSteps[a].push(s.id));
+  const add=(r,l)=>{(roleSteps[r]=roleSteps[r]||[]).push({step:s.id,raci:l})};
+  s.R.forEach(r=>add(r,'R')); add(s.A,'A'); s.C.forEach(r=>add(r,'C')); s.I.forEach(r=>add(r,'I'));
+});
+D.app_supplier.forEach(x=>{appSups[x.app].push(x); (supApps[x.supplier]=supApps[x.supplier]||[]).push(x)});
+const supSpend = sid => (supApps[sid]||[]).filter(x=>AP[x.app].vendor===sid).reduce((t,x)=>t+appCost(x.app),0);
+const supCaps = sid => [...new Set((supApps[sid]||[]).flatMap(x=>AP[x.app].capabilities))];
+const supSteps = sid => [...new Set((supApps[sid]||[]).flatMap(x=>appSteps[x.app]))];
+const appRoles = aid => [...new Set(appSteps[aid].flatMap(s=>{const t=ST[s];return [...t.R,t.A,...t.C]}))];
+const contractOf = sid => D.contracts.find(k=>k.supplier===sid);
+const LENS_ORDER=(PG&&PG.lens_order)||['Likely converge','Key decision','Assess','Replace / decommission','Retain'];
+const LENS_VAR=Object.assign({'Likely converge':'--migrate','Key decision':'--crit','Assess':'--warn','Replace / decommission':'--eliminate','Retain':'--ok'},(PG&&PG.lens_colours)||{});
+const lensKey = l => {l=l||''; const k=LENS_ORDER.find(k=>l.toLowerCase().startsWith(k.split(/[ /]/)[0].toLowerCase())); return k||(l?LENS_ORDER[LENS_ORDER.length-1]:'Not assessed')};
+const PLABEL=(PG&&PG.lens_label)||'Programme lens', PNAME=(PG&&PG.name)||'Programme', PDEC=(PG&&PG.decision_label)||'Programme decision';
+
+const CONF_VAR={'Customer-provided':'--c-cust','Public':'--c-pub','Partly confirmed':'--c-part','Illustrative':'--c-ill'};
+const conf = c=>`<span class="conf" title="Data confidence"><i style="background:var(${CONF_VAR[c]})"></i>${esc(c)}</span>`;
+const time = t=>`<span class="pill t-${t}">${t}</span>`;
+const pill = (txt,s)=>`<span class="pill s-${s}">${esc(txt)}</span>`;
+const chip = (type,id,label,code=true)=>`<button class="chip" data-ent="${type}:${id}">${code?`<code>${id}</code>`:''}${esc(label)}</button>`;
+const nameOf = (type,id)=>({si:Object.fromEntries(D.strategy.initiatives.map(i=>[i.id,{name:i.title}])),term:Object.fromEntries(D.glossary.map(g=>[g.id,{name:g.term}])),bp:BP,cvs:CVS,cap:CAP,vs:VS,step:ST,role:RO,app:AP,sup:SU,feat:Object.fromEntries((D.features||[]).map(f=>[f.id,f])),epic:Object.fromEntries((D.epics||[]).map(e=>[e.id,e]))}[type][id]?.name||id);
+const cvsSteps = cid => D.steps.filter(s=>VS[s.vs].parent===cid);
+const cvsFoot = cid => {const st=cvsSteps(cid);const apps=[...new Set(st.flatMap(s=>s.apps))];return {journeys:D.value_streams.filter(v=>v.parent===cid),steps:st,apps,caps:[...new Set(st.flatMap(s=>s.capabilities))],roles:[...new Set(st.flatMap(s=>[...s.R,s.A,...s.C,...s.I]))],cost:apps.reduce((t,a)=>t+appCost(a),0),crit:apps.filter(a=>AP[a].crit).length,ill:apps.filter(a=>AP[a].confidence==='Illustrative').length}};
+const CVS_ORDER=[...D.customer_value_streams.filter(c=>!c.cross_cutting),...D.customer_value_streams.filter(c=>c.cross_cutting)].map(c=>c.id);
+const isXC=cid=>!!(CVS[cid]&&CVS[cid].cross_cutting), NVS=D.customer_value_streams.filter(c=>!c.cross_cutting).length;
+const shortCvs=cid=>CVS[cid].short||CVS[cid].name;
+
+// ---- views
+const STD=(P.capability_standard||{}).name||'a reference capability model', PF=P.process_framework||'APQC PCF';
+const DCP=D.data_centres.find(d=>d.kind==='primary')||D.data_centres[0], DCS=D.data_centres.find(d=>d.kind==='secondary')||D.data_centres[1];
+const DCMODEL=D.meta.dc_model||'single';
+const dcSentence=()=>DCMODEL==='active-passive'&&DCP&&DCS?`active-passive model: ${DCP.name} live, ${DCS.name} standby`:DCMODEL==='active-active'&&DCP&&DCS?`active-active model: ${DCP.name} and ${DCS.name} both live`:DCP?`single site: ${DCP.name}`:'no in-house data centre recorded';
+const RREG=((P.resilience||{}).regime)||'';
+const VIEWS = [
+ {id:'overview',grp:'Summary',name:'Overview',sub:'Portfolio health, data confidence and where attention is needed.'},
+ {id:'strategy',grp:'Strategy',name:'Strategic priorities',sub:`${ORGS} strategy: ${D.strategy.pillars.length} pillars, each initiative traced to the journeys, processes, capabilities and applications it depends on.`,n:()=>D.strategy.initiatives.length},
+ ...(PG?[{id:'programme',grp:'Strategy',name:PNAME,sub:PG.view_sub||`What the ${PG.noun||'programme'} means for the architecture: stated commitments, the addressable cost pool, contract exposure and the key platform decisions.`}]:[]),
+ {id:'change',grp:'Strategy',name:'Change impact',sub:`Epics and features in the change portfolio. Pick what a feature changes and see the impact on integrations, journeys, people, data, suppliers, resilience, regulation${PG?', '+PNAME:''} and other work in flight. For failures and outside events, use What if?.`,n:()=>D.features.length},
+ {id:'scenarios',grp:'Strategy',name:'What if?',sub:'What happens if an application, platform, supplier or data centre fails, a supplier changes its prices, a system is retired or a new regulation arrives. See the impact across value streams, journeys, processes, capabilities, applications and suppliers. For planned work, use Change impact.'},
+ {id:'capabilities',grp:'Business',name:'Capability map',sub:`${L1.length} L1 domains, their L2 capabilities and the L3 capabilities inside them, aligned to ${STD}. Choose a lens to colour the map, and Show L3 for the detail inside each L2.`,n:()=>L2.length},
+ {id:'bpa',grp:'Business',name:'Process architecture',sub:`Business process hierarchy in three tiers: Operate (the customer value streams), Manage and Support. Aligned to ${PF}.`,n:()=>D.business_processes.filter(p=>p.level===2).length},
+ {id:'pmap',grp:'Business',name:'Process maps',sub:'Swimlane map for each journey: who does each step, in what order, and which systems they use.',n:()=>D.value_streams.length},
+ {id:'processes',grp:'Business',name:VSL+'s',sub:`${ORGS}'s ${VSL.toLowerCase()}s, the journeys within each, and the L3 steps with their roles (RACI) and applications.`,n:()=>NVS},
+ {id:'roles',grp:'Business',name:'Roles',sub:'Who does what: RACI across every value stream, and the applications each role touches.',n:()=>D.roles.length},
+ {id:'apps',grp:'Technology',name:'Applications',sub:'Portfolio by TIME rating, functional fit and technical health.',n:()=>D.apps.length},
+ {id:'landscape',grp:'Technology',name:'Landscape map',sub:'Every application placed in its primary capability domain. Choose what the colour shows.'},
+ {id:'integration',grp:'Technology',name:'Integration map',sub:'Data flows between applications, grouped by architecture layer and coloured by integration type. Select an application to isolate its flows.',n:()=>D.interfaces.length},
+ {id:'resilience',grp:'Technology',name:'Resilience',sub:`Data centre dependency and recovery readiness under the ${dcSentence()}.${RREG?' Supports the '+RREG+' operational resilience view.':''}`},
+ {id:'suppliers',grp:'Commercial',name:'Suppliers',sub:`Spend, dependency and concentration by supplier. Open one to see what the ${NOUN} cannot do without it.`,n:()=>D.suppliers.length},
+ {id:'licensing',grp:'Commercial',name:'Contracts & licences',sub:'Renewals over the next 24 months and licence utilisation against entitlement.'},
+ {id:'support',grp:'Commercial',name:'Support & lifecycle',sub:'Vendor end-of-support exposure and whether support cover matches criticality.'},
+ {id:'risk',grp:'Commercial',name:'Third-party risk',sub:TPR.view_sub||`${TPR.material_label} and suppliers behind ${CR.plural}.`},
+ {id:'glossary',grp:'Explore',name:'Taxonomy & glossary',sub:'The element types used in this atlas, how they relate, and what each term means.',n:()=>D.glossary.length},
+ {id:'guide',grp:'Explore',name:'How to update',sub:'How to send new information in, what happens on a refresh, and how each release is recorded and shared.'},
+ {id:'changes',grp:'Explore',name:'Change log',sub:'Every release of the atlas: what changed, why and where it came from. Each release is compared field by field with the previous one.',n:()=>D.changelog.length},
+ {id:'trace',grp:'Explore',name:'Traceability',sub:'Pick any element and follow it across roles, process steps, capabilities, applications and suppliers.'},
+];
+const FIRST={cvs:CVS_ORDER[0]||'',vs:(D.value_streams[0]||{}).id||'',feat:(D.features[0]||{}).id||'',sc:(D.example_scenarios[0]||{}).id||'',
+  app:([...D.apps].sort((a,b)=>a.tier_n-b.tier_n||appSteps[b.id].length-appSteps[a.id].length)[0]||{}).id||''};
+let state={ftTab:'backlog',ftSel:FIRST.feat,scTab:'library',scSel:FIRST.sc,gq:'',gcat:'',resF:'',pmapVs:FIRST.vs,landMode:'time',intFocus:'',intFam:{},intAll:false,progLens:'',syn:null,view:'overview',capLens:'coverage',capCvs:'',cvs:FIRST.cvs,vs:FIRST.vs,appF:{time:'',tier:'',conf:'',cat:'',crit:''},appSort:['id',1],supSort:['spend',-1],trace:'app:'+FIRST.app,regSel:''};
+try{const s=localStorage.getItem(SKEY+'-atlas'); if(s) Object.assign(state,JSON.parse(s))}catch(e){}
+if(!CVS[state.cvs]) state.cvs=FIRST.cvs; if(!VS[state.pmapVs]) state.pmapVs=FIRST.vs; if(!state.intFam) state.intFam={}; if(state.appF.crit===undefined) state.appF.crit=''; if(!state.syn&&PG) state.syn={...(PG.synergy_defaults||{})}; if(!VS[state.vs]) state.vs=FIRST.vs;
+if(!PG&&state.landMode==='lens') state.landMode='time';
+let h='';try{h=location.hash.slice(1)}catch(e){} if(VIEWS.some(v=>v.id===h)) state.view=h; if(!VIEWS.some(v=>v.id===state.view)) state.view='overview';
+const save=()=>{try{localStorage.setItem(SKEY+'-atlas',JSON.stringify(state))}catch(e){}};
+
+// ---------- collapsible navigation (remembered per viewer in this browser)
+let railMem=null;
+function railGet(){try{const v=localStorage.getItem(SKEY+'-rail'); if(v!==null) return v==='collapsed'}catch(e){} return !!railMem}
+function railSet(c){railMem=c; try{localStorage.setItem(SKEY+'-rail',c?'collapsed':'open')}catch(e){} railApply()}
+function railApply(){const c=railGet(), app=document.querySelector('.app'), t=document.getElementById('railtoggle'), m=document.getElementById('railmini');
+  if(!app||!t) return; app.classList.toggle('rail-collapsed',c);
+  t.setAttribute('aria-expanded',String(!c)); t.setAttribute('aria-label',c?'Expand navigation':'Collapse navigation'); t.title=(c?'Expand':'Collapse')+' navigation (press [ )';
+  t.querySelector('.rt-l').textContent=c?'Expand':'Collapse';
+  const v=(typeof VIEWS!=='undefined')&&VIEWS.find(x=>x.id===state.view); const cur=document.getElementById('railcur'); if(cur) cur.textContent=v?v.name:'';
+  if(m){m.tabIndex=c?0:-1; m.setAttribute('aria-hidden',String(!c)); m.setAttribute('aria-label','Expand navigation. Current view: '+(v?v.name:''))}}
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('#railtoggle,#railmini'); if(!t) return; e.stopPropagation(); railSet(!railGet()); if(t.id==='railmini'){const b=document.getElementById('railtoggle'); if(b) b.focus()}},true);
+document.addEventListener('keydown',e=>{if(e.key!=='['||e.ctrlKey||e.metaKey||e.altKey) return; const tg=e.target, tag=(tg&&tg.tagName)||''; if(/INPUT|TEXTAREA|SELECT/.test(tag)||(tg&&tg.isContentEditable)) return; if(innerWidth<=860) return; e.preventDefault(); railSet(!railGet())});
+function renderNav(){
+  let g='', html='';
+  VIEWS.forEach(v=>{ if(v.grp!==g){g=v.grp; html+=`<div class="nav-group">${g}</div>`}
+    html+=`<button data-view="${v.id}" aria-current="${state.view===v.id}">${v.name}${v.n?`<small>${v.n()}</small>`:''}</button>`});
+  $('#nav').innerHTML=html;
+  railApply();
+}
+function go(v){state.view=v;save();render();try{window.scrollTo(0,0)}catch(e){}try{if(location.protocol!=='about:'&&!/srcdoc/.test(location.href))history.replaceState(null,'','#'+v)}catch(e){}}
+function render(){
+  renderNav();
+  const v=VIEWS.find(x=>x.id===state.view);
+  $('#vtitle').textContent=v.name; $('#vsub').textContent=v.sub;
+  ({change,guide,changes,strategy,scenarios,glossary,overview,programme,bpa,pmap,landscape,integration,resilience,capabilities,processes,roles,apps,suppliers,licensing,support,risk,trace})[v.id]();
+}
+
+// ---------- Overview
+function attention(){
+  const items=[];
+  D.support.forEach(s=>{ if(!isDate(s.end_of_support)) return; const m=months(s.end_of_support);
+    if(m<=12) items.push({sev:m<0?'crit':'warn',title:`${AP[s.app].name} ${m<0?'is past':'reaches'} vendor end of support`,detail:`${AP[s.app].product} · ${s.end_of_support} · ${AP[s.app].tier}`,ent:'app:'+s.app,tag:m<0?'Past EoS':`${m} mo`});});
+  D.contracts.forEach(k=>{const m=months(k.end); if(m>=0&&m<=12&&(SU[k.supplier].tier==='Strategic'||k.change_of_control_clause))
+    items.push({sev:k.change_of_control_clause?'warn':'neutral',title:`${SU[k.supplier].name} contract ends ${k.end}`,detail:`Notice ${k.notice_months} months${k.change_of_control_clause?' · change-of-control clause':''}${k.auto_renew?' · auto-renews':''}`,ent:'sup:'+k.supplier,tag:`${m} mo`})});
+  D.suppliers.filter(s=>s.material&&!/tested/.test(s.exit_plan.replace('untested','x'))).forEach(s=>
+    items.push({sev:s.exit_plan==='Not documented'?'crit':'warn',title:`${s.name}: exit plan ${s.exit_plan.toLowerCase()}`,detail:`${TPR.material_label} · ${(supApps[s.id]||[]).filter(x=>AP[x.app].crit).length} apps supporting ${CR.plural}`,ent:'sup:'+s.id,tag:'Exit plan'}));
+  D.apps.filter(a=>a.tier_n<=1&&SUP[a.id].hours!=='24x7'&&a.crit).forEach(a=>
+    items.push({sev:'warn',title:`${a.name} supports a ${CR.short.toLowerCase()} without 24x7 support`,detail:`${a.tier} · ${SUP[a.id].hours}`,ent:'app:'+a.id,tag:'SLA gap'}));
+  const order={crit:0,warn:1,neutral:2};
+  return items.sort((a,b)=>order[a.sev]-order[b.sev]);
+}
+// ---------- movable overview tiles: drag a tile onto another to move it (Alt + arrow keys also work); order saved per viewer in this browser
+let OV_TILES=[], tileDrag=null, tileMem=null, tileJustDragged=false;
+function tileLayout(){try{const v=JSON.parse(localStorage.getItem(SKEY+'-tiles-v1')||'null'); if(v&&Array.isArray(v.order)) return v}catch(e){} return tileMem||{order:[]}}
+function tileSaveLayout(l){tileMem=l; try{if(l.order.length) localStorage.setItem(SKEY+'-tiles-v1',JSON.stringify({order:l.order})); else localStorage.removeItem(SKEY+'-tiles-v1')}catch(e){}}
+function tileOrdered(){const keys=OV_TILES.map(t=>t[0]); const ord=tileLayout().order.filter(k=>keys.includes(k)); keys.forEach(k=>{if(!ord.includes(k))ord.push(k)}); return ord}
+function renderTiles(){
+  const g=document.getElementById('kpi-grid'); if(!g) return;
+  const H=Object.fromEntries(OV_TILES), ord=tileOrdered(), def=OV_TILES.map(t=>t[0]);
+  const bar=document.getElementById('tile-bar'); if(bar) bar.hidden=ord.join()===def.join();
+  g.innerHTML=ord.map(k=>H[k].replace('<button class="kpi click',`<button data-tile="${k}" title="Click to open. Drag to move (press and hold on touch screens)." class="kpi click`)).join('');
+}
+function tileMove(k,to){const ord=tileOrdered(); const i=ord.indexOf(k); if(i<0) return; ord.splice(i,1); ord.splice(Math.max(0,Math.min(ord.length,to)),0,k); tileSaveLayout({order:ord}); renderTiles();
+  const b=document.querySelector(`#kpi-grid [data-tile="${k}"]`); if(b) b.focus()}
+document.addEventListener('click',e=>{
+  if(tileJustDragged&&e.target.closest&&e.target.closest('#kpi-grid')){e.stopPropagation();e.preventDefault();tileJustDragged=false;return}
+  const t=e.target.closest('[data-tilereset]'); if(!t) return; e.stopPropagation(); tileSaveLayout({order:[]}); renderTiles();
+},true);
+document.addEventListener('keydown',e=>{const t=e.target.closest&&e.target.closest('#kpi-grid [data-tile]'); if(!t||!e.altKey) return;
+  const d={ArrowLeft:-1,ArrowUp:-1,ArrowRight:1,ArrowDown:1}[e.key]; if(!d) return; e.preventDefault(); const ord=tileOrdered(); tileMove(t.dataset.tile,ord.indexOf(t.dataset.tile)+d)});
+let tp=null;
+function tileStart(){if(!tp)return; tp.drag=true; tp.el.classList.add('dragging'); document.body.classList.add('tile-dragging')}
+function tileEnd(commit){if(!tp)return; clearTimeout(tp.timer); const was=tp.drag, el=tp.el; tp=null; document.body.classList.remove('tile-dragging'); el.classList.remove('dragging');
+  if(!was) return; tileJustDragged=true; setTimeout(()=>{tileJustDragged=false},300);
+  if(commit){const g=document.getElementById('kpi-grid'); tileSaveLayout({order:[...g.children].map(x=>x.dataset.tile)})} renderTiles()}
+document.addEventListener('pointerdown',e=>{if(e.button!==0)return; const el=e.target.closest&&e.target.closest('#kpi-grid [data-tile]'); if(!el)return;
+  tp={k:el.dataset.tile,el,x:e.clientX,y:e.clientY,drag:false,touch:e.pointerType!=='mouse'};
+  if(tp.touch) tp.timer=setTimeout(()=>{if(tp&&!tp.drag){tileStart(); if(navigator.vibrate) try{navigator.vibrate(10)}catch(err){}}},350)});
+document.addEventListener('pointermove',e=>{if(!tp)return; const d=Math.hypot(e.clientX-tp.x,e.clientY-tp.y);
+  if(!tp.drag){ if(tp.touch){ if(d>8){clearTimeout(tp.timer); tp=null} return } if(d<6) return; tileStart() }
+  e.preventDefault(); const u=document.elementFromPoint(e.clientX,e.clientY), t=u&&u.closest&&u.closest('#kpi-grid [data-tile]');
+  if(t&&t!==tp.el){const r=t.getBoundingClientRect(), after=e.clientX>r.left+r.width/2; t.parentNode.insertBefore(tp.el,after?t.nextSibling:t)}});
+document.addEventListener('pointerup',()=>tileEnd(true));
+document.addEventListener('pointercancel',()=>tileEnd(true));
+document.addEventListener('touchmove',e=>{if(tp&&tp.drag)e.preventDefault()},{passive:false});
+document.addEventListener('contextmenu',e=>{if(tp&&e.target.closest&&e.target.closest('#kpi-grid'))e.preventDefault()});
+function overview(){
+  const run=D.apps.reduce((t,a)=>t+appCost(a.id),0);
+  const eos=D.support.filter(s=>isDate(s.end_of_support)&&months(s.end_of_support)<=12).length;
+  const ren=D.contracts.filter(k=>{const m=months(k.end);return m>=0&&m<=12}).length;
+  const crit=D.apps.filter(a=>a.crit).length;
+  const gaps=L2.filter(c=>capApps[c.id].length===0).length;
+  const dup=L2.filter(c=>capApps[c.id].length>=3).length;
+  const kp=(l,v,s,cls='',nav='')=>`<button class="kpi click ${cls}" data-nav="${nav}"><label>${l}</label><b>${v}</b><span>${s}</span><i class="go" aria-hidden="true">→</i></button>`;
+  const tc={Invest:0,Tolerate:0,Migrate:0,Eliminate:0}; D.apps.forEach(a=>tc[a.time]++);
+  const cc={'Customer-provided':0,'Public':0,'Partly confirmed':0,'Illustrative':0}; D.apps.forEach(a=>cc[a.confidence]++);
+  const lens={}; if(PG) D.apps.forEach(a=>{const k=lensKey(a.programme_lens);lens[k]=(lens[k]||0)+1});
+  const stack=(obj,vars,key)=>`<div class="stack">${Object.entries(obj).map(([k,v])=>`<button class="seg-click" data-nav="apps|reset=1|${key}=${k}" title="${k}: ${v}. Open in Applications" style="width:${v/D.apps.length*100}%;background:var(${vars[k]})"></button>`).join('')}</div>
+    <div class="legend">${Object.entries(obj).map(([k,v])=>`<button class="leg-click" data-nav="apps|reset=1|${key}=${k}"><i style="background:var(${vars[k]})"></i>${k} <b class="mono">${v}</b></button>`).join('')}</div>`;
+  const att=attention();
+  $('#view').innerHTML=`
+  ${(()=>{const v=D.changelog[0];return `<section class="whatsnew"><span class="pill s-ok">Version ${esc(v.version)}</span><span><b>${esc(v.title)}.</b> ${esc(v.summary)}</span><span class="muted mono" style="white-space:nowrap">${esc(v.date)}</span><button class="chip" data-nav="changes">Change log</button><button class="chip" data-nav="guide">How to update</button></section>`})()}
+  <section class="sg-strip"><div><span class="k">Strategic priorities</span><b>${esc(D.strategy.theme)}</b></div><div class="chips">${D.strategy.pillars.map(p=>`<button class="chip" data-nav="strategy">${esc(p.name)}</button>`).join('')}</div></section>
+  <div class="tile-bar" id="tile-bar" hidden><span class="muted">Tiles in your order.</span><button class="linklike" data-tilereset="1">Reset order</button></div>
+  <div class="grid g-kpi" id="kpi-grid"></div>
+  <section class="panel" style="margin-top:16px"><h2>${esc(VSL)}s</h2><p class="sub">Footprint of each customer value stream across journeys, roles, capabilities and applications. Click to open.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))">${CVS_ORDER.map(cid=>{const c=CVS[cid],f=cvsFoot(cid);return `<button class="cvs-card ${isXC(cid)?'enabling':''}" data-cvs-go="${cid}"><span class="k">${isXC(cid)?'Cross-cutting':esc(VSL)}</span><b>${esc(c.name)}</b>
+      <span class="facts"><span><em>${f.journeys.length}</em> journeys</span><span><em>${f.steps.length}</em> steps</span><span><em>${f.apps.length}</em> apps</span><span><em>${f.caps.length}</em> capabilities</span><span><em>${f.roles.length}</em> roles</span><span><em>${fmtM(f.cost)}</em> app run cost</span></span>
+      <span class="muted" style="font-size:12px">${f.crit} apps supporting ${CR.plural} · ${f.ill} still illustrative</span></button>`}).join('')}</div></section>
+  <div class="grid g-2" style="margin-top:16px">
+    <section class="panel"><h2>Portfolio by TIME rating</h2><p class="sub">Tolerate, Invest, Migrate, Eliminate. Open Applications to see each rating against fit and health.</p>
+      ${stack(tc,{Invest:'--invest',Tolerate:'--tolerate',Migrate:'--migrate',Eliminate:'--eliminate'},'time')}
+      <h2 style="margin-top:20px">Data confidence</h2><p class="sub">How much of the application inventory is confirmed. Replace illustrative rows first where they carry critical functions.</p>
+      ${stack(cc,CONF_VAR,'conf')}
+      ${PG?`<h2 style="margin-top:20px">${esc(PLABEL)}</h2><p class="sub">EA hypothesis per application for ${esc(PNAME)}. Click a bar for the detail.</p>
+      <div class="hbars">${Object.entries(lens).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<button class="hbar" data-nav="programme|lens=${k}"><span class="nm">${k}</span><span class="trk"><span class="fil" style="display:block;width:${Math.min(100,v/D.apps.length*100*2.2)}%"></span></span><span class="v">${v}</span></button>`).join('')}</div>`:''}
+      <p class="sub" style="margin-top:12px">${gaps?`${gaps} capabilities have no supporting application.`:'Every L2 capability has at least one supporting application.'} <button class="chip" data-nav="capabilities|caplens=coverage">${dup} capabilities are served by three or more applications</button>, a signal of overlap.</p>
+    </section>
+    <section class="panel"><h2>Needs attention</h2><p class="sub">${att.length} items from lifecycle, contracts, exit planning and support cover. Click to open.</p>
+      <div class="att">${att.slice(0,14).map(i=>`<div><span class="stripe" style="background:var(--${i.sev==='neutral'?'line':i.sev})"></span>
+        <button class="chip" style="all:unset;cursor:pointer;min-width:0" data-ent="${i.ent}"><div class="what"><b>${esc(i.title)}</b><div>${esc(i.detail)}</div></div></button>
+        ${pill(i.tag,i.sev)}</div>`).join('')}</div>
+      ${att.length>14?`<p class="sub" style="margin-top:8px">${att.length-14} more in Support, Contracts and Third-party risk.</p>`:''}
+    </section>
+  </div>`;
+  OV_TILES=[
+    ['apps',kp('Applications',D.apps.length,'All applications','','apps|reset=1')],
+    ['crit',kp(CR.short+'s',crit,'apps supporting '+CR.plural,'','apps|reset=1|crit=Yes')],
+    ['caps',kp('Capabilities',L2.length,`${L1.length} domains · ${dup} with 3+ apps`,'','capabilities|caplens=coverage')],
+    ['vs',kp(VSL+'s',NVS,`${D.value_streams.length} journeys · ${D.steps.length} steps`,'','processes')],
+    ['bp',kp('Business processes',D.business_processes.filter(p=>p.level===2).length,'Operate, Manage and Support','','bpa')],
+    ['pmap',kp('Process maps',D.value_streams.length,'swimlane per journey','','pmap')],
+    ['ifs',kp('Interfaces',D.interfaces.length,[...new Set(D.interfaces.map(i=>IFAM(i.protocol)))].join(', '),'','integration')],
+    ['roles',kp('Roles',D.roles.length,'RACI across all journeys','','roles')],
+    ['sups',kp('Suppliers',D.suppliers.length,`${D.suppliers.filter(s=>s.material).length} ${TPR.material_label.toLowerCase()}`,'','suppliers')],
+    ['cost',kp('Annual run cost',fmtM(run),'licence + support, illustrative','','apps|reset=1|sort=cost')],
+    ['eos',kp('End of support ≤12 mo',eos,'includes already past',eos?'crit':'','support')],
+    ['contracts',kp('Contracts ending ≤12 mo',ren,'check notice periods',ren?'warn':'','licensing')],
+    ['dr',kp('DR test issues',D.resilience.filter(r=>/Failed|issues|Not tested/.test(r.dr_result)).length,'failed, with issues or untested','crit','resilience')],
+    ...(PG?[['programme',kp(PDEC+'s',(PG.decisions||[]).length,'key platform decisions','warn','programme')]]:[]),
+    ['whatif',kp('What if? scenarios',D.example_scenarios.length+ScStore.items.length,'disruption, change and regulatory','','scenarios')],
+    ['change',kp('Change features',(D.features||[]).length+(typeof FtStore!=='undefined'?FtStore.items.length:0),`${(D.epics||[]).length} epics · ${(D.features||[]).filter(f=>FeatureImpact.run(D,f,D.features).level==='Critical').length} critical impact`,'','change')]
+  ];
+  renderTiles();
+}
+
+// ---------- navigation presets from tiles
+function navTo(spec){
+  const [view,...kv]=spec.split('|'); const o=Object.fromEntries(kv.map(x=>x.split('=')));
+  if(o.reset) state.appF={time:'',tier:'',conf:'',cat:'',crit:''};
+  ['time','conf','crit','tier','cat'].forEach(k=>{if(o[k]!==undefined) state.appF[k]=o[k]});
+  if(o.sort) state.appSort=[o.sort,o.sort==='cost'?-1:1];
+  if(o.caplens) state.capLens=o.caplens;
+  if(o.lens!==undefined) state.progLens=o.lens;
+  go(view);
+}
+
+// ---------- Programme (merger, acquisition, divestment or transformation). Shown only when the model has one.
+const decBlast = d => {
+  const apps=new Set(d.apps);
+  const steps=[...new Set(d.apps.flatMap(a=>appSteps[a]||[]))];
+  const jour=[...new Set(steps.map(s=>ST[s].vs))], cvs=[...new Set(jour.map(v=>VS[v].parent))];
+  const caps=[...new Set(d.apps.flatMap(a=>AP[a].capabilities))];
+  const ifs=D.interfaces.filter(i=>apps.has(i.source_app)||apps.has(i.target_app)).length;
+  const sups=[...new Set(d.apps.flatMap(a=>appSups[a].map(x=>x.supplier)))];
+  return {steps,jour,cvs,caps,ifs,sups,crit:d.apps.filter(a=>AP[a].crit).length,cost:d.apps.reduce((t,a)=>t+appCost(a),0)};
+};
+const phaseName=p=>typeof p==='string'?p:p.name;
+function synCalc(){
+  if(!PG) return; let tot=0,sav=0;
+  LENS_ORDER.forEach(k=>{const c=D.apps.filter(a=>lensKey(a.programme_lens)===k).reduce((t,a)=>t+appCost(a.id),0);const v=c*(state.syn[k]||0)/100;tot+=c;sav+=v;const el=document.getElementById('sv-'+k.replace(/\W/g,''));if(el)el.textContent=fmtM(v)});
+  const t=document.getElementById('sv-total'); if(t) t.textContent=fmtM(sav); const p=document.getElementById('sv-pct'); if(p) p.textContent=(tot?Math.round(sav/tot*100):0)+'%';
+}
+function programme(){
+  if(!PG){$('#view').innerHTML='<p class="empty">No programme is recorded for this organisation.</p>';return}
+  const B=PG, run=D.apps.reduce((t,a)=>t+appCost(a.id),0), ms=B.milestones||[], decs=B.decisions||[], coms=B.commitments||[], phases=(B.phases||[]).map(phaseName);
+  const dates=[...ms.map(m=>m.date),D.meta.as_of].filter(isDate).sort();
+  const t0=new Date((B.timeline&&B.timeline[0]||dates[0])+'T00:00:00'), t1=new Date((B.timeline&&B.timeline[1]||dates[dates.length-1])+'T00:00:00');
+  const pos=d=>Math.max(0,Math.min(100,(new Date(d+'T00:00:00')-t0)/((t1-t0)||1)*100));
+  const byLens={}; LENS_ORDER.forEach(k=>byLens[k]={apps:[],cost:0});
+  D.apps.forEach(a=>{const k=lensKey(a.programme_lens);if(!byLens[k])return;byLens[k].apps.push(a.id);byLens[k].cost+=appCost(a.id)});
+  const partners=B.partner_suppliers||[];
+  const coc=D.contracts.filter(k=>k.change_of_control_clause||partners.includes(k.supplier)).map(k=>({k,s:SU[k.supplier],crit:(supApps[k.supplier]||[]).filter(x=>AP[x.app].crit).length})).sort((a,b)=>b.k.annual_value-a.k.annual_value);
+  const cocVal=coc.reduce((t,x)=>t+(x.k.annual_value||0),0);
+  const nb=d=>{const n=new Date(d.end+'T00:00:00');n.setMonth(n.getMonth()-d.notice_months);return n.toISOString().slice(0,10)};
+  const completion=B.completion||'';
+  const lensFilter=state.progLens, list=D.apps.filter(a=>!lensFilter||lensKey(a.programme_lens)===lensFilter).sort((a,b)=>appCost(b.id)-appCost(a.id));
+  const kp=(l,v,s,cls,nav)=>`<button class="kpi click ${cls||''}" data-nav="${nav||''}"><label>${l}</label><b>${v}</b><span>${s}</span>${nav?'<i class="go">→</i>':''}</button>`;
+  const conv=LENS_ORDER[0], local=B.local_match?D.apps.filter(a=>new RegExp(B.local_match,'i').test(a.programme_lens||'')).length:null;
+  const phaseOf=d=>phases.find(ph=>d.phase&&d.phase.toLowerCase().startsWith(ph.split(' (')[0].toLowerCase()));
+  $('#view').innerHTML=`
+  ${B.summary?`<div class="callout" style="margin-bottom:16px;border-left-color:var(--accent);background:color-mix(in oklab,var(--accent) 7%,var(--surface))"><b>${esc(B.summary_title||'The programme')}.</b> ${esc(B.summary)}</div>`:''}
+  ${ms.length?`<section class="panel" style="margin-bottom:16px"><h2>${esc(B.timeline_title||'Timeline')}</h2><p class="sub">Numbered in sequence; the amber line is today.</p>
+    <div style="overflow-x:auto"><div style="min-width:620px"><div class="ms"><span class="line"></span><span class="done-line" style="width:${pos(D.meta.as_of)}%"></span><span class="today" style="left:${pos(D.meta.as_of)}%"></span>
+    ${ms.map((m,i)=>`<div class="m ${m.status}" style="left:${pos(m.date)}%"><i>${i+1}</i><span>${m.date.slice(0,7)}</span></div>`).join('')}</div></div></div>
+    <div class="ms-list">${ms.map((m,i)=>`<div><b>${i+1}</b><span>${esc(m.label)}${m.ref?` <a href="${esc(m.ref)}" target="_blank" rel="noopener">source</a>`:''}</span></div>`).join('')}</div></section>`:''}
+  <div class="grid g-kpi" style="margin-bottom:16px">
+    ${kp('Run cost in scope',fmtM(run),'licence + support in this model','', 'apps|reset=1|sort=cost')}
+    ${kp(conv,fmtM(byLens[conv].cost),`${byLens[conv].apps.length} apps ${esc(B.converge_sub||'to target platforms')}`,'','programme|lens='+conv)}
+    ${kp(PDEC+'s',decs.length,`${decs.filter(d=>d.criticality==='Critical').length} critical`,'warn','')}
+    ${kp('Change-of-control exposure',coc.length,`contracts · ${fmtM(cocVal)} a year`,'warn','')}
+    ${local!==null?kp(B.local_label||'Local platforms to retain',local,B.local_sub||'','','programme|lens='+LENS_ORDER[LENS_ORDER.length-1]):''}
+  </div>
+  <div class="grid g-2" style="margin-bottom:16px">
+    <section class="panel syn"><h2>${esc(B.synergy_title||'Synergy scenario')}</h2><p class="sub">${esc(B.synergy_note||'Set an indicative saving per lens to size the opportunity. Illustrative: excludes one-off migration cost and dual running.')}</p>
+     <div class="tbl-wrap"><table><thead><tr><th>${esc(PLABEL)}</th><th class="num">Apps</th><th class="num">Run cost</th><th class="num">Saving %</th><th class="num">Indicative saving</th></tr></thead><tbody>
+     ${LENS_ORDER.map(k=>`<tr><td><button class="leg-click" data-blens="${k}"><i style="display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(${LENS_VAR[k]||'--c-ill'})"></i>${k}</button></td><td class="num mono">${byLens[k].apps.length}</td><td class="num mono">${fmtM(byLens[k].cost)}</td><td class="num"><input id="syn-${k.replace(/\W/g,'')}" type="number" min="0" max="100" step="5" value="${state.syn[k]||0}" data-syn="${k}" aria-label="Saving percent for ${k}"></td><td class="num mono" id="sv-${k.replace(/\W/g,'')}"></td></tr>`).join('')}
+     <tr><td><b>Total</b></td><td class="num mono">${D.apps.length}</td><td class="num mono">${fmtM(run)}</td><td class="num mono" id="sv-pct"></td><td class="num mono"><b id="sv-total"></b></td></tr></tbody></table></div></section>
+    <section class="panel"><h2>${esc(VSL)} exposure</h2><p class="sub">Run cost of the applications each ${esc(VSL.toLowerCase())} uses, split by lens. Click a colour to list those applications.</p>
+     ${CVS_ORDER.map(cid=>{const f=cvsFoot(cid),m={};LENS_ORDER.forEach(k=>m[k]=0);f.apps.forEach(a=>{const k=lensKey(AP[a].programme_lens);if(k in m)m[k]+=appCost(a)});const tot=Object.values(m).reduce((a,b)=>a+b,0)||1;
+       return `<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px"><button class="leg-click" data-ent="cvs:${cid}" style="font-weight:600">${esc(CVS[cid].name)}</button><span class="mono muted">${fmtM(tot)}</span></div>
+       <div class="stack" style="height:16px">${LENS_ORDER.map(k=>m[k]?`<button class="seg-click" data-blens="${k}" title="${k}: ${fmtM(m[k])}" style="width:${m[k]/tot*100}%;background:var(${LENS_VAR[k]||'--c-ill'})"></button>`:'').join('')}</div></div>`}).join('')}
+     <div class="legend">${LENS_ORDER.map(k=>`<button class="leg-click" data-blens="${k}"><i style="background:var(${LENS_VAR[k]||'--c-ill'})"></i>${k}</button>`).join('')}</div></section>
+  </div>
+  ${decs.length?`<section style="margin-bottom:16px"><h2 style="font:600 17px var(--f-display);margin:0 0 4px">Key platform decisions</h2><p class="sub muted" style="font-size:12.5px;margin:0 0 12px">EA hypotheses, each with its blast radius computed from the repository. Click a title for the full trace.</p>
+   <div class="dec-grid">${decs.map(d=>{const b=decBlast(d);return `<article class="dec"><header><h3><button data-dec="${d.id}">${esc(d.title)}</button></h3>${pill(d.criticality,d.criticality==='Critical'?'crit':d.criticality==='High'?'warn':'neutral')}</header>
+     <div class="chips"><span class="pill s-neutral">${esc(d.phase)}</span>${d.apps.map(a=>chip('app',a,AP[a].name,false)).join('')}</div>
+     <div class="blast"><div><b>${b.cvs.filter(c=>!isXC(c)).length}</b>value streams</div><div><b>${b.jour.length}</b>journeys</div><div><b>${b.caps.length}</b>capabilities</div><div><b>${b.ifs}</b>interfaces</div><div><b>${fmtM(b.cost)}</b>run cost</div></div>
+     <p><span class="muted">Options:</span> ${esc(d.options)}</p><p><b>Hypothesis:</b> ${esc(d.hypothesis)}</p></article>`}).join('')}</div></section>`:''}
+  ${phases.length?`<section class="panel" style="margin-bottom:16px"><h2>Indicative roadmap</h2><p class="sub">Decisions placed by the phase they most likely land in. Sequencing assumption, not a plan.</p>
+   <div style="overflow-x:auto"><div class="road">${phases.map(ph=>`<div><h4>${esc(ph)}</h4>${decs.filter(d=>phaseOf(d)===ph).map(d=>`<button class="chip" data-dec="${d.id}"><code>${d.id}</code>${esc(d.title)}</button>`).join('')||'<span class="empty">-</span>'}${(B.phase_notes||{})[ph]?`<p class="sub" style="margin:4px 0 0">${esc(B.phase_notes[ph])}</p>`:''}</div>`).join('')}</div></div></section>`:''}
+  ${coms.length?`<section class="panel" style="margin-bottom:16px"><h2>${esc(B.commitments_title||'What has been said, and what it means for the architecture')}</h2><p class="sub">${esc(B.commitments_sub||'Stated positions, paraphrased. Implications are EA analysis.')}</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Topic</th><th>Stated position</th><th>Architecture implication</th><th>Affected applications</th></tr></thead><tbody>
+   ${coms.map(c=>`<tr><td><b style="font-weight:600">${esc(c.topic)}</b>${c.source?`<div class="muted" style="font-size:11.5px">${c.ref?`<a href="${esc(c.ref)}" target="_blank" rel="noopener">${esc(c.source)}</a>`:esc(c.source)}</div>`:''}</td><td style="font-size:12.5px;min-width:200px">${esc(c.stated)}</td><td style="font-size:12.5px;min-width:240px">${esc(c.implication)}</td><td><div class="chips">${c.apps.map(a=>chip('app',a,AP[a].name,false)).join('')||'<span class="muted">Portfolio-wide</span>'}</div></td></tr>`).join('')}
+   </tbody></table></div></section>`:''}
+  <section class="panel" style="margin-bottom:16px"><h2>Change-of-control and partner exposure</h2><p class="sub">Contracts with a change-of-control clause${partners.length?', plus key partner agreements':''}.${completion?` The notice deadline is compared with ${esc(B.completion_label||'expected completion')} (${completion.slice(0,7)}).`:''} Contract terms are illustrative unless confirmed.</p>
+   <div class="tbl-wrap"><table><thead><tr><th>Supplier</th><th class="num">Annual value</th><th class="num">${esc(CR.abbr)} apps</th><th>Term end</th><th>Notice deadline</th>${completion?'<th>Before completion?</th>':''}<th>${esc(TPR.terms_label)}</th></tr></thead><tbody>
+   ${coc.map(x=>{const n=nb(x.k),before=completion&&n<completion;return `<tr data-ent="sup:${x.s.id}"><td><b style="font-weight:600">${esc(x.s.name)}</b><div class="muted" style="font-size:12px">${esc(x.s.type)}${x.k.change_of_control_clause?' · CoC clause':' · partner agreement'}</div></td><td class="num mono">${fmtM(x.k.annual_value||0)}</td><td class="num mono">${x.crit}</td><td class="mono">${x.k.end}</td><td class="mono">${n}</td>${completion?`<td>${before?pill('Yes, notice due first','crit'):pill('After','neutral')}</td>`:''}<td>${pill(x.k.regulatory_terms,x.k.regulatory_terms==='Yes'?'ok':x.k.regulatory_terms==='Gap'?'crit':x.k.regulatory_terms==='N/A'?'neutral':'warn')}</td></tr>`}).join('')}
+   </tbody></table></div></section>
+  <section><div class="filters" style="align-items:center"><h2 style="font:600 17px var(--f-display);margin:0">Applications by ${esc(PLABEL.toLowerCase())}</h2><div class="seg" role="group" aria-label="${esc(PLABEL)}">${['',...LENS_ORDER].map(k=>`<button data-blens="${k}" aria-pressed="${state.progLens===k}">${k||'All'}</button>`).join('')}</div></div>
+   <div class="tbl-wrap"><table><thead><tr><th>Application</th><th>Lens</th><th>Hypothesis</th><th>TIME</th><th>${esc(VSL)}s</th><th class="num">Run cost</th></tr></thead><tbody>
+   ${list.map(a=>{const vs=[...new Set(appSteps[a.id].map(s=>VS[ST[s].vs].parent))].filter(c=>!isXC(c));const lk=lensKey(a.programme_lens);return `<tr data-ent="app:${a.id}"><td><b style="font-weight:600">${esc(a.name)}</b><div class="muted" style="font-size:12px">${esc(a.product)}</div></td><td><span class="pill" style="color:var(${LENS_VAR[lk]||'--c-ill'});background:color-mix(in oklab,var(${LENS_VAR[lk]||'--c-ill'}) 12%,var(--surface))">${esc(lk)}</span></td><td style="font-size:12.5px">${esc(a.programme_lens)}</td><td>${time(a.time)}</td><td style="font-size:12px">${vs.map(c=>esc(shortCvs(c))).join(', ')||'<span class="muted">Enabling</span>'}</td><td class="num mono">${fmtM(appCost(a.id))}</td></tr>`}).join('')}
+   </tbody></table></div></section>`;
+  synCalc();
+}
+function openDec(id){
+  const d=(PG.decisions||[]).find(x=>x.id===id), b=decBlast(d);
+  $('#drawer').innerHTML=`<header><div class="t"><div class="k">${esc(PDEC)} · ${d.id}</div><h2>${esc(d.title)}</h2><div class="chips">${pill(d.criticality,d.criticality==='Critical'?'crit':d.criticality==='High'?'warn':'neutral')}<span class="pill s-neutral">${esc(d.phase)}</span></div></div><button class="x" id="dclose" aria-label="Close">✕</button></header>
+  <div class="body">${dl([['Options',esc(d.options)],['EA hypothesis',esc(d.hypothesis)],['Run cost in scope',fmtM(b.cost)+' (illustrative)'],['Apps supporting '+CR.plural,b.crit],['Interfaces touched',b.ifs]])}
+   ${sec('Applications',appChips(d.apps))}
+   ${sec(VSL+'s',`<div class="chips">${b.cvs.map(c=>chip('cvs',c,CVS[c].name,false)).join('')}</div>`)}
+   ${sec('Journeys affected',`<div class="chips">${b.jour.map(v=>chip('vs',v,VS[v].name)).join('')||'<span class="empty">None</span>'}</div>`)}
+   ${sec(`Process steps · ${b.steps.length}`,stepChips(b.steps))}
+   ${sec('Capabilities',`<div class="chips">${b.caps.map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`)}
+   ${sec('Suppliers involved',`<div class="chips">${b.sups.map(x=>chip('sup',x,SU[x].name,false)).join('')}</div>`)}
+  </div>`;
+  $('#drawer').hidden=false;$('#scrim').hidden=false;$('#dclose').focus();
+}
+
+
+// ---------- Process architecture
+function bpa(){
+  const PT=P.process_tiers||{}; const cats=[['Operate',PT.Operate||'Value streams and the processes that serve customers directly'],['Manage',PT.Manage||`Processes that direct and control the ${NOUN}`],['Support',PT.Support||`Processes that keep the ${NOUN} running`]];
+  $('#view').innerHTML=`<div class="bpa">${cats.map(([c,desc])=>`<section class="bpa-col"><header><b>${c}</b><span>${desc}</span></header>
+    ${D.business_processes.filter(p=>p.category===c&&p.level===1).map(g=>{const kids=D.business_processes.filter(x=>x.parent===g.id);return `<div class="bpa-grp">
+      <button class="bpa-l1" data-ent="bp:${g.id}"><code>${g.id}</code>${esc(g.name)}<small>${esc(RO[g.owner].name)}</small></button>
+      ${kids.map(k=>`<button class="bpa-l2" data-ent="bp:${k.id}"><span><code>${k.id}</code>${esc(k.name)}</span><span class="bpa-meta">${k.journeys.length?`<i class="map-dot" title="Has a process map"></i>`:''}<em>${k.apps.length} app${k.apps.length===1?'':'s'}</em></span></button>`).join('')}
+    </div>`}).join('')}</section>`).join('')}</div>
+    <div class="legend"><span><i class="map-dot" style="margin-right:6px"></i>Has a swimlane process map</span><span>Click any process for its owner, applications, capabilities, roles and suppliers.</span></div>`;
+}
+
+// ---------- Process maps (swimlanes)
+function wrap(t,n){const w=t.split(' '),out=[];let l='';w.forEach(x=>{if((l+' '+x).trim().length>n){out.push(l.trim());l=x}else l+=' '+x});if(l.trim())out.push(l.trim());return out}
+function pmap(){
+  const v=VS[state.pmapVs], steps=D.steps.filter(s=>s.vs===v.id);
+  const laneOf=s=>s.R.length?s.R[0]:s.A;
+  const lanes=[];const add=r=>{if(!lanes.includes(r))lanes.push(r)};
+  if(CUST&&steps.some(s=>[...s.R].includes(CUST))) add(CUST);
+  steps.forEach(s=>{add(laneOf(s));s.R.forEach(add)});
+  const LW=176,CW=200,BW=166,BH=60,LH=84,T=8;
+  const maxApps=Math.max(...steps.map(s=>s.apps.length)), SH=24+maxApps*20;
+  const W=LW+CW*(steps.length+1)+20, H=T+lanes.length*LH+SH+16;
+  const cx=i=>LW+CW*(i+0.5)+CW/2, ly=r=>T+lanes.indexOf(r)*LH+LH/2;
+  let g='';
+  lanes.forEach((r,i)=>{const y=T+i*LH;g+=`<rect x="0" y="${y}" width="${W}" height="${LH}" fill="${i%2?'var(--surface-2)':'var(--surface)'}"/><line x1="0" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)"/>
+    <g data-ent="role:${r}" style="cursor:pointer">${wrap(RO[r].name,20).slice(0,2).map((t,j,a)=>`<text x="14" y="${y+LH/2+(j-(a.length-1)/2)*15+4}" class="lane-t">${esc(t)}</text>`).join('')}<text x="14" y="${y+LH/2+ (wrap(RO[r].name,20).length>1?26:18)}" class="lane-s">${esc(RO[r].family)}</text></g>`});
+  const sy=T+lanes.length*LH;
+  g+=`<rect x="0" y="${sy}" width="${W}" height="${SH}" fill="var(--accent-soft)"/><line x1="0" x2="${W}" y1="${sy}" y2="${sy}" stroke="var(--line)"/><text x="14" y="${sy+22}" class="lane-t">Systems</text>`;
+  g+=`<line x1="${LW}" x2="${LW}" y1="${T}" y2="${sy+SH}" stroke="var(--line)"/>`;
+  // start / end events
+  const s0=steps[0], sl=steps[steps.length-1];
+  g+=`<circle cx="${LW+CW*0.5-30}" cy="${ly(laneOf(s0))}" r="11" fill="var(--surface)" stroke="var(--ok)" stroke-width="2"><title>Start: ${esc(v.trigger)}</title></circle>`;
+  g+=`<path d="M${LW+CW*0.5-19},${ly(laneOf(s0))} H${cx(0)-BW/2-2}" class="flow" marker-end="url(#arr)"/>`;
+  const ex=cx(steps.length-1)+BW/2+34;
+  g+=`<circle cx="${ex}" cy="${ly(laneOf(sl))}" r="11" fill="var(--surface)" stroke="var(--crit)" stroke-width="3.5"><title>End: ${esc(v.outcome)}</title></circle>`;
+  g+=`<path d="M${cx(steps.length-1)+BW/2},${ly(laneOf(sl))} H${ex-13}" class="flow" marker-end="url(#arr)"/>`;
+  let handoffs=0;
+  steps.forEach((s,i)=>{
+    const x=cx(i), y=ly(laneOf(s));
+    if(i<steps.length-1){const n=steps[i+1],x2=cx(i+1),y2=ly(laneOf(n));
+      if(y2===y) g+=`<path d="M${x+BW/2},${y} H${x2-BW/2-2}" class="flow" marker-end="url(#arr)"/>`;
+      else {handoffs++;const mx=x+BW/2+(CW-BW)/2;g+=`<path d="M${x+BW/2},${y} H${mx} V${y2} H${x2-BW/2-2}" class="flow" marker-end="url(#arr)"/>`}}
+    // other responsible lanes
+    s.R.slice(1).forEach(r=>{const yy=ly(r);g+=`<line x1="${x}" x2="${x}" y1="${y+(yy>y?BH/2:-BH/2)}" y2="${yy+(yy>y?-14:14)}" class="assoc"/><rect x="${x-46}" y="${yy-14}" width="92" height="28" rx="14" class="part" data-ent="step:${s.id}"><title>Also responsible: ${esc(RO[r].name)}</title></rect><text x="${x}" y="${yy+4}" text-anchor="middle" class="part-t">also R</text>`});
+    const lines=wrap(s.name,24).slice(0,3);
+    g+=`<g class="task" data-ent="step:${s.id}"><rect x="${x-BW/2}" y="${y-BH/2}" width="${BW}" height="${BH}" rx="8"/><text x="${x-BW/2+8}" y="${y-BH/2+14}" class="task-n">${s.seq}</text>
+      ${lines.map((t,j)=>`<text x="${x}" y="${y+(j-(lines.length-1)/2)*14+4}" text-anchor="middle" class="task-t">${esc(t)}</text>`).join('')}<title>${esc(s.name)} · Accountable: ${esc(RO[s.A].name)}</title></g>`;
+    // systems
+    g+=`<line x1="${x}" x2="${x}" y1="${sy}" y2="${sy+6}" stroke="var(--accent)"/>`;
+    s.apps.forEach((a,j)=>{g+=`<g class="sys" data-ent="app:${a}"><rect x="${x-BW/2}" y="${sy+10+j*20}" width="${BW}" height="17" rx="4"/><circle cx="${x-BW/2+8}" cy="${sy+18.5+j*20}" r="3.5" fill="var(--${AP[a].time.toLowerCase()})"/><text x="${x-BW/2+16}" y="${sy+22.5+j*20}" class="sys-t">${esc(AP[a].name.length>24?AP[a].name.slice(0,23)+'…':AP[a].name)}</text><title>${esc(AP[a].name)} · ${esc(AP[a].product)} · ${AP[a].time}</title></g>`});
+  });
+  const apps=[...new Set(steps.flatMap(s=>s.apps))], bpOf=D.business_processes.find(b=>b.journeys.includes(v.id));
+  const opts=CVS_ORDER.map(c=>`<optgroup label="${esc(CVS[c].name)}">${D.value_streams.filter(x=>x.parent===c).map(x=>`<option value="${x.id}" ${x.id===v.id?'selected':''}>${esc(x.name)}</option>`).join('')}</optgroup>`).join('');
+  $('#view').innerHTML=`<div class="filters"><label>Journey <select id="pmap-sel" data-pmapsel="1">${opts}</select></label>
+    <div class="chips" style="align-self:flex-end">${chip('cvs',v.parent,CVS[v.parent].name,false)}${bpOf?chip('bp',bpOf.id,bpOf.name):''}${chip('role',v.owner,'Owner: '+RO[v.owner].name,false)}</div></div>
+   <div class="grid g-kpi" style="margin-bottom:14px">
+     <div class="kpi"><label>Steps</label><b>${steps.length}</b><span>${esc(v.trigger)}</span></div>
+     <div class="kpi"><label>Lanes</label><b>${lanes.length}</b><span>roles doing the work</span></div>
+     <div class="kpi ${handoffs>=4?'warn':''}"><label>Handoffs</label><b>${handoffs}</b><span>changes of lane between steps</span></div>
+     <div class="kpi"><label>Systems touched</label><b>${apps.length}</b><span>${apps.filter(a=>AP[a].time==='Migrate'||AP[a].time==='Eliminate').length} rated Migrate or Eliminate</span></div>
+   </div>
+   <div class="tbl-wrap" style="padding:0"><svg class="swim" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Swimlane process map for ${esc(v.name)}">
+     <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>${g}</svg></div>
+   <div class="legend"><span><svg width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="var(--ok)" stroke-width="2"/></svg> Start: ${esc(v.trigger)}</span><span><svg width="16" height="16"><circle cx="8" cy="8" r="6" fill="none" stroke="var(--crit)" stroke-width="3"/></svg> End: ${esc(v.outcome)}</span><span>Lane = first responsible role. "also R" marks other responsible roles. Dot colour on a system = TIME rating. Click any step, role or system for detail.</span></div>`;
+}
+
+// ---------- Landscape map
+const LAND_MODES={time:{name:'TIME rating',key:a=>a.time,vars:{Invest:'--invest',Tolerate:'--tolerate',Migrate:'--migrate',Eliminate:'--eliminate'}},
+  ...(PG?{lens:{name:PLABEL,key:a=>lensKey(a.programme_lens),vars:LENS_VAR}}:{}),
+  conf:{name:'Data confidence',key:a=>a.confidence,vars:CONF_VAR},
+  tier:{name:'Criticality',key:a=>a.tier,vars:{'Tier 0':'--crit','Tier 1':'--warn','Tier 2':'--migrate','Tier 3':'--c-ill'}},
+  ...(rdRegs().length?{rd:{name:'Readiness',key:a=>rdApp(a.id).status,vars:{'Not planned':'--crit','Late':'--warn','On track':'--c-pub','Done':'--ok','Not in scope':'--c-ill'}}}:{})};
+function landscape(){
+  const M=LAND_MODES[state.landMode]||LAND_MODES.time;
+  const regPick=state.landMode==='rd'&&rdRegs().length>1?rdPicker():'';
+  const dom=a=>CAP[a.capabilities[0]].parent;
+  $('#view').innerHTML=`<div class="filters"><div class="seg" role="group" aria-label="Colour by">${Object.entries(LAND_MODES).map(([k,m])=>`<button data-land="${k}" aria-pressed="${state.landMode===k}">${m.name}</button>`).join('')}</div>
+     ${regPick}<div class="legend" style="margin:0">${Object.entries(M.vars).map(([k,v])=>`<span><i style="background:var(${v})"></i>${k} <b class="mono">${D.apps.filter(a=>M.key(a)===k).length}</b></span>`).join('')}</div></div>
+   <div class="land">${L1.map(l1=>{const as=D.apps.filter(a=>dom(a)===l1.id);if(!as.length)return '';return `<section class="land-dom"><header><b>${esc(l1.name)}</b><code>${as.length}</code></header><div class="land-apps">
+     ${as.map(a=>{const c=M.vars[M.key(a)];return `<button class="land-app" data-ent="app:${a.id}" style="background:color-mix(in oklab,var(${c}) 14%,var(--surface));border-color:color-mix(in oklab,var(${c}) 45%,var(--line))" title="${esc(a.name)} · ${esc(M.key(a))}"><b>${esc(a.name)}</b><span>${esc(a.product)}</span><i style="background:var(${c})"></i></button>`}).join('')}
+   </div></section>`}).join('')}</div>
+   <p class="sub muted" style="font-size:12.5px;margin-top:10px">Each application sits in the domain of its primary capability. Applications that support several domains appear once.</p>`;
+}
+
+// ---------- Integration map
+const IFAMS=(P.interface_families||[{name:'Events',match:'kafka|event|stream',var:'--accent'},{name:'Messaging',match:'\\bMQ\\b|JMS|queue',var:'--migrate'},{name:'API',match:'API|REST|SOAP|SCIM|LDAP|Platform|Native',var:'--invest'},{name:'File / batch',match:'File|Manual|Syslog|CDC|SFTP|batch',var:'--c-ill'},{name:'Network / scheme',match:'.',var:'--warn'}]).map(f=>({name:f.name,re:new RegExp(f.match,'i'),var:f.var}));
+const IFAM=p=>(IFAMS.find(f=>f.re.test(p||''))||IFAMS[IFAMS.length-1]).name;
+const IFAM_VAR=Object.fromEntries(IFAMS.map(f=>[f.name,f.var]));
+const LAYERS=(()=>{const L=(P.layers||[]).map(l=>[l[0],[...l[1]]]); if(!L.length) L.push(['Applications',[]]); const known=new Set(L.flatMap(l=>l[1])); D.apps.forEach(a=>{if(!known.has(a.category)){L[L.length-1][1].push(a.category);known.add(a.category)}}); return L.filter(l=>D.apps.some(a=>l[1].includes(a.category)))})();
+const layerOf=a=>{const i=LAYERS.findIndex(l=>l[1].includes(AP[a].category));return i<0?LAYERS.length-1:i};
+function integration(){
+  const fams=Object.keys(IFAM_VAR), off=state.intFam||{};
+  const ifs=D.interfaces.filter(i=>!off[IFAM(i.protocol)]);
+  const used=new Set(D.interfaces.flatMap(i=>[i.source_app,i.target_app]));
+  const apps=D.apps.filter(a=>state.intAll||used.has(a.id)).map(a=>a.id);
+  const cols=LAYERS.map((_,i)=>apps.filter(a=>layerOf(a)===i).sort((x,y)=>AP[x].name.localeCompare(AP[y].name)));
+  const NW=136,NH=26,GAP=34,CW=160,TOP=40;
+  const W=CW*LAYERS.length+10, H=TOP+Math.max(...cols.map(c=>c.length))*GAP+20;
+  const pos={}; cols.forEach((c,i)=>c.forEach((a,j)=>pos[a]={x:10+i*CW,y:TOP+j*GAP}));
+  const f=state.intFocus&&pos[state.intFocus]?state.intFocus:'';
+  const linked=new Set(f?ifs.filter(i=>i.source_app===f||i.target_app===f).flatMap(i=>[i.source_app,i.target_app]):[]);
+  let edges='';
+  ifs.forEach(i=>{const a=pos[i.source_app],b=pos[i.target_app];if(!a||!b)return;
+    const fam=IFAM(i.protocol), hot=f&&(i.source_app===f||i.target_app===f), dim=f&&!hot;
+    let x1,x2,y1=a.y+NH/2,y2=b.y+NH/2,d;
+    if(b.x>a.x){x1=a.x+NW;x2=b.x;d=`M${x1},${y1} C${x1+40},${y1} ${x2-40},${y2} ${x2},${y2}`}
+    else if(b.x<a.x){x1=a.x;x2=b.x+NW;d=`M${x1},${y1} C${x1-40},${y1} ${x2+40},${y2} ${x2},${y2}`}
+    else {x1=a.x+NW;x2=b.x+NW;const bulge=x1+30+Math.abs(y2-y1)*0.15;d=`M${x1},${y1} C${bulge},${y1} ${bulge},${y2} ${x2},${y2}`}
+    edges+=`<path d="${d}" class="ie ${hot?'hot':''}" style="stroke:var(${IFAM_VAR[fam]});opacity:${dim?0.08:hot?1:0.5}" marker-end="url(#ia-${fams.indexOf(fam)})"><title>${esc(AP[i.source_app].name)} → ${esc(AP[i.target_app].name)}: ${esc(i.data)} (${esc(i.protocol)}, ${esc(i.frequency)})</title></path>`});
+  const nodes=apps.map(a=>{const p=pos[a],on=!f||a===f||linked.has(a);return `<g class="in ${a===f?'focus':''}" data-ifocus="${a}" style="opacity:${on?1:0.3}"><rect x="${p.x}" y="${p.y}" width="${NW}" height="${NH}" rx="6"/><circle cx="${p.x+10}" cy="${p.y+NH/2}" r="4" fill="var(--${AP[a].time.toLowerCase()})"/><text x="${p.x+20}" y="${p.y+NH/2+4}">${esc(AP[a].name.length>19?AP[a].name.slice(0,18)+'…':AP[a].name)}</text><title>${esc(AP[a].name)} · ${esc(AP[a].product)}. Click to isolate, click again for detail.</title></g>`}).join('');
+  const heads=LAYERS.map((l,i)=>`<text x="${10+i*CW}" y="20" class="ih">${esc(l[0].toUpperCase())}</text>`).join('');
+  const markers=fams.map((fm,i)=>`<marker id="ia-${i}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(${IFAM_VAR[fm]})"/></marker>`).join('');
+  const fl=f?D.interfaces.filter(i=>i.source_app===f||i.target_app===f):[];
+  const famCount=fm=>D.interfaces.filter(i=>IFAM(i.protocol)===fm).length;
+  $('#view').innerHTML=`<div class="filters">${fams.map(fm=>`<button class="chip" data-ifam="${fm}" aria-pressed="${!off[fm]}" style="${off[fm]?'opacity:.45;text-decoration:line-through':''}"><i style="display:inline-block;width:14px;height:3px;border-radius:2px;background:var(${IFAM_VAR[fm]});vertical-align:middle"></i>${fm} <code>${famCount(fm)}</code></button>`).join('')}
+     <button class="chip" data-iall="1">${state.intAll?'Hide applications without interfaces':'Show all applications'}</button>${f?`<button class="chip" data-ifocus="">Clear selection</button>`:''}</div>
+   <div class="tbl-wrap" style="padding:0"><svg class="imap" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Integration map"><defs>${markers}</defs>${heads}${edges}${nodes}</svg></div>
+   ${f?`<section class="panel" style="margin-top:14px"><h2>${esc(AP[f].name)}: ${fl.length} interfaces</h2><p class="sub">${esc(AP[f].product)}. <button class="chip" data-ent="app:${f}">Open application detail</button></p>
+     <div class="tbl-wrap"><table><thead><tr><th>Direction</th><th>Other application</th><th>Data</th><th>Type</th><th>Frequency</th></tr></thead><tbody>
+     ${fl.map(i=>{const out=i.source_app===f,o=out?i.target_app:i.source_app;return `<tr data-ent="app:${o}"><td class="mono">${out?'Outbound':'Inbound'}</td><td>${esc(AP[o].name)}</td><td style="font-size:12.5px">${esc(i.data)}</td><td><span class="pill" style="color:var(${IFAM_VAR[IFAM(i.protocol)]});background:color-mix(in oklab,var(${IFAM_VAR[IFAM(i.protocol)]}) 12%,var(--surface))">${esc(i.protocol)}</span></td><td class="mono" style="font-size:12px">${esc(i.frequency)}</td></tr>`}).join('')}</tbody></table></div></section>`
+   :`<p class="sub muted" style="font-size:12.5px;margin-top:10px">Click an application to isolate its flows; click it again for full detail. Hover a line for what flows over it. Interfaces may be partly illustrative; check their source in the Excel.</p>`}`;
+}
+
+
+// ---------- Resilience
+function resilience(){
+  const R0=D.resilience.map(r=>({...r,a:AP[r.app],m:r.last_dr_test?months(r.last_dr_test):null}));
+  const inh=R0.filter(r=>r.site==='internal'), ven=R0.filter(r=>r.site==='vendor'), thp=R0.filter(r=>r.site!=='internal'&&r.site!=='vendor');
+  const bad=r=>/Failed|issues|Not tested/.test(r.dr_result)||(r.m!==null&&-r.m>12);
+  const att=R0.filter(bad);
+  const critInh=inh.filter(r=>r.a.crit), critOut=[...ven,...thp].filter(r=>r.a.crit);
+  const resPill=r=>pill(r.dr_result,r.dr_result==='Passed'?'ok':r.dr_result==='Failed'?'crit':r.dr_result==='Vendor attestation'?'neutral':'warn');
+  const site=(title,sub,rows,cls)=>`<div class="site ${cls}"><div class="site-h"><b>${esc(title)}</b><span>${esc(sub)}</span></div><div class="site-n"><b>${rows.length}</b> apps · <b>${rows.filter(r=>r.a.crit).length}</b> ${esc(CRN(rows.filter(r=>r.a.crit).length))}</div><div class="chips">${rows.filter(r=>r.a.tier_n===0).map(r=>chip('app',r.app,r.a.name,false)).join('')}</div></div>`;
+  const sev={Failed:0,'Passed with issues':1,'Not tested':2,'Vendor attestation':3,Passed:4};
+  const jrows=CVS_ORDER.flatMap(c=>D.value_streams.filter(v=>v.parent===c)).map(v=>{const apps=[...new Set(D.steps.filter(s=>s.vs===v.id).flatMap(s=>s.apps))].map(a=>RES[a]);
+    if(!apps.length) return null;
+    const worst=apps.reduce((w,r)=>sev[r.dr_result]<sev[w.dr_result]?r:w,apps[0]); const crit=apps.filter(r=>AP[r.app].tier_n<=1), pool=crit.length?crit:apps; const slow=pool.reduce((w,r)=>r.rto_hours>w.rto_hours?r:w,pool[0]);
+    return {v,n:apps.length,inh:apps.filter(r=>r.site==='internal').length,out:apps.filter(r=>r.site!=='internal').length,slow,worst}}).filter(Boolean);
+  const f=state.resF;
+  const list=R0.filter(r=>!f||(f==='site'&&r.site==='internal')||(f==='vendor'&&r.site!=='internal')||(f==='att'&&bad(r))).sort((x,y)=>x.a.tier_n-y.a.tier_n||sev[x.dr_result]-sev[y.dr_result]);
+  const kp=(l,v,s,cls,rf)=>`<button class="kpi click ${cls||''}" data-resf="${rf}"><label>${l}</label><b>${v}</b><span>${s}</span><i class="go">→</i></button>`;
+  const callout=DCMODEL==='active-passive'&&DCP&&DCS?`<b>Active-passive.</b> ${esc(DCP.name)} runs live and ${esc(DCS.name)} is standby. Losing ${esc(DCP.name)} needs a site failover for every in-house application, so recovery time is set by the failover runbooks and the slowest critical dependency in each journey.`
+    :DCMODEL==='active-active'&&DCP&&DCS?`<b>Active-active.</b> ${esc(DCP.name)} and ${esc(DCS.name)} both run live. Losing one site reduces capacity and resilience but in-house applications keep running if they are deployed across both.`
+    :DCP?`<b>Single site.</b> In-house applications run in ${esc(DCP.name)} with no second site, so a site loss means restoring from backup.`:`<b>No in-house data centre recorded.</b> Resilience depends on vendors and third parties.`;
+  const sitesHtml=DCMODEL==='active-passive'&&DCP&&DCS?`${site(DCP.name,'Primary · live',inh,'live')}<div class="site-arrow"><span>Site failover</span>→</div>${site(DCS.name,'Secondary · standby',inh,'standby')}`
+    :DCMODEL==='active-active'&&DCP&&DCS?`${site(DCP.name,'Live',inh,'live')}<div class="site-arrow"><span>Shared load</span>↔</div>${site(DCS.name,'Live',inh,'live')}`
+    :`${site(DCP?DCP.name:'In-house',DCP?'Single site':'',inh,'live')}`;
+  $('#view').innerHTML=`<div class="callout" style="margin-bottom:16px;border-left-color:var(--accent);background:color-mix(in oklab,var(--accent) 7%,var(--surface))">${callout} ${esc(((P.resilience||{}).note)||'Recovery targets and DR test history are illustrative until replaced with real data.')}</div>
+   <div class="grid g-kpi" style="margin-bottom:16px">
+     ${kp(DCMODEL==='active-passive'?'Depend on site failover':'Run in own data centres',inh.length,`${critInh.length} support ${CRN(critInh.length)}`,'','site')}
+     ${kp(`Outside ${ORGS} data centres`,ven.length+thp.length,`${critOut.length} ${CRN(critOut.length)}; vendor or third-party resilience`,'','vendor')}
+     ${kp('Need attention',att.length,'failed, with issues, untested or test over 12 months old','crit','att')}
+     ${kp('All applications',R0.length,'clear the filter','', '')}
+   </div>
+   <section class="panel" style="margin-bottom:16px"><h2>Where the estate runs</h2><p class="sub">Tier 0 applications listed in each location. Click one for detail.</p>
+    <div class="sites">${sitesHtml}${site('Vendor and third-party','Resilience managed by suppliers',[...ven,...thp],'ext')}</div></section>
+   <section class="panel" style="margin-bottom:16px"><h2>Journey recovery</h2><p class="sub">A journey cannot recover faster than its slowest Tier 0 or Tier 1 application, and is only as tested as its weakest DR result. Click a journey for its process map.</p>
+    <div class="tbl-wrap"><table><thead><tr><th>Journey</th><th>${esc(VSL)}</th><th class="num">Apps</th><th class="num">In own DCs</th><th class="num">Outside DCs</th><th>Slowest critical RTO</th><th>Weakest DR result</th></tr></thead><tbody>
+    ${jrows.map(j=>`<tr data-pmap="${j.v.id}" style="cursor:pointer"><td><b style="font-weight:600">${esc(j.v.name)}</b></td><td style="font-size:12.5px">${esc(shortCvs(j.v.parent))}</td><td class="num mono">${j.n}</td><td class="num mono">${j.inh}</td><td class="num mono">${j.out}</td><td style="font-size:12.5px"><b class="mono">${j.slow.rto_hours}h</b> ${esc(AP[j.slow.app].name)}</td><td>${resPill(j.worst)} <span style="font-size:12px">${esc(AP[j.worst.app].name)}</span></td></tr>`).join('')}
+    </tbody></table></div></section>
+   <section><div class="filters" style="align-items:center"><h2 style="font:600 17px var(--f-display);margin:0">Applications</h2><div class="seg" role="group" aria-label="Filter">${[['','All'],['site','Own data centres'],['vendor','Outside DCs'],['att','Needs attention']].map(([k,l])=>`<button data-resf="${k}" aria-pressed="${f===k}">${l}</button>`).join('')}</div><span class="muted" style="font-size:12.5px">${list.length} shown</span></div>
+    <div class="tbl-wrap"><table><thead><tr><th>Application</th><th>Tier</th><th>Mode</th><th class="num">RTO</th><th class="num">RPO</th><th>Last DR test</th><th>Result</th></tr></thead><tbody>
+    ${list.map(r=>`<tr data-ent="app:${r.app}"><td><b style="font-weight:600">${esc(r.a.name)}</b>${r.a.crit?CRB():''}<div class="muted" style="font-size:12px">${esc(r.a.product)}</div></td><td class="mono">${r.a.tier.replace('Tier ','T')}</td><td style="font-size:12.5px">${esc(r.mode)}</td><td class="num mono">${r.rto_hours}h</td><td class="num mono">${r.rpo_minutes>=60?(r.rpo_minutes/60)+'h':r.rpo_minutes+'m'}</td><td class="mono" style="color:${r.m!==null&&-r.m>12?'var(--crit)':'inherit'}">${r.last_dr_test||'None'}</td><td>${resPill(r)}</td></tr>`).join('')}
+    </tbody></table></div></section>`;
+}
+
+
+// ---------- Taxonomy & glossary
+const TAX_COUNT={[VSL]:()=>NVS,'Journey':()=>D.value_streams.length,'Process step':()=>D.steps.length,
+ 'Process category':()=>3,'Process group':()=>D.business_processes.filter(p=>p.level===1).length,'Process':()=>D.business_processes.filter(p=>p.level===2).length,
+ 'Capability domain':()=>L1.length,'Capability':()=>L2.length,'Capability (L3)':()=>L3.length,'Role':()=>D.roles.length,'Application':()=>D.apps.length,
+ 'Platform application':()=>new Set(D.apps.flatMap(a=>(a.runs_on||[]).map(x=>x.app))).size,'Interface':()=>D.interfaces.length,'Data domain':()=>D.data_domains.length,
+ 'Data centre':()=>D.data_centres.length,'Supplier':()=>D.suppliers.length,'Contract':()=>D.contracts.length,'Licence':()=>D.licences.length,'Support agreement':()=>D.support.length,
+ ...(PG?{[PDEC]:()=>(PG.decisions||[]).length,[PG.commitment_label||'Programme commitment']:()=>(PG.commitments||[]).length}:{}),'Scenario':()=>D.example_scenarios.length+ScStore.items.length,'Strategic pillar':()=>D.strategy.pillars.length,'Strategic initiative':()=>D.strategy.initiatives.length,'Regulatory requirement':()=>D.regulations.reduce((t,r)=>t+r.requirements.length,0)};
+const TAX_VIEW={[VSL]:'processes','Journey':'processes','Process step':'pmap','Process category':'bpa','Process group':'bpa','Process':'bpa','Capability domain':'capabilities','Capability':'capabilities','Capability (L3)':'capabilities','Role':'roles','Application':'apps','Platform application':'landscape','Interface':'integration','Data domain':'apps','Data centre':'resilience','Supplier':'suppliers','Contract':'licensing','Licence':'licensing','Support agreement':'support',...(PG?{[PDEC]:'programme',[PG.commitment_label||'Programme commitment']:'programme'}:{}),'Scenario':'scenarios','Strategic pillar':'strategy','Strategic initiative':'strategy','Regulatory requirement':'scenarios'};
+function glossary(){
+  const doms=['Business','Technology','Commercial','Strategy'];
+  const cats=[...new Set(D.glossary.map(g=>g.category))];
+  $('#view').innerHTML=`<section class="panel" style="margin-bottom:16px"><h2>Taxonomy</h2><p class="sub">Every element type in the atlas, its level, ID prefix and live count. Click an element to open the view where it lives.</p>
+    <div class="tax">${doms.map(d=>`<div class="tax-dom"><h3>${d}</h3>${D.taxonomy.filter(t=>t.domain===d).map(t=>`<button class="tax-el" data-tax="${TAX_VIEW[t.element]||'overview'}" style="margin-left:${t.parent&&D.taxonomy.find(x=>x.element===t.parent&&x.domain===d)?(D.taxonomy.find(x=>x.element===t.parent).parent?28:14):0}px">
+      <span class="tax-top"><b>${esc(t.element)}</b><span class="tax-meta">${t.level?`<code>${t.level}</code>`:''}${t.prefix?`<code>${esc(t.prefix)}</code>`:''}<em>${TAX_COUNT[t.element]?TAX_COUNT[t.element]():''}</em></span></span>
+      <span class="tax-def">${esc(t.definition)}</span><span class="tax-ex">e.g. ${esc(t.example)}</span></button>`).join('')}</div>`).join('')}</div></section>
+   <section class="panel" style="margin-bottom:16px"><h2>How elements relate</h2><p class="sub">The relationships the repository records. Together they make the traceability view possible.</p>
+    <div class="rels">${D.relationships.map(r=>`<div><b>${esc(r.source)}</b><span>${esc(r.verb)}</span><b>${esc(r.target)}</b></div>`).join('')}</div></section>
+   <section><div class="filters" style="align-items:flex-end"><h2 style="font:600 17px var(--f-display);margin:0 12px 4px 0">Glossary</h2>
+    <label style="flex:1;min-width:200px">Find a term <input id="gq" type="search" value="${esc(state.gq)}" placeholder="e.g. RTO, TIME, SLA" style="padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:13px var(--f-body);text-transform:none;letter-spacing:0;width:100%"></label></div>
+    <div class="chips" style="margin-bottom:12px">${['',...cats].map(c=>`<button class="chip" data-gcat="${esc(c)}" aria-pressed="${state.gcat===c}" style="${state.gcat===c?'background:var(--ink);color:var(--surface);border-color:var(--ink)':''}">${esc(c||'All')} <code>${c?D.glossary.filter(g=>g.category===c).length:D.glossary.length}</code></button>`).join('')}</div>
+    <div id="glist"></div></section>`;
+  glossaryList();
+}
+function glossaryList(){
+  const q=(state.gq||'').toLowerCase().trim(), c=state.gcat;
+  const rows=D.glossary.filter(g=>(!c||g.category===c)&&(!q||(g.term+' '+g.definition).toLowerCase().includes(q))).sort((a,b)=>a.term.localeCompare(b.term));
+  const el=document.getElementById('glist'); if(!el) return;
+  el.innerHTML=rows.length?`<div class="tbl-wrap"><table><thead><tr><th style="width:26%">Term</th><th>Meaning</th><th>Category</th></tr></thead><tbody>${rows.map(g=>`<tr data-ent="term:${g.id}"><td><b style="font-weight:600">${esc(g.term)}</b></td><td style="font-size:13px">${esc(g.definition)}</td><td class="muted" style="font-size:12px;white-space:nowrap">${esc(g.category)}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">No terms match. Try a shorter word.</p>';
+}
+
+
+// ---------- Change log
+const FIELD_LABEL={time:'TIME rating',tier:'Criticality',A:'Accountable',R:'Responsible',C:'Consulted',I:'Informed',apps:'Applications',capabilities:'Capabilities',caps:'Capabilities',procs:'Processes',journeys:'Journeys',crit:CR.label,hosting:'Hosting',product:'Product',vendor:'Primary vendor',lifecycle:'Lifecycle',confidence:'Data confidence',programme_lens:PLABEL,tech_health:'Technical health',func_fit:'Functional fit',end:'End date',start:'Start date',notice_months:'Notice (months)',auto_renew:'Auto-renew',change_of_control_clause:'Change-of-control clause',regulatory_terms:TPR.terms_label,annual_value:'Annual value',owner:'Owner',business_owner:'Business owner',tech_owner:'Technology owner',roles:'Roles involved',name:'Name',runs_on:'Runs on',data_centres:'Data centres',dc_mode:'Data centre mode',rto_hours:'RTO (hours)',rpo_minutes:'RPO (minutes)',dr_result:'DR result',last_dr_test:'Last DR test',entitled:'Entitled',consumed:'Consumed',utilisation:'Utilisation',annual_cost_m:`Annual licence cost (${CURC} m)`,annual_support_cost_m:`Annual support cost (${CURC} m)`,end_of_support:'End of support',exit_plan:'Exit plan',risk:'Risk rating',material:TPR.material_label,seq:'Sequence',vs:'Journey',parent:'Parent',unit:'Organisation unit',family:'Role family',std_ref:(P.capability_standard||{}).ref_label||'Reference',source:'Source',ref:'Reference'};
+const ACT_CLS={Added:'ok',Feature:'ok',Updated:'neutral',Corrected:'warn',Removed:'crit',Fix:'warn'};
+const TYPE_ENT={'Feature':'feat','Epic':'epic','Application':'app','Supplier':'sup','Capability':'cap','Capability L3':'cap','Role':'role','Value stream':'cvs','Journey':'vs','Process step':'step','Business process':'bp','Strategic initiative':'si'};
+const entOf=id=>/^A\d+$/.test(id)&&AP[id]?'app':/^S\d+$/.test(id)&&SU[id]?'sup':/^C\d/.test(id)&&CAP[id]?'cap':/^R\d+$/.test(id)&&RO[id]?'role':/^CVS/.test(id)&&CVS[id]?'cvs':/^VS\d+$/.test(id)&&VS[id]?'vs':/^VS\d+\.\d+$/.test(id)&&ST[id]?'step':/^P\d/.test(id)&&BP[id]?'bp':/^SI/.test(id)&&D.strategy.initiatives.some(x=>x.id===id)?'si':/^BD/.test(id)&&PG&&(PG.decisions||[]).some(d=>d.id===id)?'dec':/^F\d{3}$/.test(id)&&(D.features||[]).some(f=>f.id===id)?'feat':/^EP\d+$/.test(id)&&(D.epics||[]).some(e=>e.id===id)?'epic':null;
+function idChip(id){const t=entOf(id);if(t==='dec')return `<button class="chip" data-dec="${id}"><code>${id}</code>${esc(PG.decisions.find(d=>d.id===id).title)}</button>`;if(!t)return `<span class="chip" style="cursor:default"><code>${esc(id)}</code></span>`;return chip(t,id,nameOf(t,id))}
+function changes(){
+  const L=D.changelog, cur=L[0];
+  const tot=L.reduce((t,v)=>t+v.changes.length,0);
+  $('#view').innerHTML=`<div class="grid g-kpi" style="margin-bottom:16px">
+     <div class="kpi"><label>Current version</label><b>${esc(cur.version)}</b><span>released ${esc(cur.date)}</span></div>
+     <div class="kpi"><label>Releases</label><b>${L.length}</b><span>since ${esc(L[L.length-1].date)}</span></div>
+     <div class="kpi"><label>Recorded changes</label><b>${tot}</b><span>across all releases</span></div>
+     <div class="kpi"><label>Customer-provided releases</label><b>${L.filter(v=>/Customer-provided/.test(v.source)).length}</b><span>confirmed by ${esc(ORGS)}</span></div></div>
+   <p class="sub muted" style="font-size:12.5px;margin:0 0 14px">Each release is snapshotted and compared with the previous one, so every added, updated or removed item is listed with old and new values.</p>
+   <div class="cl">${L.map((v,i)=>`<article class="cl-v ${i===0?'cur':''}"><div class="cl-rail"><span class="cl-dot"></span></div><div class="cl-body">
+     <header><span class="cl-num">v${esc(v.version)}</span><b>${esc(v.title)}</b><span class="mono muted">${esc(v.date)}</span><span class="pill s-neutral">${esc(v.source)}</span></header>
+     <p>${esc(v.summary)}</p>
+     <ul>${v.changes.map(c=>`<li>${pill(c.action,ACT_CLS[c.action]||'neutral')} <span class="mono muted" style="font-size:11px">${esc(c.type)}</span> ${esc(c.text)}${c.ids&&c.ids.length?`<div class="chips" style="margin-top:4px">${c.ids.map(idChip).join('')}</div>`:''}</li>`).join('')}</ul>
+     ${v.diff_from!==undefined?`<details class="cl-diff" ${i===0&&v.diff.length?'open':''}><summary>Detected changes against v${esc(v.diff_from)}: ${v.diff.length?Object.entries(v.diff_summary).map(([t,c])=>`${esc(t)} ${[c.Added?c.Added+' added':'',c.Updated?c.Updated+' updated':'',c.Removed?c.Removed+' removed':''].filter(Boolean).join(', ')}`).join('; '):'no repository items changed'}</summary>
+       ${v.diff.length?`<div class="tbl-wrap"><table><thead><tr><th>Element</th><th>Item</th><th>Change</th><th>Field</th><th>Before</th><th>After</th></tr></thead><tbody>${v.diff.map(c=>{const t=TYPE_ENT[c.type];const live=t&&entOf(c.id)===t;return `<tr ${live?`data-ent="${t}:${c.id}"`:''}><td style="font-size:12px">${esc(c.type)}</td><td><span class="mono muted">${esc(c.id)}</span> ${esc(c.name)}</td><td>${pill(c.action,ACT_CLS[c.action])}</td><td style="font-size:12px">${esc(FIELD_LABEL[c.field]||c.field)}</td><td style="font-size:12px;color:var(--muted)">${esc(c.old)}</td><td style="font-size:12px">${esc(c.new)}</td></tr>`}).join('')}</tbody></table></div>`:''}</details>`:''}
+   </div></article>`).join('')}</div>`;
+}
+
+/*__STRATEGY_UI__*/
+/*__ENGINE__*/
+/*__SCENARIOS_UI__*/
+/*__GUIDE_UI__*/
+/*__FEATURE_ENGINE__*/
+/*__FEATURES_UI__*/
+// ---------- Capability map
+const LENSES={
+  coverage:{name:'App coverage',val:c=>capApps[c.id].length,fmt:v=>v,scale:v=>v===0?'crit':v>=3?'warn':'ok',legend:'0 apps = gap · 1-2 = covered · 3+ = possible overlap'},
+  importance:{name:'Importance',val:c=>({Critical:4,High:3,Medium:2,Low:1})[c.importance],fmt:(v,c)=>c.importance,legend:'Lighter = lower strategic importance'},
+  maturity:{name:'Maturity',val:c=>c.maturity,fmt:v=>v+'/5',legend:'Illustrative maturity assessment, 1 (initial) to 5 (optimised)'},
+  risk:{name:'Tech risk',val:c=>{const a=capApps[c.id];return a.length?a.reduce((t,x)=>t+(5-AP[x].tech_health),0)/a.length:0},fmt:v=>v.toFixed(1),warn:true,legend:'Average technical weakness of supporting apps; darker = riskier'},
+  cost:{name:'Run cost',val:c=>capApps[c.id].reduce((t,x)=>t+appCost(x)/AP[x].capabilities.length,0),fmt:v=>fmtM(v),legend:'Application run cost allocated evenly across the capabilities each app supports'},
+  strategy:{name:'Strategic focus',val:c=>c.strategic_initiatives||0,fmt:v=>v||'',legend:`Number of ${ORGS} strategic initiatives that rely on the capability`},
+  ...(rdRegs().length?{rd:{name:'Readiness',val:c=>rdCap(c.id).rank,fmt:(v,c)=>{const n=rdCap(c.id).n;return n?n+' req':''},scale:v=>[null,'ok','c-pub','warn','crit'][v],
+    scaleLegend:[['crit','Not planned'],['warn','Late'],['c-pub','On track'],['ok','Done'],[null,'Not in scope']],
+    legend:()=>{const s=rdSummary(),r=rdReg();return `Readiness for ${esc(r.name)}, worst requirement per capability, from the change backlog. ${s['Not planned']} of ${s.total} requirements have no feature planned, ${s['Late']} are planned to land after the deadline, ${s['On track']} are on track and ${s['Done']} are done. Readiness is only as good as the backlog; deadlines may be estimates and article references may be unconfirmed`}}}:{}),
+  confidence:{name:'Data confidence',val:c=>{const a=capApps[c.id];return a.length?a.filter(x=>AP[x].confidence!=='Illustrative').length/a.length:0},fmt:v=>Math.round(v*100)+'%',legend:'Share of supporting apps confirmed (customer-provided, public or partly confirmed)'},
+};
+function heat(lensId,c){
+  const L=LENSES[lensId], v=L.val(c);
+  if(L.scale){const s=L.scale(v);if(!s) return {bg:'var(--surface-2)',fg:'var(--muted)',v};return {bg:`color-mix(in oklab,var(--${s}) 22%,var(--surface))`,fg:'var(--ink)',v}}
+  const all=L2.map(L.val), mx=Math.max(...all), mn=Math.min(...all), t=mx===mn?0:(v-mn)/(mx-mn);
+  const base=L.warn?'--crit':'--accent', pct=Math.round(8+t*72);
+  return {bg:`color-mix(in oklab,var(${base}) ${pct}%,var(--surface))`,fg:t>0.55?'var(--surface)':'var(--ink)',v};
+}
+function capabilities(){
+  if(!LENSES[state.capLens]) state.capLens='coverage';
+  const L=LENSES[state.capLens];
+  const scaleHtml=L.scale?`<span class="scale">${(L.scaleLegend||[['crit','Gap'],['ok','Covered'],['warn','Overlap']]).map(([s,lb])=>`<span><i style="display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;background:${s?`color-mix(in oklab,var(--${s}) 40%,var(--surface))`:'var(--surface-2);border:1px solid var(--line)'}"></i>${lb}</span>`).join('')}</span>`
+    :`<span class="scale">Low <span class="bar">${[10,30,50,70].map(p=>`<span style="background:color-mix(in oklab,var(${L.warn?'--crit':'--accent'}) ${p}%,var(--surface))"></span>`).join('')}</span> High</span>`;
+  const used=state.capCvs?new Set(cvsFoot(state.capCvs).caps):null;
+  $('#view').innerHTML=`<div class="filters"><label>Value stream <select id="f-capcvs" data-capcvs="1"><option value="">All capabilities</option>${CVS_ORDER.map(c=>`<option value="${c}" ${state.capCvs===c?'selected':''}>${esc(CVS[c].name)}</option>`).join('')}</select></label><div class="seg" role="group" aria-label="Map lens" style="align-self:flex-end">${Object.entries(LENSES).map(([k,l])=>`<button data-lens="${k}" aria-pressed="${state.capLens===k}">${l.name}</button>`).join('')}</div><div class="seg" style="align-self:flex-end;margin-left:-4px"><button data-capl3="${state.capL3?0:1}" aria-pressed="${!!state.capL3}" title="Show the L3 capabilities inside each L2">${state.capL3?'&#10003; ':''}Show L3</button></div>${state.capLens==='rd'&&rdRegs().length>1?rdPicker():''}${scaleHtml}</div>
+    <p class="sub muted" style="margin:-4px 0 14px;font-size:12.5px">${typeof L.legend==='function'?L.legend():L.legend}.${used?` Faded tiles are not used by ${esc(CVS[state.capCvs].name)}.`:''} Click a capability for its applications, steps and roles.${state.capL3?` L3 rows show the number of supporting applications; <b style="color:var(--crit)">gap</b> means none. ${L3.length} L3 capabilities, ${L3.filter(x=>!x.apps.length).length} gaps.`:''}</p>
+    <div class="capmap">${L1.map(l1=>`<section class="l1"><header><b>${esc(l1.name)}</b><code>${l1.id}</code></header>
+      ${L2.filter(c=>c.parent===l1.id).map(c=>{const hm=heat(state.capLens,c);return `<button class="l2" data-ent="cap:${c.id}" style="background:${hm.bg};color:${hm.fg};opacity:${used&&!used.has(c.id)?.22:1}" title="${esc(c.description)}"><span>${esc(c.name)}</span><small>${L.fmt(hm.v,c)}</small></button>${state.capL3&&L3of[c.id]?`<div class="l3s" style="opacity:${used&&!used.has(c.id)?.22:1}">${L3of[c.id].map(x=>`<button class="l3${x.apps.length?'':' gap'}" data-ent="cap:${x.id}" title="${esc(x.description)}"><span>${esc(x.name)}</span><small>${x.apps.length||'gap'}</small></button>`).join('')}</div>`:''}`}).join('')}
+    </section>`).join('')}</div>`;
+}
+
+// ---------- Value streams
+function processes(){
+  if(VS[state.vs].parent!==state.cvs) state.vs=D.value_streams.find(v=>v.parent===state.cvs).id;
+  const cv=CVS[state.cvs], cf=cvsFoot(cv.id);
+  const vs=VS[state.vs], steps=D.steps.filter(s=>s.vs===vs.id);
+  const roleChips=s=>[['R',s.R],['A',[s.A]],['C',s.C],['I',s.I]].flatMap(([l,rs])=>rs.map(r=>`<button class="chip" data-ent="role:${r}"><span class="raci ${l}">${l}</span>${esc(RO[r].name)}</button>`)).join('');
+  const apps=[...new Set(steps.flatMap(s=>s.apps))];
+  $('#view').innerHTML=`<div class="cvs-bar" role="group" aria-label="${esc(VSL)}">${CVS_ORDER.map(cid=>`<button data-cvs="${cid}" aria-pressed="${cid===cv.id}"><span class="k">${isXC(cid)?'Cross-cutting':esc(VSL)}</span>${esc(CVS[cid].name)}</button>`).join('')}</div>
+   <p class="sub muted" style="font-size:12.5px;margin:0 0 12px">${esc(cv.scope)}. ${cf.journeys.length} journeys · ${cf.apps.length} applications · ${cf.caps.length} capabilities. <button class="chip" data-ent="cvs:${cv.id}" style="margin-left:4px">Value stream detail</button></p>
+   <div class="vs-tabs"><span class="mono muted" style="align-self:center;font-size:11px;text-transform:uppercase;letter-spacing:.08em">Journeys</span>${cf.journeys.map(v=>`<button data-vs="${v.id}" aria-pressed="${v.id===vs.id}">${esc(v.name)}</button>`).join('')}</div>
+   <section class="panel" style="margin-bottom:14px"><div class="vs-head">
+     <div><span>Process owner</span>${chip('role',vs.owner,RO[vs.owner].name,false)}</div>
+     <div><span>Trigger</span>${esc(vs.trigger)}</div><div><span>Outcome</span>${esc(vs.outcome)}</div>
+     <div><span>Footprint</span>${steps.length} steps · ${apps.length} applications · ${new Set(steps.flatMap(s=>[...s.R,s.A,...s.C,...s.I])).size} roles</div>
+   </div>
+   <div class="legend" style="margin-top:0"><span><span class="raci R">R</span> Responsible</span><span><span class="raci A">A</span> Accountable</span><span><span class="raci C">C</span> Consulted</span><span><span class="raci I">I</span> Informed</span></div></section>
+   <div class="flow">${steps.map(s=>`<article class="step"><h3><span class="n">${s.seq}</span><button data-ent="step:${s.id}">${esc(s.name)}</button></h3>
+     <div><div class="lbl">Applications</div><div class="chips">${s.apps.map(a=>`<button class="chip" data-ent="app:${a}"><span class="pill t-${AP[a].time}" style="padding:0 4px;font-size:0" title="${AP[a].time}"></span>${esc(AP[a].name)}</button>`).join('')}</div></div>
+     <div><div class="lbl">Roles</div><div class="chips">${roleChips(s)}</div></div>
+     <div><div class="lbl">Capabilities</div><div class="chips">${s.capabilities.map(c=>chip('cap',c,CAP[c].name)).join('')}</div></div>
+   </article>`).join('')}</div>`;
+}
+
+// ---------- Roles
+function roles(){
+  const J=CVS_ORDER.flatMap(c=>D.value_streams.filter(v=>v.parent===c));
+  $('#view').innerHTML=`<section class="panel" style="margin-bottom:16px"><h2>RACI by journey · ${D.roles.filter(r=>(roleSteps[r.id]||[]).length).length} roles</h2><p class="sub">The strongest involvement each role has in each journey, grouped by ${esc(VSL.toLowerCase())}. Click a role for its steps and applications.</p>
+   <div class="tbl-wrap"><table class="matrix"><thead><tr><th></th>${CVS_ORDER.map(c=>{const n=J.filter(v=>v.parent===c).length;return `<th colspan="${n}" style="text-align:center;border-left:1px solid var(--line)">${esc(isXC(c)?'Enabling':shortCvs(c))}</th>`}).join('')}<th></th></tr><tr><th>Role</th>${J.map(v=>`<th title="${esc(v.name)}">${v.id}</th>`).join('')}<th class="num">Apps</th></tr></thead><tbody>
+   ${D.roles.filter(r=>(roleSteps[r.id]||[]).length).map(r=>{const rs=roleSteps[r.id]||[]; const nApps=new Set(rs.filter(x=>x.raci!=='I').flatMap(x=>ST[x.step].apps)).size;
+     return `<tr data-ent="role:${r.id}"><td>${esc(r.name)} <span class="muted mono">${esc(r.unit)}</span></td>${J.map(v=>{
+       const ls=rs.filter(x=>ST[x.step].vs===v.id).map(x=>x.raci); const best=['A','R','C','I'].find(l=>ls.includes(l));
+       return `<td>${best?`<span class="raci ${best}" title="${ls.length} steps">${best}</span>`:''}</td>`}).join('')}<td class="num mono">${nApps||''}</td></tr>`}).join('')}
+   </tbody></table></div><div class="legend">${J.map(v=>`<span><b class="mono">${v.id}</b> ${esc(v.name)}</span>`).join('')}</div></section>`
+   +(()=>{const other=D.roles.filter(r=>!(roleSteps[r.id]||[]).length);const techU=new Set(D.roles.filter(r=>r.family==='Technology'||r.tech).map(r=>r.unit));const fams=[...new Set(other.map(r=>r.unit))].sort((x,y)=>(techU.has(y)-techU.has(x)));
+     const cnt=(r)=>({own:D.business_processes.filter(b=>b.owner===r.id),inv:D.business_processes.filter(b=>(b.roles||[]).includes(r.id)&&b.owner!==r.id),bo:D.apps.filter(a=>a.business_owner===r.id),to:D.apps.filter(a=>a.tech_owner===r.id)});
+     return `<section class="panel"><h2>Technology, data and support roles · ${other.length}</h2><p class="sub">Roles that do not appear in customer journey RACI. They are linked through the business processes they own or take part in, and the applications they own. Grouped by organisation unit. Role names are illustrative until ${esc(ORGS)}'s technology org chart is supplied.</p>
+     <div class="tbl-wrap"><table><thead><tr><th>Role</th><th>Unit</th><th>Processes owned</th><th>Processes involved</th><th class="num">Apps (business owner)</th><th class="num">Apps (technology owner)</th></tr></thead><tbody>
+     ${fams.map(u=>`<tr><th colspan="6" style="background:var(--surface-2,var(--surface));text-align:left">${esc(u)}${techU.has(u)?'':' <span class="muted" style="font-weight:400">(business or support unit)</span>'}</th></tr>`+other.filter(r=>r.unit===u).map(r=>{const c=cnt(r);return `<tr data-ent="role:${r.id}"><td>${esc(r.name)} <span class="muted mono">${r.id}</span></td><td>${esc(r.unit)}</td><td>${c.own.map(b=>esc(b.name)).join('; ')}</td><td>${c.inv.map(b=>`<span class="mono">${b.id}</span>`).join(' ')}</td><td class="num mono">${c.bo.length||''}</td><td class="num mono">${c.to.length||''}</td></tr>`}).join('')).join('')}
+     </tbody></table></div></section>`})();
+}
+
+// ---------- Applications
+function apps(){
+  const f=state.appF;
+  let rows=D.apps.filter(a=>(!f.time||a.time===f.time)&&(!f.tier||a.tier===f.tier)&&(!f.conf||a.confidence===f.conf)&&(!f.cat||a.category===f.cat)&&(!f.crit||(f.crit==='Yes')===a.crit));
+  const [sk,dir]=state.appSort;
+  const key={id:a=>a.id,name:a=>a.name,vendor:a=>SU[a.vendor].name,time:a=>a.time,tier:a=>a.tier_n,cost:a=>appCost(a.id),eos:a=>SUP[a.id].end_of_support,conf:a=>a.confidence}[sk];
+  rows.sort((a,b)=>(key(a)>key(b)?1:key(a)<key(b)?-1:0)*dir);
+  const opt=(k,vals)=>`<select id="f-${k}" data-af="${k}"><option value="">All</option>${vals.map(v=>`<option ${f[k]===v?'selected':''}>${esc(v)}</option>`).join('')}</select>`;
+  // scatter
+  const W=520,H=330,P={l:44,r:14,t:14,b:38}, x=v=>P.l+(v-1)/4*(W-P.l-P.r), y=v=>H-P.b-(v-1)/4*(H-P.t-P.b);
+  let jit=0; const pts=rows.map(a=>{jit=(jit*9301+49297)%233280; const j=(jit/233280-.5)*.12; return `<circle data-ent="app:${a.id}" cx="${x(a.func_fit+j).toFixed(1)}" cy="${y(a.tech_health-j).toFixed(1)}" r="${7-a.tier_n}" fill="var(--${a.time.toLowerCase()})"><title>${esc(a.name)} · ${a.time} · ${a.tier}</title></circle>`}).join('');
+  const grid=[1,2,3,4,5].map(v=>`<line x1="${x(v)}" x2="${x(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--line)"/><line x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${x(v)}" y="${H-P.b+15}" text-anchor="middle">${v}</text><text x="${P.l-8}" y="${y(v)+4}" text-anchor="end">${v}</text>`).join('');
+  const q=`<text class="q" x="${x(4.9)}" y="${y(4.85)}" text-anchor="end">INVEST</text><text class="q" x="${x(1.1)}" y="${y(4.85)}">TOLERATE</text><text class="q" x="${x(4.9)}" y="${y(1.12)}" text-anchor="end">MIGRATE</text><text class="q" x="${x(1.1)}" y="${y(1.12)}">ELIMINATE</text>`;
+  const svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="TIME scatter of applications">${grid}<line x1="${x(3)}" x2="${x(3)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--muted)" stroke-dasharray="3 3"/><line x1="${P.l}" x2="${W-P.r}" y1="${y(3)}" y2="${y(3)}" stroke="var(--muted)" stroke-dasharray="3 3"/>${q}${pts}<text x="${(W+P.l)/2}" y="${H-4}" text-anchor="middle">Functional fit →</text><text transform="translate(12 ${(H-P.b)/2}) rotate(-90)" text-anchor="middle">Technical health →</text></svg>`;
+  const cats=[...new Set(D.apps.map(a=>a.category))].sort();
+  const hd=(k,l,cls='')=>`<th data-sort="${k}" class="${cls}">${l}${sk===k?(dir>0?' ↑':' ↓'):''}</th>`;
+  $('#view').innerHTML=`<div class="filters">
+     <label>TIME ${opt('time',['Invest','Tolerate','Migrate','Eliminate'])}</label>
+     <label>Criticality ${opt('tier',['Tier 0','Tier 1','Tier 2','Tier 3'])}</label>
+     <label>Confidence ${opt('conf',Object.keys(CONF_VAR))}</label>
+     <label>Category ${opt('cat',cats)}</label>
+     <label>${esc(CR.short)} ${opt('crit',['Yes','No'])}</label>
+     ${Object.values(f).some(Boolean)?'<button class="btn ghost" data-nav="apps|reset=1" style="align-self:flex-end">Clear filters</button>':''}
+     <span class="muted" style="align-self:flex-end;font-size:12.5px">${rows.length} of ${D.apps.length} applications</span></div>
+   <div class="grid g-2" style="margin-bottom:16px">
+     <section class="panel"><h2>TIME quadrant</h2><p class="sub">Dot colour is the assigned TIME rating; dot size is criticality (Tier 0 largest). A dot outside its quadrant is a rating worth challenging.</p>${svg}</section>
+     <section class="panel"><h2>Run cost by category</h2><p class="sub">Annual licence and support, illustrative, for the filtered set.</p>
+       <div class="hbars">${(()=>{const m={};rows.forEach(a=>m[a.category]=(m[a.category]||0)+appCost(a.id));const e=Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,12),mx=e[0]?.[1]||1;
+         return e.map(([k,v])=>`<div class="hbar" style="cursor:default"><span class="nm">${esc(k)}</span><span class="trk"><span class="fil" style="display:block;width:${v/mx*100}%"></span></span><span class="v">${fmtM(v)}</span></div>`).join('')})()}</div></section>
+   </div>
+   <div class="tbl-wrap"><table><thead><tr>${hd('id','ID')}${hd('name','Application')}${hd('vendor','Vendor / product')}${hd('time','TIME')}${hd('tier','Tier')}<th>Hosting</th>${hd('cost','Run cost','num')}${hd('eos','End of support')}${hd('conf','Confidence')}</tr></thead><tbody>
+   ${rows.map(a=>{const e=SUP[a.id].end_of_support,m=isDate(e)?months(e):null;return `<tr data-ent="app:${a.id}"><td class="mono">${a.id}</td><td><b style="font-weight:600">${esc(a.name)}</b>${a.crit?CRB():''}</td><td>${esc(SU[a.vendor].name)}<div class="muted" style="font-size:12px">${esc(a.product)}</div></td><td>${time(a.time)}</td><td class="mono">${a.tier.replace('Tier ','T')}</td><td style="font-size:12.5px">${esc(a.hosting)}</td><td class="num mono">${fmtM(appCost(a.id))}</td><td class="mono" style="color:${m!==null&&m<=12?'var(--crit)':'inherit'}">${esc(e)}</td><td>${conf(a.confidence)}</td></tr>`}).join('')}
+   </tbody></table></div>`;
+}
+
+// ---------- Suppliers
+function suppliers(){
+  const rows=D.suppliers.map(s=>({s,spend:supSpend(s.id),apps:(supApps[s.id]||[]).length,crit:(supApps[s.id]||[]).filter(x=>AP[x.app].crit).length,caps:supCaps(s.id).length}));
+  const [sk,dir]=state.supSort; const kf={name:r=>r.s.name,spend:r=>r.spend,apps:r=>r.apps,crit:r=>r.crit,caps:r=>r.caps,tier:r=>r.s.tier}[sk];
+  rows.sort((a,b)=>(kf(a)>kf(b)?1:kf(a)<kf(b)?-1:0)*dir);
+  const top=[...rows].sort((a,b)=>b.spend-a.spend).slice(0,12), mx=top[0].spend;
+  const dep=[...rows].sort((a,b)=>b.caps-a.caps).slice(0,12), mxc=dep[0].caps;
+  const hd=(k,l,cls='')=>`<th data-ssort="${k}" class="${cls}" style="cursor:pointer">${l}${sk===k?(dir>0?' ↑':' ↓'):''}</th>`;
+  $('#view').innerHTML=`<div class="grid g-2" style="margin-bottom:16px">
+    <section class="panel"><h2>Spend by supplier</h2><p class="sub">Annual licence and support for applications where the supplier is the primary vendor. Illustrative figures.</p>
+     <div class="hbars">${top.map(r=>`<button class="hbar" data-ent="sup:${r.s.id}"><span class="nm">${esc(r.s.name)}</span><span class="trk"><span class="fil" style="display:block;width:${r.spend/mx*100}%"></span></span><span class="v">${fmtM(r.spend)}</span></button>`).join('')}</div></section>
+    <section class="panel"><h2>Capability dependency</h2><p class="sub">Number of L2 capabilities that rely on the supplier in any role, including hosting and integration.</p>
+     <div class="hbars">${dep.map(r=>`<button class="hbar" data-ent="sup:${r.s.id}"><span class="nm">${esc(r.s.name)}</span><span class="trk"><span class="fil" style="display:block;width:${r.caps/mxc*100}%;background:var(--migrate)"></span></span><span class="v">${r.caps}</span></button>`).join('')}</div></section></div>
+   <div class="tbl-wrap"><table><thead><tr>${hd('name','Supplier')}<th>Type</th>${hd('tier','Tier')}<th>Risk</th>${hd('apps','Apps','num')}${hd('crit',CR.abbr+' apps','num')}${hd('caps','Capabilities','num')}${hd('spend','Spend','num')}<th>Exit plan</th><th>Confidence</th></tr></thead><tbody>
+   ${rows.map(r=>`<tr data-ent="sup:${r.s.id}"><td><b style="font-weight:600">${esc(r.s.name)}</b>${r.s.material?` <span class="mono muted" title="${esc(TPR.material_label)}">${esc(TPR.material_abbr)}</span>`:''}</td><td style="font-size:12.5px">${esc(r.s.type)}</td><td>${esc(r.s.tier)}</td><td>${pill(r.s.risk,r.s.risk==='High'?'crit':r.s.risk==='Medium'?'warn':'ok')}</td><td class="num mono">${r.apps}</td><td class="num mono">${r.crit}</td><td class="num mono">${r.caps}</td><td class="num mono">${r.spend?fmtM(r.spend):'-'}</td><td style="font-size:12.5px">${esc(r.s.exit_plan)}</td><td>${conf(r.s.confidence)}</td></tr>`).join('')}
+   </tbody></table></div>`;
+}
+
+// ---------- Contracts & licences
+function licensing(){
+  const start=new Date(TODAY.getFullYear(),TODAY.getMonth(),1), end=new Date(start.getFullYear()+2,start.getMonth(),1);
+  const pos=d=>Math.max(0,Math.min(100,(new Date(d+"T00:00:00")-start)/(end-start)*100));
+  const ks=D.contracts.filter(k=>{const t=new Date(k.end+"T00:00:00");return t>=start&&t<end}).sort((a,b)=>a.end.localeCompare(b.end));
+  const qs=[];for(let i=0;i<8;i++){const d=new Date(start.getFullYear(),start.getMonth()+i*3,1);qs.push(d.toLocaleString('en-GB',{month:'short'})+' '+String(d.getFullYear()).slice(2))}
+  const notice=k=>{const d=new Date(k.end+"T00:00:00");d.setMonth(d.getMonth()-k.notice_months);return d.toISOString().slice(0,10)};
+  const lic=D.licences.filter(l=>l.entitled>0).sort((a,b)=>b.utilisation-a.utilisation);
+  const over=lic.filter(l=>l.utilisation>1), shelf=lic.filter(l=>l.utilisation<.65);
+  const lrow=l=>`<button class="hbar" data-ent="app:${l.app}"><span class="nm">${esc(AP[l.app].name)}</span><span class="trk"><span class="fil" style="display:block;width:${Math.min(l.utilisation,1.25)/1.25*100}%;background:var(--${l.utilisation>1?'crit':l.utilisation<.65?'warn':'ok'})"></span><span class="cap100" style="left:${1/1.25*100}%"></span></span><span class="v">${Math.round(l.utilisation*100)}%</span></button>`;
+  $('#view').innerHTML=`<section class="panel" style="margin-bottom:16px"><h2>Contract renewals, next 24 months</h2>
+   <p class="sub">● term end · ◆ notice deadline · shaded = notice window. ${ks.length} contracts end in the window. Click a row for the supplier.</p>
+   <div class="tl" style="overflow-x:auto"><div style="min-width:560px">
+   <div class="tl-axis" style="grid-template-columns:repeat(8,1fr)">${qs.map(q=>`<span>${q}</span>`).join('')}</div>
+   ${ks.map(k=>{const n=notice(k);return `<button class="tl-row" data-ent="sup:${k.supplier}"><span class="nm">${esc(SU[k.supplier].name)} <span class="muted mono">${fmtM(k.annual_value||0)}</span></span>
+     <span class="tl-track"><span class="tl-today" style="left:${pos(D.meta.as_of)}%"></span><span class="tl-span" style="left:${pos(n)}%;width:${pos(k.end)-pos(n)}%"></span><span class="tl-diamond" style="left:${pos(n)}%" title="Notice by ${n}"></span><span class="tl-dot" style="left:${pos(k.end)}%;background:var(--${k.change_of_control_clause?'warn':'accent'})" title="Ends ${k.end}${k.auto_renew?' (auto-renews)':''}"></span></span></button>`}).join('')}
+   </div></div><div class="legend"><span><i style="background:var(--warn);border-radius:50%"></i>Has change-of-control clause</span><span><i style="background:var(--accent);border-radius:50%"></i>No change-of-control clause</span></div></section>
+   <div class="grid g-2">
+    <section class="panel"><h2>Licence utilisation</h2><p class="sub">Consumed against entitlement. The line marks 100%. ${over.length} over-deployed (compliance exposure), ${shelf.length} below 65% (shelfware).</p><div class="hbars">${lic.map(lrow).join('')}</div></section>
+    <section class="panel"><h2>Licence models</h2><p class="sub">Annual licence cost by commercial model, illustrative.</p>
+     <div class="hbars">${(()=>{const m={};D.licences.forEach(l=>m[l.model]=(m[l.model]||0)+l.annual_cost_m);const e=Object.entries(m).sort((a,b)=>b[1]-a[1]),mx=e[0][1];return e.map(([k,v])=>`<div class="hbar" style="cursor:default"><span class="nm" title="${esc(k)}">${esc(k)}</span><span class="trk"><span class="fil" style="display:block;width:${v/mx*100}%"></span></span><span class="v">${fmtM(v)}</span></div>`).join('')})()}</div>
+     <h2 style="margin-top:22px">Auto-renewing contracts</h2><p class="sub">Contracts that roll over unless notice is served.</p>
+     <div class="chips">${D.contracts.filter(k=>k.auto_renew).map(k=>chip('sup',k.supplier,SU[k.supplier].name+' · '+k.end,false)).join('')}</div></section>
+   </div>`;
+}
+
+// ---------- Support & lifecycle
+function support(){
+  const y0=TODAY.getFullYear()-1,y1=TODAY.getFullYear()+6, pos=d=>(new Date(d+"T00:00:00")-new Date(y0,0,1))/(new Date(y1,0,1)-new Date(y0,0,1))*100;
+  const rows=D.support.filter(s=>isDate(s.end_of_support)).sort((a,b)=>a.end_of_support.localeCompare(b.end_of_support));
+  const ever=D.support.length-rows.length;
+  const gaps=D.apps.filter(a=>a.tier_n<=1&&SUP[a.id].hours!=='24x7');
+  const mix={};D.support.forEach(s=>mix[s.model]=(mix[s.model]||0)+1);
+  const col=s=>{const m=months(s.end_of_support);return m<0?'crit':m<=12?'crit':m<=24?'warn':'ok'};
+  $('#view').innerHTML=`<section class="panel" style="margin-bottom:16px"><h2>Vendor end-of-support timeline</h2><p class="sub">${rows.length} dated versions; ${ever} SaaS or scheme services are evergreen. Red = past or within 12 months, amber = within 24. The teal line is today.</p>
+   <div style="overflow-x:auto"><div style="min-width:560px"><div class="tl-axis" style="grid-template-columns:repeat(${y1-y0},1fr)">${Array.from({length:y1-y0},(_,i)=>`<span>${y0+i}</span>`).join('')}</div>
+   ${rows.map(s=>`<button class="tl-row" data-ent="app:${s.app}"><span class="nm">${esc(AP[s.app].name)} <span class="muted mono">${AP[s.app].tier.replace('Tier ','T')}</span></span><span class="tl-track"><span class="tl-today" style="left:${pos(D.meta.as_of)}%"></span><span class="tl-dot" style="left:${Math.max(0,pos(s.end_of_support))}%;background:var(--${col(s)})" title="${s.end_of_support}"></span></span></button>`).join('')}
+   </div></div></section>
+   <div class="grid g-2">
+    <section class="panel"><h2>Support cover below criticality</h2><p class="sub">Tier 0 and Tier 1 applications without 24x7 support.</p>
+     ${gaps.length?`<div class="tbl-wrap"><table><thead><tr><th>Application</th><th>Tier</th><th>Hours</th><th>P1 response / resolve</th></tr></thead><tbody>${gaps.map(a=>`<tr data-ent="app:${a.id}"><td>${esc(a.name)}${a.crit?CRB():''}</td><td class="mono">${a.tier}</td><td>${pill(SUP[a.id].hours,'warn')}</td><td class="mono">${SUP[a.id].sla_p1}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">None.</p>'}</section>
+    <section class="panel"><h2>Support models</h2><p class="sub">Who resolves incidents across the portfolio.</p>
+     <div class="hbars">${Object.entries(mix).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="hbar" style="cursor:default"><span class="nm" title="${esc(k)}">${esc(k)}</span><span class="trk"><span class="fil" style="display:block;width:${v/D.apps.length*100*2}%"></span></span><span class="v">${v}</span></div>`).join('')}</div>
+     <h2 style="margin-top:22px">Version currency</h2><div class="chips">${['Current','N-1','N-2 or older'].map(v=>`<span class="pill s-${v==='Current'?'ok':v==='N-1'?'warn':'crit'}">${v} · ${D.support.filter(s=>s.version_currency===v).length}</span>`).join('')}</div></section>
+   </div>`;
+}
+
+// ---------- Third-party risk
+function risk(){
+  const rows=D.suppliers.filter(s=>s.material||(supApps[s.id]||[]).some(x=>AP[x.app].crit&&!/In-house/.test(x.role))).map(s=>({s,k:contractOf(s.id),crit:(supApps[s.id]||[]).filter(x=>AP[x.app].crit).length,caps:supCaps(s.id).length,steps:supSteps(s.id).length})).sort((a,b)=>b.crit-a.crit);
+  const top=rows.filter(r=>!r.s.internal)[0];
+  const ep=e=>pill(e,/^Documented, tested/.test(e)?'ok':e==='Not documented'?'crit':'warn');
+  const terms=v=>pill(v,v==='Yes'?'ok':v==='Gap'?'crit':v==='N/A'?'neutral':'warn');
+  const coc=rows.filter(r=>r.k?.change_of_control_clause).length;
+  $('#view').innerHTML=`<div class="callout" style="margin-bottom:16px">${PG&&PG.change_of_control_note?`<b>Change of control.</b> ${esc(PG.change_of_control_note)} `:''}${coc} contracts here carry a change-of-control clause. ${top?`Concentration: ${esc(top.s.name)} supports ${top.crit} applications behind ${esc(CR.plural)}.`:''}</div>
+   <div class="tbl-wrap"><table><thead><tr><th>Supplier</th><th class="num">${esc(CR.abbr)} apps</th><th class="num">Capabilities</th><th class="num">Process steps</th><th>Exit plan</th><th>Contract end</th><th>Change of control</th><th>${esc(TPR.terms_label)}</th><th>Location</th><th>Risk</th></tr></thead><tbody>
+   ${rows.map(r=>`<tr data-ent="sup:${r.s.id}"><td><b style="font-weight:600">${esc(r.s.name)}</b>${r.s.material?` <span class="mono muted" title="${esc(TPR.material_label)}">${esc(TPR.material_abbr)}</span>`:''}<div class="muted" style="font-size:12px">${esc(r.s.type)}</div></td><td class="num mono">${r.crit}</td><td class="num mono">${r.caps}</td><td class="num mono">${r.steps}</td><td>${ep(r.s.exit_plan)}</td><td class="mono">${r.k?.end||'-'}</td><td>${r.k?(r.k.change_of_control_clause?pill('Yes','warn'):pill('No','neutral')):'-'}</td><td>${r.k?terms(r.k.regulatory_terms):'-'}</td><td style="font-size:12.5px">${esc(r.s.location)}</td><td>${pill(r.s.risk,r.s.risk==='High'?'crit':r.s.risk==='Medium'?'warn':'ok')}</td></tr>`).join('')}
+   </tbody></table></div>
+   <p class="sub muted" style="margin-top:10px;font-size:12.5px">${esc(TPR.material_label)} flags, exit-plan status and contract terms are illustrative unless tagged otherwise, and should be reconciled with ${esc(ORGS)}'s ${esc(TPR.register||'supplier register')}.</p>`;
+}
+
+// ---------- Traceability
+function related(type,id){
+  const S={role:new Set(),step:new Set(),cap:new Set(),app:new Set(),sup:new Set()};
+  const addStep=s=>{S.step.add(s);const t=ST[s];[...t.R,t.A,...t.C,...t.I].forEach(r=>S.role.add(r));t.capabilities.forEach(c=>S.cap.add(c));t.apps.forEach(a=>S.app.add(a))};
+  const addSupOfApps=()=>[...S.app].forEach(a=>appSups[a].forEach(x=>S.sup.add(x.supplier)));
+  if(type==='role'){(roleSteps[id]||[]).forEach(x=>addStep(x.step));S.role=new Set([id]);addSupOfApps()}
+  if(type==='step'){addStep(id);addSupOfApps()}
+  if(type==='vs'){D.steps.filter(s=>s.vs===id).forEach(s=>addStep(s.id));addSupOfApps()}
+  if(type==='cvs'){cvsSteps(id).forEach(s=>addStep(s.id));addSupOfApps()}
+  if(type==='si'){const it=D.strategy.initiatives.find(x=>x.id===id);it.journeys.forEach(v=>D.steps.filter(s=>s.vs===v).forEach(s=>{S.step.add(s.id);const t=ST[s.id];[...t.R,t.A].forEach(r=>S.role.add(r))}));it.caps.forEach(c=>S.cap.add(c));it.apps.forEach(a=>S.app.add(a));addSupOfApps()}
+  if(type==='cap'){const cid=CAP[id].level===3?CAP[id].parent:id;capSteps[cid].forEach(s=>{S.step.add(s);const t=ST[s];[...t.R,t.A].forEach(r=>S.role.add(r))});(CAP[id].level===3?CAP[id].apps:capApps[cid]).forEach(a=>S.app.add(a));S.cap=new Set([cid]);addSupOfApps()}
+  if(type==='app'){appSteps[id].forEach(s=>{S.step.add(s);const t=ST[s];[...t.R,t.A].forEach(r=>S.role.add(r))});AP[id].capabilities.forEach(c=>S.cap.add(c));S.app=new Set([id]);addSupOfApps()}
+  if(type==='sup'){(supApps[id]||[]).forEach(x=>S.app.add(x.app));[...S.app].forEach(a=>{AP[a].capabilities.forEach(c=>S.cap.add(c));appSteps[a].forEach(s=>{S.step.add(s);const t=ST[s];[...t.R,t.A].forEach(r=>S.role.add(r))})});S.sup=new Set([id])}
+  return S;
+}
+function traceSuggest(){
+  const out=[]; CVS_ORDER.filter(c=>!isXC(c)).slice(0,2).forEach(c=>out.push('cvs:'+c));
+  if(FIRST.app) out.push('app:'+FIRST.app);
+  const sp=D.suppliers.filter(s=>!s.internal).map(s=>[s.id,(supApps[s.id]||[]).length]).sort((a,b)=>b[1]-a[1])[0]; if(sp) out.push('sup:'+sp[0]);
+  const rl=Object.entries(roleSteps).filter(([r])=>r!==CUST).sort((a,b)=>b[1].length-a[1].length)[0]; if(rl) out.push('role:'+rl[0]);
+  return out;
+}
+function trace(){
+  const [type,id]=state.trace.split(':'); const S=related(type,id);
+  const cols=[['role','Roles'],['step','Process steps'],['cap','Capabilities'],['app','Applications'],['sup','Suppliers']];
+  const LIM=22;
+  const label=(t,i)=>t==='step'?`${ST[i].name}`:nameOf(t,i);
+  const sub=(t,i)=>t==='step'?`${i} · ${VS[ST[i].vs].name}`:t==='app'?`${i} · ${AP[i].time}`:t==='sup'?SU[i].type:t==='role'?RO[i].unit:i;
+  $('#view').innerHTML=`<div class="filters"><label style="flex:1;min-width:220px">Focus <input id="tq" list="tlist" placeholder="Type to pick an application, supplier, capability, role or value stream" style="padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:13px var(--f-body);text-transform:none;letter-spacing:0;width:100%"></label>
+     <datalist id="tlist">${allEntities().map(e=>`<option value="${esc(e.type)}:${esc(e.id)} | ${esc(e.name)}">`).join('')}</datalist>
+     <div class="chips" style="align-self:flex-end">${traceSuggest().map(k=>{const[t,i]=k.split(':');return `<button class="chip" data-trace="${k}">${esc(nameOf(t,i))}</button>`}).join('')}</div></div>
+   <p class="sub muted" style="font-size:12.5px;margin:0 0 10px">Focus: <b style="color:var(--ink)">${esc(nameOf(type,id))}</b>. Click a node to refocus; use the drawer for detail. Lines show role → step → capability → application → supplier.</p>
+   <div class="trace-wrap"><div class="trace" id="trace"><svg class="lines" id="tlines"></svg>
+   ${cols.map(([t,l])=>{const ids=[...S[t]].sort();return `<div class="tcol"><h4>${l} · ${ids.length}</h4>${ids.slice(0,LIM).map(i=>`<button class="tnode ${t===type&&i===id?'focus':''}" data-node="${t}:${i}" data-trace="${t}:${i}"><code>${esc(sub(t,i))}</code>${esc(label(t,i))}</button>`).join('')}${ids.length>LIM?`<div class="tmore">+${ids.length-LIM} more</div>`:''}</div>`}).join('')}
+   </div></div>`;
+  $('#tq').addEventListener('change',e=>{const k=e.target.value.split(' | ')[0];const[t,i]=k.split(':');if(t&&i&&({si:SI,cvs:CVS,cap:CAP,vs:VS,step:ST,role:RO,app:AP,sup:SU}[t]||{})[i]){state.trace=k;save();trace()}});
+  requestAnimationFrame(()=>drawLines(S));
+}
+function drawLines(S){
+  const host=$('#trace'), svg=$('#tlines'); if(!host) return;
+  const hb=host.getBoundingClientRect(); const node=k=>host.querySelector(`[data-node="${k}"]`);
+  const pt=(el,side)=>{const b=el.getBoundingClientRect();return [side==='r'?b.right-hb.left:b.left-hb.left,b.top-hb.top+b.height/2]};
+  const links=[];
+  [...S.step].forEach(s=>{const t=ST[s];[...t.R,t.A,...t.C,...t.I].forEach(r=>S.role.has(r)&&links.push(['role:'+r,'step:'+s]));t.capabilities.forEach(c=>S.cap.has(c)&&links.push(['step:'+s,'cap:'+c]))});
+  [...S.app].forEach(a=>{AP[a].capabilities.forEach(c=>S.cap.has(c)&&links.push(['cap:'+c,'app:'+a]));appSups[a].forEach(x=>S.sup.has(x.supplier)&&links.push(['app:'+a,'sup:'+x.supplier]))});
+  const f=state.trace;
+  svg.innerHTML=links.map(([a,b])=>{const ea=node(a),eb=node(b);if(!ea||!eb)return'';const[x1,y1]=pt(ea,'r'),[x2,y2]=pt(eb,'l'),mx=(x1+x2)/2;
+    return `<path class="${a===f||b===f?'hot':''}" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}"/>`}).join('');
+}
+window.addEventListener('resize',()=>{if(state.view==='trace'){const[t,i]=state.trace.split(':');drawLines(related(t,i))}});
+
+// ---------- Drawer
+function sec(title,body){return body?`<section class="sec"><h3>${title}</h3>${body}</section>`:''}
+function dl(pairs){return `<dl class="dl">${pairs.filter(p=>p[1]!==undefined&&p[1]!=='').map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`}
+function stepChips(ids){return ids.length?`<div class="chips">${ids.map(s=>`<button class="chip" data-ent="step:${s}"><code>${s}</code>${esc(ST[s].name)}</button>`).join('')}</div>`:'<p class="empty">None mapped.</p>'}
+function appChips(ids){return ids.length?`<div class="chips">${ids.map(a=>chip('app',a,AP[a].name)).join('')}</div>`:'<p class="empty">None mapped.</p>'}
+function openEnt(type,id){
+  let k='',title='',head='',body='';
+  const traceBtn=`<div class="drawer-actions"><button class="btn ghost" data-trace-go="${type}:${id}">Trace connections</button>${typeof wiOptions==='function'&&wiOptions(type,id).length?`<button class="btn ghost" data-whatif="${type}:${id}" aria-expanded="false" title="Model a change, failure, retirement or price change starting from this item">Model what if</button>`:''}</div><div class="wi-menu" hidden></div>`;
+  if(type==='app'){const a=AP[id],l=LIC[id],s=SUP[id];k='Application · '+id;title=a.name;
+    head=`<div class="chips">${time(a.time)}<span class="pill s-neutral">${a.tier}</span>${a.crit?pill(CR.short,'warn'):''}${conf(a.confidence)}</div>`;
+    const ins=D.interfaces.filter(i=>i.target_app===id), outs=D.interfaces.filter(i=>i.source_app===id);
+    const dd=D.data_domains.filter(d=>d.sor===id||d.consumers.includes(id));
+    body=dl([['Product',esc(a.product)],['Primary vendor',chip('sup',a.vendor,SU[a.vendor].name,false)],['Category',esc(a.category)],['Hosting',esc(a.hosting)],['Data centres',esc(a.data_centres||'')],['Runs on',(a.runs_on||[]).length?a.runs_on.map(x=>`${chip('app',x.app,AP[x.app].name,false)} <span class="muted" style="font-size:12px">${esc(x.status)}</span>`).join(' '):''],['Workloads on this platform',(()=>{const w=D.apps.filter(o=>(o.runs_on||[]).some(x=>x.app===id));return w.length?w.map(o=>`${chip('app',o.id,o.name,false)} <span class="muted" style="font-size:12px">${esc(o.runs_on.find(x=>x.app===id).status)}</span>`).join(' '):''})()],['Lifecycle',esc(a.lifecycle)],['Business owner',chip('role',a.business_owner,RO[a.business_owner].name,false)],['Technology owner',a.tech_owner?chip('role',a.tech_owner,RO[a.tech_owner].name,false):''],['Users',a.users?a.users.toLocaleString():(a.customer_facing?'Customers (digital channel)':'')],['Fit / health',`${a.func_fit} / ${a.tech_health} of 5`],['Source',esc(a.source)+(a.ref?` · <a href="${esc(a.ref)}" target="_blank" rel="noopener">reference</a>`:'')]])
+     +(PG&&a.programme_lens?`<div class="callout"><b>${esc(PLABEL)} (hypothesis).</b> ${esc(a.programme_lens)}</div>`:'')
+     +(()=>{const ii=D.strategy.initiatives.filter(x=>x.apps.includes(id));return ii.length?sec('Strategic initiatives',`<div class="chips">${ii.map(x=>`<button class="chip" data-ent="si:${x.id}">${esc(x.title)} <code>${esc(D.strategy.pillars.find(p=>p.id===x.pillar).name)}</code></button>`).join('')}</div>`):''})()
+     +sec('Capabilities supported',`<div class="chips">${a.capabilities.map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`)
+     +sec('Business processes',`<div class="chips">${D.business_processes.filter(b=>b.apps.includes(id)).map(b=>chip('bp',b.id,b.name)).join('')||'<span class="empty">None</span>'}</div>`)
+     +sec('Used in process steps',stepChips(appSteps[id]))
+     +sec('Roles involved',`<div class="chips">${appRoles(id).map(r=>chip('role',r,RO[r].name,false)).join('')||'<span class="empty">None</span>'}</div>`)
+     +sec('Suppliers',`<div class="chips">${appSups[id].map(x=>`<button class="chip" data-ent="sup:${x.supplier}">${esc(SU[x.supplier].name)} <code>${esc(x.role)}</code></button>`).join('')}</div>`)
+     +sec('Licence',dl([['Model',esc(l.model)],['Metric',esc(l.metric)],['Entitled / consumed',l.entitled?`${l.entitled.toLocaleString()} / ${l.consumed.toLocaleString()} (${Math.round(l.utilisation*100)}%)`:'n/a'],['Status',l.compliance==='Compliant'?pill('Compliant','ok'):l.compliance==='N/A'?pill('N/A','neutral'):pill(l.compliance,l.compliance==='Over-deployed'?'crit':'warn')],['Annual cost',fmtM(l.annual_cost_m)],['Renewal',esc(l.renewal||'-')]]))
+     +sec('Support',dl([['Model',esc(s.model)],['Resolver groups',esc(s.resolver)],['Hours',esc(s.hours)],['Availability SLA',s.sla_availability+'%'],['P1 response / resolve',esc(s.sla_p1)],['Vendor end of support',esc(s.end_of_support)],['Version currency',esc(s.version_currency)],['Annual support cost',fmtM(s.annual_support_cost_m)]]))
+     +(RES[id]?sec('Resilience',dl([['Data centre mode',esc(RES[id].mode)],['Failover',esc(RES[id].failover_type)],['RTO target',RES[id].rto_hours+' hours'],['RPO target',RES[id].rpo_minutes+' minutes'],['Last DR test',esc(RES[id].last_dr_test||'None recorded')],['Result',pill(RES[id].dr_result,RES[id].dr_result==='Passed'?'ok':RES[id].dr_result==='Failed'?'crit':RES[id].dr_result==='Vendor attestation'?'neutral':'warn')]])):'')
+     +sec('Interfaces',(ins.length||outs.length)?`<div class="tbl-wrap"><table><tbody>${[...ins.map(i=>[i.source_app,'→ in',i]),...outs.map(i=>[i.target_app,'out →',i])].map(([o,d,i])=>`<tr data-ent="app:${o}"><td class="mono muted">${d}</td><td>${esc(AP[o].name)}</td><td style="font-size:12px">${esc(i.data)}<div class="muted">${esc(i.protocol)} · ${esc(i.frequency)}</div></td></tr>`).join('')}</tbody></table></div>`:'')
+     +sec('Data domains',dd.length?`<div class="chips">${dd.map(d=>`<span class="pill ${d.sor===id?'s-ok':'s-neutral'}">${esc(d.name)} · ${d.sor===id?'system of record':'consumer'}</span>`).join('')}</div>`:'')
+     +rdSec(q=>q.apps.includes(id))
+     +(()=>{const rows=ftFeaturesFor(f=>f.apps&&f.apps[id]);return rows?sec('Change features',`<div class="tbl-wrap"><table><tbody>${rows}</tbody></table></div>`):''})();
+  }
+  if(type==='cap'&&CAP[id].level===3){const c=CAP[id],p=CAP[c.parent];k='Capability L3 · '+id;title=c.name;
+    head=`<div class="chips">${chip('cap',p.id,p.name,false)}<span class="pill s-neutral">${esc(CAP[p.parent].name)}</span>${c.apps.length?pill('Supported','ok'):pill('Gap','crit')}</div>`;
+    const sib=L3of[c.parent].filter(x=>x.id!==id);
+    body=dl([['Description',esc(c.description)],['Parent capability (L2)',chip('cap',p.id,p.name,false)],['Importance (from L2)',esc(c.importance)],['Source',esc(c.source)]])
+     +sec(`Applications · ${c.apps.length}`,c.apps.length?`<div class="tbl-wrap"><table><tbody>${c.apps.map(a=>`<tr data-ent="app:${a}"><td>${esc(AP[a].name)}<div class="muted" style="font-size:12px">${esc(AP[a].product)}</div></td><td>${time(AP[a].time)}</td><td class="mono">${AP[a].tier}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">No application supports this capability. It is done manually, in spreadsheets, or not yet in place.</p>')
+     +(()=>{const rows=ftFeaturesFor(f=>(f.caps||[]).includes(id));return rows?sec('Change features',`<div class="tbl-wrap"><table><tbody>${rows}</tbody></table></div>`):''})()
+     +sec('Other L3 capabilities in '+esc(p.name),`<div class="chips">${sib.map(x=>chip('cap',x.id,x.name)).join('')}</div>`);
+  }
+  else if(type==='cap'){const c=CAP[id];k='Capability · '+id;title=c.name;
+    head=`<div class="chips"><span class="pill s-neutral">${esc(CAP[c.parent]?.name||'')}</span><span class="pill s-${c.importance==='Critical'?'crit':c.importance==='High'?'warn':'neutral'}">${c.importance}</span><span class="pill s-neutral">Maturity ${c.maturity}/5</span></div>`;
+    const roles=[...new Set(capSteps[id].flatMap(s=>[...ST[s].R,ST[s].A]))];
+    body=dl([['Description',esc(c.description)],[esc((P.capability_standard||{}).ref_label||'Reference model'),esc(c.std_ref)],['Source',esc(c.source)]])
+     +sec(`Applications · ${capApps[id].length}`,capApps[id].length?`<div class="tbl-wrap"><table><tbody>${capApps[id].map(a=>`<tr data-ent="app:${a}"><td>${esc(AP[a].name)}<div class="muted" style="font-size:12px">${esc(AP[a].product)}</div></td><td>${time(AP[a].time)}</td><td class="mono">${AP[a].tier}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">No supporting application. This is a capability gap.</p>')
+     +sec(`L3 capabilities · ${(L3of[id]||[]).length}`,(L3of[id]||[]).length?`<div class="tbl-wrap"><table><tbody>${L3of[id].map(x=>`<tr data-ent="cap:${x.id}"><td><span class="mono muted" style="font-size:11px">${x.id}</span> ${esc(x.name)}<div class="muted" style="font-size:12px">${esc(x.description)}</div></td><td style="font-size:12px">${x.apps.length?x.apps.map(a=>esc(AP[a].name)).join(', '):pill('Gap','crit')}</td></tr>`).join('')}</tbody></table></div>`:'')
+     +rdSec(q=>q.caps.includes(id))
+     +sec('Realised in process steps',stepChips(capSteps[id]))
+     +sec('Roles (responsible / accountable)',`<div class="chips">${roles.map(r=>chip('role',r,RO[r].name,false)).join('')||'<span class="empty">None</span>'}</div>`);
+  }
+  if(type==='step'){const s=ST[id];k='Process step · '+id;title=s.name;
+    const bpOf=D.business_processes.find(b=>b.journeys.includes(s.vs));
+    head=`<div class="chips">${chip('cvs',VS[s.vs].parent,CVS[VS[s.vs].parent].name,false)}${chip('vs',s.vs,VS[s.vs].name,false)}</div>`;
+    body=sec('RACI',`<div class="chips">${[['R',s.R],['A',[s.A]],['C',s.C],['I',s.I]].flatMap(([l,rs])=>rs.map(r=>`<button class="chip" data-ent="role:${r}"><span class="raci ${l}">${l}</span>${esc(RO[r].name)}</button>`)).join('')}</div>`)
+     +sec('Applications',appChips(s.apps))+sec('Capabilities',`<div class="chips">${s.capabilities.map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`)
+     +sec('Business process',`<div class="chips">${bpOf?chip('bp',bpOf.id,bpOf.name):''}<button class="chip" data-pmap="${s.vs}">Open process map</button></div>`);
+  }
+  if(type==='si') return openInitiative(id);
+  if(type==='feat'||type==='epic') return ftDrawer(type,id);
+  if(type==='term'){const g=GL[id];k='Glossary · '+g.category;title=g.term;
+    body=`<p style="margin:0;font-size:14px;line-height:1.6">${esc(g.definition)}</p>`+sec('Related terms',`<div class="chips">${D.glossary.filter(x=>x.category===g.category&&x.id!==id).slice(0,10).map(x=>`<button class="chip" data-ent="term:${x.id}">${esc(x.term)}</button>`).join('')}</div>`)
+     +`<div><button class="btn ghost" data-nav="glossary">Open full glossary</button></div>`;
+    $('#drawer').innerHTML=`<header><div class="t"><div class="k">${esc(k)}</div><h2>${esc(title)}</h2></div><button class="x" id="dclose" aria-label="Close">✕</button></header><div class="body">${body}</div>`;
+    $('#drawer').hidden=false;$('#scrim').hidden=false;$('#dclose').focus();return;
+  }
+  if(type==='bp'){const b=BP[id];k=`${b.category} process · ${id}`;title=b.name;
+    const kids=D.business_processes.filter(x=>x.parent===id);
+    const apps=b.level===1?[...new Set(kids.flatMap(x=>x.apps))]:b.apps, caps=b.level===1?[...new Set(kids.flatMap(x=>x.capabilities))]:b.capabilities, jn=b.level===1?kids.flatMap(x=>x.journeys):b.journeys;
+    const roles=[...new Set(jn.flatMap(v=>D.steps.filter(s=>s.vs===v).flatMap(s=>[...s.R,s.A])))];
+    const sups=[...new Set(apps.flatMap(a=>appSups[a].map(x=>x.supplier)))];
+    head=`<div class="chips"><span class="pill s-neutral">${b.category}</span><span class="pill s-neutral">Level ${b.level}</span>${b.parent?chip('bp',b.parent,BP[b.parent].name,false):''}</div>`;
+    const pr=b.level===1?[...new Set([...(b.roles||[]),...kids.flatMap(x=>x.roles||[])])]:(b.roles||[]);
+    body=dl([['Process owner',chip('role',b.owner,RO[b.owner].name,false)],['Roles involved',pr.length?pr.map(r=>chip('role',r,RO[r].name,false)).join(' '):''],['Source',esc(b.source)]])
+     +(kids.length?sec('Sub-processes',`<div class="chips">${kids.map(x=>chip('bp',x.id,x.name)).join('')}</div>`):'')
+     +sec('Journeys and process maps',jn.length?`<div class="chips">${jn.map(v=>`<button class="chip" data-pmap="${v}"><code>${v}</code>${esc(VS[v].name)} · map</button>`).join('')}</div>`:'<p class="empty">No journey modelled yet. Candidate for a process map.</p>')
+     +sec(`Applications · ${apps.length}`,apps.length?`<div class="tbl-wrap"><table><tbody>${apps.map(a=>`<tr data-ent="app:${a}"><td>${esc(AP[a].name)}<div class="muted" style="font-size:12px">${esc(AP[a].product)}</div></td><td>${time(AP[a].time)}</td><td>${conf(AP[a].confidence)}</td></tr>`).join('')}</tbody></table></div>`:'<p class="empty">None mapped.</p>')
+     +sec('Capabilities',`<div class="chips">${caps.map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`)
+     +(roles.length?sec('Roles (responsible or accountable)',`<div class="chips">${roles.map(r=>chip('role',r,RO[r].name,false)).join('')}</div>`):'')
+     +sec('Suppliers',`<div class="chips">${sups.map(x=>chip('sup',x,SU[x].name,false)).join('')}</div>`);
+  }
+  if(type==='cvs'){const c=CVS[id],f=cvsFoot(id);k=VSL+' · '+id;title=c.name;
+    head=`<div class="chips">${conf(/^Customer-provided/.test(c.source)?'Customer-provided':c.source==='Public'?'Public':'Illustrative')}</div>`;
+    body=dl([['Scope',esc(c.scope)],['Owner',chip('role',c.owner,RO[c.owner].name,false)],['Footprint',`${f.steps.length} steps · ${f.apps.length} apps · ${f.caps.length} capabilities · ${f.roles.length} roles`],['App run cost',fmtM(f.cost)+' (illustrative)'],['Source',c.ref?`<a href="${esc(c.ref)}" target="_blank" rel="noopener">${esc(c.ref_title||c.source||'Source')}</a>`:esc(c.source||'EA grouping')]])
+     +sec('Journeys',`<div class="chips">${f.journeys.map(v=>chip('vs',v.id,v.name)).join('')}</div>`)
+     +sec('Applications',appChips(f.apps))
+     +sec('Capabilities',`<div class="chips">${f.caps.sort().map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`)
+     +`<div><button class="btn" data-cvs-go="${id}">Open in Value streams</button></div>`;
+  }
+  if(type==='vs'){const v=VS[id];k='Journey · '+id;title=v.name;
+    head=`<div class="chips">${chip('cvs',v.parent,CVS[v.parent].name,false)}</div>`;
+    body=dl([['Process owner',chip('role',v.owner,RO[v.owner].name,false)],['Trigger',esc(v.trigger)],['Outcome',esc(v.outcome)]])+sec('Steps',stepChips(D.steps.filter(s=>s.vs===id).map(s=>s.id)))
+     +`<div class="chips"><button class="btn" data-pmap="${id}">Open process map</button><button class="btn ghost" data-view-vs="${id}">Open journey</button></div>`;
+  }
+  if(type==='role'){const r=RO[id];k='Role · '+id;title=r.name;
+    const rs=roleSteps[id]||[]; const apps=[...new Set(rs.filter(x=>x.raci!=='I').flatMap(x=>ST[x.step].apps))];
+    head=`<div class="chips"><span class="pill s-neutral">${esc(r.unit)}</span><span class="pill s-neutral">${esc(r.family)}</span></div>`;
+    body=sec(`Process involvement · ${rs.length} steps`,rs.length?`<div class="tbl-wrap"><table><tbody>${rs.map(x=>`<tr data-ent="step:${x.step}"><td><span class="raci ${x.raci}">${x.raci}</span></td><td>${esc(ST[x.step].name)}<div class="muted" style="font-size:12px">${esc(VS[ST[x.step].vs].name)}</div></td></tr>`).join('')}</tbody></table></div>`:(D.business_processes.some(b=>b.owner===id||(b.roles||[]).includes(id))||D.apps.some(a=>a.tech_owner===id||a.business_owner===id))?'<p class="muted">Not part of customer journey RACI. See the business processes and applications below.</p>':'<p class="empty">No process steps mapped. Candidate for review.</p>')
+     +(apps.length?sec('Applications used',appChips(apps)):'')
+     +sec('Business processes',(()=>{const o=D.business_processes.filter(b=>b.owner===id),p=D.business_processes.filter(b=>(b.roles||[]).includes(id)&&b.owner!==id);return (o.length||p.length)?`<div class="chips">${o.map(b=>`<button class="chip" data-ent="bp:${b.id}"><span class="raci A">O</span>${esc(b.name)}</button>`).join('')}${p.map(b=>chip('bp',b.id,b.name)).join('')}</div><p class="muted" style="font-size:12px;margin:6px 0 0">O marks processes this role owns.</p>`:'<p class="empty">No business processes mapped.</p>'})())
+     +sec('Applications owned (business)',appChips(D.apps.filter(a=>a.business_owner===id).map(a=>a.id)))
+     +sec('Applications owned (technology)',appChips(D.apps.filter(a=>a.tech_owner===id).map(a=>a.id)))
+     +(()=>{const rows=ftFeaturesFor(f=>f.owner===id);return rows?sec('Change features owned',`<div class="tbl-wrap"><table><tbody>${rows}</tbody></table></div>`):''})();
+  }
+  if(type==='sup'){const s=SU[id],kk=contractOf(id),apps=supApps[id]||[];k='Supplier · '+id;title=s.name;
+    const caps=supCaps(id), steps=supSteps(id), vss=[...new Set(steps.map(x=>ST[x].vs))];
+    head=`<div class="chips"><span class="pill s-neutral">${esc(s.tier)}</span>${pill('Risk: '+s.risk,s.risk==='High'?'crit':s.risk==='Medium'?'warn':'ok')}${s.material?pill(TPR.material_label,'warn'):''}${conf(s.confidence)}</div>`;
+    body=dl([['Type',esc(s.type)],['HQ / delivery',esc(s.hq)+' · '+esc(s.location)],['Exit plan',esc(s.exit_plan)],['Annual spend (primary)',fmtM(supSpend(id))],['Source',esc(s.source)+(s.ref?` · <a href="${esc(s.ref)}" target="_blank" rel="noopener">reference</a>`:'')]])
+     +(kk?sec('Contract',dl([['Reference',kk.id],['Term',`${kk.start} → ${kk.end}`],['Notice',kk.notice_months+' months'],['Auto-renew',kk.auto_renew?'Yes':'No'],['Change of control',kk.change_of_control_clause?pill('Clause present','warn'):'No'],[esc(TPR.terms_label),esc(kk.regulatory_terms)],['Annual value',fmtM(kk.annual_value||0)]])):'')
+     +sec(`Applications · ${apps.length}`,apps.length?`<div class="chips">${apps.map(x=>`<button class="chip" data-ent="app:${x.app}">${esc(AP[x.app].name)} <code>${esc(x.role)}</code></button>`).join('')}</div>`:'<p class="empty">No applications mapped.</p>')
+     +(apps.length?`<div class="callout"><b>If ${esc(s.name)} were unavailable:</b> ${caps.length} capabilities, ${steps.length} process steps across ${vss.length} value streams would be affected.</div>`:'')
+     +sec('Value streams affected',vss.length?`<div class="chips">${vss.map(v=>chip('vs',v,VS[v].name,false)).join('')}</div>`:'')
+     +sec('Capabilities dependent',caps.length?`<div class="chips">${caps.map(c=>chip('cap',c,CAP[c].name)).join('')}</div>`:'');
+  }
+  $('#drawer').innerHTML=`<header><div class="t"><div class="k">${esc(k)}</div><h2>${esc(title)}</h2>${head}</div><button class="x" id="dclose" aria-label="Close">✕</button></header><div class="body">${body}${traceBtn}</div>`;
+  $('#drawer').hidden=false; $('#scrim').hidden=false; $('#drawer').querySelector('.body').scrollTop=0; $('#dclose').focus();
+}
+// bring a just-opened editor into view and put the cursor in its first field
+function edFocus(main,fieldId){
+  if(!main) return;
+  const head=main.querySelector('.ed-head')||main;
+  const go=()=>{try{const rail=document.querySelector('.rail'); let off=12; if(rail&&rail.offsetWidth>innerWidth*0.6){const cs=getComputedStyle(rail); if(cs.position==='sticky'||cs.position==='fixed') off+=rail.offsetHeight}
+      const top=head.getBoundingClientRect().top+window.scrollY-off; window.scrollTo({top:Math.max(0,top),behavior:'smooth'})}catch(e){try{head.scrollIntoView()}catch(e2){}}
+    const f=document.getElementById(fieldId); if(f){try{f.focus({preventScroll:true})}catch(e){f.focus()} if(!f.value) return; try{f.select()}catch(e){}}
+    head.classList.remove('flash'); void head.offsetWidth; head.classList.add('flash')};
+  (window.requestAnimationFrame||setTimeout)(go);
+}
+function closeDrawer(){$('#drawer').hidden=true;$('#scrim').hidden=true}
+
+// ---------- search
+function allEntities(){return [
+  ...D.apps.map(a=>({type:'app',id:a.id,name:a.name,extra:a.product+' '+SU[a.vendor].name})),
+  ...D.suppliers.map(s=>({type:'sup',id:s.id,name:s.name,extra:s.type})),
+  ...L2.map(c=>({type:'cap',id:c.id,name:c.name,extra:c.description})),
+  ...(D.features||[]).map(f=>({type:'feat',id:f.id,name:f.name,extra:'Change feature · '+f.description})),
+  ...(D.epics||[]).map(e=>({type:'epic',id:e.id,name:e.name,extra:'Epic · '+e.summary})),
+  ...L3.map(c=>({type:'cap',id:c.id,name:c.name,extra:'L3 · '+CAP[c.parent].name+' · '+c.description})),
+  ...D.roles.map(r=>({type:'role',id:r.id,name:r.name,extra:r.unit})),
+  ...D.strategy.initiatives.map(i=>({type:'si',id:i.id,name:i.title,extra:i.evidence+' '+D.strategy.pillars.find(p=>p.id===i.pillar).name})),
+  ...D.glossary.map(g=>({type:'term',id:g.id,name:g.term,extra:g.category+' '+g.definition})),
+  ...D.business_processes.map(b=>({type:'bp',id:b.id,name:b.name,extra:b.category+' process'})),
+  ...D.customer_value_streams.map(c=>({type:'cvs',id:c.id,name:c.name,extra:c.scope})),
+  ...D.value_streams.map(v=>({type:'vs',id:v.id,name:v.name,extra:CVS[v.parent].name})),
+  ...D.steps.map(s=>({type:'step',id:s.id,name:s.name,extra:VS[s.vs].name}))]}
+const ENT=allEntities(), TYPE_LABEL={feat:'Feature',epic:'Epic',si:'Initiative',term:'Glossary',bp:'Process',app:'App',sup:'Supplier',cap:'Capability',role:'Role',cvs:'Value stream',vs:'Journey',step:'Step'};
+$('#q').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase(); const r=$('#results');
+  if(q.length<2){r.hidden=true;return}
+  const m=ENT.filter(x=>(x.id+' '+x.name+' '+x.extra).toLowerCase().includes(q)).slice(0,14);
+  r.innerHTML=m.length?m.map(x=>`<button data-ent="${x.type}:${x.id}"><em>${TYPE_LABEL[x.type]}</em><span>${esc(x.name)} <span class="muted mono">${x.id}</span></span></button>`).join(''):'<div style="padding:10px 12px" class="muted">No matches. Try a vendor or product name.</div>';
+  r.hidden=false});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDrawer();$('#results').hidden=true}});
+
+// ---------- delegation
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-gcat],[data-tax],[data-pmap],[data-land],[data-ifocus],[data-ifam],[data-iall],[data-nav],[data-dec],[data-blens],[data-cvs],[data-cvs-go],[data-view],[data-ent],[data-lens],[data-capl3],[data-vs],[data-af],[data-sort],[data-ssort],[data-trace],[data-trace-go],[data-view-vs],#dclose,#scrim');
+  if(!t){ if(!e.target.closest('.search')) $('#results').hidden=true; return }
+  if(t.id==='dclose'||t.id==='scrim') return closeDrawer();
+  if(t.dataset.nav!==undefined&&t.dataset.nav!==''){closeDrawer();return navTo(t.dataset.nav)}
+  if(t.dataset.dec) return openDec(t.dataset.dec);
+  if(t.dataset.gcat!==undefined){state.gcat=t.dataset.gcat;save();return glossary()}
+  if(t.dataset.tax){closeDrawer();return go(t.dataset.tax)}
+  if(t.dataset.resf!==undefined){state.resF=t.dataset.resf;save();return resilience()}
+  if(t.dataset.pmap){state.pmapVs=t.dataset.pmap;save();closeDrawer();return go('pmap')}
+  if(t.dataset.land){state.landMode=t.dataset.land;save();return landscape()}
+  if(t.dataset.ifocus!==undefined){const k=t.dataset.ifocus; if(k&&state.intFocus===k) return openEnt('app',k); state.intFocus=k;save();return integration()}
+  if(t.dataset.ifam){state.intFam[t.dataset.ifam]=!state.intFam[t.dataset.ifam];save();return integration()}
+  if(t.dataset.iall!==undefined){state.intAll=!state.intAll;save();return integration()}
+  if(t.dataset.blens!==undefined){state.progLens=state.progLens===t.dataset.blens?'':t.dataset.blens;save();return programme()}
+  if(t.dataset.cvsGo){state.cvs=t.dataset.cvsGo;closeDrawer();return go('processes')}
+  if(t.dataset.cvs){state.cvs=t.dataset.cvs;save();return processes()}
+  if(t.dataset.view) return go(t.dataset.view);
+  if(t.dataset.lens){state.capLens=t.dataset.lens;save();return capabilities()}
+  if(t.dataset.capl3!==undefined){state.capL3=t.dataset.capl3==='1';save();return capabilities()}
+  if(t.dataset.vs){state.vs=t.dataset.vs;save();return processes()}
+  if(t.dataset.sort){const k=t.dataset.sort;state.appSort=[k,state.appSort[0]===k?-state.appSort[1]:1];save();return apps()}
+  if(t.dataset.ssort){const k=t.dataset.ssort;state.supSort=[k,state.supSort[0]===k?-state.supSort[1]:-1];save();return suppliers()}
+  if(t.dataset.traceGo){state.trace=t.dataset.traceGo;closeDrawer();return go('trace')}
+  if(t.dataset.viewVs){state.vs=t.dataset.viewVs;state.cvs=VS[t.dataset.viewVs].parent;closeDrawer();return go('processes')}
+  if(t.dataset.trace){
+    if(t.dataset.trace===state.trace&&t.classList.contains('tnode')){const[ty,i]=t.dataset.trace.split(':');return openEnt(ty,i)}
+    state.trace=t.dataset.trace;save();return trace()}
+  if(t.dataset.ent){$('#results').hidden=true;const[ty,i]=t.dataset.ent.split(':');return openEnt(ty,i)}
+});
+document.addEventListener('input',e=>{if(e.target.id==='gq'){state.gq=e.target.value;glossaryList();return}if(e.target.dataset.syn){state.syn[e.target.dataset.syn]=Math.max(0,Math.min(100,+e.target.value||0));save();synCalc()}});
+document.addEventListener('change',e=>{if(e.target.dataset.pmapsel){state.pmapVs=e.target.value;save();return pmap()} if(e.target.dataset.capcvs){state.capCvs=e.target.value;save();return capabilities()} if(e.target.dataset.af!==undefined){state.appF[e.target.dataset.af]=e.target.value;save();apps()}});
+
+// ---------- chrome
+$('#banner').innerHTML=`<span>ⓘ</span><div><b>Reference model for ${esc(D.meta.organisation)}</b>, as of ${D.meta.as_of}. Each application and supplier shows its data confidence: ${Object.entries(CONF_VAR).map(([k,v])=>`<span class="conf" style="margin-left:6px"><i style="background:var(${v})"></i>${k}</span>`).join('')}. ${esc(D.meta.disclaimer||'')}</div>`;
+$('#brandname').textContent=D.meta.dashboard_title||(ORGS+' Atlas');
+$('#verbadge').textContent=`v${D.meta.version} · ${D.meta.release_date}`;
+$('#railfoot').innerHTML=D.meta.context.map(c=>`<p style="margin:0 0 8px">${esc(c)}</p>`).join('');
+render();
+</script>

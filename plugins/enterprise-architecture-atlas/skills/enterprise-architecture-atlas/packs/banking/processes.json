@@ -1,0 +1,889 @@
+[
+ {
+  "id": "P1",
+  "name": "Home ownership",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R32",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P1.1",
+  "name": "Mortgage sales & origination",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R32",
+  "roles": [
+   "R55"
+  ],
+  "capabilities": [
+   "C05.01",
+   "C05.02",
+   "C02.05"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS02"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P1.2",
+  "name": "Home insurance & protection",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R38",
+  "roles": [],
+  "capabilities": [
+   "C09.01",
+   "C09.02",
+   "C09.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS07"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P1.3",
+  "name": "Mortgage servicing & switching",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R32",
+  "roles": [
+   "R55"
+  ],
+  "capabilities": [
+   "C05.03",
+   "C05.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P1.4",
+  "name": "Arrears support",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R37",
+  "roles": [
+   "R55"
+  ],
+  "capabilities": [
+   "C05.04"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS09"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P1.5",
+  "name": "Home energy upgrade lending",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R32",
+  "roles": [
+   "R55",
+   "R56"
+  ],
+  "capabilities": [
+   "C06.06",
+   "C06.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2",
+  "name": "Everyday banking",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R31",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2.1",
+  "name": "Account opening & onboarding",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R31",
+  "roles": [
+   "R56",
+   "R53"
+  ],
+  "capabilities": [
+   "C01.02",
+   "C04.01"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS01"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2.2",
+  "name": "Personal lending",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R31",
+  "roles": [
+   "R55",
+   "R56"
+  ],
+  "capabilities": [
+   "C06.01",
+   "C06.02"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS03"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2.3",
+  "name": "Cards",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R35",
+  "roles": [
+   "R54"
+  ],
+  "capabilities": [
+   "C06.03",
+   "C06.04",
+   "C06.05"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS04"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2.4",
+  "name": "Payments (personal & business)",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R35",
+  "roles": [
+   "R54",
+   "R52"
+  ],
+  "capabilities": [
+   "C08.01",
+   "C08.02",
+   "C08.04",
+   "C08.05",
+   "C08.06"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS05"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P2.5",
+  "name": "Savings & deposit servicing",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R31",
+  "roles": [
+   "R53"
+  ],
+  "capabilities": [
+   "C04.02",
+   "C04.03",
+   "C04.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P3",
+  "name": "Business banking",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R33",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P3.1",
+  "name": "SME onboarding & lending",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R33",
+  "roles": [
+   "R55"
+  ],
+  "capabilities": [
+   "C07.01",
+   "C07.02"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS06"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P3.2",
+  "name": "Asset finance",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R33",
+  "roles": [],
+  "capabilities": [
+   "C07.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS11"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P3.3",
+  "name": "Business account servicing",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R33",
+  "roles": [
+   "R56"
+  ],
+  "capabilities": [
+   "C07.04",
+   "C07.05"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS12"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P4",
+  "name": "Serve & protect customers",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R36",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P4.1",
+  "name": "Complaints & redress",
+  "category": "Operate",
+  "parent": "P4",
+  "owner": "R36",
+  "roles": [],
+  "capabilities": [
+   "C10.08"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS08"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P4.2",
+  "name": "Fraud prevention & response",
+  "category": "Operate",
+  "parent": "P4",
+  "owner": "R34",
+  "roles": [
+   "R65",
+   "R54"
+  ],
+  "capabilities": [
+   "C10.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS10"
+  ],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P4.3",
+  "name": "Customer contact, branch & self-service",
+  "category": "Operate",
+  "parent": "P4",
+  "owner": "R31",
+  "roles": [
+   "R56",
+   "R67"
+  ],
+  "capabilities": [
+   "C02.03",
+   "C02.04",
+   "C02.06",
+   "C01.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P5",
+  "name": "Manage risk & compliance",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R42",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P5.1",
+  "name": "Credit risk management & IRB modelling",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R12",
+  "roles": [
+   "R73",
+   "R72"
+  ],
+  "capabilities": [
+   "C10.01",
+   "C10.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P5.2",
+  "name": "AML & sanctions compliance",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R34",
+  "roles": [
+   "R54"
+  ],
+  "capabilities": [
+   "C10.04",
+   "C10.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P5.3",
+  "name": "Operational risk & resilience",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R42",
+  "roles": [
+   "R70",
+   "R71",
+   "R43"
+  ],
+  "capabilities": [
+   "C10.06"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P5.4",
+  "name": "Conduct & product governance",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R24",
+  "roles": [],
+  "capabilities": [
+   "C10.07",
+   "C03.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6",
+  "name": "Manage finance & treasury",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R41",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.1",
+  "name": "Record to report",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R41",
+  "roles": [],
+  "capabilities": [
+   "C11.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.2",
+  "name": "Regulatory reporting",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R26",
+  "roles": [
+   "R72"
+  ],
+  "capabilities": [
+   "C11.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.3",
+  "name": "ALM & liquidity management",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R27",
+  "roles": [],
+  "capabilities": [
+   "C11.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.4",
+  "name": "Treasury & funding",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R27",
+  "roles": [],
+  "capabilities": [
+   "C11.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.5",
+  "name": "Plan, budget & forecast and capital management",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R41",
+  "roles": [],
+  "capabilities": [
+   "C11.06",
+   "C11.08"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P6.6",
+  "name": "Sustainability & ESG reporting",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R41",
+  "roles": [
+   "R72"
+  ],
+  "capabilities": [
+   "C11.07"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P7",
+  "name": "Manage products, brand & partners",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R22",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P7.1",
+  "name": "Product & pricing management",
+  "category": "Manage",
+  "parent": "P7",
+  "owner": "R22",
+  "roles": [],
+  "capabilities": [
+   "C03.02",
+   "C03.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P7.2",
+  "name": "Marketing & campaigns",
+  "category": "Manage",
+  "parent": "P7",
+  "owner": "R23",
+  "roles": [
+   "R73"
+  ],
+  "capabilities": [
+   "C03.01",
+   "C02.07",
+   "C01.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P7.3",
+  "name": "Broker & insurance partner management",
+  "category": "Manage",
+  "parent": "P7",
+  "owner": "R07",
+  "roles": [],
+  "capabilities": [
+   "C02.05",
+   "C09.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P8",
+  "name": "Support people & workplace",
+  "category": "Support",
+  "parent": "",
+  "owner": "R39",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P8.1",
+  "name": "Hire to retire",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R39",
+  "roles": [],
+  "capabilities": [
+   "C12.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P8.2",
+  "name": "Internal communications & engagement",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R39",
+  "roles": [],
+  "capabilities": [
+   "C12.10"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P8.3",
+  "name": "Workplace & collaboration",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R46",
+  "roles": [
+   "R67",
+   "R66"
+  ],
+  "capabilities": [
+   "C12.08"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9",
+  "name": "Support technology & data",
+  "category": "Support",
+  "parent": "",
+  "owner": "R40",
+  "roles": [
+   "R43",
+   "R44",
+   "R45",
+   "R46",
+   "R47",
+   "R48",
+   "R49"
+  ],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.1",
+  "name": "IT service management",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R49",
+  "roles": [
+   "R67",
+   "R68",
+   "R69",
+   "R28"
+  ],
+  "capabilities": [
+   "C12.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.2",
+  "name": "Identity & security operations",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R43",
+  "roles": [
+   "R65",
+   "R66",
+   "R71"
+  ],
+  "capabilities": [
+   "C12.03",
+   "C12.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.3",
+  "name": "Data management, analytics & AI",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R44",
+  "roles": [
+   "R30",
+   "R72",
+   "R73"
+  ],
+  "capabilities": [
+   "C12.05",
+   "C12.11"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.4",
+  "name": "Integration & infrastructure",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R46",
+  "roles": [
+   "R52",
+   "R60",
+   "R61",
+   "R62",
+   "R63",
+   "R64"
+  ],
+  "capabilities": [
+   "C12.07",
+   "C12.09",
+   "C02.08"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.5",
+  "name": "Document & records management",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R47",
+  "roles": [
+   "R47"
+  ],
+  "capabilities": [
+   "C12.06",
+   "C04.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.6",
+  "name": "Architecture & technology governance",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R45",
+  "roles": [
+   "R50",
+   "R51",
+   "R40"
+  ],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.7",
+  "name": "Software delivery & release",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R48",
+  "roles": [
+   "R57",
+   "R58",
+   "R59",
+   "R60",
+   "R69",
+   "R75",
+   "R51"
+  ],
+  "capabilities": [
+   "C12.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.8",
+  "name": "IT resilience & disaster recovery",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R70",
+  "roles": [
+   "R61",
+   "R62",
+   "R63",
+   "R68",
+   "R71"
+  ],
+  "capabilities": [
+   "C10.06",
+   "C12.09"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P9.9",
+  "name": "Technology asset & licence management",
+  "category": "Support",
+  "parent": "P9",
+  "owner": "R74",
+  "roles": [
+   "R29",
+   "R25"
+  ],
+  "capabilities": [
+   "C12.02",
+   "C11.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P10",
+  "name": "Support sourcing & suppliers",
+  "category": "Support",
+  "parent": "",
+  "owner": "R29",
+  "roles": [],
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P10.1",
+  "name": "Source to pay",
+  "category": "Support",
+  "parent": "P10",
+  "owner": "R29",
+  "roles": [
+   "R74"
+  ],
+  "capabilities": [
+   "C11.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ },
+ {
+  "id": "P10.2",
+  "name": "Third-party risk & DORA register",
+  "category": "Support",
+  "parent": "P10",
+  "owner": "R29",
+  "roles": [
+   "R71",
+   "R74"
+  ],
+  "capabilities": [
+   "C11.05",
+   "C10.06"
+  ],
+  "apps": [],
+  "journeys": [],
+  "source": "Banking pack template"
+ }
+]

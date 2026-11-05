@@ -1,0 +1,536 @@
+[
+ {
+  "id": "R01",
+  "name": "Customer",
+  "unit": "External",
+  "family": "External",
+  "source": "Banking pack template",
+  "customer": true
+ },
+ {
+  "id": "R02",
+  "name": "Branch Advisor",
+  "unit": "Retail Distribution",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R03",
+  "name": "Branch Manager",
+  "unit": "Retail Distribution",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R04",
+  "name": "Contact Centre Agent",
+  "unit": "Customer Contact Centre",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R05",
+  "name": "Mortgage Advisor",
+  "unit": "Mortgage Sales",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R06",
+  "name": "Mortgage Broker",
+  "unit": "External intermediary",
+  "family": "External",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R07",
+  "name": "Broker Relationship Manager",
+  "unit": "Intermediary Distribution",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R08",
+  "name": "Mortgage Underwriter",
+  "unit": "Retail Credit",
+  "family": "Middle office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R09",
+  "name": "Lending Operations Analyst",
+  "unit": "Lending Operations",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R10",
+  "name": "SME Relationship Manager",
+  "unit": "Business Banking",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R11",
+  "name": "Asset Finance Underwriter",
+  "unit": "Asset Finance",
+  "family": "Middle office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R12",
+  "name": "Credit Risk Manager",
+  "unit": "Credit Risk",
+  "family": "Risk (2nd line)",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R13",
+  "name": "Arrears Support Specialist",
+  "unit": "Arrears Support Unit",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R14",
+  "name": "Fraud Analyst",
+  "unit": "Financial Crime Operations",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R15",
+  "name": "AML Investigator",
+  "unit": "Financial Crime / MLRO Office",
+  "family": "Risk (2nd line)",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R16",
+  "name": "Payments Operations Analyst",
+  "unit": "Payments Operations",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R17",
+  "name": "Card Operations Specialist",
+  "unit": "Card Operations",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R18",
+  "name": "Complaints Handler",
+  "unit": "Customer Resolution",
+  "family": "Operations",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R19",
+  "name": "Insurance & Protection Specialist",
+  "unit": "Bancassurance",
+  "family": "Front office",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R20",
+  "name": "Partner insurer (underwriting and claims)",
+  "unit": "Partner insurer",
+  "family": "External",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R21",
+  "name": "Partner financial adviser",
+  "unit": "Partner (life and pensions)",
+  "family": "External",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R22",
+  "name": "Product Manager",
+  "unit": "Products & Propositions",
+  "family": "Business",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R23",
+  "name": "Marketing Manager",
+  "unit": "Brand & Marketing",
+  "family": "Business",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R24",
+  "name": "Compliance Officer",
+  "unit": "Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R25",
+  "name": "Finance Analyst",
+  "unit": "Group Finance",
+  "family": "Finance",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R26",
+  "name": "Regulatory Reporting Analyst",
+  "unit": "Group Finance",
+  "family": "Finance",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R27",
+  "name": "Treasury Dealer",
+  "unit": "Treasury",
+  "family": "Finance",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R28",
+  "name": "Application Support Engineer",
+  "unit": "Technology Operations",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R29",
+  "name": "Third-Party Risk Manager",
+  "unit": "Procurement & TPRM",
+  "family": "Risk (2nd line)",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R30",
+  "name": "Data Steward",
+  "unit": "Chief Data Office",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R31",
+  "name": "Head of Retail Banking",
+  "unit": "Retail Distribution",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R32",
+  "name": "Head of Mortgages",
+  "unit": "Mortgages",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R33",
+  "name": "Head of Business Banking",
+  "unit": "Business Banking",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R34",
+  "name": "MLRO / Head of Financial Crime",
+  "unit": "Financial Crime",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R35",
+  "name": "Head of Payments & Cards",
+  "unit": "Payments & Cards",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R36",
+  "name": "Head of Customer Resolution",
+  "unit": "Customer Resolution",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R37",
+  "name": "Head of Arrears Support",
+  "unit": "Arrears Support Unit",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R38",
+  "name": "Head of Bancassurance",
+  "unit": "Bancassurance",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R39",
+  "name": "HR Business Partner",
+  "unit": "People & Culture",
+  "family": "Support",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R40",
+  "name": "Chief Technology Officer",
+  "unit": "Technology",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R41",
+  "name": "Chief Financial Officer",
+  "unit": "Group Finance",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R42",
+  "name": "Chief Risk Officer",
+  "unit": "Risk",
+  "family": "Leadership",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R43",
+  "name": "Chief Information Security Officer",
+  "unit": "Information Security",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R44",
+  "name": "Chief Data Officer",
+  "unit": "Chief Data Office",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R45",
+  "name": "Head of Enterprise Architecture",
+  "unit": "Enterprise Architecture",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R46",
+  "name": "Head of Infrastructure & Cloud",
+  "unit": "Infrastructure & Cloud",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R47",
+  "name": "Head of Application Services",
+  "unit": "Application Services",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R48",
+  "name": "Head of Digital Engineering",
+  "unit": "Digital Engineering",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R49",
+  "name": "Head of Technology Operations",
+  "unit": "Technology Operations",
+  "family": "Leadership",
+  "source": "Banking pack template",
+  "tech": true
+ },
+ {
+  "id": "R50",
+  "name": "Enterprise Architect",
+  "unit": "Enterprise Architecture",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R51",
+  "name": "Solution Architect",
+  "unit": "Enterprise Architecture",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R52",
+  "name": "Integration Platform Lead (messaging, events, APIs)",
+  "unit": "Integration Services",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R53",
+  "name": "Core Banking Platform Lead",
+  "unit": "Application Services",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R54",
+  "name": "Payments Technology Lead",
+  "unit": "Application Services",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R55",
+  "name": "Lending & Mortgage Systems Lead",
+  "unit": "Application Services",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R56",
+  "name": "Digital Channels Engineering Lead",
+  "unit": "Digital Engineering",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R57",
+  "name": "Software Engineer",
+  "unit": "Digital Engineering",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R58",
+  "name": "Product Owner (Digital)",
+  "unit": "Digital Engineering",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R59",
+  "name": "QA & Test Engineer",
+  "unit": "Quality Engineering",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R60",
+  "name": "Platform Engineer (containers, DevOps)",
+  "unit": "Infrastructure & Cloud",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R61",
+  "name": "Infrastructure Engineer (virtualisation, hosting)",
+  "unit": "Infrastructure & Cloud",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R62",
+  "name": "Database Administrator",
+  "unit": "Infrastructure & Cloud",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R63",
+  "name": "Mainframe Systems Programmer",
+  "unit": "Infrastructure & Cloud",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R64",
+  "name": "Network Engineer",
+  "unit": "Infrastructure & Cloud",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R65",
+  "name": "Security Operations Analyst",
+  "unit": "Information Security",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R66",
+  "name": "Identity & Access Management Analyst",
+  "unit": "Information Security",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R67",
+  "name": "Service Desk Analyst",
+  "unit": "Technology Operations",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R68",
+  "name": "Incident & Problem Manager",
+  "unit": "Technology Operations",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R69",
+  "name": "Change & Release Manager",
+  "unit": "Technology Operations",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R70",
+  "name": "IT Resilience & DR Manager",
+  "unit": "Technology Risk & Resilience",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R71",
+  "name": "Technology Risk Manager (1st line)",
+  "unit": "Technology Risk & Resilience",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R72",
+  "name": "Data Engineer",
+  "unit": "Chief Data Office",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R73",
+  "name": "Data Scientist",
+  "unit": "Chief Data Office",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R74",
+  "name": "Software Asset & Licence Manager",
+  "unit": "Technology Commercial",
+  "family": "Technology",
+  "source": "Banking pack template"
+ },
+ {
+  "id": "R75",
+  "name": "Technology Delivery Manager",
+  "unit": "Change Delivery",
+  "family": "Technology",
+  "source": "Banking pack template"
+ }
+]

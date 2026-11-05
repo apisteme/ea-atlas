@@ -1,0 +1,785 @@
+[
+ {
+  "id": "C01",
+  "name": "Customer & Party Management",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C01.01",
+  "name": "Party Reference Data",
+  "parent": "C01",
+  "description": "Golden record of customers, related parties and identifiers",
+  "std_ref": "Party Reference Data Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C01.02",
+  "name": "Customer Onboarding & KYC",
+  "parent": "C01",
+  "description": "Identity verification, CDD/EDD, PEP checks at onboarding",
+  "std_ref": "Customer Onboarding / Party Lifecycle",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C01.03",
+  "name": "Customer Relationship Management",
+  "parent": "C01",
+  "description": "360 view, interactions, needs and next-best-action",
+  "std_ref": "Customer Relationship Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C01.04",
+  "name": "Consent & Preferences",
+  "parent": "C01",
+  "description": "GDPR consent, marketing preferences, contact rules",
+  "std_ref": "Customer Consent Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C01.05",
+  "name": "Customer Insight & Segmentation",
+  "parent": "C01",
+  "description": "Analytics on behaviour, vulnerability and value",
+  "std_ref": "Customer Behavior Insights",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02",
+  "name": "Channels & Distribution",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.01",
+  "name": "Mobile Banking",
+  "parent": "C02",
+  "description": "Mobile app: servicing, origination, card controls",
+  "std_ref": "Channel Activity Analysis / Mobile",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.02",
+  "name": "Online Banking",
+  "parent": "C02",
+  "description": "Web banking for personal and business customers",
+  "std_ref": "Internet Banking",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.03",
+  "name": "Branch Services",
+  "parent": "C02",
+  "description": "Branch network services and teller",
+  "std_ref": "Branch Network Operations",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.04",
+  "name": "Contact Centre",
+  "parent": "C02",
+  "description": "Voice, chat and video banking",
+  "std_ref": "Contact Center Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.05",
+  "name": "Broker & Intermediary Management",
+  "parent": "C02",
+  "description": "Mortgage broker panel, submissions, commission",
+  "std_ref": "Intermediary Agreement",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.06",
+  "name": "ATM & Self-Service",
+  "parent": "C02",
+  "description": "ATM estate and self-service devices",
+  "std_ref": "ATM Network Operations",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.07",
+  "name": "Digital Content & Web",
+  "parent": "C02",
+  "description": "Public website content, SEO, product pages",
+  "std_ref": "Product Marketing / Web",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C02.08",
+  "name": "Open Banking & APIs",
+  "parent": "C02",
+  "description": "PSD2 AISP/PISP/CBPII access and partner APIs",
+  "std_ref": "Open Banking Services",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C03",
+  "name": "Sales & Marketing",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C03.01",
+  "name": "Campaign Management",
+  "parent": "C03",
+  "description": "Multi-channel campaigns and journeys",
+  "std_ref": "Customer Campaign Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C03.02",
+  "name": "Product Pricing",
+  "parent": "C03",
+  "description": "Rate setting, price governance, pricing approvals",
+  "std_ref": "Product Deployment / Pricing",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C03.03",
+  "name": "Lead & Opportunity Management",
+  "parent": "C03",
+  "description": "Referrals, leads and pipeline",
+  "std_ref": "Lead/Opportunity Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C03.04",
+  "name": "Product Design & Lifecycle",
+  "parent": "C03",
+  "description": "Product approval and governance (POG)",
+  "std_ref": "Product Design",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C04",
+  "name": "Deposits & Current Accounts",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C04.01",
+  "name": "Current Account Management",
+  "parent": "C04",
+  "description": "Personal and business current accounts, overdraft limits",
+  "std_ref": "Current Account",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C04.02",
+  "name": "Savings & Deposit Management",
+  "parent": "C04",
+  "description": "Demand and term deposits",
+  "std_ref": "Savings Account / Term Deposit",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C04.03",
+  "name": "Interest & Fee Calculation",
+  "parent": "C04",
+  "description": "Accrual, capitalisation, fees and charges",
+  "std_ref": "Product Combination / Fee Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C04.04",
+  "name": "Statements & Correspondence",
+  "parent": "C04",
+  "description": "Statements, notices and regulatory letters",
+  "std_ref": "Correspondence",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05",
+  "name": "Mortgages",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05.01",
+  "name": "Mortgage Origination",
+  "parent": "C05",
+  "description": "AIP through offer and drawdown, direct and broker",
+  "std_ref": "Mortgage Loan / Loan Origination",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05.02",
+  "name": "Property Valuation & Security",
+  "parent": "C05",
+  "description": "Valuer panel, title, security perfection",
+  "std_ref": "Collateral Asset Administration",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05.03",
+  "name": "Mortgage Servicing",
+  "parent": "C05",
+  "description": "Repayments, rate switches, top-ups, redemptions",
+  "std_ref": "Mortgage Loan Servicing",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05.04",
+  "name": "Mortgage Arrears Resolution",
+  "parent": "C05",
+  "description": "Arrears support, forbearance and restructuring under national codes of conduct",
+  "std_ref": "Collections / Loan Restructuring",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C05.05",
+  "name": "Mortgage Switching & Retention",
+  "parent": "C05",
+  "description": "Fixed-rate maturity, switching in/out",
+  "std_ref": "Customer Retention",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06",
+  "name": "Consumer Lending & Cards",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.01",
+  "name": "Personal Loan Origination",
+  "parent": "C06",
+  "description": "Digital term lending with real-time decisions",
+  "std_ref": "Consumer Loan",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.02",
+  "name": "Overdraft Management",
+  "parent": "C06",
+  "description": "Arranged overdraft lifecycle",
+  "std_ref": "Credit Facility",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.03",
+  "name": "Card Issuance & Lifecycle",
+  "parent": "C06",
+  "description": "Visa debit/credit issuance, PIN, replacement",
+  "std_ref": "Card Issuance / Card Case",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.04",
+  "name": "Card Authorisation & Processing",
+  "parent": "C06",
+  "description": "Authorisation, clearing, tokenisation",
+  "std_ref": "Card Authorization / Card Transaction Capture",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.05",
+  "name": "Card Disputes & Chargebacks",
+  "parent": "C06",
+  "description": "Disputes, chargebacks and scheme arbitration",
+  "std_ref": "Card Transaction Switch / Chargeback",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C06.06",
+  "name": "Green & Home Energy Lending",
+  "parent": "C06",
+  "description": "Home energy upgrade lending and retrofit assessment",
+  "std_ref": "Consumer Loan / Sustainable Finance",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07",
+  "name": "Business Banking (SME)",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07.01",
+  "name": "SME Onboarding",
+  "parent": "C07",
+  "description": "Business KYC/KYB and account opening",
+  "std_ref": "Party Lifecycle Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07.02",
+  "name": "SME Credit Origination",
+  "parent": "C07",
+  "description": "Business loans and facilities",
+  "std_ref": "Corporate Loan",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07.03",
+  "name": "Asset Finance",
+  "parent": "C07",
+  "description": "Leasing and hire purchase for vehicles and equipment",
+  "std_ref": "Leasing",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07.04",
+  "name": "Business Account Servicing",
+  "parent": "C07",
+  "description": "Business online banking, payments and servicing",
+  "std_ref": "Corporate Current Account",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C07.05",
+  "name": "SME Relationship Management",
+  "parent": "C07",
+  "description": "Portfolio and relationship management",
+  "std_ref": "Customer Relationship Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08",
+  "name": "Payments",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.01",
+  "name": "SEPA & Instant Payments",
+  "parent": "C08",
+  "description": "SCT, SCT Inst and Verification of Payee",
+  "std_ref": "Payment Execution",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.02",
+  "name": "Direct Debits",
+  "parent": "C08",
+  "description": "SEPA Direct Debit mandates and collections",
+  "std_ref": "Direct Debit / Direct Debit Mandate",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.03",
+  "name": "Card Scheme Settlement",
+  "parent": "C08",
+  "description": "Visa settlement and reconciliation",
+  "std_ref": "Card Financial Settlement",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.04",
+  "name": "Payment Screening & Repair",
+  "parent": "C08",
+  "description": "Sanctions/fraud screening and exception repair",
+  "std_ref": "Payment Order / Exception Handling",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.05",
+  "name": "Cheque Clearing",
+  "parent": "C08",
+  "description": "Image-based cheque clearing (declining)",
+  "std_ref": "Cheque Processing",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C08.06",
+  "name": "Cross-border Payments",
+  "parent": "C08",
+  "description": "SWIFT non-SEPA payments",
+  "std_ref": "Correspondent Bank / SWIFT",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C09",
+  "name": "Insurance & Wealth Distribution",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C09.01",
+  "name": "Home Insurance Distribution",
+  "parent": "C09",
+  "description": "Distribution of a partner's home insurance as an intermediary",
+  "std_ref": "Product Broker Agreement",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C09.02",
+  "name": "Life & Pensions Referral",
+  "parent": "C09",
+  "description": "Referral to a partner for life and pensions advice",
+  "std_ref": "Product Broker Agreement",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C09.03",
+  "name": "Mortgage Protection",
+  "parent": "C09",
+  "description": "Mortgage protection life cover at drawdown",
+  "std_ref": "Product Inventory Distribution",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C09.04",
+  "name": "Partner Commission Management",
+  "parent": "C09",
+  "description": "Commission tracking and reconciliation",
+  "std_ref": "Commission Agreement",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10",
+  "name": "Risk, Compliance & Financial Crime",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.01",
+  "name": "Credit Risk Decisioning",
+  "parent": "C10",
+  "description": "Scorecards, policy rules, LTI/LTV macroprudential checks",
+  "std_ref": "Credit Risk Operations",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.02",
+  "name": "Credit Risk Modelling (IRB)",
+  "parent": "C10",
+  "description": "PD/LGD/EAD models, IRB model review",
+  "std_ref": "Credit Risk Models",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.03",
+  "name": "Fraud Management",
+  "parent": "C10",
+  "description": "Real-time fraud detection and case handling",
+  "std_ref": "Fraud Detection / Fraud Resolution",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.04",
+  "name": "AML & Transaction Monitoring",
+  "parent": "C10",
+  "description": "Monitoring, investigations, STR filing",
+  "std_ref": "Financial Crime Monitoring",
+  "importance": "Critical",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.05",
+  "name": "Sanctions Screening",
+  "parent": "C10",
+  "description": "Customer and payment screening",
+  "std_ref": "Party Screening",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.06",
+  "name": "Operational Risk & Resilience",
+  "parent": "C10",
+  "description": "Risk register, DORA, incident and resilience testing",
+  "std_ref": "Operational Risk Models / Business Continuity",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.07",
+  "name": "Regulatory Compliance & Conduct",
+  "parent": "C10",
+  "description": "Consumer Protection Code, conduct monitoring",
+  "std_ref": "Regulatory Compliance",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.08",
+  "name": "Complaints Management",
+  "parent": "C10",
+  "description": "Complaint capture, resolution and ombudsman referral",
+  "std_ref": "Customer Case / Customer Case Management",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C10.09",
+  "name": "Collections & Recoveries",
+  "parent": "C10",
+  "description": "Unsecured collections and recoveries",
+  "std_ref": "Collections",
+  "importance": "High",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11",
+  "name": "Finance & Treasury",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.01",
+  "name": "General Ledger & Accounting",
+  "parent": "C11",
+  "description": "GL, sub-ledger posting, IFRS 9 accounting",
+  "std_ref": "Financial Accounting",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.02",
+  "name": "Regulatory Reporting",
+  "parent": "C11",
+  "description": "COREP, FINREP, AnaCredit and national credit register returns",
+  "std_ref": "Regulatory Reporting",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.03",
+  "name": "ALM & Liquidity",
+  "parent": "C11",
+  "description": "IRRBB, LCR/NSFR, balance sheet management",
+  "std_ref": "Asset Liability Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.04",
+  "name": "Treasury & Funding",
+  "parent": "C11",
+  "description": "Wholesale funding, MREL, securitisation",
+  "std_ref": "Treasury Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.05",
+  "name": "Procurement & Supplier Management",
+  "parent": "C11",
+  "description": "Sourcing, contracts, third-party risk, DORA register",
+  "std_ref": "Procurement / Contractor Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.06",
+  "name": "Financial Planning & Performance",
+  "parent": "C11",
+  "description": "Budgeting, forecasting, cost allocation",
+  "std_ref": "Financial Control",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.07",
+  "name": "Sustainability & ESG Reporting",
+  "parent": "C11",
+  "description": "Climate and ESG disclosures, CDP and MSCI ratings, impact lending tracking",
+  "std_ref": "Sustainability Reporting",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C11.08",
+  "name": "Capital Management",
+  "parent": "C11",
+  "description": "Capital planning, capital instruments (CET1, AT1, Tier 2) and distributions",
+  "std_ref": "Capital Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12",
+  "name": "Enterprise Support",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.01",
+  "name": "HR & Workforce",
+  "parent": "C12",
+  "description": "Hire-to-retire, payroll, learning",
+  "std_ref": "Human Resources",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.02",
+  "name": "IT Service Management",
+  "parent": "C12",
+  "description": "Incident, change, CMDB, problem",
+  "std_ref": "IT Service Management",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.03",
+  "name": "Identity & Access Management",
+  "parent": "C12",
+  "description": "Workforce IAM and privileged access",
+  "std_ref": "Access Control",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.04",
+  "name": "Cyber Security Operations",
+  "parent": "C12",
+  "description": "SOC, SIEM, threat management",
+  "std_ref": "Cyber Security",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.05",
+  "name": "Data Management & Analytics",
+  "parent": "C12",
+  "description": "Data platform, quality, lineage, BI",
+  "std_ref": "Data Management / Analytics",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.06",
+  "name": "Document & Records Management",
+  "parent": "C12",
+  "description": "Document capture, archive, retention",
+  "std_ref": "Document Services / Archive",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.07",
+  "name": "Enterprise Integration",
+  "parent": "C12",
+  "description": "Messaging (IBM MQ), event streaming (Kafka) and API mediation",
+  "std_ref": "Integration",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.08",
+  "name": "Workplace Collaboration",
+  "parent": "C12",
+  "description": "Email, collaboration, productivity",
+  "std_ref": "Workplace Services",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.09",
+  "name": "Infrastructure & Hosting",
+  "parent": "C12",
+  "description": "Data centre, hybrid cloud, network",
+  "std_ref": "Platform Operations",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.10",
+  "name": "Internal Communications & Engagement",
+  "parent": "C12",
+  "description": "Employee comms, recognition and engagement",
+  "std_ref": "Human Resources / Workplace",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ },
+ {
+  "id": "C12.11",
+  "name": "AI & Advanced Analytics",
+  "parent": "C12",
+  "description": "AI tools for customer service, operations, fraud, AML and product innovation",
+  "std_ref": "Analytics / Machine Learning",
+  "importance": "Medium",
+  "source": "Banking pack (BIAN-aligned by service domain name)"
+ }
+]

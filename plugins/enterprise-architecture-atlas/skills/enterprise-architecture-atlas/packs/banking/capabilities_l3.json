@@ -1,0 +1,1312 @@
+{
+ "C01.01": [
+  {
+   "name": "Party creation & maintenance",
+   "description": "Create and update person and business party records, names, addresses and contact details"
+  },
+  {
+   "name": "Party relationships & roles",
+   "description": "Joint holders, guarantors, directors and connected parties"
+  },
+  {
+   "name": "Single customer view",
+   "description": "Consolidated view of a party across core, mortgage, card and SME systems"
+  },
+  {
+   "name": "Party data quality & deduplication",
+   "description": "Match, merge and correct duplicate or incomplete party records"
+  }
+ ],
+ "C01.02": [
+  {
+   "name": "Identity verification",
+   "description": "Document and biometric checks for remote and branch onboarding"
+  },
+  {
+   "name": "Customer due diligence & risk rating",
+   "description": "CDD, EDD and money laundering risk score at onboarding"
+  },
+  {
+   "name": "PEP & adverse media checks",
+   "description": "Screen new customers against PEP and adverse media lists"
+  },
+  {
+   "name": "Periodic KYC review",
+   "description": "Refresh KYC by risk tier and trigger events"
+  },
+  {
+   "name": "CRS & FATCA classification",
+   "description": "Tax residency self-certification and reporting flags"
+  }
+ ],
+ "C01.03": [
+  {
+   "name": "Contact & interaction history",
+   "description": "Record every customer interaction across channels"
+  },
+  {
+   "name": "Customer case & task management",
+   "description": "Service requests, tasks and follow-ups"
+  },
+  {
+   "name": "Customer vulnerability management",
+   "description": "Identify and record vulnerable customers under consumer protection rules"
+  },
+  {
+   "name": "Next best action",
+   "description": "Prompt staff with service and sales actions"
+  }
+ ],
+ "C01.04": [
+  {
+   "name": "Marketing consent capture",
+   "description": "Opt-in and opt-out by channel and purpose"
+  },
+  {
+   "name": "Communication preferences",
+   "description": "Paper or digital, language and contact times"
+  },
+  {
+   "name": "GDPR data subject requests",
+   "description": "Access, erasure and rectification requests within statutory deadlines"
+  },
+  {
+   "name": "Open banking consent dashboard",
+   "description": "View and revoke third-party access under PSD2"
+  }
+ ],
+ "C01.05": [
+  {
+   "name": "Customer segmentation",
+   "description": "Value, life-stage and behaviour segments"
+  },
+  {
+   "name": "Propensity & churn models",
+   "description": "Predict product take-up and attrition"
+  },
+  {
+   "name": "Customer profitability analysis",
+   "description": "Revenue and cost by customer and segment"
+  },
+  {
+   "name": "Customer feedback & NPS",
+   "description": "Survey results and net promoter score"
+  }
+ ],
+ "C02.01": [
+  {
+   "name": "Mobile onboarding",
+   "description": "Open accounts in the mobile app"
+  },
+  {
+   "name": "Mobile servicing & self-service",
+   "description": "Balances, statements, card controls and profile changes"
+  },
+  {
+   "name": "Mobile payments & transfers",
+   "description": "SEPA, instant and P2P payments in the app"
+  },
+  {
+   "name": "Digital wallets",
+   "description": "Apple Pay and Google Pay tokenisation"
+  },
+  {
+   "name": "Secure messaging & push notifications",
+   "description": "In-app messages and alerts"
+  }
+ ],
+ "C02.02": [
+  {
+   "name": "Personal online banking",
+   "description": "Web servicing and payments"
+  },
+  {
+   "name": "Business online banking",
+   "description": "Multi-user access, approvals and payments for businesses"
+  },
+  {
+   "name": "Strong customer authentication",
+   "description": "PSD2 SCA for login and payments"
+  },
+  {
+   "name": "Online document delivery",
+   "description": "eStatements and notices"
+  }
+ ],
+ "C02.03": [
+  {
+   "name": "Teller transactions",
+   "description": "Cash, lodgements and withdrawals"
+  },
+  {
+   "name": "Branch cash management",
+   "description": "Cash ordering, balancing and vault control"
+  },
+  {
+   "name": "Branch appointment booking",
+   "description": "Book mortgage and advice appointments"
+  },
+  {
+   "name": "Assisted digital service",
+   "description": "Help customers use digital channels in branch"
+  }
+ ],
+ "C02.04": [
+  {
+   "name": "Call routing & IVR",
+   "description": "Route by intent and authenticate in the IVR"
+  },
+  {
+   "name": "Agent desktop",
+   "description": "Single agent view with CRM and core data"
+  },
+  {
+   "name": "Chat & messaging",
+   "description": "Web chat and messaging channels"
+  },
+  {
+   "name": "Workforce management",
+   "description": "Forecasting, scheduling and adherence"
+  },
+  {
+   "name": "Call recording & quality",
+   "description": "Recording, quality scoring and MiFID or CPC evidence"
+  }
+ ],
+ "C02.05": [
+  {
+   "name": "Broker onboarding & panel management",
+   "description": "Approve, review and remove brokers"
+  },
+  {
+   "name": "Broker application submission",
+   "description": "Brokers submit and track mortgage applications"
+  },
+  {
+   "name": "Broker commission",
+   "description": "Calculate and pay procuration fees"
+  },
+  {
+   "name": "Broker performance & conduct monitoring",
+   "description": "Volumes, quality and conduct metrics"
+  }
+ ],
+ "C02.06": [
+  {
+   "name": "ATM cash dispensing & deposits",
+   "description": "Cash withdrawal and lodgement at ATMs"
+  },
+  {
+   "name": "ATM estate monitoring",
+   "description": "Availability, faults and cash levels"
+  },
+  {
+   "name": "ATM cash replenishment",
+   "description": "Cash-in-transit scheduling and reconciliation"
+  },
+  {
+   "name": "ATM transaction switching",
+   "description": "Route ATM transactions to card and core systems"
+  }
+ ],
+ "C02.07": [
+  {
+   "name": "Web content management",
+   "description": "Publish and manage website content"
+  },
+  {
+   "name": "Product information & calculators",
+   "description": "Rates, fees and mortgage calculators"
+  },
+  {
+   "name": "Search & SEO",
+   "description": "Site search and search engine optimisation"
+  },
+  {
+   "name": "Accessibility compliance",
+   "description": "Meet EU Accessibility Act and WCAG requirements"
+  }
+ ],
+ "C02.08": [
+  {
+   "name": "PSD2 account information (AIS)",
+   "description": "Give licensed third parties account data"
+  },
+  {
+   "name": "PSD2 payment initiation (PIS)",
+   "description": "Accept payments initiated by third parties"
+  },
+  {
+   "name": "API lifecycle & developer portal",
+   "description": "Publish, version and document APIs"
+  },
+  {
+   "name": "API security & throttling",
+   "description": "OAuth, certificates and rate limits"
+  }
+ ],
+ "C03.01": [
+  {
+   "name": "Campaign design & execution",
+   "description": "Plan and run multi-channel campaigns"
+  },
+  {
+   "name": "Audience selection",
+   "description": "Build target lists from segments and consents"
+  },
+  {
+   "name": "Campaign performance measurement",
+   "description": "Response, conversion and return on spend"
+  },
+  {
+   "name": "Marketing compliance review",
+   "description": "Check promotions against the Consumer Protection Code"
+  }
+ ],
+ "C03.02": [
+  {
+   "name": "Rate setting",
+   "description": "Set deposit and lending rates"
+  },
+  {
+   "name": "Fee & charge management",
+   "description": "Define and approve fees and charges"
+  },
+  {
+   "name": "Pricing analytics",
+   "description": "Model margin and volume effects of price changes"
+  },
+  {
+   "name": "Rate change notification",
+   "description": "Notify customers of rate changes within required notice periods"
+  }
+ ],
+ "C03.03": [
+  {
+   "name": "Lead capture & routing",
+   "description": "Capture leads from web, app and branch and assign them"
+  },
+  {
+   "name": "Opportunity pipeline",
+   "description": "Track sales opportunities to close"
+  },
+  {
+   "name": "Referral management",
+   "description": "Internal and partner referrals"
+  },
+  {
+   "name": "Sales performance tracking",
+   "description": "Targets, conversion and adviser performance"
+  }
+ ],
+ "C03.04": [
+  {
+   "name": "Product catalogue",
+   "description": "Single list of products, features and terms"
+  },
+  {
+   "name": "New product approval",
+   "description": "Product oversight and governance approval"
+  },
+  {
+   "name": "Product review & withdrawal",
+   "description": "Periodic review and closure of products"
+  },
+  {
+   "name": "Terms & conditions management",
+   "description": "Version and publish product terms"
+  }
+ ],
+ "C04.01": [
+  {
+   "name": "Account opening & closure",
+   "description": "Open, switch in and close current accounts"
+  },
+  {
+   "name": "Account switching",
+   "description": "Account switching service under national or EU rules"
+  },
+  {
+   "name": "Overdraft & limit maintenance",
+   "description": "Apply and change arranged limits"
+  },
+  {
+   "name": "Dormant account management",
+   "description": "Identify and transfer dormant balances"
+  },
+  {
+   "name": "Account restrictions & holds",
+   "description": "Blocks, holds and garnishee orders"
+  }
+ ],
+ "C04.02": [
+  {
+   "name": "Demand savings",
+   "description": "Instant access and regular saver accounts"
+  },
+  {
+   "name": "Fixed term deposits",
+   "description": "Term deposit placement and maturity handling"
+  },
+  {
+   "name": "Deposit guarantee scheme data",
+   "description": "Single customer view file for the Deposit Guarantee Scheme"
+  },
+  {
+   "name": "Maturity & rollover instructions",
+   "description": "Capture and execute maturity instructions"
+  }
+ ],
+ "C04.03": [
+  {
+   "name": "Interest accrual & capitalisation",
+   "description": "Daily accrual and periodic posting"
+  },
+  {
+   "name": "Fee calculation & charging",
+   "description": "Transaction and maintenance fees"
+  },
+  {
+   "name": "DIRT & withholding tax",
+   "description": "Calculate and remit deposit interest retention tax"
+  },
+  {
+   "name": "Government stamp duty on cards",
+   "description": "Annual stamp duty charging"
+  }
+ ],
+ "C04.04": [
+  {
+   "name": "Statement production",
+   "description": "Periodic statements in paper and digital form"
+  },
+  {
+   "name": "Regulatory notices",
+   "description": "Rate change, terms and fee notices"
+  },
+  {
+   "name": "Correspondence templates",
+   "description": "Template design and approval"
+  },
+  {
+   "name": "Print & mail fulfilment",
+   "description": "Outsourced print and post"
+  }
+ ],
+ "C05.01": [
+  {
+   "name": "Mortgage application capture",
+   "description": "Direct, branch and broker applications"
+  },
+  {
+   "name": "Affordability & LTI/LTV assessment",
+   "description": "Apply macroprudential limits and affordability rules"
+  },
+  {
+   "name": "Mortgage underwriting",
+   "description": "Credit decision and conditions"
+  },
+  {
+   "name": "Offer & loan documentation",
+   "description": "Letter of offer, eSignature and solicitor pack"
+  },
+  {
+   "name": "Drawdown & completion",
+   "description": "Release of funds and account set-up"
+  }
+ ],
+ "C05.02": [
+  {
+   "name": "Valuation instruction",
+   "description": "Instruct panel valuers"
+  },
+  {
+   "name": "Valuation review",
+   "description": "Check value against policy and indices"
+  },
+  {
+   "name": "Security perfection & title",
+   "description": "Solicitor undertakings and charge registration"
+  },
+  {
+   "name": "Collateral revaluation",
+   "description": "Index-based revaluation of the book"
+  }
+ ],
+ "C05.03": [
+  {
+   "name": "Repayment processing",
+   "description": "Collect and allocate repayments"
+  },
+  {
+   "name": "Rate & product changes",
+   "description": "Fixed rate expiry and rate changes"
+  },
+  {
+   "name": "Overpayment & redemption",
+   "description": "Lump sums, redemptions and statements"
+  },
+  {
+   "name": "Mortgage interest & tax certificates",
+   "description": "Annual certificates and Revenue returns"
+  },
+  {
+   "name": "Insurance & title deed tracking",
+   "description": "Track home insurance and deeds"
+  }
+ ],
+ "C05.04": [
+  {
+   "name": "Early arrears detection",
+   "description": "Spot financial difficulty before arrears"
+  },
+  {
+   "name": "Arrears case management",
+   "description": "Run the arrears resolution process required by national codes"
+  },
+  {
+   "name": "Alternative repayment arrangements",
+   "description": "Assess and agree ARAs"
+  },
+  {
+   "name": "Arrears communications",
+   "description": "Statutory letters and contact logging"
+  },
+  {
+   "name": "Legal & repossession management",
+   "description": "Legal proceedings as a last resort"
+  }
+ ],
+ "C05.05": [
+  {
+   "name": "Maturity & retention offers",
+   "description": "Offer new fixed rates at expiry"
+  },
+  {
+   "name": "Switcher mortgage acquisition",
+   "description": "Win mortgages from other lenders"
+  },
+  {
+   "name": "Top-up & further advance",
+   "description": "Additional borrowing on existing mortgages"
+  },
+  {
+   "name": "Retention analytics",
+   "description": "Predict redemption and target retention"
+  }
+ ],
+ "C06.01": [
+  {
+   "name": "Personal loan application",
+   "description": "Digital and assisted applications"
+  },
+  {
+   "name": "Instant credit decision",
+   "description": "Automated decision with credit bureau checks"
+  },
+  {
+   "name": "Loan booking & disbursement",
+   "description": "Set up the loan and pay out"
+  },
+  {
+   "name": "Loan servicing",
+   "description": "Repayments, statements and early settlement"
+  }
+ ],
+ "C06.02": [
+  {
+   "name": "Overdraft application",
+   "description": "Apply for and agree an overdraft"
+  },
+  {
+   "name": "Limit review & management",
+   "description": "Periodic limit review"
+  },
+  {
+   "name": "Unauthorised overdraft handling",
+   "description": "Excess handling and charges"
+  }
+ ],
+ "C06.03": [
+  {
+   "name": "Card application & issuance",
+   "description": "Issue debit and credit cards"
+  },
+  {
+   "name": "Card production & PIN",
+   "description": "Card manufacture and PIN delivery"
+  },
+  {
+   "name": "Card controls",
+   "description": "Freeze, limits and replace in the app"
+  },
+  {
+   "name": "Card tokenisation",
+   "description": "Provision cards to wallets"
+  }
+ ],
+ "C06.04": [
+  {
+   "name": "Authorisation",
+   "description": "Approve or decline card transactions in real time"
+  },
+  {
+   "name": "3-D Secure authentication",
+   "description": "Authenticate online card payments"
+  },
+  {
+   "name": "Real-time card fraud scoring",
+   "description": "Score transactions before authorisation"
+  },
+  {
+   "name": "Clearing & posting",
+   "description": "Capture cleared transactions and post them"
+  }
+ ],
+ "C06.05": [
+  {
+   "name": "Dispute intake",
+   "description": "Capture card disputes from all channels"
+  },
+  {
+   "name": "Chargeback processing",
+   "description": "Raise and manage Visa chargebacks"
+  },
+  {
+   "name": "Dispute resolution & customer refund",
+   "description": "Resolve disputes and refund"
+  }
+ ],
+ "C06.06": [
+  {
+   "name": "Home energy assessment",
+   "description": "Energy rating and retrofit plan support"
+  },
+  {
+   "name": "Green loan origination",
+   "description": "Green mortgage and home improvement loans"
+  },
+  {
+   "name": "Grant & scheme integration",
+   "description": "Government grant and guaranteed loan scheme data"
+  },
+  {
+   "name": "Green asset tagging",
+   "description": "Tag loans for green asset ratio reporting"
+  }
+ ],
+ "C07.01": [
+  {
+   "name": "Business identity & beneficial owners",
+   "description": "Verify entity and beneficial owners against the RBO"
+  },
+  {
+   "name": "Business account opening",
+   "description": "Open SME current accounts"
+  },
+  {
+   "name": "Business KYC refresh",
+   "description": "Periodic and event-driven review"
+  }
+ ],
+ "C07.02": [
+  {
+   "name": "SME credit application",
+   "description": "Capture business credit requests"
+  },
+  {
+   "name": "Financial spreading & analysis",
+   "description": "Analyse accounts and cash flow"
+  },
+  {
+   "name": "SME credit decision & sanction",
+   "description": "Credit decision under delegated authority"
+  },
+  {
+   "name": "Covenant & facility monitoring",
+   "description": "Track covenants and review dates"
+  },
+  {
+   "name": "SBCI & state-backed schemes",
+   "description": "Loans under SBCI and other state schemes"
+  }
+ ],
+ "C07.03": [
+  {
+   "name": "Asset finance quotation",
+   "description": "Quote hire purchase and leasing"
+  },
+  {
+   "name": "Dealer & vendor management",
+   "description": "Motor and equipment dealer panel"
+  },
+  {
+   "name": "Asset finance servicing",
+   "description": "Repayments, settlements and asset records"
+  },
+  {
+   "name": "Agreement documentation",
+   "description": "Agreements and eSignature"
+  }
+ ],
+ "C07.04": [
+  {
+   "name": "Business current account servicing",
+   "description": "Day-to-day account service"
+  },
+  {
+   "name": "Business payments & bulk files",
+   "description": "Bulk and payroll payments"
+  },
+  {
+   "name": "Multi-user access & approvals",
+   "description": "Users, roles and payment approvals"
+  },
+  {
+   "name": "Merchant acquiring referral",
+   "description": "Refer to card acquiring partners"
+  }
+ ],
+ "C07.05": [
+  {
+   "name": "Relationship planning",
+   "description": "Account plans for SME customers"
+  },
+  {
+   "name": "Portfolio management",
+   "description": "Relationship manager portfolios"
+  },
+  {
+   "name": "SME customer insight",
+   "description": "Sector and behaviour insight"
+  }
+ ],
+ "C08.01": [
+  {
+   "name": "SEPA credit transfer",
+   "description": "Standard SEPA payments"
+  },
+  {
+   "name": "SEPA instant payments",
+   "description": "SCT Inst send and receive under the Instant Payments Regulation"
+  },
+  {
+   "name": "Verification of payee",
+   "description": "Name check before payment"
+  },
+  {
+   "name": "Mobile P2P payments",
+   "description": "Person-to-person payments by phone number"
+  },
+  {
+   "name": "Payment limits & scheduling",
+   "description": "Standing orders, future-dated payments and limits"
+  }
+ ],
+ "C08.02": [
+  {
+   "name": "Mandate management",
+   "description": "Create, amend and cancel SEPA mandates"
+  },
+  {
+   "name": "Direct debit collection",
+   "description": "Collect for business creditors"
+  },
+  {
+   "name": "Direct debit returns & refunds",
+   "description": "R-transactions and refund claims"
+  }
+ ],
+ "C08.03": [
+  {
+   "name": "Visa settlement & reconciliation",
+   "description": "Settle with Visa daily"
+  },
+  {
+   "name": "Interchange & scheme fees",
+   "description": "Reconcile interchange and scheme fees"
+  }
+ ],
+ "C08.04": [
+  {
+   "name": "Sanctions screening of payments",
+   "description": "Screen payments against sanctions lists"
+  },
+  {
+   "name": "Payment fraud screening",
+   "description": "Score payments for fraud and APP scams"
+  },
+  {
+   "name": "Payment repair & exceptions",
+   "description": "Repair and resubmit failed payments"
+  },
+  {
+   "name": "Payment investigations",
+   "description": "Recalls, enquiries and returns"
+  }
+ ],
+ "C08.05": [
+  {
+   "name": "Cheque image capture",
+   "description": "Scan and capture cheques"
+  },
+  {
+   "name": "Cheque clearing & returns",
+   "description": "Clear and return cheques"
+  }
+ ],
+ "C08.06": [
+  {
+   "name": "SWIFT payments",
+   "description": "Send and receive cross-border payments"
+  },
+  {
+   "name": "FX conversion for payments",
+   "description": "Rates and conversion"
+  },
+  {
+   "name": "Correspondent bank management",
+   "description": "Nostro accounts and relationships"
+  }
+ ],
+ "C09.01": [
+  {
+   "name": "Home insurance quote & buy",
+   "description": "Partner quote and purchase journey"
+  },
+  {
+   "name": "Policy referral tracking",
+   "description": "Track referrals and sales"
+  },
+  {
+   "name": "Claims referral",
+   "description": "Pass claims to the partner insurer"
+  }
+ ],
+ "C09.02": [
+  {
+   "name": "Adviser referral",
+   "description": "Refer customers to partner advisers"
+  },
+  {
+   "name": "Referral tracking & outcomes",
+   "description": "Track referral outcomes"
+  }
+ ],
+ "C09.03": [
+  {
+   "name": "Mortgage protection referral",
+   "description": "Refer for mortgage protection cover"
+  },
+  {
+   "name": "Cover assignment & verification",
+   "description": "Confirm assignment of cover before drawdown"
+  }
+ ],
+ "C09.04": [
+  {
+   "name": "Commission calculation",
+   "description": "Calculate partner commission"
+  },
+  {
+   "name": "Commission reconciliation & payment",
+   "description": "Reconcile with partners and post"
+  }
+ ],
+ "C10.01": [
+  {
+   "name": "Application credit scoring",
+   "description": "Scorecards for new lending"
+  },
+  {
+   "name": "Credit bureau & register checks",
+   "description": "Credit bureau and national credit register enquiries"
+  },
+  {
+   "name": "Credit policy rules",
+   "description": "Policy rules and overrides"
+  },
+  {
+   "name": "Behavioural scoring",
+   "description": "Score existing customers for limits and arrears"
+  }
+ ],
+ "C10.02": [
+  {
+   "name": "PD, LGD and EAD models",
+   "description": "IRB parameter models"
+  },
+  {
+   "name": "IFRS 9 expected credit loss",
+   "description": "Staging and ECL calculation"
+  },
+  {
+   "name": "Model validation & monitoring",
+   "description": "Independent validation and back-testing"
+  },
+  {
+   "name": "Stress testing",
+   "description": "Credit stress scenarios for ICAAP and EBA"
+  }
+ ],
+ "C10.03": [
+  {
+   "name": "Transaction fraud detection",
+   "description": "Real-time fraud scoring across channels"
+  },
+  {
+   "name": "Card fraud detection",
+   "description": "Card fraud screening and risk analytics"
+  },
+  {
+   "name": "APP scam prevention",
+   "description": "Confirmation of payee and scam warnings"
+  },
+  {
+   "name": "Fraud case management",
+   "description": "Investigate and resolve fraud cases"
+  },
+  {
+   "name": "Fraud reimbursement",
+   "description": "Refunds and liability decisions under PSR"
+  }
+ ],
+ "C10.04": [
+  {
+   "name": "Transaction monitoring",
+   "description": "Detect unusual activity"
+  },
+  {
+   "name": "Alert investigation",
+   "description": "Investigate and close alerts"
+  },
+  {
+   "name": "Suspicious transaction reporting",
+   "description": "File STRs with the FIU and Revenue"
+  },
+  {
+   "name": "Customer risk scoring",
+   "description": "Ongoing money laundering risk rating"
+  }
+ ],
+ "C10.05": [
+  {
+   "name": "Customer sanctions screening",
+   "description": "Screen customers against lists"
+  },
+  {
+   "name": "List management",
+   "description": "EU, UN and OFAC list updates"
+  },
+  {
+   "name": "Hit resolution",
+   "description": "Review and resolve matches"
+  }
+ ],
+ "C10.06": [
+  {
+   "name": "Risk & control self-assessment",
+   "description": "RCSA and control testing"
+  },
+  {
+   "name": "Operational incident management",
+   "description": "Log and analyse loss events"
+  },
+  {
+   "name": "Important business services & impact tolerance",
+   "description": "Map services and set tolerances"
+  },
+  {
+   "name": "ICT risk management (DORA)",
+   "description": "ICT risk framework, testing and major incident reporting"
+  },
+  {
+   "name": "Business continuity & DR testing",
+   "description": "BCP and DR plans and tests"
+  }
+ ],
+ "C10.07": [
+  {
+   "name": "Regulatory change management",
+   "description": "Track and implement new rules"
+  },
+  {
+   "name": "Compliance monitoring",
+   "description": "Compliance testing and assurance"
+  },
+  {
+   "name": "Conduct risk & CPC compliance",
+   "description": "Consumer Protection Code obligations"
+  },
+  {
+   "name": "Individual Accountability Framework",
+   "description": "SEAR responsibility maps and certification"
+  }
+ ],
+ "C10.08": [
+  {
+   "name": "Complaint capture",
+   "description": "Log complaints from all channels"
+  },
+  {
+   "name": "Complaint investigation & resolution",
+   "description": "Investigate within CPC timelines"
+  },
+  {
+   "name": "Root cause analysis",
+   "description": "Find and fix causes of complaints"
+  },
+  {
+   "name": "Ombudsman case handling",
+   "description": "Respond to the financial ombudsman"
+  }
+ ],
+ "C10.09": [
+  {
+   "name": "Unsecured collections",
+   "description": "Collect arrears on loans, cards and overdrafts"
+  },
+  {
+   "name": "Debt recovery & write-off",
+   "description": "Recoveries and write-off approval"
+  },
+  {
+   "name": "Debt sale support",
+   "description": "Data and processes for loan sales"
+  }
+ ],
+ "C11.01": [
+  {
+   "name": "General ledger",
+   "description": "Chart of accounts and journals"
+  },
+  {
+   "name": "Sub-ledger reconciliation",
+   "description": "Reconcile product systems to the ledger"
+  },
+  {
+   "name": "Financial close & consolidation",
+   "description": "Month-end close and group consolidation"
+  },
+  {
+   "name": "Accounts payable",
+   "description": "Supplier invoice payment"
+  }
+ ],
+ "C11.02": [
+  {
+   "name": "Prudential reporting (COREP, FINREP)",
+   "description": "EBA reporting to the competent authority"
+  },
+  {
+   "name": "Statistical returns",
+   "description": "Central bank statistical and AnaCredit returns"
+  },
+  {
+   "name": "Credit register returns",
+   "description": "Periodic submissions to the national credit register"
+  },
+  {
+   "name": "Regulatory data lineage",
+   "description": "Trace reported figures to source"
+  }
+ ],
+ "C11.03": [
+  {
+   "name": "Liquidity monitoring (LCR, NSFR)",
+   "description": "Daily and monthly liquidity metrics"
+  },
+  {
+   "name": "Interest rate risk in the banking book",
+   "description": "IRRBB measurement"
+  },
+  {
+   "name": "Funds transfer pricing",
+   "description": "Internal pricing of funds"
+  },
+  {
+   "name": "ILAAP",
+   "description": "Internal liquidity adequacy assessment"
+  }
+ ],
+ "C11.04": [
+  {
+   "name": "Money market & funding",
+   "description": "Deposits, repo and wholesale funding"
+  },
+  {
+   "name": "Securitisation & covered bonds",
+   "description": "Issue and manage secured funding"
+  },
+  {
+   "name": "Hedging & derivatives",
+   "description": "Interest rate hedging"
+  },
+  {
+   "name": "Treasury settlement",
+   "description": "Settle treasury deals"
+  }
+ ],
+ "C11.05": [
+  {
+   "name": "Sourcing & tendering",
+   "description": "Run tenders and select suppliers"
+  },
+  {
+   "name": "Contract management",
+   "description": "Hold contracts, terms and renewals"
+  },
+  {
+   "name": "Purchase to pay",
+   "description": "Requisition, order and invoice"
+  },
+  {
+   "name": "Third-party risk & DORA register",
+   "description": "Assess suppliers and keep the register of information"
+  }
+ ],
+ "C11.06": [
+  {
+   "name": "Budgeting & forecasting",
+   "description": "Annual budget and rolling forecast"
+  },
+  {
+   "name": "Management reporting",
+   "description": "Performance packs and KPIs"
+  },
+  {
+   "name": "Cost allocation",
+   "description": "Allocate costs to products and segments"
+  }
+ ],
+ "C11.07": [
+  {
+   "name": "ESG data collection",
+   "description": "Collect emissions and loan book climate data"
+  },
+  {
+   "name": "CSRD and Pillar 3 ESG reporting",
+   "description": "Sustainability disclosures"
+  },
+  {
+   "name": "Financed emissions",
+   "description": "Measure emissions of the loan book"
+  }
+ ],
+ "C11.08": [
+  {
+   "name": "Capital calculation (RWA)",
+   "description": "Risk-weighted assets and capital ratios"
+  },
+  {
+   "name": "ICAAP & capital planning",
+   "description": "Capital adequacy assessment and plan"
+  },
+  {
+   "name": "MREL management",
+   "description": "Bail-in eligible funding requirements"
+  }
+ ],
+ "C12.01": [
+  {
+   "name": "Recruitment & onboarding",
+   "description": "Hire and onboard staff"
+  },
+  {
+   "name": "Payroll & benefits",
+   "description": "Pay and benefits"
+  },
+  {
+   "name": "Performance & learning",
+   "description": "Reviews and training records"
+  },
+  {
+   "name": "Fitness & probity",
+   "description": "Fitness and probity checks for controlled functions"
+  }
+ ],
+ "C12.02": [
+  {
+   "name": "Incident & problem management",
+   "description": "Restore service and remove causes"
+  },
+  {
+   "name": "Change & release management",
+   "description": "Approve and track changes"
+  },
+  {
+   "name": "Service request & catalogue",
+   "description": "Request services and access"
+  },
+  {
+   "name": "Configuration management (CMDB)",
+   "description": "Record configuration items and dependencies"
+  },
+  {
+   "name": "IT asset & licence management",
+   "description": "Hardware and software assets"
+  }
+ ],
+ "C12.03": [
+  {
+   "name": "Workforce identity & access",
+   "description": "Joiners, movers, leavers and access reviews"
+  },
+  {
+   "name": "Privileged access management",
+   "description": "Control admin access"
+  },
+  {
+   "name": "Customer identity & authentication",
+   "description": "Customer login and SCA"
+  },
+  {
+   "name": "Single sign-on & MFA",
+   "description": "Staff SSO and multi-factor"
+  }
+ ],
+ "C12.04": [
+  {
+   "name": "Security monitoring & SOC",
+   "description": "Detect and respond to threats"
+  },
+  {
+   "name": "Vulnerability management",
+   "description": "Scan and patch"
+  },
+  {
+   "name": "Threat intelligence",
+   "description": "Collect and act on threat intelligence"
+  },
+  {
+   "name": "Threat-led penetration testing (TLPT)",
+   "description": "DORA TIBER-IE testing"
+  }
+ ],
+ "C12.05": [
+  {
+   "name": "Data platform & warehouse",
+   "description": "Store and integrate enterprise data"
+  },
+  {
+   "name": "Data governance & quality",
+   "description": "Data owners, standards and quality rules"
+  },
+  {
+   "name": "Business intelligence & reporting",
+   "description": "Dashboards and reports"
+  },
+  {
+   "name": "Real-time data streaming",
+   "description": "Event streams for analytics"
+  },
+  {
+   "name": "Master & reference data",
+   "description": "Reference data such as branches, products and codes"
+  }
+ ],
+ "C12.06": [
+  {
+   "name": "Document capture & storage",
+   "description": "Scan, store and index documents"
+  },
+  {
+   "name": "Records retention & disposal",
+   "description": "Retention schedules and legal holds"
+  },
+  {
+   "name": "eSignature",
+   "description": "Sign documents electronically"
+  }
+ ],
+ "C12.07": [
+  {
+   "name": "API management",
+   "description": "Expose and secure APIs"
+  },
+  {
+   "name": "Messaging (MQ)",
+   "description": "Reliable messaging between systems"
+  },
+  {
+   "name": "Event streaming",
+   "description": "Publish and consume events"
+  },
+  {
+   "name": "File transfer & batch",
+   "description": "Managed file transfer and batch"
+  },
+  {
+   "name": "Integration runtime",
+   "description": "Run integration services on the container platform"
+  }
+ ],
+ "C12.08": [
+  {
+   "name": "Email & calendar",
+   "description": "Staff email"
+  },
+  {
+   "name": "Collaboration & file sharing",
+   "description": "Teams, SharePoint and OneDrive"
+  },
+  {
+   "name": "End user devices",
+   "description": "Laptop and mobile device management"
+  }
+ ],
+ "C12.09": [
+  {
+   "name": "Mainframe hosting",
+   "description": "Mainframe for core banking and lending systems"
+  },
+  {
+   "name": "Virtualisation",
+   "description": "VMware vSphere and vCenter"
+  },
+  {
+   "name": "Container platform",
+   "description": "Kubernetes container platform"
+  },
+  {
+   "name": "Database services",
+   "description": "Enterprise database platforms"
+  },
+  {
+   "name": "Data centre & DR",
+   "description": "Primary and secondary data centres"
+  },
+  {
+   "name": "Network & connectivity",
+   "description": "WAN, LAN and internet"
+  }
+ ],
+ "C12.10": [
+  {
+   "name": "Internal communications",
+   "description": "News, campaigns and leadership messages"
+  },
+  {
+   "name": "Employee engagement & recognition",
+   "description": "Surveys and recognition"
+  }
+ ],
+ "C12.11": [
+  {
+   "name": "Machine learning models",
+   "description": "Build and run predictive models"
+  },
+  {
+   "name": "Generative AI assistants",
+   "description": "Staff copilots and knowledge assistants"
+  },
+  {
+   "name": "AI governance (EU AI Act)",
+   "description": "Inventory, risk class and oversight of AI systems"
+  },
+  {
+   "name": "Model risk management",
+   "description": "Validate and monitor models"
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "archisurance",
+    "sample": "plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas/samples/archisurance",
+    "archimate": "Archisurance.archimate",
+    "title": "ArchiSurance",
+    "meta": "Insurance pack, built from the Archi sample model",
+    "blurb": "A fictional EU insurer with home and travel, car and legal aid products. Applications, platforms, roles, interfaces and processes come from the ArchiSurance sample that ships with Archi; costs, contracts and ratings are illustrative. Includes a back-office consolidation programme."
+  }
+]

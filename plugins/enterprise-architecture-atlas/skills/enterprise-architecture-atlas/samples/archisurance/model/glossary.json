@@ -1,0 +1,22 @@
+[
+ {
+  "term": "ArchiSurance",
+  "category": "Organisation",
+  "definition": "A fictional insurer used by The Open Group and the Archi tool to illustrate ArchiMate. This atlas is built from the Archi sample model."
+ },
+ {
+  "term": "Document Processing SSC",
+  "category": "Organisation",
+  "definition": "ArchiSurance's shared service centre that turns paper claim forms and contracts into electronic documents."
+ },
+ {
+  "term": "GIM",
+  "category": "Organisation",
+  "definition": "The business interface intermediaries use to reach ArchiSurance in the Archi model, shown here as the Intermediary Portal."
+ },
+ {
+  "term": "BIBIT",
+  "category": "Organisation",
+  "definition": "The payment network in the Archi model that connects ArchiSurance's Bank System with customers' banks."
+ }
+]

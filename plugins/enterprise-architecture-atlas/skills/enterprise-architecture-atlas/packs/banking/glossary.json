@@ -1,0 +1,167 @@
+[
+ {
+  "term": "SSM",
+  "category": "Banking and regulation",
+  "definition": "Single Supervisory Mechanism. ECB-led supervision of significant banks in the euro area, working with national competent authorities."
+ },
+ {
+  "term": "LTI / LTV",
+  "category": "Banking and regulation",
+  "definition": "Loan-to-income and loan-to-value. Macroprudential mortgage limits set by many central banks and applied at credit decision."
+ },
+ {
+  "term": "KYC / KYB / CDD",
+  "category": "Banking and regulation",
+  "definition": "Know your customer, know your business and customer due diligence: identity and risk checks at onboarding and over time."
+ },
+ {
+  "term": "AML / STR",
+  "category": "Banking and regulation",
+  "definition": "Anti-money laundering, and suspicious transaction reports filed with the authorities."
+ },
+ {
+  "term": "MLRO",
+  "category": "Banking and regulation",
+  "definition": "Money laundering reporting officer."
+ },
+ {
+  "term": "PSD2 / SCA",
+  "category": "Banking and regulation",
+  "definition": "EU Payment Services Directive 2 and its strong customer authentication rules."
+ },
+ {
+  "term": "AISP / PISP / CBPII",
+  "category": "Banking and regulation",
+  "definition": "Open banking third parties: account information, payment initiation and card-based payment instrument issuers."
+ },
+ {
+  "term": "SEPA SCT / SCT Inst / SDD",
+  "category": "Banking and regulation",
+  "definition": "Euro credit transfers, instant credit transfers and direct debits under the Single Euro Payments Area schemes."
+ },
+ {
+  "term": "3-D Secure / ACS",
+  "category": "Banking and regulation",
+  "definition": "The card authentication protocol for online payments (Visa Secure) and the issuer's access control server that runs it."
+ },
+ {
+  "term": "Chargeback",
+  "category": "Banking and regulation",
+  "definition": "Reversal of a card transaction through the card scheme after a dispute."
+ },
+ {
+  "term": "IRB",
+  "category": "Banking and regulation",
+  "definition": "Internal ratings-based approach. Using the bank's own approved models (PD, LGD, EAD) to calculate credit risk capital."
+ },
+ {
+  "term": "COREP / FINREP / AnaCredit",
+  "category": "Banking and regulation",
+  "definition": "EU regulatory returns for capital, financial information and granular loan data."
+ },
+ {
+  "term": "ALM / IRRBB / LCR / NSFR",
+  "category": "Banking and regulation",
+  "definition": "Asset and liability management, interest rate risk in the banking book, and the liquidity coverage and net stable funding ratios."
+ },
+ {
+  "term": "MREL",
+  "category": "Banking and regulation",
+  "definition": "Minimum requirement for own funds and eligible liabilities, for resolution planning."
+ },
+ {
+  "term": "IFRS 9",
+  "category": "Banking and regulation",
+  "definition": "The accounting standard for financial instruments, including expected credit loss provisioning."
+ },
+ {
+  "term": "Asset finance / HP",
+  "category": "Banking and regulation",
+  "definition": "Funding for vehicles and equipment, mainly through hire purchase and leasing."
+ },
+ {
+  "term": "PSR",
+  "category": "Banking and regulation",
+  "definition": "EU Payment Services Regulation. Directly applicable rules on fraud liability, Verification of Payee, SCA, open banking and transparency. Applies about 21 months after entry into force; the Verification of Payee extension about 27 months after."
+ },
+ {
+  "term": "BIAN",
+  "category": "Banking and regulation",
+  "definition": "Banking Industry Architecture Network. A banking reference model whose service domains are used to align the capability map."
+ },
+ {
+  "term": "Critical or important function (CIF)",
+  "category": "Banking and regulation",
+  "definition": "A DORA term for a function whose disruption would materially impair the bank's performance, its regulatory compliance or the continuity of its services. Applications that support one are flagged CIF."
+ },
+ {
+  "term": "Material outsourcing",
+  "category": "Banking and regulation",
+  "definition": "An outsourcing arrangement important enough that its failure would affect the bank's regulated activities. Subject to the EBA outsourcing guidelines and national rules."
+ },
+ {
+  "term": "DORA",
+  "category": "Banking and regulation",
+  "definition": "EU Digital Operational Resilience Act, applying since 17 January 2025. Covers ICT risk management, incident reporting, resilience testing and third-party risk."
+ },
+ {
+  "term": "Register of information",
+  "category": "Banking and regulation",
+  "definition": "The DORA register of all ICT third-party arrangements that each financial entity must keep and report to its supervisor."
+ },
+ {
+  "term": "DORA Article 30",
+  "category": "Banking and regulation",
+  "definition": "The DORA article that lists the key contract terms required for ICT services, such as service descriptions, locations, audit rights and exit."
+ },
+ {
+  "term": "Sanctions screening",
+  "category": "Banking and regulation",
+  "definition": "Checking customers and payments against sanctions lists."
+ },
+ {
+  "term": "Verification of Payee (VoP)",
+  "category": "Banking and regulation",
+  "definition": "A check that the payee name matches the IBAN before a euro transfer is sent, required under the EU Instant Payments Regulation."
+ },
+ {
+  "term": "AT1 / Tier 2",
+  "category": "Banking and regulation",
+  "definition": "Additional Tier 1 and Tier 2 capital instruments in the bank's capital stack."
+ },
+ {
+  "term": "PSD3",
+  "category": "Banking and regulation",
+  "definition": "Third Payment Services Directive. Covers licensing and supervision of payment and e-money institutions; transposed into national law."
+ },
+ {
+  "term": "Impersonation (spoofing) fraud",
+  "category": "Banking and regulation",
+  "definition": "Fraud where a criminal pretends to be the customer's bank. Under the PSR the bank must refund the consumer unless it proves fraud or gross negligence."
+ },
+ {
+  "term": "Permissions dashboard",
+  "category": "Banking and regulation",
+  "definition": "A PSR requirement: a screen in the bank's own channels where customers see and withdraw open banking access they have granted."
+ },
+ {
+  "term": "Bancassurance",
+  "category": "Banking and regulation",
+  "definition": "Selling insurance through a bank, often as an agent or intermediary for a partner insurer."
+ },
+ {
+  "term": "Mortgage arrears resolution",
+  "category": "Banking and regulation",
+  "definition": "The process for supporting borrowers in arrears, usually set by a national code of conduct, including forbearance and restructuring."
+ },
+ {
+  "term": "Credit register",
+  "category": "Banking and regulation",
+  "definition": "A central register of loans run by the central bank in many countries. Lenders check it and report to it."
+ },
+ {
+  "term": "Ombudsman",
+  "category": "Banking and regulation",
+  "definition": "The independent body where customers can escalate complaints the bank has not resolved."
+ }
+]

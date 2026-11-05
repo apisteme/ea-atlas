@@ -1,0 +1,397 @@
+[
+ {
+  "term": "Change impact",
+  "category": "Change portfolio",
+  "definition": "How far a feature or epic reaches across the organisation: applications changed and their criticality, integrations to rework or retest, journeys, people to retrain, critical services, customer exposure and new integrations. Rated Low, Medium, High or Critical."
+ },
+ {
+  "term": "Change footprint",
+  "category": "Change portfolio",
+  "definition": "What a feature changes: applications with a change type, L3 capabilities, journey steps, drivers and dependencies. The impact is derived from it."
+ },
+ {
+  "term": "Change twice risk",
+  "category": "Change portfolio",
+  "definition": "Building on an application that a programme decision may replace or converge soon after, so the work may have to be redone."
+ },
+ {
+  "term": "Change contention",
+  "category": "Change portfolio",
+  "definition": "Several features changing the same application within one quarter, competing for release slots, environments and testing."
+ },
+ {
+  "term": "Regression test",
+  "category": "Change portfolio",
+  "definition": "Retesting a connected application whose interface is unchanged, to confirm a change elsewhere has not broken it."
+ },
+ {
+  "term": "Enterprise architecture (EA)",
+  "category": "Architecture method",
+  "definition": "The practice of describing how the organisation's business, data, applications and technology fit together, so change can be planned and its impact understood."
+ },
+ {
+  "term": "Metamodel",
+  "category": "Architecture method",
+  "definition": "The set of element types and the relationships allowed between them. It is the structure behind this repository."
+ },
+ {
+  "term": "Taxonomy",
+  "category": "Architecture method",
+  "definition": "The agreed hierarchy and names for each element type, so the same thing is always described the same way."
+ },
+ {
+  "term": "Value stream",
+  "category": "Architecture method",
+  "definition": "A sequence of activities that delivers an outcome a customer values."
+ },
+ {
+  "term": "Journey",
+  "category": "Architecture method",
+  "definition": "An end-to-end path a customer or colleague follows within a value stream, from a trigger to an outcome."
+ },
+ {
+  "term": "Business capability",
+  "category": "Architecture method",
+  "definition": "What the organisation must be able to do, described independently of who does it or which system supports it."
+ },
+ {
+  "term": "Business process",
+  "category": "Architecture method",
+  "definition": "How work is done: a repeatable set of steps with an owner, inputs and outputs."
+ },
+ {
+  "term": "Process map / swimlane",
+  "category": "Architecture method",
+  "definition": "A diagram of a journey where each lane is a role, boxes are steps in sequence, and a systems lane shows the applications used."
+ },
+ {
+  "term": "Handoff",
+  "category": "Architecture method",
+  "definition": "A point in a process map where work passes from one role to another. More handoffs usually mean more delay and more risk of error."
+ },
+ {
+  "term": "Traceability",
+  "category": "Architecture method",
+  "definition": "The ability to follow links from a role to its steps, capabilities, applications and suppliers, and back again."
+ },
+ {
+  "term": "Blast radius",
+  "category": "Architecture method",
+  "definition": "Everything affected if an application or decision changes: value streams, journeys, capabilities, interfaces and cost."
+ },
+ {
+  "term": "APQC PCF",
+  "category": "Architecture method",
+  "definition": "APQC Process Classification Framework. A widely used process taxonomy with cross-industry and industry editions."
+ },
+ {
+  "term": "ArchiMate",
+  "category": "Architecture method",
+  "definition": "The Open Group modelling language for enterprise architecture. Models from tools such as Archi can be imported into the atlas."
+ },
+ {
+  "term": "TOGAF",
+  "category": "Architecture method",
+  "definition": "The Open Group Architecture Framework. A method for developing and governing enterprise architecture."
+ },
+ {
+  "term": "Operate / Manage / Support",
+  "category": "Architecture method",
+  "definition": "The three tiers of the process hierarchy. Operate serves customers, Manage directs and controls the organisation, Support keeps it running."
+ },
+ {
+  "term": "RACI",
+  "category": "Architecture method",
+  "definition": "Responsible (does the work), Accountable (owns the outcome, one per step), Consulted (gives input), Informed (kept up to date)."
+ },
+ {
+  "term": "System of record",
+  "category": "Architecture method",
+  "definition": "The application that holds the authoritative version of a data domain."
+ },
+ {
+  "term": "Strategic pillar",
+  "category": "Architecture method",
+  "definition": "One of the organisation's strategic priorities or goals, under which initiatives are grouped."
+ },
+ {
+  "term": "Strategy-to-portfolio alignment",
+  "category": "Architecture method",
+  "definition": "Whether the applications a strategic initiative depends on are rated to support it. An initiative is flagged Watch when a Tier 0 or Tier 1 application behind it is rated Migrate or Eliminate, or scores below 3 for technical health."
+ },
+ {
+  "term": "TIME rating",
+  "category": "Application portfolio",
+  "definition": "Gartner model for portfolio decisions. Tolerate: keep, minimal spend. Invest: strategic, develop further. Migrate: valuable function on weak technology, move it. Eliminate: retire."
+ },
+ {
+  "term": "Functional fit",
+  "category": "Application portfolio",
+  "definition": "How well an application meets business needs, scored 1 to 5."
+ },
+ {
+  "term": "Technical health",
+  "category": "Application portfolio",
+  "definition": "How sound an application's technology is (supportability, currency, resilience), scored 1 to 5."
+ },
+ {
+  "term": "Criticality tier",
+  "category": "Application portfolio",
+  "definition": "Tier 0: the organisation cannot operate without it. Tier 1: major customer or regulatory impact. Tier 2: significant internal impact. Tier 3: low impact."
+ },
+ {
+  "term": "Lifecycle",
+  "category": "Application portfolio",
+  "definition": "Where an application is in its life: Production, Migrating, Phase-out."
+ },
+ {
+  "term": "Data confidence",
+  "category": "Application portfolio",
+  "definition": "How far a record can be trusted. Customer-provided: confirmed by the organisation. Public: from a public source. Partly confirmed: capability confirmed, product assumed. Illustrative: placeholder."
+ },
+ {
+  "term": "Run cost",
+  "category": "Application portfolio",
+  "definition": "Annual licence plus support cost for an application. Illustrative until supplied."
+ },
+ {
+  "term": "Capability gap / overlap",
+  "category": "Application portfolio",
+  "definition": "A gap is a capability with no supporting application. Overlap is a capability served by three or more applications."
+ },
+ {
+  "term": "End-user computing (EUC)",
+  "category": "Application portfolio",
+  "definition": "Business-built tools such as spreadsheets and desktop databases. They carry control risk when used for critical processes."
+ },
+ {
+  "term": "Exit plan",
+  "category": "Commercial and third-party risk",
+  "definition": "A documented and ideally tested plan to leave a supplier without disrupting service."
+ },
+ {
+  "term": "Change-of-control clause",
+  "category": "Commercial and third-party risk",
+  "definition": "A contract term that gives the supplier rights (for example to terminate or renegotiate) when the customer's ownership changes."
+ },
+ {
+  "term": "Notice deadline",
+  "category": "Commercial and third-party risk",
+  "definition": "The last date to serve notice before a contract renews or ends: the term end minus the notice period."
+ },
+ {
+  "term": "Shelfware",
+  "category": "Commercial and third-party risk",
+  "definition": "Licences paid for but not used. Flagged here when utilisation is below 65%."
+ },
+ {
+  "term": "Over-deployed",
+  "category": "Commercial and third-party risk",
+  "definition": "Usage above licence entitlement. A compliance and audit exposure."
+ },
+ {
+  "term": "Licence metric",
+  "category": "Commercial and third-party risk",
+  "definition": "What a licence is charged on: named users, cores, processors, policies, accounts, transactions or capacity."
+ },
+ {
+  "term": "SI / AMS",
+  "category": "Commercial and third-party risk",
+  "definition": "Systems integrator (builds and changes systems) and application management services (runs and supports them)."
+ },
+ {
+  "term": "SaaS",
+  "category": "Commercial and third-party risk",
+  "definition": "Software as a service. The vendor hosts and runs the application; the customer subscribes."
+ },
+ {
+  "term": "End of support (EoS)",
+  "category": "Commercial and third-party risk",
+  "definition": "The date after which the vendor stops fixes and security patches for a version."
+ },
+ {
+  "term": "Version currency",
+  "category": "Commercial and third-party risk",
+  "definition": "How up to date a deployed version is: Current, N-1 (one behind), N-2 or older."
+ },
+ {
+  "term": "SLA",
+  "category": "Commercial and third-party risk",
+  "definition": "Service level agreement. Here: availability target and P1 response and resolution times."
+ },
+ {
+  "term": "Active-passive",
+  "category": "Resilience",
+  "definition": "One site runs live while the other is on standby and takes over only after a failover."
+ },
+ {
+  "term": "Active-active",
+  "category": "Resilience",
+  "definition": "Both sites run live at the same time and share load."
+ },
+ {
+  "term": "Site failover",
+  "category": "Resilience",
+  "definition": "Moving live service from the primary site to the secondary after a failure or for a test."
+ },
+ {
+  "term": "RTO",
+  "category": "Resilience",
+  "definition": "Recovery time objective. The maximum time a service may be down before it must be restored."
+ },
+ {
+  "term": "RPO",
+  "category": "Resilience",
+  "definition": "Recovery point objective. The maximum data loss allowed, measured as time before the failure."
+ },
+ {
+  "term": "DR test",
+  "category": "Resilience",
+  "definition": "A disaster recovery exercise that proves a service can be recovered within its RTO and RPO."
+ },
+ {
+  "term": "Impact tolerance",
+  "category": "Resilience",
+  "definition": "The maximum tolerable disruption to an important business service."
+ },
+ {
+  "term": "Message queuing",
+  "category": "Integration and technology",
+  "definition": "Middleware for reliable system-to-system messaging, such as IBM MQ or RabbitMQ."
+ },
+ {
+  "term": "Event streaming",
+  "category": "Integration and technology",
+  "definition": "A platform for publishing and consuming streams of events in real time, such as Apache Kafka."
+ },
+ {
+  "term": "API gateway",
+  "category": "Integration and technology",
+  "definition": "The control point for APIs: security, throttling and routing."
+ },
+ {
+  "term": "Container platform / Kubernetes",
+  "category": "Integration and technology",
+  "definition": "A platform that runs applications in containers and manages them automatically."
+ },
+ {
+  "term": "Virtualisation",
+  "category": "Integration and technology",
+  "definition": "Software that runs many virtual servers on shared hardware."
+ },
+ {
+  "term": "Mainframe",
+  "category": "Integration and technology",
+  "definition": "A large central computer for high-volume transaction processing."
+ },
+ {
+  "term": "CDC",
+  "category": "Integration and technology",
+  "definition": "Change data capture. Streams changes from a database as events."
+ },
+ {
+  "term": "SIEM / SOC",
+  "category": "Integration and technology",
+  "definition": "Security information and event management, and the security operations centre that uses it."
+ },
+ {
+  "term": "IAM / PAM",
+  "category": "Integration and technology",
+  "definition": "Identity and access management, and privileged access management for administrator accounts."
+ },
+ {
+  "term": "GRC",
+  "category": "Integration and technology",
+  "definition": "Governance, risk and compliance tooling: risk registers, controls and policies."
+ },
+ {
+  "term": "ITSM / CMDB",
+  "category": "Integration and technology",
+  "definition": "IT service management (incident, change, problem) and the configuration management database."
+ },
+ {
+  "term": "GDPR",
+  "category": "Regulation",
+  "definition": "EU General Data Protection Regulation. Rules on processing personal data, including lawful basis, data subject rights, breach notification and records of processing."
+ },
+ {
+  "term": "NIS2",
+  "category": "Regulation",
+  "definition": "EU Network and Information Security Directive 2. Cyber risk management and incident reporting duties for essential and important entities."
+ },
+ {
+  "term": "EU AI Act",
+  "category": "Regulation",
+  "definition": "EU regulation on artificial intelligence. Obligations depend on the risk category of each AI system."
+ },
+ {
+  "term": "ISO/IEC 27001",
+  "category": "Regulation",
+  "definition": "International standard for information security management systems."
+ },
+ {
+  "term": "Programme lens",
+  "category": "Programme",
+  "definition": "EA hypothesis for each application under a major programme such as a merger, acquisition or transformation. Typical values: Retain, Assess, Likely converge, Key decision, Replace / decommission."
+ },
+ {
+  "term": "Synergy",
+  "category": "Programme",
+  "definition": "Cost saved by combining operations, systems or suppliers."
+ },
+ {
+  "term": "Day 1 / Wave",
+  "category": "Programme",
+  "definition": "Day 1 is the legal or operational start of a programme such as completion of a merger. Waves are later phases."
+ },
+ {
+  "term": "Scenario",
+  "category": "Scenario analysis",
+  "definition": "A described event or change that the atlas traces through the repository to show what it affects. Types: application outage, platform failure, supplier failure or exit, data centre loss, replace or decommission, supplier price change and regulatory change."
+ },
+ {
+  "term": "Down",
+  "category": "Scenario analysis",
+  "definition": "An application that is unavailable in the scenario, directly or because something it runs on has failed."
+ },
+ {
+  "term": "Degraded",
+  "category": "Scenario analysis",
+  "definition": "An application that still runs but loses a data flow or dependency, such as a feed from a failed system or messaging through a failed platform."
+ },
+ {
+  "term": "At risk",
+  "category": "Scenario analysis",
+  "definition": "An application that keeps running but loses its fallback, such as its standby site or hosting."
+ },
+ {
+  "term": "Impact level",
+  "category": "Scenario analysis",
+  "definition": "Low, Medium, High or Critical, computed from Tier 0 applications down, critical services affected, value streams and journeys hit."
+ },
+ {
+  "term": "Change size",
+  "category": "Scenario analysis",
+  "definition": "Small, Medium, Large or Very large. The impact level for change and regulatory scenarios, which are planned rather than disruptive."
+ },
+ {
+  "term": "Likelihood",
+  "category": "Scenario analysis",
+  "definition": "How probable a disruption is, from 1 (Rare) to 5 (Almost certain). Set by the person who writes the scenario."
+ },
+ {
+  "term": "Risk rating",
+  "category": "Scenario analysis",
+  "definition": "Likelihood combined with impact level. Shown on the risk matrix."
+ },
+ {
+  "term": "Effort points",
+  "category": "Scenario analysis",
+  "definition": "An illustrative sizing of a regulatory change: each requirement scores 1 (S), 3 (M) or 8 (L)."
+ },
+ {
+  "term": "Readiness",
+  "category": "Scenario analysis",
+  "definition": "For a regulation with a deadline: Not planned (no feature serves the requirement), Late (lands after the deadline), On track or Done. Derived from the change backlog."
+ }
+]

@@ -1,0 +1,40 @@
+{
+ "version": "1.0",
+ "release_date": "2026-10-07",
+ "history": [
+  {
+   "version": "1.0",
+   "date": "2026-10-07",
+   "title": "Example atlas from the Archi sample model",
+   "summary": "First build of the ArchiSurance example: imported from the Archi sample model, mapped to the insurance pack, with illustrative suppliers, costs, journeys, regulation, change portfolio and a consolidation programme.",
+   "source": "Public (Archi sample model) and illustrative",
+   "changes": [
+    {
+     "type": "Model",
+     "action": "Added",
+     "text": "Applications, platforms, roles, processes, data objects and interfaces imported from Archisurance.archimate"
+    },
+    {
+     "type": "Model",
+     "action": "Added",
+     "text": "Insurance pack capability map (11 domains, 61 L2, 143 L3) mapped to the applications"
+    },
+    {
+     "type": "Strategy",
+     "action": "Added",
+     "text": "Goals and principles from the Archi model as strategic pillars and initiatives"
+    },
+    {
+     "type": "Regulation",
+     "action": "Added",
+     "text": "DORA, Solvency II review and EU AI Act requirements mapped to the estate"
+    },
+    {
+     "type": "Dashboard",
+     "action": "Feature",
+     "text": "Back-office consolidation programme view"
+    }
+   ]
+  }
+ ]
+}

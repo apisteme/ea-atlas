@@ -1,0 +1,385 @@
+[
+ {
+  "id": "R01",
+  "name": "Customer",
+  "unit": "External",
+  "family": "External",
+  "source": "Insurance pack template",
+  "customer": true
+ },
+ {
+  "id": "R02",
+  "name": "Intermediary",
+  "unit": "External intermediary",
+  "family": "External",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R03",
+  "name": "Customer's bank",
+  "unit": "External",
+  "family": "External",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R04",
+  "name": "Loss adjuster or repairer",
+  "unit": "External partner",
+  "family": "External",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R05",
+  "name": "Customer relations agent",
+  "unit": "Customer Service",
+  "family": "Front office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R06",
+  "name": "Intermediary relations manager",
+  "unit": "Distribution",
+  "family": "Front office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R07",
+  "name": "Underwriter (personal lines)",
+  "unit": "Underwriting (personal lines)",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R08",
+  "name": "Underwriter (motor)",
+  "unit": "Underwriting (motor)",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R09",
+  "name": "Legal expenses case handler",
+  "unit": "Legal expenses",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R10",
+  "name": "Claims handler",
+  "unit": "Operations",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R11",
+  "name": "Claims assessor",
+  "unit": "Operations",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R12",
+  "name": "Policy administrator",
+  "unit": "Operations",
+  "family": "Back office",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R13",
+  "name": "Document processing operator",
+  "unit": "Document processing",
+  "family": "Operations",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R14",
+  "name": "Finance officer (payments)",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R15",
+  "name": "Credit control analyst",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R16",
+  "name": "Product manager",
+  "unit": "Product & Pricing",
+  "family": "Business",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R17",
+  "name": "Pricing analyst",
+  "unit": "Product & Pricing",
+  "family": "Business",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R18",
+  "name": "Actuary",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R19",
+  "name": "Reinsurance manager",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R20",
+  "name": "Fraud investigator",
+  "unit": "Operations",
+  "family": "Risk (2nd line)",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R21",
+  "name": "Complaints handler",
+  "unit": "Customer Service",
+  "family": "Operations",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R22",
+  "name": "Compliance officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R23",
+  "name": "Risk manager",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R24",
+  "name": "Data protection officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R25",
+  "name": "HR business partner",
+  "unit": "People",
+  "family": "Support",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R26",
+  "name": "Chief Executive",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R27",
+  "name": "Director of Distribution",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R28",
+  "name": "Director of Operations",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R29",
+  "name": "Director of Finance",
+  "unit": "Executive",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R30",
+  "name": "Chief Information Officer",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Insurance pack template",
+  "tech": true
+ },
+ {
+  "id": "R31",
+  "name": "Chief Risk Officer",
+  "unit": "Risk & Compliance",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R32",
+  "name": "Head of Claims",
+  "unit": "Operations",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R33",
+  "name": "Chief Underwriting Officer",
+  "unit": "Operations",
+  "family": "Leadership",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R34",
+  "name": "Head of Enterprise Architecture",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Insurance pack template",
+  "tech": true
+ },
+ {
+  "id": "R35",
+  "name": "Enterprise architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R36",
+  "name": "Solution architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R37",
+  "name": "Application support engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R38",
+  "name": "Mainframe systems programmer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R39",
+  "name": "Unix and infrastructure engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R40",
+  "name": "Integration lead (messaging and APIs)",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R41",
+  "name": "Security operations analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R42",
+  "name": "Identity and access analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R43",
+  "name": "Service desk analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R44",
+  "name": "Change and release manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R45",
+  "name": "IT resilience and DR manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R46",
+  "name": "Data engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R47",
+  "name": "Data steward",
+  "unit": "Finance",
+  "family": "Business",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R48",
+  "name": "Software asset and licence manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R49",
+  "name": "Third-party risk manager",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R50",
+  "name": "Delivery manager",
+  "unit": "Change Delivery",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R51",
+  "name": "Product owner (digital)",
+  "unit": "Change Delivery",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R52",
+  "name": "Software engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Insurance pack template"
+ },
+ {
+  "id": "R53",
+  "name": "Head of Infrastructure",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Insurance pack template",
+  "tech": true
+ },
+ {
+  "id": "R54",
+  "name": "Head of Digital",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Insurance pack template",
+  "tech": true
+ }
+]

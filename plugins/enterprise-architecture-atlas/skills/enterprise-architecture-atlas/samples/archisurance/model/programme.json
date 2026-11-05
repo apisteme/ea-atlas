@@ -1,0 +1,200 @@
+{
+ "name": "Back-office consolidation",
+ "noun": "consolidation programme",
+ "kind": "Merger integration",
+ "lens_label": "Consolidation lens",
+ "decision_label": "Consolidation decision",
+ "commitment_label": "Programme principle",
+ "summary_title": "The programme",
+ "summary": "In The Open Group's ArchiSurance case study the company was formed by merging three insurers, one per product line. Each kept its own back office and systems. This illustrative programme moves home, travel, car and legal aid onto shared customer, policy and claims components, following the Component and One Stop principles in the Archi model.",
+ "view_sub": "What the consolidation means for the architecture: programme principles, the addressable run cost, contract exposure and the key platform decisions.",
+ "timeline_title": "Programme timeline",
+ "completion": "2028-06-30",
+ "completion_label": "Consolidation complete",
+ "timeline": [
+  "2026-01-01",
+  "2028-12-31"
+ ],
+ "milestones": [
+  {
+   "date": "2026-03-31",
+   "label": "Board approves the consolidation programme",
+   "status": "done"
+  },
+  {
+   "date": "2026-12-31",
+   "label": "Single customer view live",
+   "status": "next"
+  },
+  {
+   "date": "2027-09-30",
+   "label": "Car policies migrated to the Home & Away platform",
+   "status": "planned"
+  },
+  {
+   "date": "2028-03-31",
+   "label": "Legal aid migrated",
+   "status": "planned"
+  },
+  {
+   "date": "2028-06-30",
+   "label": "Legacy car and legal aid systems retired",
+   "status": "planned"
+  }
+ ],
+ "phases": [
+  {
+   "name": "Phase 1 (2026-27)",
+   "start": "2026-Q4"
+  },
+  {
+   "name": "Phase 2 (2027-28)",
+   "start": "2027-Q3"
+  },
+  {
+   "name": "Phase 3 (2028)",
+   "start": "2028-Q1"
+  }
+ ],
+ "phase_notes": {
+  "Phase 1 (2026-27)": "Plus: programme governance, data migration approach, product mapping between lines."
+ },
+ "decisions": [
+  {
+   "id": "BD01",
+   "title": "Single policy administration platform",
+   "apps": [
+    "A04",
+    "A05",
+    "A06",
+    "A11",
+    "A12"
+   ],
+   "phase": "Phase 1 (2026-27)",
+   "criticality": "Critical",
+   "options": "Extend the Home & Away platform to all lines · Buy a new policy administration package · Keep separate systems behind a shared customer layer",
+   "hypothesis": "Extend Home & Away. It already holds the shared customer and policy components named in the Archi model. Widest blast radius in the estate, and it runs on the mainframe."
+  },
+  {
+   "id": "BD02",
+   "title": "One CRM and contact centre platform",
+   "apps": [
+    "A02",
+    "A03"
+   ],
+   "phase": "Phase 1 (2026-27)",
+   "criticality": "High",
+   "options": "Replace both with one SaaS platform · Keep the CRM, replace the call centre application",
+   "hypothesis": "Replace the agent desktop first, then decide on the CRM once the single customer view is live."
+  },
+  {
+   "id": "BD03",
+   "title": "Mainframe future",
+   "apps": [
+    "A29",
+    "A04",
+    "A07",
+    "A03"
+   ],
+   "phase": "Phase 3 (2028)",
+   "criticality": "Critical",
+   "options": "Retain and modernise · Rehost on standard platforms · Retire together with a policy administration replacement",
+   "hypothesis": "Retain through the consolidation; decide after the policy platform decision, because it sets most of the mainframe workload."
+  },
+  {
+   "id": "BD04",
+   "title": "Claims platform",
+   "apps": [
+    "A07",
+    "A13"
+   ],
+   "phase": "Phase 2 (2027-28)",
+   "criticality": "High",
+   "options": "Claims workflow on top of Claim Data Management · Full claims system replacement",
+   "hypothesis": "Grow the claims workflow and shrink Claim Data Management to a record store."
+  },
+  {
+   "id": "BD05",
+   "title": "Shared document processing",
+   "apps": [
+    "A16",
+    "A17"
+   ],
+   "phase": "Phase 2 (2027-28)",
+   "criticality": "Medium",
+   "options": "Keep the Document Processing SSC tools · Move to a digital mailroom service",
+   "hypothesis": "Digital mailroom; the SSC already serves all lines."
+  }
+ ],
+ "commitments": [
+  {
+   "topic": "One Stop",
+   "stated": "Customers have one point of contact for all products and claims.",
+   "source": "Archi sample model (principle)",
+   "ref": "https://github.com/archimatetool/archi",
+   "implication": "Shared customer data and one contact centre platform; product-line systems must feed the CRM.",
+   "apps": [
+    "A02",
+    "A03",
+    "A05"
+   ]
+  },
+  {
+   "topic": "Component",
+   "stated": "Product lines share application components instead of running their own.",
+   "source": "Archi sample model (principle)",
+   "ref": "https://github.com/archimatetool/archi",
+   "implication": "Car and legal aid move to the shared policy and customer components; legacy systems retire.",
+   "apps": [
+    "A04",
+    "A11",
+    "A12"
+   ]
+  },
+  {
+   "topic": "Infrastructure",
+   "stated": "Applications run on a small set of standard platforms.",
+   "source": "Archi sample model (principle)",
+   "ref": "https://github.com/archimatetool/archi",
+   "implication": "Mainframe and Unix farm consolidate; new workloads go to cloud.",
+   "apps": [
+    "A29",
+    "A30"
+   ]
+  },
+  {
+   "topic": "Licence",
+   "stated": "Fewer products and vendors, licensed for real use.",
+   "source": "Archi sample model (principle)",
+   "ref": "https://github.com/archimatetool/archi",
+   "implication": "Retiring the legacy systems removes two vendors and their support contracts.",
+   "apps": [
+    "A11",
+    "A12"
+   ]
+  }
+ ],
+ "commitments_title": "Programme principles and what they mean for the architecture",
+ "commitments_sub": "Principles from the Archi sample model, paraphrased. Implications are EA analysis.",
+ "synergy_title": "Savings scenario",
+ "synergy_note": "Set an indicative saving per lens to size the run-cost opportunity. Illustrative: excludes one-off migration cost and dual running.",
+ "synergy_defaults": {
+  "Likely converge": 25,
+  "Key decision": 20,
+  "Assess": 10,
+  "Replace / decommission": 80,
+  "Retain": 0
+ },
+ "lens_order": [
+  "Likely converge",
+  "Key decision",
+  "Assess",
+  "Replace / decommission",
+  "Retain"
+ ],
+ "converge_sub": "to shared platforms",
+ "partner_suppliers": [],
+ "sources": {
+  "archi": "https://github.com/archimatetool/archi"
+ }
+}

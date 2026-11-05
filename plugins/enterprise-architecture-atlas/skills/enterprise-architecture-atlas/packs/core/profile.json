@@ -1,0 +1,59 @@
+{
+  "id": "core",
+  "name": "Cross-industry",
+  "org_noun": "organisation",
+  "value_stream_label": "Value stream",
+  "capability_standard": {
+    "name": "APQC PCF (cross-industry)",
+    "short": "APQC",
+    "ref_label": "Reference model mapping",
+    "note": "Capability names are the atlas's own wording, mapped to the reference model where the licence allows."
+  },
+  "process_framework": "APQC PCF (cross-industry)",
+  "process_tiers": {
+    "Operate": "Value streams and the processes that serve customers directly",
+    "Manage": "Processes that direct and control the organisation",
+    "Support": "Processes that keep the organisation running"
+  },
+  "criticality": {
+    "label": "Business-critical service",
+    "short": "Critical service",
+    "plural": "critical services",
+    "abbr": "CRIT",
+    "help": "Supports a service whose disruption would cause serious harm to customers, the organisation or its obligations",
+    "regime": "",
+    "flag_kind": "Critical service",
+    "change_flag": "Changes {n} application{s} supporting critical services: follow change management, assess the risk before release and update the service and supplier registers if suppliers change."
+  },
+  "third_party": {
+    "material_label": "Critical supplier",
+    "material_abbr": "CS",
+    "terms_label": "Required contract terms",
+    "terms_values": ["Yes", "Remediation in progress", "Gap", "N/A"],
+    "register": "supplier register",
+    "guidance": "the third-party risk policy",
+    "view_sub": "Critical suppliers and the suppliers behind critical services: exit plans, contract terms and concentration."
+  },
+  "resilience": {
+    "regime": "",
+    "note": "Recovery targets and DR test history are illustrative until replaced with real data."
+  },
+  "recovery_targets": {"0": [2, 15], "1": [4, 60], "2": [24, 240], "3": [72, 1440]},
+  "layers": [
+    ["Channels", ["Digital channel", "Web content", "Contact centre", "Branch", "Self-service", "Intermediary", "Portal"]],
+    ["Customer & sales", ["CRM", "Marketing", "Onboarding", "Product", "Sales"]],
+    ["Core operations", ["Core", "Operations", "Case management", "Order management", "Service delivery"]],
+    ["Payments & billing", ["Payments", "Billing"]],
+    ["Risk & compliance", ["Risk", "Compliance", "Regulatory", "Financial crime", "Risk analytics"]],
+    ["Finance & data", ["Finance", "Treasury", "Data", "Content", "Procurement"]],
+    ["Platform", ["Integration", "Infrastructure", "Security", "IT management", "HR", "Workplace"]]
+  ],
+  "interface_families": [
+    {"name": "Events", "match": "kafka|event|stream", "var": "--accent"},
+    {"name": "Messaging", "match": "\\bMQ\\b|JMS|queue|message", "var": "--migrate"},
+    {"name": "API", "match": "API|REST|SOAP|SCIM|LDAP|Platform|Native|web service", "var": "--invest"},
+    {"name": "File / batch", "match": "File|Manual|Syslog|CDC|SFTP|batch|ETL", "var": "--c-ill"},
+    {"name": "Network / scheme", "match": ".", "var": "--warn"}
+  ],
+  "taxonomy_examples": {}
+}

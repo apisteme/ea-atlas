@@ -1,0 +1,209 @@
+[
+ {
+  "id": "NIS2",
+  "name": "NIS2 Directive",
+  "short": "NIS2",
+  "status": "Transposition deadline 17 October 2024; national laws apply to essential and important entities.",
+  "dates": {
+   "transposition": "2024-10-18",
+   "remediation": "2027-06-30"
+  },
+  "date_labels": {
+   "transposition": "NIS2 applies (national law)",
+   "remediation": "Remediation target (internal, set per organisation)"
+  },
+  "main_date": "remediation",
+  "date_note": "Check whether national law classes the organisation as essential or important, and set the remediation target accordingly.",
+  "articles_note": "Article references are to the directive; national laws may differ.",
+  "sources": [
+   {
+    "title": "Directive (EU) 2022/2555 (EUR-Lex)",
+    "url": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "NIS-01",
+    "area": "Risk management",
+    "short": "Cyber risk management measures",
+    "summary": "Put in place proportionate technical, operational and organisational measures to manage cyber risk, approved and overseen by management.",
+    "articles": "Art. 20 and 21",
+    "caps": [
+     "C10.03",
+     "C07.01"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "NIS-02",
+    "area": "Incident reporting",
+    "short": "Significant incident reporting",
+    "summary": "Send an early warning within 24 hours, an incident notification within 72 hours and a final report within one month.",
+    "articles": "Art. 23",
+    "caps": [
+     "C10.01",
+     "C10.03"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "NIS-03",
+    "area": "Supply chain",
+    "short": "Supply chain security",
+    "summary": "Assess and manage security risks from suppliers and service providers.",
+    "articles": "Art. 21(2)(d)",
+    "caps": [
+     "C08.05"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "NIS-04",
+    "area": "Continuity",
+    "short": "Business continuity and crisis management",
+    "summary": "Backup management, disaster recovery and crisis management.",
+    "articles": "Art. 21(2)(c)",
+    "caps": [
+     "C07.06",
+     "C10.08"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   }
+  ]
+ },
+ {
+  "id": "GDPR",
+  "name": "General Data Protection Regulation (GDPR)",
+  "short": "GDPR",
+  "status": "Applies since 25 May 2018.",
+  "dates": {
+   "application": "2018-05-25"
+  },
+  "date_labels": {
+   "application": "GDPR applies"
+  },
+  "main_date": "application",
+  "readiness": false,
+  "date_note": "Ongoing obligations.",
+  "articles_note": "",
+  "sources": [
+   {
+    "title": "Regulation (EU) 2016/679 (EUR-Lex)",
+    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "GDPR-01",
+    "area": "Accountability",
+    "short": "Records of processing",
+    "summary": "Keep a record of processing activities.",
+    "articles": "Art. 30",
+    "caps": [
+     "C07.04"
+    ],
+    "size": "S",
+    "deadline": "application",
+    "kind": "Change"
+   },
+   {
+    "id": "GDPR-02",
+    "area": "Rights",
+    "short": "Data subject rights",
+    "summary": "Answer access, correction, erasure and portability requests within one month.",
+    "articles": "Art. 12 to 22",
+    "caps": [
+     "C02.04"
+    ],
+    "size": "M",
+    "deadline": "application",
+    "kind": "Change"
+   },
+   {
+    "id": "GDPR-03",
+    "area": "Security",
+    "short": "Breach notification",
+    "summary": "Notify the supervisory authority of a personal data breach within 72 hours where required.",
+    "articles": "Art. 33 and 34",
+    "caps": [
+     "C07.04",
+     "C10.03"
+    ],
+    "size": "S",
+    "deadline": "application",
+    "kind": "Change"
+   }
+  ]
+ },
+ {
+  "id": "AIACT",
+  "name": "EU Artificial Intelligence Act",
+  "short": "EU AI Act",
+  "status": "In force since August 2024. Stand-alone high-risk obligations moved to 2 December 2027 under the 2026 provisional agreement (to confirm).",
+  "dates": {
+   "high_risk": "2027-12-02"
+  },
+  "date_labels": {
+   "high_risk": "High-risk obligations apply (to confirm)"
+  },
+  "main_date": "high_risk",
+  "date_note": "Dates follow the 2026 digital omnibus agreement; confirm the final adopted text.",
+  "articles_note": "Check whether any AI use falls into the high-risk categories in Annex III, such as recruitment and access to essential services.",
+  "sources": [
+   {
+    "title": "Sidley: provisional agreement to delay key EU AI Act obligations",
+    "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "AI-01",
+    "area": "Governance",
+    "short": "AI system inventory and risk classification",
+    "summary": "Keep an inventory of AI systems and classify each by risk category.",
+    "articles": "",
+    "caps": [
+     "C10.10"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "New capability"
+   },
+   {
+    "id": "AI-02",
+    "area": "High-risk systems",
+    "short": "Risk management and human oversight for high-risk AI",
+    "summary": "For high-risk uses, run risk management, data governance, logging and human oversight.",
+    "articles": "",
+    "caps": [
+     "C10.10"
+    ],
+    "size": "M",
+    "deadline": "high_risk",
+    "kind": "Change"
+   },
+   {
+    "id": "AI-03",
+    "area": "Transparency",
+    "short": "Transparency for customer-facing AI",
+    "summary": "Tell customers when they interact with an AI system such as a chatbot.",
+    "articles": "",
+    "caps": [
+     "C04.01",
+     "C04.02"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "Change"
+   }
+  ]
+ }
+]

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Microsoft Copilot Studio setup, EA Atlas</title><meta name="description" content="How to install and use EA Atlas with Microsoft Copilot Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script>try{var t=localStorage.getItem('ea-atlas-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head><body>
+<header class="top"><div class="wrap"><a class="mark" href="../index.html"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="11" height="7" rx="1.5" fill="var(--invest)"/><rect x="14" y="1" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="1" y="10" width="11" height="7" rx="1.5" fill="var(--tolerate)"/><rect x="14" y="10" width="11" height="7" rx="1.5" fill="var(--migrate)"/><rect x="1" y="19" width="11" height="6" rx="1.5" fill="var(--invest)"/><rect x="14.5" y="19.5" width="10" height="5" rx="1.5" fill="none" stroke="var(--ink-2)" stroke-dasharray="2 1.5"/></svg>EA Atlas</a><nav aria-label="Main"><a href="../index.html">Home</a><a href="../examples/index.html">Examples</a><a href="../index.html#kits">Get the kit</a><a href="../guides/claude.html" aria-current="page">Guides</a><a href="https://github.com/apisteme/ea-atlas">GitHub</a></nav></div></header>
+<main><div class="wrap page"><p class="crumb"><a href="../index.html#kits">Kits</a></p><h1>Set up EA Atlas for Microsoft Copilot Studio</h1>
+<div class="actions" style="margin:0 0 8px"><a class="btn small" href="claude.html">Claude</a><a class="btn small" href="copilot-studio.html" aria-current=page>Microsoft Copilot Studio</a><a class="btn small" href="github-copilot.html">GitHub Copilot</a></div>
+<div class="callout"><p><a href="../downloads/enterprise-architecture-atlas-copilot-studio.zip" download><b>Download enterprise-architecture-atlas-copilot-studio.zip</b></a> (287 KB)</p><p>You do not need to run the build script below: the package is ready. Download <a href='../downloads/enterprise-architecture-atlas-copilot-studio.zip'>the skill zip</a>, and if Copilot Studio rejects it, <a href='../downloads/enterprise-architecture-atlas-copilot-studio-folder.zip'>the folder version</a>.</p></div>
+<div class="prose">
+<p>The same atlas engine as the Claude skill, packaged as a Copilot Studio skill. Build it with:</p>
+<pre><code class="language-bash">python3 tools/make_copilot_skill.py
+</code></pre>
+<p>This writes <code>dist/copilot-studio/enterprise-architecture-atlas.zip</code> (SKILL.md at the top of the zip) and <code>dist/copilot-studio/enterprise-architecture-atlas-folder.zip</code> (the same files inside a folder), and checks them against the published package limits.</p>
+<h2>Set up in Copilot Studio</h2>
+<p>Skills in the new Copilot Studio agent experience are in preview, so screens and limits can change.</p>
+<ol>
+<li>Open Copilot Studio and create an agent in the new agent experience, for example "EA Atlas".</li>
+<li>There is no code execution setting to turn on. In the new agent experience the agent runs Python itself whenever it needs to create a file, and the packages it has include openpyxl, so the Excel keeps its full formatting. (Older classic agents had a separate "code interpreter" switch; it does not apply here.)</li>
+<li>Give the agent short instructions, for example: "You help enterprise architects build and maintain an EA atlas. For any request about an EA atlas, capability map, application portfolio, change impact, what-if or regulatory readiness, use the enterprise-architecture-atlas skill. Ask the user to attach their atlas file when they have one."</li>
+<li>Go to <strong>Build</strong> &gt; <strong>Skills</strong> &gt; <strong>Add skill</strong> &gt; <strong>Upload a skill</strong>, and upload <code>enterprise-architecture-atlas.zip</code>.</li>
+<li>If the upload is rejected or the skill does not appear in the list, replace it with <code>enterprise-architecture-atlas-folder.zip</code>.</li>
+<li>If you want the agent to research public sources (annual reports, regulators), enable web search or knowledge sources for the agent. The skill's scripts never use the network.</li>
+<li>Test in the preview chat, in this order:</li>
+<li>"Show me the ArchiSurance example atlas." The agent should run the scripts and return three file cards with a <strong>Download</strong> action: the dashboard (.html), the Excel file and the atlas file.</li>
+<li>"Build an EA atlas for <a fictional company>, insurance pack, with these applications: ..."</li>
+<li>Attach the atlas file from the previous step and ask: "What happens if the mainframe fails?"</li>
+<li>Publish the agent to Teams or Microsoft 365 Copilot when the tests pass.</li>
+</ol>
+<h2>How users work with it</h2>
+<ul>
+<li>The sandbox does not keep files between sessions. Each session ends with three files: the dashboard (open in any browser), the Excel repository and <code>&lt;Org&gt;_atlas_model.json</code>, the <strong>atlas file</strong>.</li>
+<li>Users keep the atlas file (OneDrive or SharePoint) and attach it at the start of the next session. It holds the whole model and its change history.</li>
+<li>Saved scenarios and features inside the dashboard stay in the viewer's browser. To keep one permanently, ask the agent to add it to the atlas.</li>
+</ul>
+<h2>What to check in your tenant</h2>
+<p>Microsoft documents that agents in the new experience create files with Python and return them as file cards (in the Preview tab, Teams, Microsoft Copilot and web chat), up to 10 MB per file, kept for 28 days. It does not say whether the agent runs scripts bundled in an uploaded skill, so test these before rolling out:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Why it matters</th>
+<th>If it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Does the agent run the skill's Python scripts?</td>
+<td>Everything is built by scripts</td>
+<td>Check the agent's activity or reasoning view for the <code>check_env.py</code> and <code>build.py</code> runs. If it only describes them, tell me what it shows</td>
+</tr>
+<tr>
+<td>Does it return all three files as file cards?</td>
+<td>Users need the dashboard, Excel and atlas file</td>
+<td>Files over 10 MB are not returned; the dashboard and atlas file are well under 1 MB for a typical atlas. If an .html card is blocked, tell me the message</td>
+</tr>
+<tr>
+<td>Is the zip accepted with SKILL.md at the top level?</td>
+<td>Microsoft's examples differ</td>
+<td>Use the folder zip</td>
+</tr>
+<tr>
+<td>Is Node available?</td>
+<td>Not needed: the Python engine gives identical results</td>
+<td>Nothing to do</td>
+</tr>
+<tr>
+<td>Is openpyxl available?</td>
+<td>Microsoft lists it as available; it only affects Excel formatting</td>
+<td>Nothing to do: if it is missing, the built-in writer produces the same tabs and formulas</td>
+</tr>
+</tbody>
+</table>
+<h2>Limits the package meets</h2>
+<p>Checked by <code>make_copilot_skill.py</code> against the Agent Builder skill limits (the closest published limits): allowed file types only, and no .js, .html or shell files (tenants often block them), folder depth of 3 or less, 47 files (limit 350), under 1 MB (limit 50 MB per zip, 25 MB per file), instructions about 11,000 characters (limit 20,000), name and description within the Agent Skills specification, UTF-8 without a byte-order mark.</p></div></div></main>
+<footer><div class="wrap"><div>
+<p>EA Atlas is open source under the MIT licence. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
+<p><a href="https://github.com/apisteme/ea-atlas">Source on GitHub</a>, <a href="https://github.com/apisteme/ea-atlas/blob/main/NOTICE.md">notices</a>, <a href="https://github.com/apisteme/ea-atlas/issues">report a problem</a>.</p>
+</div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div></div></footer>
+<script>document.getElementById('theme').onclick=function(){var r=document.documentElement,d=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=d==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('ea-atlas-theme',n)}catch(e){}};</script>
+</body></html>

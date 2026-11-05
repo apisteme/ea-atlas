@@ -1,0 +1,185 @@
+{
+ "theme": "Client satisfaction, lower costs and lower total cost of ownership",
+ "source": "archi",
+ "source_title": "Archi sample model: goals and principles",
+ "pillars": [
+  {
+   "id": "SP1",
+   "name": "Client satisfaction",
+   "kind": "Goal",
+   "cvs": "CVS1"
+  },
+  {
+   "id": "SP2",
+   "name": "Lower operating costs",
+   "kind": "Goal",
+   "cvs": ""
+  },
+  {
+   "id": "SP3",
+   "name": "Lower total cost of ownership",
+   "kind": "Goal",
+   "cvs": ""
+  }
+ ],
+ "initiatives": [
+  {
+   "id": "SI01",
+   "pillar": "SP1",
+   "title": "One-stop service",
+   "evidence": "Archi principle: One Stop. Customers deal with one point of contact for every product and claim, so customer data and service must be shared across product lines.",
+   "journeys": [
+    "VS02",
+    "VS03"
+   ],
+   "procs": [
+    "P3.1",
+    "P2.1"
+   ],
+   "caps": [
+    "C01.03",
+    "C02.02",
+    "C01.01"
+   ],
+   "apps": [
+    "A02",
+    "A03",
+    "A01",
+    "A05"
+   ]
+  },
+  {
+   "id": "SI02",
+   "pillar": "SP1",
+   "title": "Faster claim treatment",
+   "evidence": "Archi principle: Treatment Time. Claims are handled within a set time, which needs digital notification, triage and payment.",
+   "journeys": [
+    "VS02"
+   ],
+   "procs": [
+    "P2.1"
+   ],
+   "caps": [
+    "C06.01",
+    "C06.02",
+    "C06.04"
+   ],
+   "apps": [
+    "A13",
+    "A07",
+    "A16",
+    "A09"
+   ]
+  },
+  {
+   "id": "SI03",
+   "pillar": "SP2",
+   "title": "Shared application components",
+   "evidence": "Archi principle: Component. Product lines share components such as customer data and policy data instead of running their own systems.",
+   "journeys": [
+    "VS01",
+    "VS03"
+   ],
+   "procs": [
+    "P1.1",
+    "P1.2"
+   ],
+   "caps": [
+    "C05.01",
+    "C05.02",
+    "C01.01"
+   ],
+   "apps": [
+    "A04",
+    "A05",
+    "A06",
+    "A11",
+    "A12"
+   ]
+  },
+  {
+   "id": "SI04",
+   "pillar": "SP3",
+   "title": "Standard infrastructure",
+   "evidence": "Archi principle: Infrastructure. Applications run on a small set of standard platforms.",
+   "journeys": [],
+   "procs": [
+    "P8.4",
+    "P8.8"
+   ],
+   "caps": [
+    "C11.09"
+   ],
+   "apps": [
+    "A29",
+    "A30",
+    "A31"
+   ]
+  },
+  {
+   "id": "SI05",
+   "pillar": "SP3",
+   "title": "Licence rationalisation",
+   "evidence": "Archi principle: Licence. Fewer products and vendors, and licences matched to real use.",
+   "journeys": [],
+   "procs": [
+    "P6.4"
+   ],
+   "caps": [
+    "C10.05"
+   ],
+   "apps": [
+    "A11",
+    "A12",
+    "A22",
+    "A20"
+   ]
+  },
+  {
+   "id": "SI06",
+   "pillar": "SP2",
+   "title": "Office occupancy",
+   "evidence": "Archi principle: Occupancy. Less paper and better use of office space, through digital document processing and collaboration.",
+   "journeys": [
+    "VS01"
+   ],
+   "procs": [
+    "P7.2",
+    "P8.5"
+   ],
+   "caps": [
+    "C11.08",
+    "C11.06"
+   ],
+   "apps": [
+    "A25",
+    "A16",
+    "A17"
+   ]
+  },
+  {
+   "id": "SI07",
+   "pillar": "SP1",
+   "title": "Digital self-service",
+   "evidence": "Illustrative. Quote, buy and change cover online for every product line, directly or through intermediaries.",
+   "journeys": [
+    "VS01",
+    "VS03"
+   ],
+   "procs": [
+    "P1.1",
+    "P1.2"
+   ],
+   "caps": [
+    "C02.01",
+    "C04.02"
+   ],
+   "apps": [
+    "A01",
+    "A14",
+    "A15"
+   ],
+   "confidence": "Illustrative"
+  }
+ ]
+}

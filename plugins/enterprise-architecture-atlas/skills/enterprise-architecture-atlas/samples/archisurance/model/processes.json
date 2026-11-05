@@ -1,0 +1,730 @@
+[
+ {
+  "id": "P1",
+  "name": "Be insured",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R27",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "P1.1",
+  "name": "New business and contracting",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R27",
+  "capabilities": [
+   "C04.02",
+   "C05.01",
+   "C02.03"
+  ],
+  "apps": [
+   "A01",
+   "A15",
+   "A08",
+   "A14",
+   "A04",
+   "A06",
+   "A11",
+   "A12"
+  ],
+  "journeys": [
+   "VS01"
+  ],
+  "roles": [
+   "R06",
+   "R07",
+   "R08",
+   "R36"
+  ],
+  "source": "Public (Archi sample model) (Close Contract)"
+ },
+ {
+  "id": "P1.2",
+  "name": "Policy servicing and changes",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R28",
+  "capabilities": [
+   "C05.02",
+   "C05.05"
+  ],
+  "apps": [
+   "A06",
+   "A05",
+   "A04",
+   "A11",
+   "A12",
+   "A01"
+  ],
+  "journeys": [
+   "VS03"
+  ],
+  "roles": [
+   "R12",
+   "R37"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P1.3",
+  "name": "Renewals and retention",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R28",
+  "capabilities": [
+   "C05.03"
+  ],
+  "apps": [
+   "A04",
+   "A11",
+   "A14",
+   "A17"
+  ],
+  "journeys": [
+   "VS04"
+  ],
+  "roles": [
+   "R12",
+   "R17"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P1.4",
+  "name": "Premium billing and collection",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R29",
+  "capabilities": [
+   "C07.01",
+   "C07.02",
+   "C07.04"
+  ],
+  "apps": [
+   "A09",
+   "A10"
+  ],
+  "journeys": [],
+  "roles": [
+   "R14",
+   "R15"
+  ],
+  "source": "Public (Archi sample model) (Collect Premium)"
+ },
+ {
+  "id": "P2",
+  "name": "Settle claims",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R32",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P2.1",
+  "name": "Claims handling",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "capabilities": [
+   "C06.01",
+   "C06.02",
+   "C06.03",
+   "C06.04"
+  ],
+  "apps": [
+   "A07",
+   "A13",
+   "A16",
+   "A09"
+  ],
+  "journeys": [
+   "VS02"
+  ],
+  "roles": [
+   "R10",
+   "R11",
+   "R37"
+  ],
+  "source": "Public (Archi sample model) (Handle Claim)"
+ },
+ {
+  "id": "P2.2",
+  "name": "Legal aid claims",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "capabilities": [
+   "C06.05"
+  ],
+  "apps": [
+   "A12"
+  ],
+  "journeys": [],
+  "roles": [
+   "R09"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P2.3",
+  "name": "Counter-fraud",
+  "category": "Operate",
+  "parent": "P2",
+  "owner": "R32",
+  "capabilities": [
+   "C08.01"
+  ],
+  "apps": [
+   "A18"
+  ],
+  "journeys": [],
+  "roles": [
+   "R20",
+   "R46"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P3",
+  "name": "Serve customers and intermediaries",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R27",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P3.1",
+  "name": "Customer contact and service",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "capabilities": [
+   "C02.02",
+   "C01.03"
+  ],
+  "apps": [
+   "A02",
+   "A03",
+   "A01"
+  ],
+  "journeys": [],
+  "roles": [
+   "R05",
+   "R54"
+  ],
+  "source": "Public (Archi sample model) (Inform Customer)"
+ },
+ {
+  "id": "P3.2",
+  "name": "Intermediary management and commission",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "capabilities": [
+   "C02.03",
+   "C07.03"
+  ],
+  "apps": [
+   "A15",
+   "A09"
+  ],
+  "journeys": [],
+  "roles": [
+   "R06"
+  ],
+  "source": "Public (Archi sample model) (Maintaining Intermediary Relations)"
+ },
+ {
+  "id": "P3.3",
+  "name": "Complaints",
+  "category": "Operate",
+  "parent": "P3",
+  "owner": "R27",
+  "capabilities": [
+   "C08.03"
+  ],
+  "apps": [
+   "A23"
+  ],
+  "journeys": [
+   "VS05"
+  ],
+  "roles": [
+   "R21"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P4",
+  "name": "Manage products and pricing",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R16",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Public (Archi sample model) (Product Development)"
+ },
+ {
+  "id": "P4.1",
+  "name": "Product development and governance",
+  "category": "Manage",
+  "parent": "P4",
+  "owner": "R16",
+  "capabilities": [
+   "C03.01",
+   "C03.03"
+  ],
+  "apps": [
+   "A19"
+  ],
+  "journeys": [],
+  "roles": [
+   "R22"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P4.2",
+  "name": "Pricing and rating",
+  "category": "Manage",
+  "parent": "P4",
+  "owner": "R16",
+  "capabilities": [
+   "C03.02"
+  ],
+  "apps": [
+   "A14",
+   "A08"
+  ],
+  "journeys": [],
+  "roles": [
+   "R17",
+   "R18"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5",
+  "name": "Manage risk, capital and compliance",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R31",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5.1",
+  "name": "Reserving and capital",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "capabilities": [
+   "C09.01",
+   "C09.02"
+  ],
+  "apps": [
+   "A20"
+  ],
+  "journeys": [],
+  "roles": [
+   "R18"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5.2",
+  "name": "Reinsurance",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "capabilities": [
+   "C09.03"
+  ],
+  "apps": [
+   "A22"
+  ],
+  "journeys": [],
+  "roles": [
+   "R19"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5.3",
+  "name": "Prudential reporting",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R29",
+  "capabilities": [
+   "C10.02"
+  ],
+  "apps": [
+   "A21",
+   "A19"
+  ],
+  "journeys": [],
+  "roles": [
+   "R18",
+   "R47"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5.4",
+  "name": "Operational risk and resilience",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R31",
+  "capabilities": [
+   "C08.04"
+  ],
+  "apps": [
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R23",
+   "R45"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P5.5",
+  "name": "Compliance and data protection",
+  "category": "Manage",
+  "parent": "P5",
+  "owner": "R31",
+  "capabilities": [
+   "C08.05",
+   "C08.06"
+  ],
+  "apps": [
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R22",
+   "R24"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P6",
+  "name": "Manage finance",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R29",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Public (Archi sample model) (Finance)"
+ },
+ {
+  "id": "P6.1",
+  "name": "Record to report",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "capabilities": [
+   "C10.01"
+  ],
+  "apps": [
+   "A09"
+  ],
+  "journeys": [],
+  "roles": [
+   "R14"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P6.2",
+  "name": "Investment management",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "capabilities": [
+   "C10.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Public (Archi sample model) (Asset Management)"
+ },
+ {
+  "id": "P6.3",
+  "name": "Plan, budget and forecast",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "capabilities": [
+   "C10.04"
+  ],
+  "apps": [
+   "A19",
+   "A09"
+  ],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P6.4",
+  "name": "Procurement and third-party risk",
+  "category": "Manage",
+  "parent": "P6",
+  "owner": "R29",
+  "capabilities": [
+   "C10.05"
+  ],
+  "apps": [
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R49",
+   "R48"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P7",
+  "name": "Support people and workplace",
+  "category": "Support",
+  "parent": "",
+  "owner": "R25",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Public (Archi sample model) (HRM)"
+ },
+ {
+  "id": "P7.1",
+  "name": "Hire to retire",
+  "category": "Support",
+  "parent": "P7",
+  "owner": "R25",
+  "capabilities": [
+   "C11.01"
+  ],
+  "apps": [
+   "A24"
+  ],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P7.2",
+  "name": "Workplace and collaboration",
+  "category": "Support",
+  "parent": "P7",
+  "owner": "R30",
+  "capabilities": [
+   "C11.08"
+  ],
+  "apps": [
+   "A25"
+  ],
+  "journeys": [],
+  "roles": [
+   "R43"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8",
+  "name": "Support technology and data",
+  "category": "Support",
+  "parent": "",
+  "owner": "R30",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.1",
+  "name": "IT service management",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "capabilities": [
+   "C11.02"
+  ],
+  "apps": [
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R43",
+   "R44",
+   "R37"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.2",
+  "name": "Identity and security operations",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "capabilities": [
+   "C11.03",
+   "C11.04"
+  ],
+  "apps": [
+   "A26",
+   "A28"
+  ],
+  "journeys": [],
+  "roles": [
+   "R41",
+   "R42"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.3",
+  "name": "Data management and analytics",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "capabilities": [
+   "C11.05",
+   "C11.10"
+  ],
+  "apps": [
+   "A19"
+  ],
+  "journeys": [],
+  "roles": [
+   "R46",
+   "R47"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.4",
+  "name": "Integration and infrastructure",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R53",
+  "capabilities": [
+   "C11.07",
+   "C11.09"
+  ],
+  "apps": [
+   "A29",
+   "A30",
+   "A31",
+   "A32"
+  ],
+  "journeys": [],
+  "roles": [
+   "R38",
+   "R39",
+   "R40"
+  ],
+  "source": "Public (Archi sample model) (technical infrastructure)"
+ },
+ {
+  "id": "P8.5",
+  "name": "Document processing",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R28",
+  "capabilities": [
+   "C11.06"
+  ],
+  "apps": [
+   "A16",
+   "A17"
+  ],
+  "journeys": [],
+  "roles": [
+   "R13"
+  ],
+  "source": "Public (Archi sample model) (Document Processing SSC)"
+ },
+ {
+  "id": "P8.6",
+  "name": "Architecture governance",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R34",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R35",
+   "R36"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.7",
+  "name": "Software delivery",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R30",
+  "capabilities": [
+   "C11.02"
+  ],
+  "apps": [
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R50",
+   "R51",
+   "R52",
+   "R44"
+  ],
+  "source": "Illustrative"
+ },
+ {
+  "id": "P8.8",
+  "name": "IT resilience and disaster recovery",
+  "category": "Support",
+  "parent": "P8",
+  "owner": "R53",
+  "capabilities": [
+   "C08.04",
+   "C11.09"
+  ],
+  "apps": [
+   "A29",
+   "A30",
+   "A27"
+  ],
+  "journeys": [],
+  "roles": [
+   "R45",
+   "R38",
+   "R39"
+  ],
+  "source": "Illustrative"
+ }
+]

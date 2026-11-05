@@ -1,0 +1,502 @@
+{
+ "C01.01": [
+  {
+   "name": "Strategic planning",
+   "description": "Set goals, priorities and targets"
+  },
+  {
+   "name": "Business planning",
+   "description": "Turn strategy into annual plans and budgets"
+  }
+ ],
+ "C01.02": [
+  {
+   "name": "Architecture repository",
+   "description": "Keep the capability, application and technology model current"
+  },
+  {
+   "name": "Architecture governance",
+   "description": "Review designs and record decisions"
+  }
+ ],
+ "C01.03": [
+  {
+   "name": "Portfolio prioritisation",
+   "description": "Rank and fund change"
+  },
+  {
+   "name": "Programme delivery",
+   "description": "Run programmes and track benefits"
+  }
+ ],
+ "C01.04": [
+  {
+   "name": "Performance reporting",
+   "description": "Report results against targets"
+  },
+  {
+   "name": "Benchmarking",
+   "description": "Compare with peers"
+  }
+ ],
+ "C02.01": [
+  {
+   "name": "Customer record",
+   "description": "Single record of each customer and contact"
+  },
+  {
+   "name": "Interaction history",
+   "description": "Contacts across every channel"
+  }
+ ],
+ "C02.02": [
+  {
+   "name": "Campaign management",
+   "description": "Plan, run and measure campaigns"
+  },
+  {
+   "name": "Lead management",
+   "description": "Capture and route leads"
+  }
+ ],
+ "C02.03": [
+  {
+   "name": "Customer segmentation",
+   "description": "Group customers by value and needs"
+  },
+  {
+   "name": "Customer feedback",
+   "description": "Collect and act on feedback and satisfaction"
+  }
+ ],
+ "C02.04": [
+  {
+   "name": "Consent capture",
+   "description": "Record consents with their source"
+  },
+  {
+   "name": "Data subject requests",
+   "description": "Handle access and erasure requests"
+  }
+ ],
+ "C03.01": [
+  {
+   "name": "Design and approval",
+   "description": "Design and approve new offers"
+  },
+  {
+   "name": "Product configuration",
+   "description": "Set up products in systems"
+  }
+ ],
+ "C03.02": [
+  {
+   "name": "Price setting",
+   "description": "Set and change prices"
+  },
+  {
+   "name": "Price governance",
+   "description": "Approve and review prices"
+  }
+ ],
+ "C03.03": [
+  {
+   "name": "Product review",
+   "description": "Review performance and fit"
+  },
+  {
+   "name": "Product retirement",
+   "description": "Close products and migrate customers"
+  }
+ ],
+ "C04.01": [
+  {
+   "name": "Online purchase",
+   "description": "Buy or apply online"
+  },
+  {
+   "name": "Online servicing",
+   "description": "Self-service changes and requests"
+  }
+ ],
+ "C04.02": [
+  {
+   "name": "Inbound contact handling",
+   "description": "Answer and route contacts"
+  },
+  {
+   "name": "Outbound contact",
+   "description": "Proactive contact and follow-up"
+  }
+ ],
+ "C04.03": [
+  {
+   "name": "Partner onboarding",
+   "description": "Contract and set up partners"
+  },
+  {
+   "name": "Partner performance",
+   "description": "Monitor partner sales and service"
+  }
+ ],
+ "C04.04": [
+  {
+   "name": "Opportunity management",
+   "description": "Track opportunities and pipeline"
+  },
+  {
+   "name": "Quotation",
+   "description": "Produce and track quotes"
+  }
+ ],
+ "C04.05": [
+  {
+   "name": "Content management",
+   "description": "Publish and maintain content"
+  },
+  {
+   "name": "Web analytics",
+   "description": "Measure and improve the web experience"
+  }
+ ],
+ "C05.01": [
+  {
+   "name": "Order capture",
+   "description": "Record orders from every channel"
+  },
+  {
+   "name": "Order tracking",
+   "description": "Track orders to completion"
+  }
+ ],
+ "C05.02": [
+  {
+   "name": "Request intake",
+   "description": "Register requests and cases"
+  },
+  {
+   "name": "Case handling",
+   "description": "Work cases to resolution"
+  }
+ ],
+ "C05.03": [
+  {
+   "name": "Scheduling",
+   "description": "Plan resources and appointments"
+  },
+  {
+   "name": "Delivery execution",
+   "description": "Carry out and confirm delivery"
+  }
+ ],
+ "C05.04": [
+  {
+   "name": "Work assignment",
+   "description": "Assign work to teams and suppliers"
+  },
+  {
+   "name": "Supplier performance",
+   "description": "Monitor cost, quality and time"
+  }
+ ],
+ "C05.05": [
+  {
+   "name": "Quality assurance",
+   "description": "Check work against standards"
+  },
+  {
+   "name": "Continuous improvement",
+   "description": "Find and remove causes of failure"
+  }
+ ],
+ "C06.01": [
+  {
+   "name": "Bill calculation",
+   "description": "Calculate charges"
+  },
+  {
+   "name": "Invoice production",
+   "description": "Issue invoices and statements"
+  }
+ ],
+ "C06.02": [
+  {
+   "name": "Payment processing",
+   "description": "Take and refund payments"
+  },
+  {
+   "name": "Payment allocation",
+   "description": "Match receipts to accounts"
+  }
+ ],
+ "C06.03": [
+  {
+   "name": "Arrears management",
+   "description": "Contact customers who miss payments"
+  },
+  {
+   "name": "Debt recovery",
+   "description": "Recover or write off debt"
+  }
+ ],
+ "C06.04": [
+  {
+   "name": "Invoice processing",
+   "description": "Check and approve supplier invoices"
+  },
+  {
+   "name": "Payment runs",
+   "description": "Pay suppliers on time"
+  }
+ ],
+ "C07.01": [
+  {
+   "name": "Risk register",
+   "description": "Record and assess risks"
+  },
+  {
+   "name": "Control testing",
+   "description": "Test key controls"
+  }
+ ],
+ "C07.02": [
+  {
+   "name": "Compliance monitoring",
+   "description": "Check compliance with rules"
+  },
+  {
+   "name": "Regulatory change",
+   "description": "Track and implement new rules"
+  }
+ ],
+ "C07.03": [
+  {
+   "name": "Complaint handling",
+   "description": "Register, investigate and respond"
+  },
+  {
+   "name": "Root cause analysis",
+   "description": "Find and fix causes"
+  }
+ ],
+ "C07.04": [
+  {
+   "name": "Records of processing",
+   "description": "Maintain the processing record"
+  },
+  {
+   "name": "Breach management",
+   "description": "Assess and notify breaches"
+  }
+ ],
+ "C07.05": [
+  {
+   "name": "Fraud detection",
+   "description": "Score and flag suspicious activity"
+  },
+  {
+   "name": "Fraud investigation",
+   "description": "Investigate and record outcomes"
+  }
+ ],
+ "C07.06": [
+  {
+   "name": "Business impact analysis",
+   "description": "Set recovery priorities and tolerances"
+  },
+  {
+   "name": "Continuity testing",
+   "description": "Test continuity and recovery plans"
+  }
+ ],
+ "C08.01": [
+  {
+   "name": "Journal processing",
+   "description": "Record journals"
+  },
+  {
+   "name": "Period close",
+   "description": "Close the books"
+  }
+ ],
+ "C08.02": [
+  {
+   "name": "Budgeting and forecasting",
+   "description": "Plan and forecast"
+  },
+  {
+   "name": "Cost allocation",
+   "description": "Allocate costs"
+  }
+ ],
+ "C08.03": [
+  {
+   "name": "Cash management",
+   "description": "Manage cash positions"
+  },
+  {
+   "name": "Funding",
+   "description": "Arrange funding"
+  }
+ ],
+ "C08.04": [
+  {
+   "name": "Statutory accounts",
+   "description": "Prepare annual accounts"
+  },
+  {
+   "name": "Regulatory returns",
+   "description": "Submit required returns"
+  }
+ ],
+ "C08.05": [
+  {
+   "name": "Sourcing",
+   "description": "Run tenders and select suppliers"
+  },
+  {
+   "name": "Third-party risk management",
+   "description": "Assess and monitor critical suppliers"
+  }
+ ],
+ "C08.06": [
+  {
+   "name": "Sustainability data",
+   "description": "Collect ESG data"
+  },
+  {
+   "name": "Sustainability disclosure",
+   "description": "Publish sustainability reports"
+  }
+ ],
+ "C09.01": [
+  {
+   "name": "Recruitment and onboarding",
+   "description": "Hire and onboard staff"
+  },
+  {
+   "name": "Payroll",
+   "description": "Pay staff"
+  }
+ ],
+ "C09.02": [
+  {
+   "name": "Training delivery",
+   "description": "Provide training"
+  },
+  {
+   "name": "Competence records",
+   "description": "Track skills and certifications"
+  }
+ ],
+ "C09.03": [
+  {
+   "name": "Employee communications",
+   "description": "Inform staff"
+  },
+  {
+   "name": "Engagement surveys",
+   "description": "Measure engagement"
+  }
+ ],
+ "C10.01": [
+  {
+   "name": "Incident and problem management",
+   "description": "Restore service and remove causes"
+  },
+  {
+   "name": "Change management",
+   "description": "Assess and approve changes"
+  }
+ ],
+ "C10.02": [
+  {
+   "name": "Joiner, mover and leaver",
+   "description": "Grant and remove access"
+  },
+  {
+   "name": "Privileged access",
+   "description": "Control administrator access"
+  }
+ ],
+ "C10.03": [
+  {
+   "name": "Security monitoring",
+   "description": "Detect threats"
+  },
+  {
+   "name": "Vulnerability management",
+   "description": "Find and fix vulnerabilities"
+  }
+ ],
+ "C10.04": [
+  {
+   "name": "Data platform",
+   "description": "Store and integrate data"
+  },
+  {
+   "name": "Management information",
+   "description": "Dashboards and reports"
+  }
+ ],
+ "C10.05": [
+  {
+   "name": "Document capture",
+   "description": "Scan and index documents"
+  },
+  {
+   "name": "Records retention",
+   "description": "Keep and dispose of records by policy"
+  }
+ ],
+ "C10.06": [
+  {
+   "name": "API management",
+   "description": "Publish and secure APIs"
+  },
+  {
+   "name": "Messaging and file transfer",
+   "description": "Reliable messages and files between systems"
+  }
+ ],
+ "C10.07": [
+  {
+   "name": "Email and collaboration",
+   "description": "Mail, chat and shared documents"
+  }
+ ],
+ "C10.08": [
+  {
+   "name": "Compute and hosting",
+   "description": "Servers and cloud"
+  },
+  {
+   "name": "Network",
+   "description": "Networks and connectivity"
+  },
+  {
+   "name": "Backup and recovery",
+   "description": "Back up and recover systems"
+  }
+ ],
+ "C10.09": [
+  {
+   "name": "Build and test",
+   "description": "Develop and test software"
+  },
+  {
+   "name": "Release",
+   "description": "Deploy changes safely"
+  }
+ ],
+ "C10.10": [
+  {
+   "name": "AI model development",
+   "description": "Build and deploy models"
+  },
+  {
+   "name": "AI governance",
+   "description": "Inventory and oversight of AI systems"
+  }
+ ]
+}

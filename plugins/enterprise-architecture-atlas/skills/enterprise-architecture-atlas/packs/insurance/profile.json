@@ -1,0 +1,147 @@
+{
+ "id": "insurance",
+ "name": "Insurance",
+ "org_noun": "insurer",
+ "value_stream_label": "Value stream",
+ "capability_standard": {
+  "name": "an ACORD-style insurance capability model",
+  "short": "ACORD",
+  "ref_label": "Insurance reference domain",
+  "note": "The ACORD Framework is licensed to ACORD members. This pack uses its own capability wording and records only the reference domain name."
+ },
+ "process_framework": "APQC PCF (insurance)",
+ "process_tiers": {
+  "Operate": "Value streams and the processes that serve policyholders directly",
+  "Manage": "Processes that direct and control the insurer",
+  "Support": "Processes that keep the insurer running"
+ },
+ "criticality": {
+  "label": "Critical or important function",
+  "short": "Critical function",
+  "plural": "critical or important functions",
+  "abbr": "CIF",
+  "help": "A function whose disruption would materially impair the insurer's performance, its regulatory compliance or the continuity of its services (DORA; Solvency II outsourcing)",
+  "regime": "DORA",
+  "flag_kind": "DORA",
+  "change_flag": "Changes {n} application{s} supporting critical or important functions: follow ICT change management, assess the risk before release and update the register of information if suppliers change."
+ },
+ "third_party": {
+  "material_label": "Critical outsourcing",
+  "material_abbr": "CO",
+  "terms_label": "DORA Art. 30 terms",
+  "terms_values": [
+   "Yes",
+   "Remediation in progress",
+   "Gap",
+   "N/A"
+  ],
+  "register": "outsourcing register and DORA register of information",
+  "guidance": "Solvency II outsourcing rules and DORA",
+  "view_sub": "Outsourcing of critical or important functions and ICT third parties behind critical functions (Solvency II outsourcing rules, DORA): exit plans, contract terms and concentration."
+ },
+ "resilience": {
+  "regime": "DORA",
+  "note": "Recovery targets and DR test history are illustrative until replaced with real data."
+ },
+ "layers": [
+  [
+   "Channels",
+   [
+    "Digital channel",
+    "Contact centre",
+    "Intermediary",
+    "Partner",
+    "Web content"
+   ]
+  ],
+  [
+   "Customer & product",
+   [
+    "CRM",
+    "Marketing",
+    "Product",
+    "Rating"
+   ]
+  ],
+  [
+   "Underwriting & policy",
+   [
+    "Underwriting",
+    "Policy administration",
+    "Documents"
+   ]
+  ],
+  [
+   "Claims",
+   [
+    "Claims",
+    "Legal"
+   ]
+  ],
+  [
+   "Billing & payments",
+   [
+    "Billing",
+    "Payments"
+   ]
+  ],
+  [
+   "Risk & compliance",
+   [
+    "Fraud",
+    "Compliance",
+    "Risk",
+    "Case management",
+    "Regulatory"
+   ]
+  ],
+  [
+   "Finance & actuarial",
+   [
+    "Finance",
+    "Actuarial",
+    "Reinsurance",
+    "Investments",
+    "Data"
+   ]
+  ],
+  [
+   "Platform",
+   [
+    "Integration",
+    "Infrastructure",
+    "Security",
+    "IT management",
+    "HR",
+    "Workplace",
+    "Procurement",
+    "Content"
+   ]
+  ]
+ ],
+ "taxonomy_examples": {
+  "value_stream": "Be insured",
+  "journey": "Handle a claim",
+  "step": "Valuate the damage",
+  "process_group": "Manage risk and compliance",
+  "process": "Prudential reporting",
+  "cap_l1": "Claims",
+  "cap_l2": "First Notification of Loss",
+  "cap_l3": "Claim registration",
+  "epic": "Consolidate policy administration",
+  "feature": "Online claim notification",
+  "role": "Claims handler",
+  "app": "Policy administration system",
+  "platform": "Mainframe",
+  "interface": "Policy data to finance (file)",
+  "data_domain": "Insurance policy",
+  "dc": "Primary data centre",
+  "supplier": "Payment service provider",
+  "pillar": "Client satisfaction",
+  "initiative": "One-stop customer service",
+  "scenario": "Mainframe outage",
+  "requirement": "ICT incident reporting",
+  "decision": "Single policy administration platform",
+  "commitment": "One back office for all product lines"
+ }
+}

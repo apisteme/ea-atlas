@@ -1,0 +1,14 @@
+{
+  "name": "ea-atlas",
+  "description": "Do-it-yourself enterprise architecture atlas for practitioners: Excel repository plus clickable dashboard, any industry",
+  "owner": {
+    "name": "Prashant Nema"
+  },
+  "plugins": [
+    {
+      "name": "enterprise-architecture-atlas",
+      "source": "./plugins/enterprise-architecture-atlas",
+      "description": "Build and refresh an enterprise architecture atlas with capability maps, journeys, application portfolio, suppliers, regulation, change impact and what-if analysis. Industry packs for banking, insurance and cross-industry; imports Archi models."
+    }
+  ]
+}

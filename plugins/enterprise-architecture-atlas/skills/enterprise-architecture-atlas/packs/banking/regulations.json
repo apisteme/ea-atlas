@@ -1,0 +1,492 @@
+[
+ {
+  "id": "DORA",
+  "name": "Digital Operational Resilience Act (DORA)",
+  "short": "DORA",
+  "status": "Applies since 17 January 2025.",
+  "dates": {
+   "application": "2025-01-17",
+   "remediation": "2027-03-31"
+  },
+  "date_labels": {
+   "application": "DORA applies",
+   "remediation": "Remediation target (internal, set per organisation)"
+  },
+  "main_date": "remediation",
+  "date_note": "DORA already applies. Readiness is measured against an internal remediation target; set it to the date agreed with the board or supervisor.",
+  "articles_note": "Article references are indicative; confirm against the supervisor's guidance.",
+  "sources": [
+   {
+    "title": "Regulation (EU) 2022/2554 (EUR-Lex)",
+    "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "DORA-01",
+    "area": "ICT risk management",
+    "short": "ICT risk management framework",
+    "summary": "Maintain an ICT risk management framework covering identification, protection, detection, response and recovery, approved by the management body.",
+    "articles": "Art. 5 to 16",
+    "caps": [
+     "C10.06",
+     "C12.04"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-02",
+    "area": "Incident reporting",
+    "short": "Classify and report major ICT incidents",
+    "summary": "Classify ICT incidents and report major ones to the supervisor within the set deadlines.",
+    "articles": "Art. 17 to 23",
+    "caps": [
+     "C10.06",
+     "C12.02"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-03",
+    "area": "Resilience testing",
+    "short": "Digital operational resilience testing",
+    "summary": "Run a risk-based testing programme, including threat-led penetration testing where required.",
+    "articles": "Art. 24 to 27",
+    "caps": [
+     "C10.06",
+     "C12.04"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-04",
+    "area": "Third-party risk",
+    "short": "Register of information and contract terms",
+    "summary": "Keep a register of all ICT third-party arrangements and make sure contracts supporting critical functions carry the Article 30 terms, including exit plans.",
+    "articles": "Art. 28 to 30",
+    "caps": [
+     "C11.05"
+    ],
+    "size": "L",
+    "deadline": "remediation",
+    "kind": "Change"
+   },
+   {
+    "id": "DORA-05",
+    "area": "Business continuity",
+    "short": "ICT business continuity and recovery",
+    "summary": "ICT business continuity policy and response and recovery plans, tested regularly, with recovery time objectives for critical functions.",
+    "articles": "Art. 11 and 12",
+    "caps": [
+     "C10.06",
+     "C12.09"
+    ],
+    "size": "M",
+    "deadline": "remediation",
+    "kind": "Change"
+   }
+  ]
+ },
+ {
+  "id": "PSR",
+  "name": "EU Payment Services Regulation (PSR)",
+  "short": "EU PSR",
+  "status": "Political agreement November 2025; final compromise texts April 2026; Official Journal publication expected in H2 2026 (to confirm).",
+  "dates": {
+   "entry_into_force": "2026-12-31",
+   "general": "2028-09-30",
+   "vop": "2029-03-31"
+  },
+  "date_labels": {
+   "entry_into_force": "Entry into force (est.)",
+   "general": "PSR general application (est.)",
+   "vop": "Verification of Payee extension (est.)"
+  },
+  "main_date": "general",
+  "date_note": "Estimates. General application is 21 months after entry into force; the Verification of Payee extension (Articles 50 and 57) is 27 months after. Entry into force assumed end of 2026; adjust when the Official Journal date is known.",
+  "articles_note": "Article references to be confirmed against the bank's own list of applicable articles.",
+  "sources": [
+   {
+    "title": "PwC client alert, April 2026",
+    "url": "https://legal.pwc.de/content/services/regcore-client-alert/pwc-client-alert-eus-new-payments-framework-april-2026.pdf"
+   },
+   {
+    "title": "Arthur Cox, final compromise texts published",
+    "url": "https://www.arthurcox.com/insights/psd3-and-psr-final-compromise-texts-published/"
+   },
+   {
+    "title": "Sopra Steria, PSR in 2026: state of play for banks",
+    "url": "https://www.soprasteria.com/insights/details/payment-services-regulation-psr-in-2026--the-state-of-play-for-banks"
+   },
+   {
+    "title": "Taylor Wessing, EU lawmakers strike a deal",
+    "url": "https://www.taylorwessing.com/en/insights-and-events/insights/2025/11/eu-lawmakers-strike-a-deal-on-payments-reforms"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "PSR-01",
+    "area": "Fraud and liability",
+    "short": "Verification of Payee for all credit transfers",
+    "summary": "Check that the payee name matches the IBAN for all credit transfers, free of charge and within seconds, and warn the payer before authorisation. Strict liability for losses caused by a failed check. Non-consumers may opt out for bulk channels.",
+    "articles": "To confirm",
+    "caps": [
+     "C08.01",
+     "C10.03",
+     "C08.02"
+    ],
+    "size": "M",
+    "deadline": "vop",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-02",
+    "area": "Fraud and liability",
+    "short": "Payer-side transaction monitoring before execution",
+    "summary": "Monitor transactions before execution, in real time for instant credit transfers. Failure to monitor shifts fraud losses to the bank.",
+    "articles": "To confirm",
+    "caps": [
+     "C10.03",
+     "C08.04"
+    ],
+    "size": "L",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-03",
+    "area": "Fraud and liability",
+    "short": "Payee-side monitoring before funds are made available",
+    "summary": "Monitor incoming payments before crediting the payee, including instant payments, to stop mule accounts receiving fraud proceeds.",
+    "articles": "To confirm",
+    "caps": [
+     "C10.03",
+     "C04.01",
+     "C10.04"
+    ],
+    "size": "L",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-04",
+    "area": "Fraud and liability",
+    "short": "Impersonation (spoofing) fraud refunds",
+    "summary": "Refund consumers deceived by someone impersonating the bank, once they report it to the police and the bank. Decide within 15 business days. The bank carries the burden of proof; SCA alone is not proof of gross negligence.",
+    "articles": "To confirm",
+    "caps": [
+     "C10.03",
+     "C10.08"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-05",
+    "area": "Fraud and liability",
+    "short": "Unauthorised transaction refunds",
+    "summary": "Refund unauthorised transactions by the end of the next business day unless fraud is suspected and reported. Consumer liability capped at EUR 50, zero where SCA was not applied.",
+    "articles": "To confirm",
+    "caps": [
+     "C06.05",
+     "C10.03",
+     "C10.08"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-06",
+    "area": "Fraud and liability",
+    "short": "Anti-spoofing safeguards for bank channels",
+    "summary": "Maintain technical safeguards against replication of the bank's phone numbers, domains and email addresses, and cooperate with telecoms and online platforms to remove fraudulent content.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.04",
+     "C02.07",
+     "C12.04"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-07",
+    "area": "Fraud and liability",
+    "short": "Fraud data reporting and sharing",
+    "summary": "Report fraud data to the competent authority in the harmonised EBA format. Optional fraud-signal sharing with other PSPs needs a joint DPIA and cannot be the sole basis for de-risking decisions.",
+    "articles": "To confirm",
+    "caps": [
+     "C11.02",
+     "C10.03",
+     "C12.05"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-08",
+    "area": "Authentication",
+    "short": "SCA for remote risky actions",
+    "summary": "Apply SCA to online account access, payment initiation and any remote action with fraud risk, such as changing contact details, creating payment tokens and changing spending limits.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.01",
+     "C02.02",
+     "C12.03",
+     "C06.03"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-09",
+    "area": "Authentication",
+    "short": "Accessible SCA without a smartphone",
+    "summary": "Offer more than one means of SCA and at least one that does not depend on a smartphone, for people with disabilities, older people and those with low digital skills.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.02",
+     "C12.03",
+     "C02.03",
+     "C02.04"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-10",
+    "area": "Authentication",
+    "short": "Mobile app activation controls",
+    "summary": "Activate a new mobile app instance only with SCA and a separate channel, with a default four-hour delay the customer can adjust.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.01",
+     "C12.03"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-11",
+    "area": "Open banking",
+    "short": "Dedicated interface performance and parity",
+    "summary": "Provide a dedicated API with the same data and response times as customer channels, publish quarterly availability and performance statistics, run a testing facility for TPPs, and remove prohibited obstacles. Screen scraping is no longer a fallback.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.08",
+     "C12.07"
+    ],
+    "size": "L",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-12",
+    "area": "Open banking",
+    "short": "Permissions dashboard",
+    "summary": "Give customers a neutral dashboard in the app and online banking to see, withdraw and re-establish open banking access, with purpose, data categories and access dates.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.08",
+     "C01.04",
+     "C02.01"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-13",
+    "area": "Transparency",
+    "short": "Currency conversion and charges transparency",
+    "summary": "Disclose currency conversion mark-ups before the transaction, as an amount and as a percentage over the ECB reference rate. No value dating to the customer's detriment.",
+    "articles": "To confirm",
+    "caps": [
+     "C08.06",
+     "C06.04",
+     "C04.03",
+     "C03.02"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-14",
+    "area": "Transparency",
+    "short": "ATM charges and cash access",
+    "summary": "Show ATM charges before the withdrawal and treat cardholders of other PSPs equally. Supports cash without purchase at retailers.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.06",
+     "C06.04"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-15",
+    "area": "Customer protection",
+    "short": "Spending limits and payment blocking",
+    "summary": "Let customers set and change spending limits and block payment types or channels, under SCA.",
+    "articles": "To confirm",
+    "caps": [
+     "C02.01",
+     "C06.03",
+     "C08.01"
+    ],
+    "size": "M",
+    "deadline": "general",
+    "kind": "New capability"
+   },
+   {
+    "id": "PSR-16",
+    "area": "Customer protection",
+    "short": "Complaints within 15 business days and ADR information",
+    "summary": "Respond to payment complaints within 15 business days (35 in exceptional cases) and show ADR details prominently on the website, app, in branches and in terms and conditions.",
+    "articles": "To confirm",
+    "caps": [
+     "C10.08",
+     "C02.07"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Change"
+   },
+   {
+    "id": "PSR-17",
+    "area": "Customer protection",
+    "short": "Framework contracts and disclosures",
+    "summary": "Update terms and conditions, pre-contract information and customer communications for new liability, refund, SCA and transparency rules.",
+    "articles": "To confirm",
+    "caps": [
+     "C04.04",
+     "C10.07"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Process and policy"
+   },
+   {
+    "id": "PSR-18",
+    "area": "Customer protection",
+    "short": "Fraud awareness for customers and staff",
+    "summary": "Run regular fraud awareness campaigns and staff training on current fraud types.",
+    "articles": "To confirm",
+    "caps": [
+     "C03.01",
+     "C12.01"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Process and policy"
+   },
+   {
+    "id": "PSR-19",
+    "area": "Governance",
+    "short": "Wallet providers and SCA outsourcing",
+    "summary": "Put outsourcing agreements in place where digital wallet operators verify SCA elements. The bank stays fully liable for SCA failures by the wallet operator.",
+    "articles": "To confirm",
+    "caps": [
+     "C06.03",
+     "C11.05"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Process and policy"
+   },
+   {
+    "id": "PSR-20",
+    "area": "Governance",
+    "short": "Accountability, controls and evidence",
+    "summary": "Map PSR obligations to controls and owners, evidence compliance, and prepare for higher harmonised penalties and possible personal accountability of management.",
+    "articles": "To confirm",
+    "caps": [
+     "C10.07",
+     "C10.06"
+    ],
+    "size": "S",
+    "deadline": "general",
+    "kind": "Process and policy"
+   }
+  ]
+ },
+ {
+  "id": "AIACT",
+  "name": "EU Artificial Intelligence Act",
+  "short": "EU AI Act",
+  "status": "In force since August 2024. Stand-alone high-risk obligations moved to 2 December 2027 under the 2026 provisional agreement (to confirm).",
+  "dates": {
+   "high_risk": "2027-12-02"
+  },
+  "date_labels": {
+   "high_risk": "High-risk obligations apply (to confirm)"
+  },
+  "main_date": "high_risk",
+  "date_note": "Dates follow the 2026 digital omnibus agreement; confirm the final adopted text.",
+  "articles_note": "AI used to evaluate creditworthiness or establish credit scores of natural persons is listed as high-risk.",
+  "sources": [
+   {
+    "title": "Sidley: provisional agreement to delay key EU AI Act obligations",
+    "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/"
+   }
+  ],
+  "requirements": [
+   {
+    "id": "AI-01",
+    "area": "Governance",
+    "short": "AI system inventory and risk classification",
+    "summary": "Keep an inventory of AI systems and classify each by risk category.",
+    "articles": "",
+    "caps": [
+     "C12.11"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "New capability"
+   },
+   {
+    "id": "AI-02",
+    "area": "High-risk systems",
+    "short": "Risk management and human oversight for high-risk AI",
+    "summary": "For high-risk uses such as credit scoring of individuals, run risk management, data governance, logging and human oversight.",
+    "articles": "",
+    "caps": [
+     "C12.11",
+     "C10.01"
+    ],
+    "size": "M",
+    "deadline": "high_risk",
+    "kind": "Change"
+   },
+   {
+    "id": "AI-03",
+    "area": "Transparency",
+    "short": "Transparency for customer-facing AI",
+    "summary": "Tell customers when they interact with an AI system such as a chatbot.",
+    "articles": "",
+    "caps": [
+     "C02.01",
+     "C02.04"
+    ],
+    "size": "S",
+    "deadline": "high_risk",
+    "kind": "Change"
+   }
+  ]
+ }
+]

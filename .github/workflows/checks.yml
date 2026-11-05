@@ -1,0 +1,33 @@
+name: checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build the ArchiSurance example with the Python engine only
+        run: |
+          S=plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas
+          cp -r $S/samples/archisurance /tmp/atlas
+          python3 $S/engine/build.py --workspace /tmp/atlas --engine python
+      - name: Engines agree (Node and Python)
+        run: |
+          S=plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas
+          python3 $S/engine/test_engine_parity.py --workspace /tmp/atlas
+      - name: Packs are valid
+        run: |
+          S=plugins/enterprise-architecture-atlas/skills/enterprise-architecture-atlas
+          for p in core banking insurance; do python3 $S/engine/pack_tools.py validate $p; done
+      - name: Kits build and pass their checks
+        run: |
+          python3 tools/make_copilot_skill.py
+          python3 tools/make_github_copilot_kit.py

@@ -1,0 +1,807 @@
+[
+ {
+  "id": "A01",
+  "name": "Web portal",
+  "product": "Customer web portal",
+  "vendor": "S01",
+  "category": "Digital channel",
+  "capabilities": [
+   "C02.01",
+   "C02.07"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Retain - single front door for all product lines",
+  "suppliers": [
+   {
+    "supplier": "S10",
+    "role": "Agency"
+   }
+  ],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ],
+  "archimate_id": "1800",
+  "customer_facing": true
+ },
+ {
+  "id": "A02",
+  "name": "Call center application",
+  "product": "Contact centre agent desktop",
+  "vendor": "S09",
+  "category": "Contact centre",
+  "capabilities": [
+   "C02.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Migrate",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Key decision - one CRM and contact centre platform",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ],
+  "archimate_id": "1793",
+  "customer_facing": true,
+  "end_of_support": "2027-09-30"
+ },
+ {
+  "id": "A03",
+  "name": "CRM System",
+  "product": "Customer relationship management",
+  "vendor": "S08",
+  "category": "CRM",
+  "capabilities": [
+   "C01.03",
+   "C01.04",
+   "C01.05"
+  ],
+  "lifecycle": "Production",
+  "time": "Migrate",
+  "tier": 1,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Key decision - one CRM and contact centre platform",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A29",
+    "status": "Runs on (Archi model: Claim Files Service)"
+   }
+  ],
+  "archimate_id": "1393",
+  "end_of_support": "2028-03-31"
+ },
+ {
+  "id": "A04",
+  "name": "Home & Away Policy Administration",
+  "product": "Policy administration (home and travel)",
+  "vendor": "S05",
+  "category": "Policy administration",
+  "capabilities": [
+   "C05.01",
+   "C05.02",
+   "C05.03",
+   "C05.04",
+   "C05.05",
+   "C04.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 0,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Likely converge - target platform for all product lines",
+  "suppliers": [
+   {
+    "supplier": "S24",
+    "role": "SI"
+   }
+  ],
+  "runs_on": [
+   {
+    "app": "A29",
+    "status": "Runs on (CICS)"
+   }
+  ],
+  "archimate_id": "843"
+ },
+ {
+  "id": "A05",
+  "name": "Customer Data Access",
+  "product": "Customer file component of Home & Away Policy Administration",
+  "vendor": "S05",
+  "category": "Policy administration",
+  "capabilities": [
+   "C01.01"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 0,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Likely converge - shared customer component for all lines",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A29",
+    "status": "Runs on (CICS)"
+   }
+  ],
+  "archimate_id": "855"
+ },
+ {
+  "id": "A06",
+  "name": "Policy Data Management",
+  "product": "Policy data component of Home & Away Policy Administration",
+  "vendor": "S05",
+  "category": "Policy administration",
+  "capabilities": [
+   "C05.02",
+   "C05.05"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 0,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Likely converge - shared policy component for all lines",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A29",
+    "status": "Runs on (Archi model: Claim Files Service)"
+   },
+   {
+    "app": "A31",
+    "status": "Uses (Archi model: Customer File Service)"
+   }
+  ],
+  "archimate_id": "861"
+ },
+ {
+  "id": "A07",
+  "name": "Claim Data Management",
+  "product": "Claims records",
+  "vendor": "S01",
+  "category": "Claims",
+  "capabilities": [
+   "C06.01",
+   "C06.02",
+   "C06.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Migrate",
+  "tier": 0,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Key decision - claims platform",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A29",
+    "status": "Runs on (CICS)"
+   }
+  ],
+  "archimate_id": "867"
+ },
+ {
+  "id": "A08",
+  "name": "Risk Assessment",
+  "product": "Underwriting risk assessment",
+  "vendor": "S01",
+  "category": "Underwriting",
+  "capabilities": [
+   "C04.01",
+   "C04.03"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Assess - may fold into the rating engine",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ],
+  "archimate_id": "849",
+  "end_of_support": "2028-12-31"
+ },
+ {
+  "id": "A09",
+  "name": "Financial Application",
+  "product": "Premium collection, claims payments and general ledger (Archi: Financial Software)",
+  "vendor": "S11",
+  "category": "Finance",
+  "capabilities": [
+   "C07.01",
+   "C07.02",
+   "C07.03",
+   "C10.01",
+   "C06.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 0,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Retain - already shared by all product lines",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   },
+   {
+    "app": "A31",
+    "status": "Uses (Archi model: Customer File Service)"
+   }
+  ],
+  "archimate_id": "1399"
+ },
+ {
+  "id": "A10",
+  "name": "Bank System",
+  "product": "Payment gateway to customers' banks over the BIBIT network",
+  "vendor": "S12",
+  "category": "Payments",
+  "capabilities": [
+   "C07.02",
+   "C06.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 0,
+  "hosting": "Payment network (third-party)",
+  "critical": true,
+  "source": "Public (Archi sample model); vendor, product and ratings to confirm",
+  "ref": "archi",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": [],
+  "archimate_id": "1813"
+ },
+ {
+  "id": "A11",
+  "name": "Car Policy Administration",
+  "product": "Legacy car insurance system from the merger",
+  "vendor": "S06",
+  "category": "Policy administration",
+  "capabilities": [
+   "C05.01",
+   "C05.02",
+   "C05.03",
+   "C05.04",
+   "C04.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Migrate",
+  "tier": 0,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Replace / decommission - migrate car policies to the Home & Away platform",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ],
+  "end_of_support": "2027-12-31"
+ },
+ {
+  "id": "A12",
+  "name": "Legal Aid Policy and Case Administration",
+  "product": "Legacy legal aid policy and case system from the merger",
+  "vendor": "S07",
+  "category": "Legal",
+  "capabilities": [
+   "C05.01",
+   "C05.02",
+   "C06.05"
+  ],
+  "lifecycle": "Production",
+  "time": "Migrate",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Replace / decommission - migrate legal aid to the shared platforms",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ],
+  "end_of_support": "2028-06-30"
+ },
+ {
+  "id": "A13",
+  "name": "Claims Workflow",
+  "product": "Claims workflow and triage",
+  "vendor": "S23",
+  "category": "Claims",
+  "capabilities": [
+   "C06.01",
+   "C06.02",
+   "C06.03",
+   "C06.06"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 1,
+  "hosting": "SaaS",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Likely converge - shared claims workflow for all lines",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A14",
+  "name": "Rating Engine",
+  "product": "Rating and pricing engine",
+  "vendor": "S13",
+  "category": "Rating",
+  "capabilities": [
+   "C03.02",
+   "C04.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Likely converge - one rating engine for all lines",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ]
+ },
+ {
+  "id": "A15",
+  "name": "Intermediary Portal (GIM)",
+  "product": "Broker portal for quotes and submissions (Archi interface: GIM)",
+  "vendor": "S01",
+  "category": "Intermediary",
+  "capabilities": [
+   "C02.03",
+   "C04.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 2,
+  "hosting": "Unix server farm (in-house)",
+  "critical": false,
+  "source": "Public (Archi sample model: GIM business interface); application illustrative",
+  "ref": "archi",
+  "programme_lens": "Assess - broker trading may move to the web portal",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   }
+  ]
+ },
+ {
+  "id": "A16",
+  "name": "Document Capture and Archive",
+  "product": "Scanning, classification and archive for the Document Processing SSC",
+  "vendor": "S14",
+  "category": "Documents",
+  "capabilities": [
+   "C11.06"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 2,
+  "hosting": "Unix server farm (in-house)",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain - shared service already",
+  "suppliers": [],
+  "runs_on": [
+   {
+    "app": "A30",
+    "status": "Runs on"
+   },
+   {
+    "app": "A31",
+    "status": "Stores files on"
+   }
+  ]
+ },
+ {
+  "id": "A17",
+  "name": "Customer Communications",
+  "product": "Policy documents and letters",
+  "vendor": "S14",
+  "category": "Documents",
+  "capabilities": [
+   "C05.01"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 2,
+  "hosting": "SaaS",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A18",
+  "name": "Fraud Detection",
+  "product": "Application and claims fraud scoring",
+  "vendor": "S15",
+  "category": "Fraud",
+  "capabilities": [
+   "C08.01"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 1,
+  "hosting": "SaaS",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A19",
+  "name": "Data Platform and BI",
+  "product": "Data warehouse and dashboards",
+  "vendor": "S16",
+  "category": "Data",
+  "capabilities": [
+   "C11.05",
+   "C01.05",
+   "C11.10"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 2,
+  "hosting": "Public cloud (EU region)",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A20",
+  "name": "Actuarial and Reserving",
+  "product": "Reserving and capital models",
+  "vendor": "S17",
+  "category": "Actuarial",
+  "capabilities": [
+   "C09.01",
+   "C09.02",
+   "C09.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 2,
+  "hosting": "Unix server farm (in-house)",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Assess",
+  "suppliers": [],
+  "runs_on": [],
+  "end_of_support": "2027-06-30"
+ },
+ {
+  "id": "A21",
+  "name": "Solvency II Reporting",
+  "product": "Prudential reporting (QRT and SFCR)",
+  "vendor": "S18",
+  "category": "Regulatory",
+  "capabilities": [
+   "C10.02"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 1,
+  "hosting": "SaaS",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A22",
+  "name": "Reinsurance Spreadsheets",
+  "product": "Treaty records and recoveries in spreadsheets",
+  "vendor": "S01",
+  "category": "Reinsurance",
+  "capabilities": [
+   "C09.03"
+  ],
+  "lifecycle": "Production",
+  "time": "Eliminate",
+  "tier": 3,
+  "hosting": "End-user computing",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Replace / decommission - end-user computing risk",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A23",
+  "name": "Complaints Case Management",
+  "product": "Complaints workflow on the service management platform",
+  "vendor": "S20",
+  "category": "Case management",
+  "capabilities": [
+   "C08.03"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 2,
+  "hosting": "SaaS",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A24",
+  "name": "HR and Payroll",
+  "product": "HR and payroll",
+  "vendor": "S22",
+  "category": "HR",
+  "capabilities": [
+   "C11.01"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 3,
+  "hosting": "SaaS",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A25",
+  "name": "Workplace Suite",
+  "product": "Email, collaboration and documents",
+  "vendor": "S19",
+  "category": "Workplace",
+  "capabilities": [
+   "C11.08"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 2,
+  "hosting": "SaaS",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A26",
+  "name": "Identity and Access Management",
+  "product": "Workforce identity and privileged access",
+  "vendor": "S19",
+  "category": "Security",
+  "capabilities": [
+   "C11.03"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 0,
+  "hosting": "SaaS",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A27",
+  "name": "IT Service Management",
+  "product": "Incident, change and asset management",
+  "vendor": "S20",
+  "category": "IT management",
+  "capabilities": [
+   "C11.02",
+   "C08.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 2,
+  "hosting": "SaaS",
+  "critical": false,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A28",
+  "name": "Security Monitoring",
+  "product": "SIEM and security operations",
+  "vendor": "S21",
+  "category": "Security",
+  "capabilities": [
+   "C11.04"
+  ],
+  "lifecycle": "Production",
+  "time": "Invest",
+  "tier": 1,
+  "hosting": "Managed service (third-party)",
+  "critical": true,
+  "source": "Illustrative",
+  "ref": "",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": []
+ },
+ {
+  "id": "A29",
+  "name": "Mainframe (CICS, DBMS, message queuing)",
+  "product": "Mainframe with CICS, DBMS and message queuing",
+  "vendor": "S02",
+  "category": "Infrastructure",
+  "capabilities": [
+   "C11.09",
+   "C11.07"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 0,
+  "hosting": "Mainframe (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model: Mainframe, CICS, DBMS, Message Queuing); vendor to confirm",
+  "ref": "archi",
+  "programme_lens": "Key decision - mainframe future",
+  "suppliers": [],
+  "runs_on": [],
+  "archimate_id": "986",
+  "platform": {
+   "hosts": [
+    "Mainframe"
+   ],
+   "carries": "message queu|\\bMQ\\b"
+  },
+  "end_of_support": "2029-12-31"
+ },
+ {
+  "id": "A30",
+  "name": "Unix Server Farm",
+  "product": "Unix servers and admin server",
+  "vendor": "S03",
+  "category": "Infrastructure",
+  "capabilities": [
+   "C11.09"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 0,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model: Unix Server Farm); vendor to confirm",
+  "ref": "archi",
+  "programme_lens": "Assess - standard infrastructure",
+  "suppliers": [],
+  "runs_on": [],
+  "archimate_id": "992",
+  "platform": {
+   "hosts": [
+    "Unix server farm"
+   ]
+  }
+ },
+ {
+  "id": "A31",
+  "name": "NAS File Server",
+  "product": "File service for customer files",
+  "vendor": "S03",
+  "category": "Infrastructure",
+  "capabilities": [
+   "C11.09",
+   "C11.06"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 1,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model: NAS File Server); vendor to confirm",
+  "ref": "archi",
+  "programme_lens": "Assess - standard infrastructure",
+  "suppliers": [],
+  "runs_on": [],
+  "archimate_id": "1065",
+  "platform": {}
+ },
+ {
+  "id": "A32",
+  "name": "Network and Firewall",
+  "product": "LAN, firewall and connection to the BIBIT network",
+  "vendor": "S01",
+  "category": "Infrastructure",
+  "capabilities": [
+   "C11.09"
+  ],
+  "lifecycle": "Production",
+  "time": "Tolerate",
+  "tier": 0,
+  "hosting": "Unix server farm (in-house)",
+  "critical": true,
+  "source": "Public (Archi sample model: LAN, Firewall, BIBIT network)",
+  "ref": "archi",
+  "programme_lens": "Retain",
+  "suppliers": [],
+  "runs_on": [],
+  "archimate_id": "998",
+  "platform": {
+   "note": "Network dependencies are not mapped per application, so this result understates the impact. Every in-house application and the BIBIT connection depend on the LAN and firewall."
+  }
+ }
+]

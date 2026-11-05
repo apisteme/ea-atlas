@@ -1,0 +1,542 @@
+[
+ {
+  "id": "C01",
+  "name": "Strategy & Governance",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C01.01",
+  "name": "Strategy & Planning",
+  "parent": "C01",
+  "description": "Set direction, goals and the plan to reach them",
+  "std_ref": "Develop vision and strategy",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C01.02",
+  "name": "Enterprise Architecture",
+  "parent": "C01",
+  "description": "Describe and govern how business and technology fit together",
+  "std_ref": "Develop and manage IT architecture",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C01.03",
+  "name": "Portfolio & Programme Management",
+  "parent": "C01",
+  "description": "Choose, fund and deliver change",
+  "std_ref": "Manage portfolio of projects",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C01.04",
+  "name": "Performance Management",
+  "parent": "C01",
+  "description": "Measure results and act on them",
+  "std_ref": "Measure and benchmark",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C02",
+  "name": "Customer & Market",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C02.01",
+  "name": "Customer Relationship Management",
+  "parent": "C02",
+  "description": "Interactions, needs and history for each customer",
+  "std_ref": "Manage customer relationships",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C02.02",
+  "name": "Marketing & Campaigns",
+  "parent": "C02",
+  "description": "Brand, campaigns and lead generation",
+  "std_ref": "Market products and services",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C02.03",
+  "name": "Customer Insight",
+  "parent": "C02",
+  "description": "Analytics on customer behaviour, value and satisfaction",
+  "std_ref": "Understand markets and customers",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C02.04",
+  "name": "Consent & Preferences",
+  "parent": "C02",
+  "description": "Marketing consent and contact preferences",
+  "std_ref": "Manage customer privacy",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C03",
+  "name": "Products & Services",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C03.01",
+  "name": "Product & Service Design",
+  "parent": "C03",
+  "description": "Design, approve and launch products and services",
+  "std_ref": "Develop products and services",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C03.02",
+  "name": "Pricing",
+  "parent": "C03",
+  "description": "Set and govern prices",
+  "std_ref": "Manage pricing",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C03.03",
+  "name": "Product Lifecycle",
+  "parent": "C03",
+  "description": "Review, change and retire products",
+  "std_ref": "Manage product lifecycle",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04",
+  "name": "Sales & Channels",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04.01",
+  "name": "Digital Self-Service",
+  "parent": "C04",
+  "description": "Web and app self-service for customers",
+  "std_ref": "Manage digital channels",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04.02",
+  "name": "Contact Centre",
+  "parent": "C04",
+  "description": "Phone, chat and email service",
+  "std_ref": "Manage customer service",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04.03",
+  "name": "Partner & Reseller Management",
+  "parent": "C04",
+  "description": "Partners, resellers and intermediaries who sell or deliver for the organisation",
+  "std_ref": "Manage partners and alliances",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04.04",
+  "name": "Sales Management",
+  "parent": "C04",
+  "description": "Opportunities, quotes and orders from sales teams",
+  "std_ref": "Manage sales",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C04.05",
+  "name": "Digital Content & Web",
+  "parent": "C04",
+  "description": "Public website and content",
+  "std_ref": "Manage digital content",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05",
+  "name": "Service Delivery & Operations",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05.01",
+  "name": "Order Management",
+  "parent": "C05",
+  "description": "Capture, check and track orders",
+  "std_ref": "Fulfil orders",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05.02",
+  "name": "Case & Request Management",
+  "parent": "C05",
+  "description": "Handle service requests and cases",
+  "std_ref": "Manage service requests",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05.03",
+  "name": "Fulfilment & Delivery",
+  "parent": "C05",
+  "description": "Deliver the product or service",
+  "std_ref": "Deliver products and services",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05.04",
+  "name": "Supplier & Field Operations",
+  "parent": "C05",
+  "description": "Work done by suppliers and field teams",
+  "std_ref": "Manage field operations",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C05.05",
+  "name": "Quality Management",
+  "parent": "C05",
+  "description": "Standards, checks and continuous improvement",
+  "std_ref": "Manage quality",
+  "importance": "Critical",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C06",
+  "name": "Billing & Payments",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C06.01",
+  "name": "Billing & Invoicing",
+  "parent": "C06",
+  "description": "Bill customers accurately and on time",
+  "std_ref": "Invoice customers",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C06.02",
+  "name": "Payment Collection",
+  "parent": "C06",
+  "description": "Collect payments by card, direct debit and transfer",
+  "std_ref": "Process accounts receivable",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C06.03",
+  "name": "Credit Control",
+  "parent": "C06",
+  "description": "Late payment and debt recovery",
+  "std_ref": "Manage credit and collections",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C06.04",
+  "name": "Supplier Payments",
+  "parent": "C06",
+  "description": "Pay suppliers",
+  "std_ref": "Process accounts payable",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07",
+  "name": "Risk, Compliance & Security",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.01",
+  "name": "Enterprise Risk Management",
+  "parent": "C07",
+  "description": "Risk register, appetite and controls",
+  "std_ref": "Manage enterprise risk",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.02",
+  "name": "Compliance",
+  "parent": "C07",
+  "description": "Meet laws, regulations and standards",
+  "std_ref": "Manage regulatory compliance",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.03",
+  "name": "Complaints Management",
+  "parent": "C07",
+  "description": "Capture, resolve and learn from complaints",
+  "std_ref": "Manage complaints",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.04",
+  "name": "Data Protection",
+  "parent": "C07",
+  "description": "Personal data processing, privacy assessments and breaches",
+  "std_ref": "Manage data privacy",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.05",
+  "name": "Fraud Management",
+  "parent": "C07",
+  "description": "Prevent, detect and investigate fraud",
+  "std_ref": "Manage fraud",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C07.06",
+  "name": "Business Continuity & Resilience",
+  "parent": "C07",
+  "description": "Keep important services running through disruption",
+  "std_ref": "Manage business resilience",
+  "importance": "High",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08",
+  "name": "Finance",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.01",
+  "name": "General Ledger & Accounting",
+  "parent": "C08",
+  "description": "Ledger, journals and close",
+  "std_ref": "Perform general accounting",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.02",
+  "name": "Financial Planning & Analysis",
+  "parent": "C08",
+  "description": "Budget, forecast and cost allocation",
+  "std_ref": "Perform planning and management accounting",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.03",
+  "name": "Treasury",
+  "parent": "C08",
+  "description": "Cash, liquidity and funding",
+  "std_ref": "Manage treasury operations",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.04",
+  "name": "Statutory & Regulatory Reporting",
+  "parent": "C08",
+  "description": "Accounts and regulatory returns",
+  "std_ref": "Report financial results",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.05",
+  "name": "Procurement & Supplier Management",
+  "parent": "C08",
+  "description": "Sourcing, contracts and third-party risk",
+  "std_ref": "Procure materials and services",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C08.06",
+  "name": "Sustainability Reporting",
+  "parent": "C08",
+  "description": "Environmental, social and governance disclosures",
+  "std_ref": "Manage sustainability",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C09",
+  "name": "People",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C09.01",
+  "name": "Workforce Management",
+  "parent": "C09",
+  "description": "Hire to retire and payroll",
+  "std_ref": "Manage human capital",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C09.02",
+  "name": "Learning & Development",
+  "parent": "C09",
+  "description": "Training and competence",
+  "std_ref": "Develop and train employees",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C09.03",
+  "name": "Internal Communications",
+  "parent": "C09",
+  "description": "Employee communication and engagement",
+  "std_ref": "Manage employee communications",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10",
+  "name": "Technology & Data",
+  "parent": "",
+  "description": "",
+  "std_ref": "",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.01",
+  "name": "IT Service Management",
+  "parent": "C10",
+  "description": "Incident, change, problem and configuration",
+  "std_ref": "Manage IT services",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.02",
+  "name": "Identity & Access Management",
+  "parent": "C10",
+  "description": "Workforce identity and privileged access",
+  "std_ref": "Manage IT security",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.03",
+  "name": "Cyber Security Operations",
+  "parent": "C10",
+  "description": "Monitoring, detection and response",
+  "std_ref": "Manage IT security",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.04",
+  "name": "Data Management & Analytics",
+  "parent": "C10",
+  "description": "Data platform, quality and reporting",
+  "std_ref": "Manage enterprise information",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.05",
+  "name": "Document & Records Management",
+  "parent": "C10",
+  "description": "Capture, archive and retention",
+  "std_ref": "Manage records",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.06",
+  "name": "Enterprise Integration",
+  "parent": "C10",
+  "description": "APIs, messaging, events and files between systems",
+  "std_ref": "Manage IT integration",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.07",
+  "name": "Workplace Collaboration",
+  "parent": "C10",
+  "description": "Email, collaboration and productivity",
+  "std_ref": "Manage end-user services",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.08",
+  "name": "Infrastructure & Hosting",
+  "parent": "C10",
+  "description": "Data centres, cloud, servers and network",
+  "std_ref": "Manage IT infrastructure",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.09",
+  "name": "Software Delivery",
+  "parent": "C10",
+  "description": "Build, test and release software",
+  "std_ref": "Develop and maintain IT solutions",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ },
+ {
+  "id": "C10.10",
+  "name": "AI & Advanced Analytics",
+  "parent": "C10",
+  "description": "AI and machine learning with governance",
+  "std_ref": "Manage analytics and AI",
+  "importance": "Medium",
+  "source": "Core pack (APQC PCF-aligned by category name)"
+ }
+]

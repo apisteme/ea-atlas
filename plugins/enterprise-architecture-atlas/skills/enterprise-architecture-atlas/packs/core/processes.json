@@ -1,0 +1,339 @@
+[
+ {
+  "id": "P1",
+  "name": "Win and serve customers",
+  "category": "Operate",
+  "parent": "",
+  "owner": "R23",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P1.1",
+  "name": "Sell and onboard",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R23",
+  "capabilities": [
+   "C04.04",
+   "C05.01"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS01"
+  ],
+  "roles": [
+   "R05"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P1.2",
+  "name": "Deliver the service",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R21",
+  "capabilities": [
+   "C05.03",
+   "C05.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R08",
+   "R07"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P1.3",
+  "name": "Service requests and support",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R24",
+  "capabilities": [
+   "C05.02",
+   "C04.02"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS02"
+  ],
+  "roles": [
+   "R04",
+   "R06"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P1.4",
+  "name": "Billing and collection",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R22",
+  "capabilities": [
+   "C06.01",
+   "C06.02",
+   "C06.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R09",
+   "R10"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P1.5",
+  "name": "Complaints",
+  "category": "Operate",
+  "parent": "P1",
+  "owner": "R24",
+  "capabilities": [
+   "C07.03"
+  ],
+  "apps": [],
+  "journeys": [
+   "VS03"
+  ],
+  "roles": [
+   "R14"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2",
+  "name": "Manage the organisation",
+  "category": "Manage",
+  "parent": "",
+  "owner": "R20",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.1",
+  "name": "Strategy and architecture",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R20",
+  "capabilities": [
+   "C01.01",
+   "C01.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R27"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.2",
+  "name": "Products and pricing",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R23",
+  "capabilities": [
+   "C03.01",
+   "C03.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R12"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.3",
+  "name": "Risk, compliance and data protection",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R16",
+  "capabilities": [
+   "C07.01",
+   "C07.02",
+   "C07.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R15",
+   "R17"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.4",
+  "name": "Finance and reporting",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R22",
+  "capabilities": [
+   "C08.01",
+   "C08.02",
+   "C08.04"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R11"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.5",
+  "name": "Procurement and third-party risk",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R22",
+  "capabilities": [
+   "C08.05"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R19",
+   "R39"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P2.6",
+  "name": "Business continuity and resilience",
+  "category": "Manage",
+  "parent": "P2",
+  "owner": "R21",
+  "capabilities": [
+   "C07.06"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R36"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3",
+  "name": "Support the organisation",
+  "category": "Support",
+  "parent": "",
+  "owner": "R21",
+  "capabilities": [],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.1",
+  "name": "People",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R18",
+  "capabilities": [
+   "C09.01",
+   "C09.02"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.2",
+  "name": "IT service management",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R25",
+  "capabilities": [
+   "C10.01"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R34",
+   "R35"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.3",
+  "name": "Identity and security operations",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R26",
+  "capabilities": [
+   "C10.02",
+   "C10.03"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R33"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.4",
+  "name": "Data and analytics",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R25",
+  "capabilities": [
+   "C10.04",
+   "C10.10"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R37",
+   "R38"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.5",
+  "name": "Integration and infrastructure",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R25",
+  "capabilities": [
+   "C10.06",
+   "C10.08"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R31",
+   "R32"
+  ],
+  "source": "Core pack template"
+ },
+ {
+  "id": "P3.6",
+  "name": "Software delivery",
+  "category": "Support",
+  "parent": "P3",
+  "owner": "R25",
+  "capabilities": [
+   "C10.09"
+  ],
+  "apps": [],
+  "journeys": [],
+  "roles": [
+   "R40",
+   "R41",
+   "R42"
+  ],
+  "source": "Core pack template"
+ }
+]

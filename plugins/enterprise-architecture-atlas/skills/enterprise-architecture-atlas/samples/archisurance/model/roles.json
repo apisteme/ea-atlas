@@ -1,0 +1,385 @@
+[
+ {
+  "id": "R01",
+  "name": "Customer",
+  "unit": "External",
+  "family": "External",
+  "source": "Public (Archi sample model)",
+  "customer": true
+ },
+ {
+  "id": "R02",
+  "name": "Intermediary",
+  "unit": "External intermediary",
+  "family": "External",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R03",
+  "name": "Customer's bank",
+  "unit": "External",
+  "family": "External",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R04",
+  "name": "Loss adjuster or repairer",
+  "unit": "External partner",
+  "family": "External",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R05",
+  "name": "Customer relations agent",
+  "unit": "Customer Relations",
+  "family": "Front office",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R06",
+  "name": "Intermediary relations manager",
+  "unit": "Intermediary Relations",
+  "family": "Front office",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R07",
+  "name": "Underwriter (Home & Away)",
+  "unit": "Home & Away",
+  "family": "Back office",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R08",
+  "name": "Underwriter (Car)",
+  "unit": "Car",
+  "family": "Back office",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R09",
+  "name": "Legal aid case handler",
+  "unit": "Legal Aid",
+  "family": "Back office",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R10",
+  "name": "Claims handler",
+  "unit": "Back Office",
+  "family": "Back office",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R11",
+  "name": "Claims assessor",
+  "unit": "Back Office",
+  "family": "Back office",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R12",
+  "name": "Policy administrator",
+  "unit": "Back Office",
+  "family": "Back office",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R13",
+  "name": "Document processing operator",
+  "unit": "Document Processing SSC",
+  "family": "Operations",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R14",
+  "name": "Finance officer (payments)",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R15",
+  "name": "Credit control analyst",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R16",
+  "name": "Product manager",
+  "unit": "Product Development",
+  "family": "Business",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R17",
+  "name": "Pricing analyst",
+  "unit": "Product Development",
+  "family": "Business",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R18",
+  "name": "Actuary",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R19",
+  "name": "Reinsurance manager",
+  "unit": "Finance",
+  "family": "Finance",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R20",
+  "name": "Fraud investigator",
+  "unit": "Back Office",
+  "family": "Risk (2nd line)",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R21",
+  "name": "Complaints handler",
+  "unit": "Customer Relations",
+  "family": "Operations",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R22",
+  "name": "Compliance officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R23",
+  "name": "Risk manager",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R24",
+  "name": "Data protection officer",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R25",
+  "name": "HR business partner",
+  "unit": "HRM",
+  "family": "Support",
+  "source": "Public (Archi sample model); role name illustrative"
+ },
+ {
+  "id": "R26",
+  "name": "Chief Executive",
+  "unit": "Board",
+  "family": "Leadership",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R27",
+  "name": "Director of Sales",
+  "unit": "Board",
+  "family": "Leadership",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R28",
+  "name": "Director of Operations",
+  "unit": "Board",
+  "family": "Leadership",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R29",
+  "name": "Director of Finance",
+  "unit": "Board",
+  "family": "Leadership",
+  "source": "Public (Archi sample model)"
+ },
+ {
+  "id": "R30",
+  "name": "Chief Information Officer",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Illustrative",
+  "tech": true
+ },
+ {
+  "id": "R31",
+  "name": "Chief Risk Officer",
+  "unit": "Risk & Compliance",
+  "family": "Leadership",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R32",
+  "name": "Head of Claims",
+  "unit": "Back Office",
+  "family": "Leadership",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R33",
+  "name": "Chief Underwriting Officer",
+  "unit": "Back Office",
+  "family": "Leadership",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R34",
+  "name": "Head of Enterprise Architecture",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Illustrative",
+  "tech": true
+ },
+ {
+  "id": "R35",
+  "name": "Enterprise architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R36",
+  "name": "Solution architect",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R37",
+  "name": "Application support engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R38",
+  "name": "Mainframe systems programmer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R39",
+  "name": "Unix and infrastructure engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R40",
+  "name": "Integration lead (messaging and APIs)",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R41",
+  "name": "Security operations analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R42",
+  "name": "Identity and access analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R43",
+  "name": "Service desk analyst",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R44",
+  "name": "Change and release manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R45",
+  "name": "IT resilience and DR manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R46",
+  "name": "Data engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R47",
+  "name": "Data steward",
+  "unit": "Finance",
+  "family": "Business",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R48",
+  "name": "Software asset and licence manager",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R49",
+  "name": "Third-party risk manager",
+  "unit": "Risk & Compliance",
+  "family": "Risk (2nd line)",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R50",
+  "name": "Delivery manager",
+  "unit": "Change Programme",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R51",
+  "name": "Product owner (digital)",
+  "unit": "Change Programme",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R52",
+  "name": "Software engineer",
+  "unit": "IT",
+  "family": "Technology",
+  "source": "Illustrative"
+ },
+ {
+  "id": "R53",
+  "name": "Head of Infrastructure",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Illustrative",
+  "tech": true
+ },
+ {
+  "id": "R54",
+  "name": "Head of Digital",
+  "unit": "IT",
+  "family": "Leadership",
+  "source": "Illustrative",
+  "tech": true
+ }
+]

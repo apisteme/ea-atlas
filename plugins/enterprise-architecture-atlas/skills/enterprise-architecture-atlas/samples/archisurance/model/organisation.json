@@ -1,0 +1,157 @@
+{
+ "name": "ArchiSurance",
+ "short_name": "ArchiSurance",
+ "file_prefix": "ArchiSurance",
+ "dashboard_title": "ArchiSurance Atlas",
+ "pack": "insurance",
+ "as_of": "2026-10-07",
+ "seed": 7,
+ "cost_scale": 0.35,
+ "currency": {
+  "symbol": "€",
+  "code": "EUR"
+ },
+ "context": [
+  "Fictional EU insurer with three product lines: Home & Away (home and travel), Car, and Legal Aid",
+  "Built from the ArchiSurance sample model that ships with Archi, the open source ArchiMate tool",
+  "Head office data centre with a third-party recovery site; active-passive (illustrative)",
+  "Customers buy direct or through intermediaries; payments run over the BIBIT payment network",
+  "DORA and Solvency II apply; the Solvency II review applies from 30 January 2027"
+ ],
+ "disclaimer": "Example atlas. ArchiSurance is a fictional insurer. Items tagged Public come from the ArchiSurance sample model in Archi; everything else, including vendors, costs, dates, SLAs and ratings, is illustrative and was added to demonstrate the atlas.",
+ "sources": {
+  "archi": "https://github.com/archimatetool/archi"
+ },
+ "data_centres": [
+  {
+   "id": "DC1",
+   "name": "Head office data centre",
+   "role": "Primary data centre (live)",
+   "mode": "Active-passive",
+   "kind": "primary",
+   "source": "Illustrative"
+  },
+  {
+   "id": "DC2",
+   "name": "Recovery site",
+   "role": "Third-party recovery site (standby)",
+   "mode": "Active-passive",
+   "kind": "secondary",
+   "source": "Illustrative"
+  }
+ ],
+ "dc_model": "active-passive",
+ "hosting": {
+  "Mainframe (in-house)": {
+   "kind": "internal",
+   "licence_model": "MIPS-based licence",
+   "providers": [
+    {
+     "supplier": "S04",
+     "role": "Recovery site"
+    }
+   ]
+  },
+  "Unix server farm (in-house)": {
+   "kind": "internal",
+   "licence_model": "Term licence",
+   "providers": [
+    {
+     "supplier": "S04",
+     "role": "Recovery site"
+    }
+   ]
+  },
+  "SaaS": {
+   "kind": "vendor",
+   "licence_model": "SaaS subscription"
+  },
+  "Public cloud (EU region)": {
+   "kind": "vendor",
+   "licence_model": "Consumption"
+  },
+  "Payment network (third-party)": {
+   "kind": "third-party",
+   "licence_model": "Transaction fees"
+  },
+  "Managed service (third-party)": {
+   "kind": "third-party",
+   "licence_model": "Service fees"
+  },
+  "End-user computing": {
+   "kind": "end-user",
+   "licence_model": "Internal"
+  }
+ },
+ "customer_role": "R01",
+ "change_thresholds": [
+  12,
+  28,
+  45
+ ],
+ "owners_by_category": {
+  "Digital channel": "R54",
+  "Contact centre": "R27",
+  "CRM": "R27",
+  "Intermediary": "R27",
+  "Policy administration": "R28",
+  "Underwriting": "R33",
+  "Rating": "R16",
+  "Claims": "R32",
+  "Legal": "R32",
+  "Billing": "R29",
+  "Payments": "R29",
+  "Finance": "R29",
+  "Fraud": "R32",
+  "Case management": "R27",
+  "Documents": "R28",
+  "Data": "R30",
+  "Actuarial": "R29",
+  "Regulatory": "R29",
+  "Reinsurance": "R29",
+  "HR": "R25",
+  "Workplace": "R30",
+  "Security": "R30",
+  "IT management": "R30",
+  "Infrastructure": "R53"
+ },
+ "tech_owners_by_category": {
+  "Digital channel": "R52",
+  "Contact centre": "R37",
+  "CRM": "R37",
+  "Intermediary": "R37",
+  "Policy administration": "R38",
+  "Underwriting": "R37",
+  "Rating": "R37",
+  "Claims": "R37",
+  "Legal": "R37",
+  "Billing": "R37",
+  "Payments": "R40",
+  "Finance": "R37",
+  "Fraud": "R46",
+  "Case management": "R37",
+  "Documents": "R37",
+  "Data": "R46",
+  "Actuarial": "R46",
+  "Regulatory": "R46",
+  "Reinsurance": "R37",
+  "HR": "R37",
+  "Workplace": "R39",
+  "Security": "R41",
+  "IT management": "R43",
+  "Infrastructure": "R39"
+ },
+ "default_business_owner": "R28",
+ "default_tech_owner": "R37",
+ "licence_metric_by_category": {
+  "Policy administration": "Policies in force",
+  "Claims": "Claims handled",
+  "CRM": "Named users",
+  "Contact centre": "Concurrent agents",
+  "Payments": "Transactions",
+  "Rating": "Quotes",
+  "Data": "Capacity units",
+  "Security": "Identities",
+  "Digital channel": "Active users"
+ }
+}

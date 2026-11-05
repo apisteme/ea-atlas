@@ -1,0 +1,428 @@
+{
+ "customer_value_streams": [
+  {
+   "id": "CVS1",
+   "name": "Be insured",
+   "scope": "Taking out, changing and renewing home, travel, car, liability and legal aid cover",
+   "owner": "R27",
+   "source": "Insurance pack template"
+  },
+  {
+   "id": "CVS2",
+   "name": "Get a claim settled",
+   "scope": "Reporting, assessing and paying claims across all product lines",
+   "owner": "R32",
+   "source": "Insurance pack template"
+  },
+  {
+   "id": "CVS0",
+   "name": "Cross-cutting journeys",
+   "scope": "Journeys that serve every value stream, such as complaints",
+   "owner": "R27",
+   "source": "Insurance pack template",
+   "cross_cutting": true
+  }
+ ],
+ "journeys": [
+  {
+   "id": "VS01",
+   "name": "Take out insurance",
+   "parent": "CVS1",
+   "owner": "R27",
+   "trigger": "Customer requests insurance",
+   "outcome": "Contract signed and first premium collected",
+   "source": "Insurance pack template",
+   "steps": [
+    {
+     "name": "Formalise request",
+     "capabilities": [
+      "C04.02",
+      "C02.03",
+      "C02.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R02"
+     ],
+     "A": "R06",
+     "C": [
+      "R05"
+     ],
+     "I": []
+    },
+    {
+     "name": "Calculate risk and premium",
+     "capabilities": [
+      "C04.01",
+      "C03.02"
+     ],
+     "apps": [],
+     "R": [
+      "R07"
+     ],
+     "A": "R33",
+     "C": [
+      "R17"
+     ],
+     "I": []
+    },
+    {
+     "name": "Create contract",
+     "capabilities": [
+      "C04.02",
+      "C05.01"
+     ],
+     "apps": [],
+     "R": [
+      "R12"
+     ],
+     "A": "R07",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Check and sign contract",
+     "capabilities": [
+      "C05.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R13"
+     ],
+     "A": "R12",
+     "C": [
+      "R02"
+     ],
+     "I": []
+    },
+    {
+     "name": "Collect first premium",
+     "capabilities": [
+      "C07.01",
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R03"
+     ],
+     "A": "R29",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS02",
+   "name": "Handle a claim",
+   "parent": "CVS2",
+   "owner": "R32",
+   "trigger": "Damage occurred",
+   "outcome": "Claim paid and customer informed",
+   "source": "Insurance pack template",
+   "steps": [
+    {
+     "name": "Register claim",
+     "capabilities": [
+      "C06.01",
+      "C02.01"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R05"
+     ],
+     "A": "R10",
+     "C": [],
+     "I": [
+      "R02"
+     ]
+    },
+    {
+     "name": "Accept claim",
+     "capabilities": [
+      "C06.01",
+      "C08.01"
+     ],
+     "apps": [],
+     "R": [
+      "R10"
+     ],
+     "A": "R32",
+     "C": [
+      "R20"
+     ],
+     "I": []
+    },
+    {
+     "name": "Valuate damage",
+     "capabilities": [
+      "C06.02",
+      "C06.03"
+     ],
+     "apps": [],
+     "R": [
+      "R11",
+      "R04"
+     ],
+     "A": "R32",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Pay claim",
+     "capabilities": [
+      "C06.04",
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R14"
+     ],
+     "A": "R29",
+     "C": [],
+     "I": [
+      "R03"
+     ]
+    },
+    {
+     "name": "Inform customer",
+     "capabilities": [
+      "C01.03",
+      "C05.05"
+     ],
+     "apps": [],
+     "R": [
+      "R05"
+     ],
+     "A": "R32",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS03",
+   "name": "Change policy or customer details",
+   "parent": "CVS1",
+   "owner": "R28",
+   "trigger": "Customer asks for a change",
+   "outcome": "Customer file and policy updated, premium adjusted",
+   "source": "Insurance pack template",
+   "steps": [
+    {
+     "name": "Request change",
+     "capabilities": [
+      "C05.02",
+      "C02.01",
+      "C02.02"
+     ],
+     "apps": [],
+     "R": [
+      "R01",
+      "R05"
+     ],
+     "A": "R27",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Update customer file",
+     "capabilities": [
+      "C01.01",
+      "C05.02"
+     ],
+     "apps": [],
+     "R": [
+      "R12"
+     ],
+     "A": "R28",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Recalculate premium",
+     "capabilities": [
+      "C03.02",
+      "C05.02"
+     ],
+     "apps": [],
+     "R": [
+      "R12"
+     ],
+     "A": "R33",
+     "C": [
+      "R17"
+     ],
+     "I": []
+    },
+    {
+     "name": "Confirm and adjust billing",
+     "capabilities": [
+      "C05.01",
+      "C07.01"
+     ],
+     "apps": [],
+     "R": [
+      "R14",
+      "R12"
+     ],
+     "A": "R28",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VS04",
+   "name": "Renew a policy",
+   "parent": "CVS1",
+   "owner": "R28",
+   "trigger": "Policy approaches its renewal date",
+   "outcome": "Policy renewed or lapsed with reasons recorded",
+   "source": "Insurance pack template",
+   "steps": [
+    {
+     "name": "Prepare renewal terms",
+     "capabilities": [
+      "C05.03",
+      "C03.02"
+     ],
+     "apps": [],
+     "R": [
+      "R12",
+      "R17"
+     ],
+     "A": "R33",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Send renewal invitation",
+     "capabilities": [
+      "C05.03",
+      "C05.01"
+     ],
+     "apps": [],
+     "R": [
+      "R12"
+     ],
+     "A": "R28",
+     "C": [],
+     "I": [
+      "R02",
+      "R01"
+     ]
+    },
+    {
+     "name": "Collect renewal premium",
+     "capabilities": [
+      "C07.02"
+     ],
+     "apps": [],
+     "R": [
+      "R14"
+     ],
+     "A": "R29",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Handle lapse or non-payment",
+     "capabilities": [
+      "C07.04",
+      "C05.03"
+     ],
+     "apps": [],
+     "R": [
+      "R15"
+     ],
+     "A": "R29",
+     "C": [
+      "R05"
+     ],
+     "I": []
+    }
+   ]
+  },
+  {
+   "id": "VS05",
+   "name": "Resolve a complaint",
+   "parent": "CVS0",
+   "owner": "R27",
+   "trigger": "Customer or intermediary complains",
+   "outcome": "Complaint resolved, root cause recorded",
+   "source": "Insurance pack template",
+   "steps": [
+    {
+     "name": "Log complaint",
+     "capabilities": [
+      "C08.03",
+      "C02.02"
+     ],
+     "apps": [],
+     "R": [
+      "R05",
+      "R01"
+     ],
+     "A": "R21",
+     "C": [],
+     "I": []
+    },
+    {
+     "name": "Investigate",
+     "capabilities": [
+      "C08.03"
+     ],
+     "apps": [],
+     "R": [
+      "R21"
+     ],
+     "A": "R27",
+     "C": [
+      "R22"
+     ],
+     "I": []
+    },
+    {
+     "name": "Respond and put right",
+     "capabilities": [
+      "C08.03",
+      "C06.04"
+     ],
+     "apps": [],
+     "R": [
+      "R21"
+     ],
+     "A": "R27",
+     "C": [],
+     "I": [
+      "R01"
+     ]
+    },
+    {
+     "name": "Learn and report",
+     "capabilities": [
+      "C08.03",
+      "C08.05"
+     ],
+     "apps": [],
+     "R": [
+      "R22"
+     ],
+     "A": "R31",
+     "C": [],
+     "I": []
+    }
+   ]
+  }
+ ]
+}
