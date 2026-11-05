@@ -98,6 +98,8 @@ for ex in EXAMPLES:
     run([sys.executable, os.path.join(SKILL, "engine", "atlas_bundle.py"), "pack", "--workspace", ws, "--out", bundle])
     if ex.get("archimate"):
         shutil.copy(os.path.join(src, ex["archimate"]), out)
+    if ex.get("licence"):
+        shutil.copy(os.path.join(src, ex["licence"]), out)
     ex["D"] = D
     ex["dashboard"] = next(f for f in files if f.endswith(".html"))
     ex["excel"] = next(f for f in files if f.endswith(".xlsx"))
@@ -169,7 +171,7 @@ def frame(title, desc, body, cur, up):
 <footer><div class="wrap"><div>
 <div class="by"><img src="{up}assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="{EP}">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
 <p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="{GH}/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
-<p><a href="{GH}">Source on GitHub</a>, <a href="{GH}/blob/main/NOTICE.md">notices</a>.</p></div><div class="feedback"><h2>Feedback</h2><p>Found a problem, or want something EA Atlas does not do yet? Open an issue on GitHub.</p>
+<p><a href="{GH}">Source on GitHub</a>, <a href="{up}legal.html">legal and notices</a>. EA Atlas is independent and not affiliated with or endorsed by Anthropic, Microsoft, GitHub, The Open Group, BIAN, ACORD or APQC.</p></div><div class="feedback"><h2>Feedback</h2><p>Found a problem, or want something EA Atlas does not do yet? Open an issue on GitHub.</p>
 <p><a class="footbtn" href="{GH}/issues/new?template=bug_report.yml">Report a problem</a> <a class="footbtn" href="{GH}/issues/new?template=feature_request.yml">Request a feature</a></p>
 <p><a href="{GH}/issues">See open issues</a></p></div>
 <p class="copy">&copy; {YEAR} Episteme Partners Ltd. Content CC BY 4.0, code MIT.</p></div></footer>
@@ -436,7 +438,8 @@ for ex in EXAMPLES:
 <div><h2 style="font-size:1.3rem">Downloads</h2><ul class="dl">{dl}</ul></div></div>
 <h2 style="margin-top:64px">Go straight to a view</h2>
 <div class="viewgrid">{vg}</div>
-<div class="callout" style="margin-top:48px"><p><b>Try a refresh yourself.</b> Download the atlas file, attach it in a chat with your assistant and ask, for example: "Add a new claims application from a SaaS vendor and retire the old one", or "What happens if the payment network is down for a day?"</p></div>
+{f'<p class="muted" style="margin-top:40px;font-size:.9rem">{ex["attribution"]} <a href="{ex["licence"]}">Licence</a>. See <a href="../../legal.html">legal and notices</a>.</p>' if ex.get("attribution") else ''}
+<div class="callout" style="margin-top:24px"><p><b>Try a refresh yourself.</b> Download the atlas file, attach it in a chat with your assistant and ask, for example: "Add a new claims application from a SaaS vendor and retire the old one", or "What happens if the payment network is down for a day?"</p></div>
 </div>"""
     write(f"examples/{ex['id']}/index.html", frame(f"{ex['title']}, EA Atlas example", ex["blurb"], body, "examples", "../../"))
 
@@ -457,6 +460,16 @@ for k, (name, z) in KITS.items():
 <div class="wrap page"><div class="callout"><p><a class="btn primary small" href="../downloads/{z}" download>Download {z}</a> <span class="muted">{kb(os.path.join(DL, z))}</span></p>{GUIDE_NOTE[k]}</div>
 <div class="prose">{h}</div></div>"""
     write(f"guides/{k}.html", frame(f"{name} setup, EA Atlas", f"How to install and use EA Atlas with {name}.", body, "guides", "../"))
+
+# ---------------------------------------------------------------- legal and notices
+lh = markdown.markdown(open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read(), extensions=["tables", "fenced_code"])
+lh = re.sub(r"<h1>.*?</h1>", "", lh, count=1)
+lh = re.sub(r"(?<![\"=/])(https://[^\s<),]*[^\s<),.])", r'<a href="\1">\1</a>', lh)
+lh = lh.replace("<code>LICENSE</code>", f'<a href="{GH}/blob/main/LICENSE"><code>LICENSE</code></a>').replace("<code>LICENSE-CONTENT.md</code>", f'<a href="{GH}/blob/main/LICENSE-CONTENT.md"><code>LICENSE-CONTENT.md</code></a>')
+body = f"""<div class="pagehead"><div class="wrap"><p class="crumb"><a href="index.html">Home</a></p><h1>Legal and notices</h1>
+<p>Licences, third-party material, trademarks and the disclaimer for EA Atlas.</p></div></div>
+<div class="wrap page"><div class="prose">{lh}</div></div>"""
+write("legal.html", frame("Legal and notices, EA Atlas", "Licences, third-party material, trademarks and disclaimer for EA Atlas.", body, "legal", ""))
 
 shutil.rmtree(TMP, ignore_errors=True)
 total = 0

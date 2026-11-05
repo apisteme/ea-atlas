@@ -64,13 +64,14 @@ for f in ("model-schema.md", "pack-authoring.md", "outputs.md"):
         t = re.sub(r"\n## Copilot kit \(optional\).*?(?=\n## )", "\n", t, flags=re.S)
         t = re.sub(r"\n## Prompt file.*\Z", "\n", t, flags=re.S)
     open(os.path.join(stage, "references", f), "w", encoding="utf-8").write(t)
-notice = open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read().replace("`samples/archisurance/Archisurance.archimate`", "`assets/Archisurance.archimate.xml`")
+notice = open(os.path.join(ROOT, "NOTICE.md"), encoding="utf-8").read().replace("`samples/archisurance/Archisurance.archimate`", "`assets/Archisurance.archimate.xml`").replace("`samples/archisurance/LICENSE-Archi.txt`", "`assets/LICENSE-Archi.txt`")
 lic = open(os.path.join(ROOT, "LICENSE"), encoding="utf-8").read()
 content = open(os.path.join(ROOT, "LICENSE-CONTENT.md"), encoding="utf-8").read()
 open(os.path.join(stage, "references", "licence-and-notices.md"), "w", encoding="utf-8").write(content + "\n## MIT licence (source code)\n\n```\n" + lic + "```\n\n" + notice)
 # assets: example atlas file (built so it carries a release snapshot) and the Archi model
 os.makedirs(os.path.join(stage, "assets"))
 shutil.copy(os.path.join(SKILL, "samples", "archisurance", "Archisurance.archimate"), os.path.join(stage, "assets", "Archisurance.archimate.xml"))
+shutil.copy(os.path.join(SKILL, "samples", "archisurance", "LICENSE-Archi.txt"), os.path.join(stage, "assets", "LICENSE-Archi.txt"))
 tmp = tempfile.mkdtemp()
 ws = os.path.join(tmp, "ws")
 shutil.copytree(os.path.join(SKILL, "samples", "archisurance", "model"), os.path.join(ws, "model"))
@@ -135,7 +136,7 @@ for rel in files:
         t = open(os.path.join(stage, rel), encoding="utf-8", errors="ignore").read()
         if re.search(r"(?i)\bptsb\b|permanent tsb|bawag|kyndryl", t):
             problems.append(f"client reference in {rel}")
-        if re.search(r"(?i)claude", re.sub(r"window\.claude", "", t)):
+        if rel != os.path.join("references", "licence-and-notices.md") and re.search(r"(?i)claude", re.sub(r"window\.claude", "", t)):
             problems.append(f"mentions Claude: {rel}")
 
 # ---------------------------------------------------------------- zips
