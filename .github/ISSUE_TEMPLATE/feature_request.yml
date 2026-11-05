@@ -1,0 +1,34 @@
+name: Request a feature
+description: Suggest a new view, input, industry pack or improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you need to do?
+      description: Describe the task or question you have, not only the solution. For example "show which applications hold personal data per journey".
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Dashboard view
+        - Excel repository
+        - What if? or change impact
+        - New input or importer
+        - Industry pack
+        - Claude kit
+        - Copilot Studio kit
+        - GitHub Copilot kit
+        - Website or documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could it work?
+      description: Optional. Any idea of how it should look or behave.

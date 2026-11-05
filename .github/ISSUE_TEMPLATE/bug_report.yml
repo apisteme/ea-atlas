@@ -1,0 +1,44 @@
+name: Report a problem
+description: Something in EA Atlas does not work as described
+title: "[Problem]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report this. Please do not paste confidential information about your organisation: this repository is public.
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did it happen?
+      options:
+        - Claude (apps or Claude Code)
+        - Microsoft Copilot Studio
+        - GitHub Copilot
+        - Running the scripts by hand
+        - The dashboard in a browser
+        - The Excel repository
+        - The website
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead. Include any error message.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Atlas version or kit download date
+      placeholder: "for example v1.4, or kit downloaded 5 November 2026"
+  - type: dropdown
+    id: pack
+    attributes:
+      label: Industry pack
+      options:
+        - core
+        - banking
+        - insurance
+        - other or not relevant

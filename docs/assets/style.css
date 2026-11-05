@@ -3,7 +3,7 @@
 :root{
   --bg:#FFFFFF; --band:#F9FAFB; --hero:#EEF2FF; --card:#FFFFFF;
   --ink:#111827; --ink-2:#4B5563; --ink-3:#6B7280; --rule:#E5E7EB;
-  --accent:#4F46E5; --accent-hover:#4338CA; --accent-soft:#E0E7FF; --on-accent:#FFFFFF;
+  --accent:#4F46E5; --accent-hover:#4338CA; --accent-soft:#E0E7FF; --on-accent:#FFFFFF; --moon:inline; --sun:none;
   --brand-blue:#0072BB; --brand-green:#0FA506;
   --foot:#1F2937; --foot-ink:#D1D5DB;
   --invest:#059669; --tolerate:#2563EB; --migrate:#D97706; --eliminate:#DC2626;
@@ -16,7 +16,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0F172A; --band:#111827; --hero:#1E1B4B; --card:#1F2937;
   --ink:#F3F4F6; --ink-2:#D1D5DB; --ink-3:#9CA3AF; --rule:#374151;
-  --accent:#818CF8; --accent-hover:#A5B4FC; --accent-soft:#312E81; --on-accent:#0F172A;
+  --accent:#818CF8; --accent-hover:#A5B4FC; --accent-soft:#312E81; --on-accent:#0F172A; --moon:none; --sun:inline;
   --foot:#030712; --foot-ink:#9CA3AF; --code:#1F2937;
   --invest:#059669; --tolerate:#2563EB; --migrate:#B45309; --eliminate:#B91C1C;
   --shadow:0 1px 3px rgba(0,0,0,.4); --shadow-lg:0 10px 15px -3px rgba(0,0,0,.4); color-scheme:dark;
@@ -24,7 +24,7 @@
 :root[data-theme="dark"]{
   --bg:#0F172A; --band:#111827; --hero:#1E1B4B; --card:#1F2937;
   --ink:#F3F4F6; --ink-2:#D1D5DB; --ink-3:#9CA3AF; --rule:#374151;
-  --accent:#818CF8; --accent-hover:#A5B4FC; --accent-soft:#312E81; --on-accent:#0F172A;
+  --accent:#818CF8; --accent-hover:#A5B4FC; --accent-soft:#312E81; --on-accent:#0F172A; --moon:none; --sun:inline;
   --foot:#030712; --foot-ink:#9CA3AF; --code:#1F2937;
   --invest:#059669; --tolerate:#2563EB; --migrate:#B45309; --eliminate:#B91C1C;
   --shadow:0 1px 3px rgba(0,0,0,.4); --shadow-lg:0 10px 15px -3px rgba(0,0,0,.4); color-scheme:dark;
@@ -59,7 +59,11 @@ pre code{background:none;padding:0}
 .top nav a{color:var(--ink-2);font-size:.98rem}
 .top nav a:hover{color:var(--ink);text-decoration:none}
 .top nav a[aria-current="page"]{color:var(--accent);font-weight:600}
-@media (max-width:640px){.top nav{gap:16px;margin-left:0;width:100%;padding-bottom:10px}.top{position:static}}
+.top .tools{display:flex;align-items:center;gap:10px}
+.iconbtn{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink-2);cursor:pointer}
+.iconbtn:hover{color:var(--accent);border-color:var(--accent)}
+.i-moon{display:var(--moon)} .i-sun{display:var(--sun)}
+@media (max-width:640px){.top nav{gap:16px;margin-left:0;width:100%;padding-bottom:10px;order:3}.top .tools{margin-left:auto;order:2}.top{position:static}}
 
 /* hero: pale indigo band, centred, two-tone headline as on epistemepartners.com */
 .hero{background:var(--hero);padding-block:76px 64px;text-align:center}
@@ -216,8 +220,6 @@ footer a{color:#fff}
 footer .copy{grid-column:1/-1;text-align:center;border-top:1px solid #374151;padding-top:22px;margin:4px 0 0;max-width:none}
 footer .by{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 footer .by img{height:34px;background:#fff;border-radius:4px;padding:2px}
-.themebtn{font:500 .88rem var(--sans);background:transparent;border:1px solid #4B5563;color:var(--foot-ink);border-radius:6px;padding:5px 12px;cursor:pointer}
-.themebtn:hover{color:#fff;border-color:#9CA3AF}
 @media (prefers-reduced-motion:no-preference){
   .plate .tile{animation:rise .45s both;animation-delay:calc(var(--i)*10ms)}
   @keyframes rise{from{opacity:.001;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -246,3 +248,9 @@ footer .by img{height:34px;background:#fff;border-radius:4px;padding:2px}
 .panel .small{font-size:.9rem;color:var(--ink-3);margin:16px 0 0}
 .chips{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{background:var(--accent-soft);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:.86rem;font-weight:500}
+
+/* footer feedback */
+footer .feedback h2{color:#fff;font-size:1.05rem;margin:0 0 6px}
+footer .feedback p{margin:0 0 12px}
+.footbtn{display:inline-block;border:1px solid #4B5563;border-radius:6px;padding:6px 12px;margin:0 6px 6px 0;color:#fff}
+.footbtn:hover{border-color:#9CA3AF;text-decoration:none;color:#fff}

@@ -159,12 +159,19 @@ def frame(title, desc, body, cur, up):
 <link rel="stylesheet" href="{up}assets/style.css">
 <script>try{{var t=localStorage.getItem('ea-atlas-theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 </head><body>
-<header class="top"><div class="wrap"><a class="mark" href="{up}index.html"><img src="{up}assets/episteme-logo.png" alt="Episteme Partners" width="69" height="42"><span>EA Atlas</span></a><nav aria-label="Main">{links}</nav></div></header>
+<header class="top"><div class="wrap"><a class="mark" href="{up}index.html"><img src="{up}assets/episteme-logo.png" alt="Episteme Partners" width="69" height="42"><span>EA Atlas</span></a><nav aria-label="Main">{links}</nav>
+<div class="tools"><a class="btn small fb" href="{GH}/issues/new/choose" title="Report an issue or request a feature on GitHub">Feedback</a>
+<button class="iconbtn" type="button" id="theme" aria-label="Switch between light and dark theme" title="Switch theme">
+<svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a.6.6 0 0 0-.8-.7A10 10 0 1 0 21.7 15.3a.6.6 0 0 0-.7-.8z"/></svg>
+<svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+</button></div></div></header>
 <main>{body}</main>
 <footer><div class="wrap"><div>
 <div class="by"><img src="{up}assets/episteme-logo.png" alt="" width="56" height="34"><span>EA Atlas is an open project by <a href="{EP}">Episteme Partners</a>, platform and architecture consulting, London.</span></div>
 <p>Content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and code under the <a href="{GH}/blob/main/LICENSE">MIT licence</a>. ArchiSurance is a fictional company from the sample model that ships with <a href="https://www.archimatetool.com">Archi</a> (MIT licence). Industry standards (BIAN, ACORD, APQC) are referenced by name only; their content belongs to their publishers. Regulation summaries are paraphrased and are not legal advice.</p>
-<p><a href="{GH}">Source on GitHub</a>, <a href="{GH}/blob/main/NOTICE.md">notices</a>, <a href="{GH}/issues">report a problem</a>.</p></div><div><button class="themebtn" type="button" id="theme">Switch theme</button></div>
+<p><a href="{GH}">Source on GitHub</a>, <a href="{GH}/blob/main/NOTICE.md">notices</a>.</p></div><div class="feedback"><h2>Feedback</h2><p>Found a problem, or want something EA Atlas does not do yet? Open an issue on GitHub.</p>
+<p><a class="footbtn" href="{GH}/issues/new?template=bug_report.yml">Report a problem</a> <a class="footbtn" href="{GH}/issues/new?template=feature_request.yml">Request a feature</a></p>
+<p><a href="{GH}/issues">See open issues</a></p></div>
 <p class="copy">&copy; {YEAR} Episteme Partners Ltd. Content CC BY 4.0, code MIT.</p></div></footer>
 <script>document.getElementById('theme').onclick=function(){{var r=document.documentElement,d=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'),n=d==='dark'?'light':'dark';r.dataset.theme=n;try{{localStorage.setItem('ea-atlas-theme',n)}}catch(e){{}}}};</script>
 </body></html>
