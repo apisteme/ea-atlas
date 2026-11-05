@@ -37,13 +37,12 @@ These names are used only to identify the standards, tools and services that EA 
 EA Atlas and everything it produces are provided "as is", without warranty of any kind, as set out in the MIT licence and in section 5 of CC BY 4.0. In particular:
 
 - **Use is your decision.** Whether and how you use EA Atlas, its content, the material it refers to and anything it produces is entirely your own choice and at your own risk. That includes checking that your use complies with the terms of any third-party standard, framework, tool or service, and with your organisation's own policies.
-
 - **Not professional advice.** Dashboards, Excel repositories, impact assessments, regulatory readiness views and regulation summaries support architecture work. They are not legal, regulatory, financial or audit advice and do not replace your own review or advice from a qualified professional.
 - **Check the results.** An atlas is written by an AI assistant from the information it is given and finds. It can be incomplete or wrong. Every item carries a data confidence tag; figures tagged Illustrative are placeholders, not facts.
 - **Your data is your responsibility.** You decide what information you give your assistant and where you keep the outputs. Follow your organisation's policies, and do not put confidential information into public repositories, issues or shared files.
 - **Your assistant's terms apply.** EA Atlas runs inside Claude, Microsoft Copilot Studio or GitHub Copilot under your own account. How those services handle your data is governed by your agreement with their providers.
 
-**Limitation of liability.** To the fullest extent permitted by law, Episteme Partners Ltd, its directors, staff and contributors accept no liability of any kind, whether in contract, tort (including negligence) or otherwise, for any loss or damage arising from or in connection with EA Atlas, its content or its outputs, or from any decision made on the basis of them. This includes direct, indirect and consequential loss, and loss of profit, revenue, data, business or reputation. Episteme Partners Ltd owes no duty of care to users of EA Atlas, who use it free of charge. Nothing in this notice excludes or limits liability that cannot be excluded or limited by law, such as liability for death or personal injury caused by negligence, or for fraud.
+**No liability.** EA Atlas is provided free of charge, as is and at your own risk. To the fullest extent permitted by law, Episteme Partners Ltd and its contributors accept no liability for any loss or damage arising from EA Atlas, its content or its outputs, or from any decision based on them, including indirect or consequential loss and loss of profit or data. This is in addition to the disclaimers in the MIT licence and section 5 of CC BY 4.0. Nothing in this notice excludes liability that cannot be excluded by law.
 
 ## Contact
 
