@@ -358,6 +358,20 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .sc-head-top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
 .sc-title{font:700 21px/1.2 var(--f-display);margin:4px 0 8px;text-wrap:balance}
 .sc-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ed-ready{margin:4px 0 10px;padding:10px 12px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line);font-size:12.5px;color:var(--ink)}
+.ed-ready b{font-weight:600}
+.ed-ready ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.ed-ready li{display:flex;gap:8px;align-items:baseline}
+.ed-ready li::before{flex:none;width:14px;text-align:center;font-weight:700}
+.ed-ready .ed-todo::before{content:'\25CB';color:var(--muted)}
+.ed-ready li.ed-ok{color:var(--muted);text-decoration:line-through}
+.ed-ready li.ed-ok::before{content:'\2713';color:var(--ok)}
+.ed-ready.done{background:color-mix(in oklab,var(--ok) 10%,var(--surface));border-color:color-mix(in oklab,var(--ok) 40%,var(--line))}
+.ed-ready.done .ed-ok{color:var(--ok);font-weight:600}
+.ed-ready.done .ed-ok::before{content:'\2713  '}
+.ed-alert{margin:0 0 10px;padding:10px 12px;border-radius:8px;border-left:3px solid var(--crit);background:color-mix(in oklab,var(--crit) 9%,var(--surface));color:var(--ink);font-size:12.5px;font-weight:500}
+.sc-f.invalid input,.sc-f.invalid select{border-color:var(--crit)!important;box-shadow:0 0 0 2px color-mix(in oklab,var(--crit) 25%,transparent)}
+.sc-f.invalid > span,.sc-f.invalid{color:var(--crit)}
 .sc-desc{margin:10px 0 0;font-size:13.5px;max-width:80ch}
 .sc-form .k{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
 .sc-f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}

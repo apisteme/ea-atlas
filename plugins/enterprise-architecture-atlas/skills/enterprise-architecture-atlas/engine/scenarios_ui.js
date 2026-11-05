@@ -235,21 +235,54 @@ function scEditor(){
      <p class="sub" style="margin:0">${isSaved?'Change the details and save.':'Name it, choose the type and what is affected. The impact preview below updates as you go. Nothing is saved until you press Save scenario.'}</p></div>
      <button class="btn ghost" data-sccancel="1">Back to scenarios</button></div>
     <section class="panel sc-form ed-form">
-    <label class="sc-f">Name<input id="sc-name" value="${esc(d.name)}" placeholder="e.g. Loss of ${esc(DCP?DCP.name:'the primary data centre')}" maxlength="120"></label>
+    <label class="sc-f" id="sc-f-name">Name<input id="sc-name" value="${esc(d.name)}" placeholder="e.g. Loss of ${esc(DCP?DCP.name:'the primary data centre')}" maxlength="120"></label>
     <label class="sc-f">Scenario type<select id="sc-type">${Object.entries(ScenarioEngine.TYPES).map(([k,t])=>`<option value="${k}" ${d.type===k?'selected':''}>${esc(t.label)}</option>`).join('')}</select></label>
     <p class="sub" id="sc-help" style="margin:-4px 0 10px">${esc(T.help)}</p>
-    <div class="sc-f"><span>What is affected</span><div id="sc-targets">${scTargetsHTML()}</div></div>
+    <div class="sc-f" id="sc-f-targets"><span>What is affected</span><div id="sc-targets">${scTargetsHTML()}</div></div>
     <label class="sc-f" id="sc-lk-wrap" ${T.disruptive?'':'hidden'}>Likelihood<select id="sc-lk">${[1,2,3,4,5].map(i=>`<option value="${i}" ${Number(d.likelihood)===i?'selected':''}>${i} · ${ScenarioEngine.LIKELIHOOD[i]}</option>`).join('')}</select></label>
     <label class="sc-f">Description<textarea id="sc-desc" rows="2" placeholder="What happens, and why it matters">${esc(d.description)}</textarea></label>
     <label class="sc-f">Response or mitigation<textarea id="sc-mit" rows="2" placeholder="What ${esc(ORGS)} would do">${esc(d.mitigation)}</textarea></label>
-    <div class="sc-actions" style="justify-content:flex-start;margin-top:4px"><button class="btn" data-scsave="1">Save scenario</button><button class="btn ghost" data-sccancel="1">Cancel</button>
-    ${isSaved?`<button class="btn ghost" data-scdel="${esc(d.id)}" style="margin-left:auto;color:var(--crit)">${scDelArm===d.id?'Confirm delete':'Delete'}</button>`:''}</div>
-    <p class="sub" id="sc-formmsg" style="margin:8px 0 0"></p></section>
+    <div id="sc-ready" class="ed-ready" aria-live="polite"></div>
+    <p id="sc-formmsg" class="ed-alert" role="alert" hidden></p>
+    <div class="sc-actions" style="justify-content:flex-start;margin-top:4px"><button class="btn" data-scsave="1" aria-describedby="sc-ready">Save scenario</button><button class="btn ghost" data-sccancel="1">Cancel</button>
+    ${isSaved?`<button class="btn ghost" data-scdel="${esc(d.id)}" style="margin-left:auto;color:var(--crit)">${scDelArm===d.id?'Confirm delete':'Delete'}</button>`:''}</div></section>
     <h2 style="font:600 17px var(--f-display);margin:18px 0 10px">Impact preview</h2><div id="sc-impact"></div>`;
   scPreview();
   edFocus(main,'sc-name');
 }
+// ---------- Save readiness for the What if? and Change impact editors
+// Shows, above the Save button, what still has to be filled in, ticks items off as the user works, and on an early
+// Save explains what is missing next to the button and takes the user to the first field that needs attention.
+function edReady(px,items,noun){
+  const el=document.getElementById(px+'-ready'); if(!el) return;
+  const todo=items.filter(x=>!x.ok);
+  el.classList.toggle('done',!todo.length);
+  el.innerHTML=!todo.length?`<span class="ed-ok">Ready to save.</span>`
+    :`<b>To save this ${noun}:</b><ul>${items.map(x=>`<li class="${x.ok?'ed-ok':'ed-todo'}">${esc(x.label)}</li>`).join('')}</ul>`;
+  items.forEach(x=>{if(x.ok){const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.remove('invalid')}});
+  const a=document.getElementById(px+'-formmsg'); if(a&&!todo.length&&a.dataset.kind==='check') a.hidden=true;
+}
+function edAlert(px,text,kind){const a=document.getElementById(px+'-formmsg'); if(!a) return; a.textContent=text||''; a.dataset.kind=kind||'error'; a.hidden=!text}
+function edBlockSave(px,items,noun,focusIds){
+  const todo=items.filter(x=>!x.ok); if(!todo.length) return true;
+  edReady(px,items,noun);
+  edAlert(px,`This ${noun} cannot be saved yet. ${todo.map(x=>x.label).join('. ')}.`,'check');
+  todo.forEach(x=>{const w=document.getElementById(px+'-f-'+x.f); if(w) w.classList.add('invalid')});
+  const w=document.getElementById(px+'-f-'+todo[0].f), f=document.getElementById(focusIds[todo[0].f]);
+  try{(w||f).scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}catch(e){}
+  if(f) try{f.focus({preventScroll:true})}catch(e){f.focus()}
+  return false;
+}
+// What still has to be filled in before a scenario can be saved, shown above the Save button as the user works.
+function scReadyItems(d){
+  const reg=d.type==='regulatory_change';
+  return [{f:'name',label:'Give the scenario a name',ok:!!String(d.name||'').trim()},
+    {f:'targets',label:reg?'Select at least one requirement under "What is affected"':'Add at least one item under "What is affected"',
+     ok:reg?!d.targets.includes('__none__'):d.targets.filter(x=>x!=='__none__').length>0}];
+}
+function scReadyRender(){edReady('sc',scDraft?scReadyItems(scDraft):[],'scenario')}
 function scPreview(){
+  scReadyRender();
   const el=document.getElementById('sc-impact'); if(!el||!scDraft) return;
   if(!scDraft.targets.length&&scDraft.type!=='regulatory_change'){el.innerHTML='<p class="empty">Add at least one item under "What is affected" to see the impact.</p>';return}
   const r=scRun(scDraft);
@@ -324,12 +357,10 @@ document.addEventListener('click',async e=>{
   if(t.dataset.sccancel){const id=scDraft&&ScStore.items.some(x=>x.id===scDraft.id)?scDraft.id:(state.scSel||scDefault());scDraft=null;return scShow(scFind(id)?id:scDefault())}
   if(t.dataset.scdel){if(scDelArm!==t.dataset.scdel){scDelArm=t.dataset.scdel;t.textContent='Confirm delete';return}
     const ok=await scDelete(t.dataset.scdel);if(ok){scDraft=null;state.scSel=scDefault();save();scenarios()}else scRefresh(true);return}
-  if(t.dataset.scsave){scReadForm();const msg=document.getElementById('sc-formmsg');
-    if(!scDraft.name.trim()){msg.textContent='Give the scenario a name before saving.';document.getElementById('sc-name').focus();return}
-    if(!scDraft.targets.filter(x=>x!=='__none__').length&&scDraft.type!=='regulatory_change'){msg.textContent='Add at least one item under "What is affected".';return}
-    if(scDraft.type==='regulatory_change'&&scDraft.targets.includes('__none__')){msg.textContent='Select at least one requirement.';return}
+  if(t.dataset.scsave){scReadForm();
+    if(!edBlockSave('sc',scReadyItems(scDraft),'scenario',{name:'sc-name',targets:'sc-add'})) return;
     t.disabled=true;t.textContent='Saving…';const sc=JSON.parse(JSON.stringify(scDraft));const ok=await scSave(sc);
-    if(ok){scDraft=null;state.scSel=sc.id;save();scenarios()}else{t.disabled=false;t.textContent='Save scenario';msg.textContent=ScStore.msg;scRefresh(true)}return}
+    if(ok){scDraft=null;state.scSel=sc.id;save();scenarios()}else{t.disabled=false;t.textContent='Save scenario';edAlert('sc',ScStore.msg);scRefresh(true)}return}
 },true);
 document.addEventListener('change',e=>{
   if(state.view!=='scenarios'||!scDraft) return;
@@ -341,4 +372,4 @@ document.addEventListener('change',e=>{
   if(id==='sc-lk'||id==='sc-pct'){scReadForm();return scPreview()}
 });
 let scInT=null;
-document.addEventListener('input',e=>{if(state.view!=='scenarios'||!scDraft) return; if(e.target.id==='sc-name'){scDraft.name=e.target.value; const it=document.querySelector('#sc-list .draft .sc-item-t'); if(it) it.textContent=e.target.value||'New scenario'} if(e.target.id==='sc-pct'){clearTimeout(scInT);scInT=setTimeout(()=>{scReadForm();scPreview()},250)}});
+document.addEventListener('input',e=>{if(state.view!=='scenarios'||!scDraft) return; if(e.target.id==='sc-name'){scDraft.name=e.target.value; const it=document.querySelector('#sc-list .draft .sc-item-t'); if(it) it.textContent=e.target.value||'New scenario'; scReadyRender()} if(e.target.id==='sc-pct'){clearTimeout(scInT);scInT=setTimeout(()=>{scReadForm();scPreview()},250)}});

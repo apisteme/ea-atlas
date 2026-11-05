@@ -176,7 +176,7 @@ function ftPickers(){
   const appRows=Object.entries(d.apps).map(([a,c])=>`<div class="ft-row"><span>${esc(AP[a].name)}</span><select data-ftch="${a}">${ftOpts(FeatureImpact.CHANGE_TYPES.map(x=>[x,x]),c)}</select><button class="btn ghost" data-ftrm="apps:${a}" aria-label="Remove">Remove</button></div>`).join('');
   const chips=(k,label)=>d[k].length?`<div class="chips">${d[k].map(x=>`<button class="chip" data-ftrm="${k}:${x}"><code>${esc(x)}</code>${esc(label(x))} ✕</button>`).join('')}</div>`:'';
   const appsSorted=D.apps.slice().sort((a,b)=>a.name.localeCompare(b.name));
-  return `<div class="sc-f"><span>Applications and what changes</span>${appRows||'<p class="empty" style="text-transform:none;letter-spacing:0">Add at least one application.</p>'}
+  return `<div class="sc-f" id="ft-f-apps"><span>Applications and what changes</span>${appRows||'<p class="empty" style="text-transform:none;letter-spacing:0">Add at least one application.</p>'}
      <div class="ft-row"><select id="ft-addapps"><option value="">Choose an application</option>${appsSorted.filter(a=>!d.apps[a.id]).map(a=>`<option value="${a.id}">${esc(a.name)} (${a.id})</option>`).join('')}</select><select id="ft-addch">${ftOpts(FeatureImpact.CHANGE_TYPES.map(x=>[x,x]),'Enhance')}</select><button class="btn" data-ftadd="apps">Add</button></div></div>
    <div class="sc-f"><span>L3 capabilities created or changed</span>${chips('caps',x=>CAP[x].name)}
      <div class="ft-row"><select id="ft-addcaps"><option value="">Choose a capability</option>${L2.map(c=>`<optgroup label="${esc(c.name)}">${(L3of[c.id]||[]).filter(x=>!d.caps.includes(x.id)).map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select><button class="btn" data-ftadd="caps">Add</button></div></div>
@@ -193,7 +193,7 @@ function ftEditor(){
      <p class="sub" style="margin:0">${isSaved?'Change the details and save.':'Name it, then add what it changes. The impact preview below updates as you go. Nothing is saved until you press Save feature.'}</p></div>
      <button class="btn ghost" data-ftcancel="1">Back to backlog</button></div><div class="sc-head" style="margin:0">${d.seededFrom?`<div class="callout" style="margin-top:8px">Started from ${esc(d.seededFrom)}. Set the change type for each application, remove what does not change, and add steps, capabilities and drivers. The preview below updates as you go.</div>`:''}</div>
    <div class="sc-form panel" style="margin-bottom:12px">
-    <div class="ft-two"><label class="sc-f"><span>Name</span><input id="ft-name" value="${esc(d.name)}" placeholder="For example: Online address change"></label>
+    <div class="ft-two"><label class="sc-f" id="ft-f-name"><span>Name</span><input id="ft-name" value="${esc(d.name)}" placeholder="For example: Online address change"></label>
      <label class="sc-f"><span>Epic</span><select id="ft-epic"><option value="">No epic</option>${ftOpts(D.epics.map(e=>[e.id,e.name]),d.epic)}</select></label></div>
     <div class="ft-four"><label class="sc-f"><span>Status</span><select id="ft-status">${ftOpts(FeatureImpact.STATUS.map(x=>[x,x]),d.status)}</select></label>
      <label class="sc-f"><span>Target quarter</span><select id="ft-target">${ftOpts(FT_Q.map(x=>[x,x]),d.target)}</select></label>
@@ -201,7 +201,9 @@ function ftEditor(){
      <label class="sc-f"><span>Owner</span><select id="ft-owner">${ftOpts(D.roles.map(r=>[r.id,r.name]),d.owner)}</select></label></div>
     <label class="sc-f"><span>Description</span><textarea id="ft-desc" rows="2">${esc(d.description)}</textarea></label>
     <div id="ft-pickers">${ftPickers()}</div>
-    <div class="sc-actions"><button class="btn" data-ftsave="1">Save feature</button><button class="btn ghost" data-ftcancel="1">Cancel</button>${isSaved?`<button class="btn ghost" data-ftdel="${esc(d.id)}">Delete</button>`:''}<span id="ft-formmsg" class="muted" style="font-size:12.5px"></span></div>
+    <div id="ft-ready" class="ed-ready" aria-live="polite"></div>
+    <p id="ft-formmsg" class="ed-alert" role="alert" hidden></p>
+    <div class="sc-actions"><button class="btn" data-ftsave="1" aria-describedby="ft-ready">Save feature</button><button class="btn ghost" data-ftcancel="1">Cancel</button>${isSaved?`<button class="btn ghost" data-ftdel="${esc(d.id)}">Delete</button>`:''}</div>
    </div>
    <h3 class="gd-h" style="margin-top:6px">Impact preview</h3><div id="ft-preview"></div>`;
   ftPreview();
@@ -211,7 +213,9 @@ function ftReadForm(){const v=id=>(document.getElementById(id)||{}).value; if(!f
   ftDraft.name=v('ft-name')??ftDraft.name; ftDraft.epic=v('ft-epic')??ftDraft.epic; ftDraft.status=v('ft-status')||ftDraft.status; ftDraft.target=v('ft-target')||ftDraft.target;
   ftDraft.size=v('ft-size')||ftDraft.size; ftDraft.owner=v('ft-owner')||ftDraft.owner; ftDraft.description=v('ft-desc')??ftDraft.description;
   document.querySelectorAll('[data-ftch]').forEach(s=>{ftDraft.apps[s.dataset.ftch]=s.value});}
-function ftPreview(){const p=document.getElementById('ft-preview'); if(!p) return;
+function ftReadyItems(d){return [{f:'name',label:'Give the feature a name',ok:!!String(d.name||'').trim()},{f:'apps',label:'Add at least one application under "Applications and what changes"',ok:Object.keys(d.apps||{}).length>0}]}
+function ftReadyRender(){edReady('ft',ftDraft?ftReadyItems(ftDraft):[],'feature')}
+function ftPreview(){ftReadyRender();const p=document.getElementById('ft-preview'); if(!p) return;
   if(!Object.keys(ftDraft.apps).length){p.innerHTML='<p class="empty">Add an application to see the impact.</p>';return}
   p.innerHTML=ftImpactHTML(ftDraft,ftRun(ftDraft));}
 function ftDrawer(type,id){
@@ -327,13 +331,12 @@ document.addEventListener('click',async e=>{
   if(t.dataset.ftcancel){ftDraft=null;return ftBacklog()}
   if(t.dataset.ftdel){if(ftDelArm!==t.dataset.ftdel){ftDelArm=t.dataset.ftdel;t.textContent='Confirm delete';return}
     const ok=await ftDelete(t.dataset.ftdel);if(ok){ftDraft=null;state.ftSel=FIRST.feat;save();change()}else ftRefresh();return}
-  if(t.dataset.ftsave){ftReadForm();const msg=document.getElementById('ft-formmsg');
-    if(!ftDraft.name.trim()){msg.textContent='Give the feature a name before saving.';document.getElementById('ft-name').focus();return}
-    if(!Object.keys(ftDraft.apps).length){msg.textContent='Add at least one application.';return}
+  if(t.dataset.ftsave){ftReadForm();
+    if(!edBlockSave('ft',ftReadyItems(ftDraft),'feature',{name:'ft-name',apps:'ft-addapps'})) return;
     t.disabled=true;t.textContent='Saving…';const f=JSON.parse(JSON.stringify(ftDraft));const ok=await ftSave(f);
-    if(ok){ftDraft=null;state.ftSel=f.id;save();change()}else{t.disabled=false;t.textContent='Save feature';msg.textContent=FtStore.msg}return}
+    if(ok){ftDraft=null;state.ftSel=f.id;save();change()}else{t.disabled=false;t.textContent='Save feature';edAlert('ft',FtStore.msg)}return}
 },true);
-document.addEventListener('input',e=>{if(state.view!=='change'||!ftDraft||e.target.id!=='ft-name') return; ftDraft.name=e.target.value; const it=document.querySelector('#ft-list .draft .sc-item-t'); if(it) it.textContent=e.target.value||'New feature'});
+document.addEventListener('input',e=>{if(state.view!=='change'||!ftDraft||e.target.id!=='ft-name') return; ftDraft.name=e.target.value; const it=document.querySelector('#ft-list .draft .sc-item-t'); if(it) it.textContent=e.target.value||'New feature'; ftReadyRender()});
 document.addEventListener('change',e=>{if(state.view!=='change'||!ftDraft) return; if(e.target.closest('.sc-form')&&!/^ft-add/.test(e.target.id)){ftReadForm();ftPreview()}});
 
 // ---------- Regulatory readiness, derived from the change backlog (features that list a requirement as a driver)
